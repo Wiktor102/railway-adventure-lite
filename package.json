@@ -11,10 +11,10 @@
     "license": "ISC",
     "dependencies": {
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "react-router": "^7.0.1"
     },
     "devDependencies": {
-        "webpack-scoped-css": "^0.1.4",
         "@babel/core": "^7.24.9",
         "@babel/preset-env": "^7.24.8",
         "@babel/preset-react": "^7.24.7",
@@ -28,7 +28,8 @@
         "style-loader": "^4.0.0",
         "webpack": "^5.93.0",
         "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^5.0.4"
+        "webpack-dev-server": "^5.0.4",
+        "webpack-scoped-css": "^0.1.4"
     },
     "browserslist": [
         "defaults"
