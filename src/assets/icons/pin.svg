@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <rect width="512" height="512" id="artboard_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#artboard_1" clip-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="pin" clip-path="url(#clip_1)">
+    <use xlink:href="#artboard_1" stroke="none" fill="#FFFFFF" fill-opacity="0" />
+    <path d="M256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0ZM256.5 49C141.901 49 49 141.901 49 256.5C49 371.099 141.901 464 256.5 464C371.099 464 464 371.099 464 256.5C464 141.901 371.099 49 256.5 49Z" id="Okrąg-Odejmij" fill="#FC4850" fill-rule="evenodd" stroke="none" artboard="1d2d63c4-dfac-4b03-91d7-85498d535d0a" />
+    <path d="M97 256C97 168.187 168.187 97 256 97C343.813 97 415 168.187 415 256C415 343.813 343.813 415 256 415C168.187 415 97 343.813 97 256Z" id="Okrąg-3" fill="#FC4850" fill-rule="evenodd" stroke="none" artboard="097742d4-a6a9-4a82-b072-70f5a8e550e6" />
+  </g>
+</svg>

@@ -3,4 +3,17 @@
 		background-color: #10527a;
 		height: 100vh;
 	}
+
+	.station-pin {
+		display: flex;
+		position: relative;
+		gap: 0.75rem;
+		translate: 6px 6px;
+
+		span {
+			font-size: 1.3rem;
+			line-height: 1;
+			white-space: nowrap;
+		}
+	}
 }

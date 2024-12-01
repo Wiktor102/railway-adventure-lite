@@ -1,5 +1,8 @@
-import { MapContainer, GeoJSON, useMap } from "react-leaflet";
-import mapGeoJson from "../assets/data/slaskie.json";
+import { MapContainer, GeoJSON, useMap, LayerGroup, Marker } from "react-leaflet";
+import { useGameStore } from "../../store/GameStoreProvider";
+import mapGeoJson from "../../assets/data/slaskie.json";
+import { observer } from "mobx-react-lite";
+import StationMarker from "./StaionMarker";
 
 function Map() {
 	return (
@@ -9,9 +12,11 @@ function Map() {
 	);
 }
 
-function MapController() {
+const MapController = observer(() => {
 	const map = useMap();
+	const s = useGameStore();
 
+	console.log(s);
 	function onBaseLayerAdded(e) {
 		const layerBounds = Object.values(e.target._layers)[0].getBounds();
 		map.fitBounds(layerBounds);
@@ -31,8 +36,13 @@ function MapController() {
 					interactive: false
 				}}
 			/>
+			<LayerGroup>
+				{s.stationStore.stations.map(station => (
+					<StationMarker station={station} key={station.name} />
+				))}
+			</LayerGroup>
 		</>
 	);
-}
+});
 
 export default Map;

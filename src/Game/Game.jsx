@@ -1,12 +1,16 @@
-import Map from "./Map";
+import React from "react";
+import { GameStoreProvider } from "../store/GameStoreProvider";
+import Map from "./Map/Map";
 
 import style from "./Game.component.scss";
 
 function Game() {
 	return (
-		<div className="game" data-style={style}>
-			<Map />
-		</div>
+		<GameStoreProvider>
+			<div className="game" data-style={style}>
+				<Map />
+			</div>
+		</GameStoreProvider>
 	);
 }
 
