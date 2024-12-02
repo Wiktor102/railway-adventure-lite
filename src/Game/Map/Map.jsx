@@ -4,19 +4,24 @@ import mapGeoJson from "../../assets/data/slaskie.json";
 import { observer } from "mobx-react-lite";
 import StationMarker from "./StaionMarker";
 
-function Map() {
+const Map = observer(() => {
+	const { stationStore } = useGameStore();
+
 	return (
 		<MapContainer center={[51.7, 19]} zoom={9} className="map">
 			<MapController />
+			<LayerGroup>
+				{stationStore.stations.map(station => (
+					<StationMarker station={station} key={station.name} />
+				))}
+			</LayerGroup>
 		</MapContainer>
 	);
-}
+});
 
-const MapController = observer(() => {
+const MapController = () => {
 	const map = useMap();
-	const s = useGameStore();
 
-	console.log(s);
 	function onBaseLayerAdded(e) {
 		const layerBounds = Object.values(e.target._layers)[0].getBounds();
 		map.fitBounds(layerBounds);
@@ -36,13 +41,8 @@ const MapController = observer(() => {
 					interactive: false
 				}}
 			/>
-			<LayerGroup>
-				{s.stationStore.stations.map(station => (
-					<StationMarker station={station} key={station.name} />
-				))}
-			</LayerGroup>
 		</>
 	);
-});
+};
 
 export default Map;
