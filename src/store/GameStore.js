@@ -3,6 +3,7 @@ import StationStore from "./StationStore";
 
 class GameStore {
 	stationStore;
+	mode = "default";
 
 	constructor() {
 		makeAutoObservable(this);

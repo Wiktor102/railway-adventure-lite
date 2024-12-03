@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" stroke="none" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="path_1" d="M128 0L128 0L128 128L0 128L0 0L128 0Z" />
+    <rect id="rect_2" x="0" y="0" width="128" height="128" />
+    <clipPath id="clip_path_3">
+      <use xlink:href="#rect_2" />
+    </clipPath>
+  </defs>
+  <g id="frame" opacity="1" clip-path="url(#clip_path_3)">
+    <g>
+      <use xlink:href="#path_1" style="mix-blend-mode:normal;" />
+      <g>
+        <path id="Rectangle" d="M3.5 0C5.43326 0 7 1.56674 7 3.5L7 121.5C7 123.433 5.43326 125 3.5 125L3.5 125C1.56674 125 0 123.433 0 121.5L0 3.5C0 1.56674 1.56674 0 3.5 0Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(0 1 -1 0 126.703 86)" />
+        <path id="Rectangle" d="M3.5 0C5.43326 0 7 1.56674 7 3.5L7 113.5C7 115.433 5.43326 117 3.5 117L3.5 117C1.56674 117 0 115.433 0 113.5L0 3.5C0 1.56674 1.56674 0 3.5 0Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(0 1 -1 0 122.703 69)" />
+        <path id="Rectangle" d="M3.5 0C5.43326 0 7 1.56674 7 3.5L7 99.5C7 101.433 5.43326 103 3.5 103L3.5 103C1.56674 103 0 101.433 0 99.5L0 3.5C0 1.56674 1.56674 0 3.5 0Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(0 1 -1 0 115.703 52)" />
+        <path id="Rectangle" d="M3.5 0C5.43326 0 7 1.56674 7 3.5L7 87.5C7 89.4333 5.43326 91 3.5 91L3.5 91C1.56674 91 0 89.4333 0 87.5L0 3.5C0 1.56674 1.56674 0 3.5 0Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(0 1 -1 0 109.703 35)" />
+        <path id="Rectangle" d="M7.5 0C11.6427 1.90735e-06 15 3.3573 15 7.5L15 93.8728C15 98.0155 11.6427 101.373 7.5 101.373L7.5 101.373C3.3573 101.373 3.8147e-06 98.0155 0 93.8728L3.8147e-06 7.5C3.8147e-06 3.3573 3.3573 9.53674e-07 7.5 0Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(0.914 0.407 -0.407 0.914 40.232 15)" />
+        <path id="Rectangle" d="M7.49999 101.373C11.6427 101.373 15 98.0155 15 93.8728L15 7.5C15 3.3573 11.6427 0 7.5 0L7.5 0C3.35731 0 0 3.3573 7.62939e-06 7.5L0 93.8728C-7.62939e-06 98.0155 3.35729 101.373 7.49999 101.373Z" style="fill:#10527A;mix-blend-mode:normal;" transform="matrix(-0.914 0.407 0.407 0.914 88.925 15)" />
+      </g>
+    </g>
+  </g>
+</svg>

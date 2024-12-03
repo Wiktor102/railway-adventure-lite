@@ -1,4 +1,4 @@
-import { MapContainer, GeoJSON, useMap, LayerGroup, Marker } from "react-leaflet";
+import { MapContainer, GeoJSON, useMap, LayerGroup } from "react-leaflet";
 import { useGameStore } from "../../store/GameStoreProvider";
 import mapGeoJson from "../../assets/data/slaskie.json";
 import { observer } from "mobx-react-lite";
