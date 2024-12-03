@@ -1,0 +1,23 @@
+.status-box {
+	display: flex;
+	align-items: center;
+	background-color: skyblue;
+	border-radius: 10px;
+	box-shadow: -2px 2px 2px #093d5e77;
+
+	img {
+		height: 2.5rem;
+		margin: 0.3rem;
+		margin-right: 0;
+	}
+
+	span {
+		min-width: 5ch;
+		padding: 0.5rem;
+		margin: 0.4rem;
+		border-radius: calc(10px - 0.3rem);
+		background-color: lightblue;
+		line-height: 1;
+		text-align: center;
+	}
+}

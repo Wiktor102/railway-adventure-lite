@@ -1,0 +1,24 @@
+button {
+	display: block;
+	height: 100%;
+	aspect-ratio: 1 / 1;
+	padding: 0.9rem;
+	background-color: skyblue;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: -2px 2px 2px #093d5e77;
+	font-size: 1.5rem;
+	color: #10527a;
+
+	pointer-events: all;
+	cursor: pointer;
+	transition: background-color 200ms;
+
+	&:hover {
+		background-color: lightblue;
+	}
+
+	img {
+		height: 1.5rem;
+	}
+}
