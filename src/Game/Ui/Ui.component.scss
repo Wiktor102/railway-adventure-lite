@@ -4,8 +4,11 @@
 	z-index: 3000;
 	pointer-events: none;
 
-	.game-ui-top {
+	& > div {
 		position: absolute;
+	}
+
+	.game-ui-top {
 		right: 1.5rem;
 		top: 1.5rem;
 		display: flex;
@@ -15,10 +18,34 @@
 	.game-ui-right {
 		display: flex;
 		flex-direction: column;
-		position: absolute;
 		right: 1.5rem;
 		top: 50%;
 		gap: 1rem;
 		translate: 0 -50%;
+	}
+
+	.game-ui-left {
+		width: 30%;
+		top: 1.5rem;
+		left: 1.5rem;
+		bottom: 1.5rem;
+		border-radius: 15px;
+		overflow: hidden;
+		overflow: clip;
+
+		.panel {
+			display: grid;
+			width: 100%;
+			height: 100%;
+			background-color: skyblue;
+			box-shadow: 2px 2px 2px #093d5e77;
+			border-radius: inherit;
+			pointer-events: all;
+			transition: translate 1s;
+
+			&.collapsed {
+				translate: calc(-100% - 4px) 0;
+			}
+		}
 	}
 }

@@ -1,12 +1,17 @@
+// state
 import { observer } from "mobx-react-lite";
+import GameStore from "../../store/GameStore";
 
 import style from "./Ui.component.scss";
 import StatusBox from "./StatusBox/StatusBox";
 import IconButton from "./IconButton/IconButton";
 
-import trackIcon from "../../assets/icons/track.svg";
+import { Link, Outlet, useLocation } from "react-router";
 
 const Ui = observer(() => {
+	let { pathname } = useLocation();
+	pathname = pathname.substring(6);
+
 	return (
 		<div className="game-ui" data-style={style}>
 			<div className="game-ui-top">
@@ -16,15 +21,18 @@ const Ui = observer(() => {
 				</IconButton>
 			</div>
 			<div className="game-ui-right">
-				<IconButton onClick={() => {}}>
-					<img src={trackIcon} alt="" />
-				</IconButton>
-				<IconButton onClick={() => {}}>
-					<i className="fa-solid fa-route"></i>
-				</IconButton>
-				<IconButton onClick={() => {}}>
-					<i className="fa-solid fa-train"></i>
-				</IconButton>
+				{GameStore.MENU_ROUTES.map(route => (
+					<Link to={pathname === route.id ? "" : route.id} key={route.id}>
+						<IconButton onClick={() => {}} active={pathname == route.id}>
+							{route.icon}
+						</IconButton>
+					</Link>
+				))}
+			</div>
+			<div className="game-ui-left">
+				<div className={`panel ${pathname === "" ? "collapsed" : ""}`}>
+					<Outlet />
+				</div>
 			</div>
 		</div>
 	);
