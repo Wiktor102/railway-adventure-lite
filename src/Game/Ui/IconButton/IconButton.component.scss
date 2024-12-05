@@ -18,6 +18,10 @@ button {
 		background-color: lightblue;
 	}
 
+	&.active {
+		background-color: #fff;
+	}
+
 	img {
 		height: 1.5rem;
 	}

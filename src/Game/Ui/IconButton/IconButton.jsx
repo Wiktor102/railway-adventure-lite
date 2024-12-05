@@ -12,8 +12,8 @@ function IconButton({ onClick, children, active = false }) {
 }
 
 IconButton.propTypes = {
-	onClick: PropTypes.func.isRequired,
 	children: PropTypes.node.isRequired,
+	onClick: PropTypes.func,
 	active: PropTypes.bool
 };
 
