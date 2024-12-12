@@ -47,6 +47,7 @@
 
 		img {
 			height: 6rem;
+			height: clamp(3rem, 4vw, 6rem);
 		}
 	}
 
