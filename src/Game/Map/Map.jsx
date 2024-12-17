@@ -1,8 +1,10 @@
-import { MapContainer, GeoJSON, useMap, LayerGroup } from "react-leaflet";
+import { useState } from "react";
+import { MapContainer, GeoJSON, useMap, LayerGroup, useMapEvent } from "react-leaflet";
 import { useGameStore } from "../../store/GameStoreProvider";
 import mapGeoJson from "../../assets/data/slaskie.json";
 import { observer } from "mobx-react-lite";
 import StationMarker from "./StaionMarker";
+import { DoubleTrack } from "./Tracks";
 
 const Map = observer(() => {
 	const { stationStore } = useGameStore();
@@ -15,6 +17,7 @@ const Map = observer(() => {
 					<StationMarker station={station} key={station.name} />
 				))}
 			</LayerGroup>
+			<TrackController />
 		</MapContainer>
 	);
 });
@@ -41,6 +44,29 @@ const MapController = () => {
 					interactive: false
 				}}
 			/>
+		</>
+	);
+};
+
+const TrackController = () => {
+	const [startPoint, setStartPoint] = useState(null);
+	const [endPoint, setEndPoint] = useState(null);
+
+	useMapEvent("click", e => {
+		if (startPoint === null) {
+			setStartPoint(e.latlng);
+		} else if (endPoint === null) {
+			setEndPoint(e.latlng);
+		} else {
+			setStartPoint(e.latlng);
+			setEndPoint(null);
+		}
+	});
+
+	if (!startPoint || !endPoint) return null;
+	return (
+		<>
+			<DoubleTrack start={startPoint} end={endPoint} />
 		</>
 	);
 };
