@@ -46,6 +46,13 @@
 			&.collapsed {
 				translate: calc(-100% - 4px) 0;
 			}
+
+			h2 {
+				margin: 1.5rem;
+				line-height: 1;
+				font-size: 2rem;
+				color: #093d5e;
+			}
 		}
 	}
 }
