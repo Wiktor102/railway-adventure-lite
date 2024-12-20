@@ -3,9 +3,14 @@ import PropTypes from "prop-types";
 
 import style from "./IconButton.component.scss";
 
-function IconButton({ onClick, children, active = false }) {
+function IconButton({ onClick, children, active = false, ...props }) {
 	return (
-		<button onClick={onClick} className={`icon-button ${active && "active"}`} data-style={style}>
+		<button
+			onClick={onClick}
+			className={`icon-button ${active && "active"} ${props.className}`}
+			data-style={style}
+			{...props}
+		>
 			{children}
 		</button>
 	);
