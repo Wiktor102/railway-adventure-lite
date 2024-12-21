@@ -4,6 +4,19 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--surface: skyblue;
+	--on-surface: #10527a;
+
+	--surface-lighter: lightblue;
+	--on-surface-lighter: #10527a;
+
+	--surface-lightest: white;
+	--on-surface-lightest: #10527a;
+
+	--accent: #800080;
+}
+
 html,
 body {
 	margin: 0;

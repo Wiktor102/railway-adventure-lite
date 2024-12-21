@@ -1,3 +1,5 @@
+@scope tree;
+
 .game-ui {
 	position: fixed;
 	inset: 0;
@@ -34,24 +36,47 @@
 		overflow: clip;
 
 		.panel {
-			display: grid;
 			width: 100%;
 			height: 100%;
-			background-color: skyblue;
+			background-color: var(--surface);
+			color: var(--on-surface);
 			box-shadow: 2px 2px 2px #093d5e77;
 			border-radius: inherit;
 			pointer-events: all;
 			transition: translate 1s;
+			display: flow-root;
 
 			&.collapsed {
 				translate: calc(-100% - 4px) 0;
+			}
+
+			& > a {
+				float: right;
+				margin: 1.5rem;
+				margin-bottom: 0;
+				font-size: 2rem;
+				line-height: 1;
+				color: inherit;
+				transition: color 200ms;
+
+				&:hover {
+					// TODO: better color
+					color: #fff;
+				}
+
+				i {
+					transition: rotate 200ms;
+				}
+
+				&:hover i {
+					rotate: 45deg;
+				}
 			}
 
 			h2 {
 				margin: 1.5rem;
 				line-height: 1;
 				font-size: 2rem;
-				color: #093d5e;
 			}
 		}
 	}

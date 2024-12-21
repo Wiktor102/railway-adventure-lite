@@ -31,6 +31,9 @@ const Ui = observer(() => {
 			</div>
 			<div className="game-ui-left">
 				<div className={`panel ${pathname === "" ? "collapsed" : ""}`}>
+					<Link to="/game">
+						<i className="fas fa-times"></i>
+					</Link>
 					<Outlet />
 				</div>
 			</div>

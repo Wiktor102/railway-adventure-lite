@@ -3,23 +3,23 @@ button {
 	height: 100%;
 	aspect-ratio: 1 / 1;
 	padding: 0.9rem;
-	background-color: skyblue;
+	background-color: var(--surface);
+	color: var(--on-surface);
 	border: 0;
 	border-radius: 10px;
 	box-shadow: -2px 2px 2px #093d5e77;
 	font-size: 1.5rem;
-	color: #10527a;
 
 	pointer-events: all;
 	cursor: pointer;
 	transition: background-color 200ms;
 
 	&:hover {
-		background-color: lightblue;
+		background-color: var(--surface-lighter);
 	}
 
 	&.active {
-		background-color: #fff;
+		background-color: var(--surface-lightest);
 	}
 
 	img {
