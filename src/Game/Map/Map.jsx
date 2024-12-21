@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { MapContainer, GeoJSON, useMap, useMapEvent } from "react-leaflet";
+import { MapContainer, GeoJSON, useMap } from "react-leaflet";
 import mapGeoJson from "../../assets/data/slaskie.json";
-import { DoubleTrack } from "./Tracks";
+import TracksController from "./TracksController";
 import StationsController from "./StationsController";
 
 const Map = () => {
@@ -9,7 +8,7 @@ const Map = () => {
 		<MapContainer center={[51.7, 19]} zoom={9} className="map">
 			<MapController />
 			<StationsController />
-			<TrackController />
+			<TracksController />
 		</MapContainer>
 	);
 };
@@ -36,29 +35,6 @@ const MapController = () => {
 					interactive: false
 				}}
 			/>
-		</>
-	);
-};
-
-const TrackController = () => {
-	const [startPoint, setStartPoint] = useState(null);
-	const [endPoint, setEndPoint] = useState(null);
-
-	useMapEvent("click", e => {
-		if (startPoint === null) {
-			setStartPoint(e.latlng);
-		} else if (endPoint === null) {
-			setEndPoint(e.latlng);
-		} else {
-			setStartPoint(e.latlng);
-			setEndPoint(null);
-		}
-	});
-
-	if (!startPoint || !endPoint) return null;
-	return (
-		<>
-			<DoubleTrack start={startPoint} end={endPoint} />
 		</>
 	);
 };

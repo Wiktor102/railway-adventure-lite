@@ -1,0 +1,31 @@
+.tracks-menu {
+	ul {
+		padding: 0;
+		list-style-type: none;
+	}
+
+	li {
+		display: grid;
+		grid-template-columns: 10rem 1fr;
+		padding: 1.5rem;
+		border-top: 2px solid #093d5e;
+		transition: background-color 200ms;
+		cursor: pointer;
+
+		&:last-child {
+			border-bottom: 2px solid #093d5e;
+		}
+
+		&:hover {
+			background-color: #fff;
+		}
+
+		&.selected {
+			background-color: #fff;
+		}
+
+		.label {
+			font-size: 1.5rem;
+		}
+	}
+}

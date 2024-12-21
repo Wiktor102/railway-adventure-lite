@@ -97,7 +97,7 @@ function StationCollider({ station, onMouseOver, onMouseOut }) {
 		<Circle
 			center={station.coordinates}
 			radius={radius}
-			pathOptions={{ fill: false, stroke: false }}
+			pathOptions={{ fillOpacity: 0, opacity: 0 }}
 			eventHandlers={{
 				mouseover: e => onMouseOver(e, station),
 				mouseout: () => onMouseOut(station)

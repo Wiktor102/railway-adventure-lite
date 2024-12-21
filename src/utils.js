@@ -1,28 +1,8 @@
-import { latLng } from "leaflet";
+import { latLng, LatLng } from "leaflet";
 
 // Importujemy funkcje matematyczne, jeśli nie są dostępne w środowisku.
 const toRadians = degrees => degrees * (Math.PI / 180);
 const toDegrees = radians => radians * (180 / Math.PI);
-
-// Funkcja obliczająca dystans (w metrach) między dwoma punktami na Ziemi za pomocą formuły haversine
-function haversineDistance(latlng1, latlng2) {
-	const { lat: lat1, lng: lon1 } = latlng1;
-	const { lat: lat2, lng: lon2 } = latlng2;
-
-	const R = 6371000; // Promień Ziemi w metrach
-	const phi1 = toRadians(lat1);
-	const phi2 = toRadians(lat2);
-	const deltaPhi = toRadians(lat2 - lat1);
-	const deltaLambda = toRadians(lon2 - lon1);
-
-	const a =
-		Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
-		Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
-
-	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-	return R * c; // Dystans w metrach
-}
 
 // Funkcja przesuwająca punkt o określoną odległość i azymut
 function movePoint(lat, lon, distance, bearing) {
@@ -81,4 +61,78 @@ function calculateKiteVertices(top, bottom, offsetX, offsetY) {
 	return { topLeft, topRight, bottomLeft, bottomRight };
 }
 
-export { calculateKiteVertices, haversineDistance as calcDistance };
+/**
+ * Converts geographic coordinates to cartesian coordinates.
+ * @param {number} lat - The latitude.
+ * @param {number} lng - The longitude.
+ * @returns {{x: number, y:number, z: number}} The cartesian coordinates.
+ */
+function geographicToCartesian(lat, lng) {
+	const phi = toRadians(lat);
+	const lambda = toRadians(lng);
+	return {
+		x: Math.cos(phi) * Math.cos(lambda),
+		y: Math.cos(phi) * Math.sin(lambda),
+		z: Math.sin(phi)
+	};
+}
+
+/**
+ * Converts cartesian coordinates to geographic coordinates.
+ * @param {number} x - The x coordinate.
+ * @param {number} y - The y coordinate.
+ * @param {number} z - The z coordinate.
+ * @returns {LatLng} The geographic coordinates.
+ */
+function cartesianToGeographic(x, y, z) {
+	const lat = toDegrees(Math.asin(z));
+	const lng = toDegrees(Math.atan2(y, x));
+	return latLng(lat, lng);
+}
+
+/**
+ * Finds a point belonging to the segment which is nearest to the circle.
+ * @param {LatLng} lineStart - The start of the line segment.
+ * @param {LatLng} lineEnd - The end of the line segment.
+ * @param {LatLng} center - The circle's center.
+ * @returns {LatLng} The point nearest to the circle.
+ */
+function pointNearestCircle(lineStart, lineEnd, center) {
+	const lineLengthSquared = lineStart.distanceTo(lineEnd) ** 2;
+
+	if (lineLengthSquared === 0) {
+		return lineStart;
+	}
+
+	const cartA = geographicToCartesian(lineStart.lat, lineStart.lng);
+	const cartB = geographicToCartesian(lineEnd.lat, lineEnd.lng);
+	const cartP = geographicToCartesian(center.lat, center.lng);
+
+	const AB = {
+		x: cartB.x - cartA.x,
+		y: cartB.y - cartA.y,
+		z: cartB.z - cartA.z
+	};
+
+	const AP = {
+		x: cartP.x - cartA.x,
+		y: cartP.y - cartA.y,
+		z: cartP.z - cartA.z
+	};
+
+	const dotAP_AB = AP.x * AB.x + AP.y * AB.y + AP.z * AB.z;
+	const magAB2 = AB.x * AB.x + AB.y * AB.y + AB.z * AB.z;
+
+	let t = dotAP_AB / magAB2;
+	t = Math.max(0, Math.min(1, t));
+
+	const nearest = {
+		x: cartA.x + t * AB.x,
+		y: cartA.y + t * AB.y,
+		z: cartA.z + t * AB.z
+	};
+
+	return cartesianToGeographic(nearest.x, nearest.y, nearest.z);
+}
+
+export { calculateKiteVertices, pointNearestCircle };
