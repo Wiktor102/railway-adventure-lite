@@ -10,7 +10,7 @@ function App() {
 				<Route index element={<HomePage />} />
 				<Route path="game" element={<Game />}>
 					{GameStore.MENU_ROUTES.map(route => (
-						<Route path={route.id} element={route.element} />
+						<Route path={route.id} element={route.element} key={route.id} />
 					))}
 				</Route>
 			</Routes>
