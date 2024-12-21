@@ -15,6 +15,9 @@ GameStoreProvider.propTypes = {
 	children: PropTypes.node.isRequired
 };
 
+/**
+ * @returns {GameStore}
+ */
 function useGameStore() {
 	const context = useContext(GameStoreContext);
 

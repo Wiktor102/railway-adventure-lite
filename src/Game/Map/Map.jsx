@@ -1,26 +1,18 @@
 import { useState } from "react";
-import { MapContainer, GeoJSON, useMap, LayerGroup, useMapEvent } from "react-leaflet";
-import { useGameStore } from "../../store/GameStoreProvider";
+import { MapContainer, GeoJSON, useMap, useMapEvent } from "react-leaflet";
 import mapGeoJson from "../../assets/data/slaskie.json";
-import { observer } from "mobx-react-lite";
-import StationMarker from "./StaionMarker";
 import { DoubleTrack } from "./Tracks";
+import StationsController from "./StationsController";
 
-const Map = observer(() => {
-	const { stationStore } = useGameStore();
-
+const Map = () => {
 	return (
 		<MapContainer center={[51.7, 19]} zoom={9} className="map">
 			<MapController />
-			<LayerGroup>
-				{stationStore.stations.map(station => (
-					<StationMarker station={station} key={station.name} />
-				))}
-			</LayerGroup>
+			<StationsController />
 			<TrackController />
 		</MapContainer>
 	);
-});
+};
 
 const MapController = () => {
 	const map = useMap();

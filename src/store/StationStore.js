@@ -5,6 +5,7 @@ import Station from "./models/Station";
 class StationStore {
 	gameStore;
 	stations = [];
+	snappedStation = { station: null, distance: null };
 
 	constructor(gameStore) {
 		makeAutoObservable(this, { gameStore: false });
@@ -15,6 +16,14 @@ class StationStore {
 			return [...arr, new Station(station)];
 		}, []);
 	}
+
+	getStationByName(name) {
+		return this.stations.find(station => station.name === name);
+	}
+
+	setSnappedStation = station => {
+		this.snappedStation = station;
+	};
 }
 
 export default StationStore;
