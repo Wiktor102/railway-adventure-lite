@@ -23,36 +23,29 @@ function useTrackStyle(color) {
 	};
 }
 
-function TrackWithActions({ children, onAccept, onReject, onEdit }) {
-	const { end } = children.props;
-	const offset = latLng(end.lat + 0.007, end.lng);
+function TrackWithActions({ children, actions }) {
+	const { start, end } = children.props;
+	const offset = latLng((start.lat + end.lat) / 2, (start.lng + end.lng) / 2);
 
 	return (
 		<LayerGroup>
 			{children}
-			<Marker position={offset} icon={<TrackActions onAccept={onAccept} onReject={onReject} onEdit={onEdit} />} />
+			<Marker position={offset} icon={actions} />
 		</LayerGroup>
 	);
 }
 
-function TrackActions({ onAccept, onReject, onEdit }) {
+function TrackDeleteAction({ onClick }) {
+	function handleClick(e) {
+		e.stopPropagation();
+		onClick(e);
+	}
+
 	return (
-		<div className="track-actions" data-style={tractActionStyles} onClick={e => e.stopPropagation()}>
-			{onAccept && (
-				<IconButton className="accept" onClick={onAccept}>
-					<i className="fas fa-check"></i>
-				</IconButton>
-			)}
-			{onReject && (
-				<IconButton className="reject" onClick={onReject}>
-					<i className="fas fa-times"></i>
-				</IconButton>
-			)}
-			{onEdit && (
-				<IconButton onClick={onEdit}>
-					<i className="fas fa-pencil"></i>
-				</IconButton>
-			)}
+		<div className="track-action" data-style={tractActionStyles}>
+			<IconButton onClick={handleClick}>
+				<i className="fas fa-trash"></i>
+			</IconButton>
 		</div>
 	);
 }
@@ -108,4 +101,4 @@ TripleTrack.propTypes = {
 	color: PropTypes.string
 };
 
-export { TrackWithActions, SingleTrack, DoubleTrack, TripleTrack };
+export { TrackWithActions, SingleTrack, DoubleTrack, TripleTrack, TrackDeleteAction };

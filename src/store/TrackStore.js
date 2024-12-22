@@ -15,6 +15,10 @@ class TrackStore {
 	addTrack = track => {
 		this.tracks.push(track);
 	};
+
+	deleteTrack = trackId => {
+		this.tracks = this.tracks.filter(t => t.id !== trackId);
+	};
 }
 
 export default TrackStore;

@@ -15,6 +15,12 @@ const TracksMenu = observer(() => {
 
 	function handleClick(width) {
 		runInAction(() => {
+			if (gameStore.pageState.selectedTrackWidth === width) {
+				gameStore.setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT);
+				gameStore.pageState.selectedTrackWidth = undefined;
+				return;
+			}
+
 			gameStore.pageState.selectedTrackWidth = width;
 		});
 	}

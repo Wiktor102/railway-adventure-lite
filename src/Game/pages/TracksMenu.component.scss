@@ -8,20 +8,20 @@
 		display: grid;
 		grid-template-columns: 10rem 1fr;
 		padding: 1.5rem;
-		border-top: 2px solid #093d5e;
+		border-top: 2px solid var(--on-surface);
 		transition: background-color 200ms;
 		cursor: pointer;
 
 		&:last-child {
-			border-bottom: 2px solid #093d5e;
+			border-bottom: 2px solid var(--on-surface);
 		}
 
 		&:hover {
-			background-color: #fff;
+			background-color: var(--surface-lighter);
 		}
 
 		&.selected {
-			background-color: #fff;
+			background-color: var(--surface-lightest);
 		}
 
 		.label {
