@@ -8,6 +8,7 @@ import { DoubleTrack, SingleTrack, TripleTrack } from "../../Game/Map/Tracks";
 
 class Track {
 	width;
+	id;
 
 	/**@type {Station} */
 	startStation;
@@ -15,8 +16,11 @@ class Track {
 	/**@type {Station} */
 	endStation;
 
+	static idCounter = 0;
+
 	constructor(width, startStation, endStation) {
 		makeAutoObservable(this);
+		this.id = Track.idCounter++;
 		this.width = width;
 		this.startStation = startStation;
 		this.endStation = endStation;
