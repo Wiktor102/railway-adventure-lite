@@ -10,14 +10,16 @@ import useMapZoom from "../../hooks/useMapZoom";
 import { useGameStore } from "../../store/GameStoreProvider";
 
 // classes
+import GameStore from "../../store/GameStore";
 import Station from "../../store/models/Station";
 
 // assets
 import pin from "../../assets/icons/pin.svg";
 
 const StationsController = observer(() => {
-	const { stationStore } = useGameStore();
+	const { stationStore, ...gameStore } = useGameStore();
 	const { snappedStation, setSnappedStation } = stationStore;
+	const enableSnapping = gameStore.mode === GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DRAW;
 
 	function onMouseOver({ latlng }, station) {
 		const distance = latlng.distanceTo(station.coordinates);
@@ -39,16 +41,18 @@ const StationsController = observer(() => {
 					<StationMarker station={station} key={station.name} />
 				))}
 			</Pane>
-			<Pane name="station-colliders-pane">
-				{stationStore.stations.map(station => (
-					<StationCollider
-						station={station}
-						key={station.name}
-						onMouseOver={onMouseOver}
-						onMouseOut={onMouseOut}
-					/>
-				))}
-			</Pane>
+			{enableSnapping && (
+				<Pane name="station-snap-areas-pane">
+					{stationStore.stations.map(station => (
+						<StationSnapArea
+							station={station}
+							key={station.name}
+							onMouseOver={onMouseOver}
+							onMouseOut={onMouseOut}
+						/>
+					))}
+				</Pane>
+			)}
 		</>
 	);
 });
@@ -89,7 +93,7 @@ StationMarker.propTypes = {
 	station: PropTypes.instanceOf(Station).isRequired
 };
 
-function StationCollider({ station, onMouseOver, onMouseOut }) {
+function StationSnapArea({ station, onMouseOver, onMouseOut }) {
 	const zoom = useMapZoom();
 	const radius = useMemo(() => -75 * zoom + 2000, [zoom]);
 
@@ -106,7 +110,7 @@ function StationCollider({ station, onMouseOver, onMouseOut }) {
 	);
 }
 
-StationCollider.propTypes = {
+StationSnapArea.propTypes = {
 	station: PropTypes.instanceOf(Station).isRequired,
 	onMouseOver: PropTypes.func,
 	onMouseOut: PropTypes.func
