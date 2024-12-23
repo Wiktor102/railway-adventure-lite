@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useMapEvent } from "react-leaflet";
-import { useGameStore } from "../../store/GameStoreProvider";
-import Track from "../../store/models/Track";
+import { useNavigate, useParams } from "react-router";
 import { latLng } from "leaflet";
+
+// hooks and utilities
 import { pointNearestCircle } from "../../utils";
-import GameStore from "../../store/GameStore";
-import { runInAction } from "mobx";
+import { useGameStore } from "../../store/GameStoreProvider";
+
+// classes
+import Track from "../../store/models/Track";
 
 const TrackDrawController = observer(() => {
-	const { pageState, stationStore, trackStore, setMode } = useGameStore();
+	const { stationStore, trackStore } = useGameStore();
 	const { snappedStation } = stationStore;
 	const { addTrack } = trackStore;
 
@@ -19,14 +22,15 @@ const TrackDrawController = observer(() => {
 	const [selectedEndPoint, setSelectedEndPoint] = useState(null);
 	const [isForbidden, setIsForbidden] = useState(false);
 
-	const Component = Track.getComponent(pageState.selectedTrackWidth);
+	const navigate = useNavigate();
+	const { "*": splat } = useParams();
+	const trackWidth = +splat.split("/")[1];
+
+	const Component = Track.getComponent(trackWidth);
 
 	function rejectTrack() {
 		if (startStation == null) {
-			runInAction(() => {
-				setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT);
-				pageState.selectedTrackWidth = undefined;
-			});
+			navigate("/game/tracks");
 			return;
 		}
 
@@ -35,7 +39,7 @@ const TrackDrawController = observer(() => {
 	}
 
 	function acceptTrack() {
-		const track = new Track(pageState.selectedTrackWidth, startStation, snappedStation.station);
+		const track = new Track(trackWidth, startStation, snappedStation.station);
 		setStartStation(snappedStation.station);
 		addTrack(track);
 	}
@@ -64,7 +68,7 @@ const TrackDrawController = observer(() => {
 			return;
 		}
 
-		const collisionRadiusMeters = 200 + 350 * pageState.selectedTrackWidth;
+		const collisionRadiusMeters = 200 + 350 * trackWidth;
 		const hasCollision = stationStore.stations.some(station => {
 			if (station === startStation || snappedStation.station?.name === station.name) return false;
 			const point = pointNearestCircle(latLng(startStation.coordinates), endPoint, latLng(station.coordinates));
@@ -78,7 +82,7 @@ const TrackDrawController = observer(() => {
 	useMapEvent("mousemove", handleMouseMove);
 	useMapEvent("contextmenu", rejectTrack);
 
-	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, pageState.selectedTrackWidth]);
+	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, trackWidth]);
 
 	// TODO: convert to useMemo
 	useEffect(() => {

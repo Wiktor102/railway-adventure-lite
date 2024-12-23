@@ -68,7 +68,7 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 
 	const trackPoints = useMemo(() => {
 		const distance = start.distanceTo(end);
-		const tipLength = distance * 0.05;
+		const tipLength = distance < 10000 ? distance * 0.2 : distance * 0.05;
 
 		const offsetX = distance - tipLength * 2;
 		const offsetY = -40 * zoom + (240 - 12 * -40) * separation;

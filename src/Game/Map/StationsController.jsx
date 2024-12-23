@@ -3,6 +3,7 @@ import { renderToString } from "react-dom/server";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react-lite";
 import { DivIcon } from "leaflet";
+import { useMatch } from "react-router";
 import { Circle, Marker, Pane, Popup, useMap, useMapEvent } from "react-leaflet";
 
 // hooks and utilities
@@ -10,16 +11,15 @@ import useMapZoom from "../../hooks/useMapZoom";
 import { useGameStore } from "../../store/GameStoreProvider";
 
 // classes
-import GameStore from "../../store/GameStore";
 import Station from "../../store/models/Station";
 
 // assets
 import pin from "../../assets/icons/pin.svg";
 
 const StationsController = observer(() => {
-	const { stationStore, ...gameStore } = useGameStore();
+	const { stationStore } = useGameStore();
 	const { snappedStation, setSnappedStation } = stationStore;
-	const enableSnapping = gameStore.mode === GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DRAW;
+	const enableSnapping = useMatch("/game/tracks/build/*");
 
 	function onMouseOver({ latlng }, station) {
 		const distance = latlng.distanceTo(station.coordinates);

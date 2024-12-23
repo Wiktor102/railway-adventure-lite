@@ -1,18 +1,22 @@
 import { observer } from "mobx-react-lite";
-import { useGameStore } from "../../store/GameStoreProvider";
+import { useMatch } from "react-router";
 import { latLng } from "leaflet";
 
+// hooks
+import { useGameStore } from "../../store/GameStoreProvider";
+
 // components
-import GameStore from "../../store/GameStore";
 import TrackDrawController from "./TrackDrawController";
 import { TrackDeleteAction, TrackWithActions } from "./Tracks";
 
 const TracksController = observer(() => {
-	const { trackStore, mode, ...gameStore } = useGameStore();
+	const { trackStore } = useGameStore();
+	const renderDrawController = useMatch("/game/tracks/build/*");
+	const renderWithActions = useMatch("/game/tracks");
 
 	return (
 		<>
-			{mode === GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DRAW && <TrackDrawController />}
+			{renderDrawController && <TrackDrawController />}
 			{trackStore.tracks.map((track, i) => {
 				const C = track.getComponent();
 				const props = {
@@ -21,7 +25,7 @@ const TracksController = observer(() => {
 					color: "blue"
 				};
 
-				if (mode === GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT) {
+				if (renderWithActions) {
 					return (
 						<TrackWithActions
 							actions={<TrackDeleteAction onClick={() => trackStore.deleteTrack(track.id)} />}

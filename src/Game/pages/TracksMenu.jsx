@@ -1,61 +1,50 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { Link, useParams } from "react-router";
 
+// hooks
 import { useGameStore } from "../../store/GameStoreProvider";
 
-import GameStore from "../../store/GameStore";
-
+// assets
 import trackIcon from "../../assets/icons/track.svg";
+
+// styles
 import style from "./TracksMenu.component.scss";
-import { runInAction } from "mobx";
 
 const TracksMenu = observer(() => {
 	const gameStore = useGameStore();
-	const selectedTrackWidth = gameStore.pageState.selectedTrackWidth;
+	const { "*": splat } = useParams();
+	const trackWidth = +splat.split("/")[1];
 
-	function handleClick(width) {
-		runInAction(() => {
-			if (gameStore.pageState.selectedTrackWidth === width) {
-				gameStore.setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT);
-				gameStore.pageState.selectedTrackWidth = undefined;
-				return;
-			}
-
-			gameStore.pageState.selectedTrackWidth = width;
-		});
-	}
-
-	useEffect(() => {
-		gameStore.setView(GameStore.GAME_VIEWS.TRACKS);
-		return () => {
-			gameStore.setView(GameStore.GAME_VIEWS.DEFAULT);
-		};
-	}, []);
-
-	useEffect(() => {
-		if (!gameStore.pageState.selectedTrackWidth) {
-			gameStore.setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT);
-			return;
+	function getLinkPath(newTrackWidth) {
+		if (trackWidth === newTrackWidth) {
+			return "/game/tracks";
 		}
 
-		gameStore.setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DRAW);
-	}, [gameStore.pageState.selectedTrackWidth]);
+		return `/game/tracks/build/${newTrackWidth}`;
+	}
 
 	return (
 		<div className="tracks-menu" data-style={style}>
 			<h2>Buduj tory</h2>
 			<ul>
-				<li className={selectedTrackWidth === 1 ? "selected" : ""} onClick={() => handleClick(1)} role="button">
-					<img src={trackIcon} alt="Ikona pojedyńczego toru" />
-					<div className="label">Pojedyńczy tor</div>
+				<li className={trackWidth === 1 ? "active" : ""}>
+					<Link to={getLinkPath(1)}>
+						<img src={trackIcon} alt="Ikona pojedyńczego toru" />
+						<div className="label">Pojedyńczy tor</div>
+					</Link>
 				</li>
-				<li className={selectedTrackWidth === 2 ? "selected" : ""} onClick={() => handleClick(2)} role="button">
-					<img src={trackIcon} alt="Ikona podwójnego toru" />
-					<div className="label">Podwójny tor</div>
+				<li className={trackWidth === 2 ? "active" : ""}>
+					<Link to={getLinkPath(2)}>
+						<img src={trackIcon} alt="Ikona podwójnego toru" />
+						<div className="label">Podwójny tor</div>
+					</Link>
 				</li>
-				<li className={selectedTrackWidth === 3 ? "selected" : ""} onClick={() => handleClick(3)} role="button">
-					<img src={trackIcon} alt="Ikona potrójnego toru" />
-					<div className="label">Potrójny tor</div>
+				<li className={trackWidth === 3 ? "active" : ""}>
+					<Link to={getLinkPath(3)}>
+						<img src={trackIcon} alt="Ikona potrójnego toru" />
+						<div className="label">Potrójny tor</div>
+					</Link>
 				</li>
 			</ul>
 		</div>

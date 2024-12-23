@@ -5,12 +5,8 @@
 	}
 
 	li {
-		display: grid;
-		grid-template-columns: 10rem 1fr;
-		padding: 1.5rem;
 		border-top: 2px solid var(--on-surface);
 		transition: background-color 200ms;
-		cursor: pointer;
 
 		&:last-child {
 			border-bottom: 2px solid var(--on-surface);
@@ -20,12 +16,20 @@
 			background-color: var(--surface-lighter);
 		}
 
-		&.selected {
+		&.active {
 			background-color: var(--surface-lightest);
 		}
+	}
 
-		.label {
-			font-size: 1.5rem;
-		}
+	a {
+		display: grid;
+		grid-template-columns: 10rem 1fr;
+		padding: 1.5rem;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.label {
+		font-size: 1.5rem;
 	}
 }
