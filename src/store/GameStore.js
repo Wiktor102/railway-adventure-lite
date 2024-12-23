@@ -54,15 +54,15 @@ class GameStore {
 		this.trackStore = new TrackStore(this);
 	}
 
-	setView(view) {
+	setView = view => {
 		this.view = view;
 		this.pageState = {};
 		this.setMode(GameStore.GAME_MODES[view].DEFAULT);
-	}
+	};
 
-	setMode(mode) {
+	setMode = mode => {
 		this.mode = mode;
-	}
+	};
 }
 
 export default GameStore;

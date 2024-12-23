@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Marker, useMapEvent } from "react-leaflet";
+import { useMapEvent } from "react-leaflet";
 import { useGameStore } from "../../store/GameStoreProvider";
 import Track from "../../store/models/Track";
 import { latLng } from "leaflet";
 import { pointNearestCircle } from "../../utils";
+import GameStore from "../../store/GameStore";
+import { runInAction } from "mobx";
 
 const TrackDrawController = observer(() => {
-	const { pageState, stationStore, trackStore } = useGameStore();
+	const { pageState, stationStore, trackStore, setMode } = useGameStore();
 	const { snappedStation } = stationStore;
 	const { addTrack } = trackStore;
 
@@ -20,6 +22,14 @@ const TrackDrawController = observer(() => {
 	const Component = Track.getComponent(pageState.selectedTrackWidth);
 
 	function rejectTrack() {
+		if (startStation == null) {
+			runInAction(() => {
+				setMode(GameStore.GAME_MODES[GameStore.GAME_VIEWS.TRACKS].DEFAULT);
+				pageState.selectedTrackWidth = undefined;
+			});
+			return;
+		}
+
 		setStartStation(null);
 		setSelectedEndPoint(null);
 	}
