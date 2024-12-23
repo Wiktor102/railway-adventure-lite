@@ -2,9 +2,9 @@
     "name": "railway-adventure-lite",
     "version": "0.0.1",
     "description": "",
-    "main": "src/index.js",
+    "main": "./src/index.jsx",
     "scripts": {
-        "start": "webpack serve"
+        "start": "webpack serve --config config/webpack.config.js --mode development"
     },
     "keywords": [],
     "author": "Wiktor Golicz",
@@ -21,11 +21,15 @@
     },
     "devDependencies": {
         "@babel/core": "^7.24.9",
+        "@babel/eslint-parser": "^7.25.9",
         "@babel/preset-env": "^7.24.8",
         "@babel/preset-react": "^7.24.7",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
         "babel-loader": "^9.1.3",
         "css-loader": "^7.1.2",
+        "eslint": "^8.57.1",
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-webpack-plugin": "^4.2.0",
         "html-webpack-plugin": "^5.6.0",
         "prop-types": "^15.8.1",
         "react-refresh": "^0.16.0",
@@ -33,7 +37,7 @@
         "sass-loader": "^16.0.3",
         "style-loader": "^4.0.0",
         "webpack": "^5.93.0",
-        "webpack-cli": "^5.1.4",
+        "webpack-cli": "^6.0.1",
         "webpack-dev-server": "^5.0.4",
         "webpack-scoped-css": "^0.2.0"
     },
