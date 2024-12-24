@@ -6,7 +6,8 @@ import style from "./Ui.component.scss";
 import StatusBox from "./common/StatusBox/StatusBox";
 import IconButton from "./common/IconButton/IconButton";
 
-import { Link, Outlet, useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
+import NamedOutlet from "../utils/NamedOutlet";
 
 const Ui = observer(() => {
 	let { pathname } = useLocation();
@@ -34,7 +35,7 @@ const Ui = observer(() => {
 					<Link to="/game">
 						<i className="fas fa-times"></i>
 					</Link>
-					<Outlet />
+					<NamedOutlet name="menu-content" />
 				</div>
 			</div>
 		</div>
