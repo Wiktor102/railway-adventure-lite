@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { renderToString } from "react-dom/server";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react-lite";

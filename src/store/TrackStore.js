@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import Track from "./models/Track";
 
 class TrackStore {
 	gameStore;

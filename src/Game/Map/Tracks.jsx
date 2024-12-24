@@ -35,6 +35,11 @@ function TrackWithActions({ children, actions }) {
 	);
 }
 
+TrackWithActions.propTypes = {
+	children: PropTypes.element.isRequired,
+	actions: PropTypes.element.isRequired
+};
+
 function TrackDeleteAction({ onClick }) {
 	function handleClick(e) {
 		e.stopPropagation();
@@ -49,6 +54,10 @@ function TrackDeleteAction({ onClick }) {
 		</div>
 	);
 }
+
+TrackDeleteAction.propTypes = {
+	onClick: PropTypes.func.isRequired
+};
 
 function SingleTrack({ start, end, color }) {
 	const style = useTrackStyle(color);

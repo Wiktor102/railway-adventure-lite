@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 
 import styles from "./Home.component.scss";
 
-function HomePage(props) {
+function HomePage() {
 	return (
 		<div className="home" data-style={styles}>
 			<h1>Railway Adventure</h1>

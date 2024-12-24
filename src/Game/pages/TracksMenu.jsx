@@ -1,9 +1,5 @@
-import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router";
-
-// hooks
-import { useGameStore } from "../../store/GameStoreProvider";
 
 // assets
 import trackIcon from "../../assets/icons/track.svg";
@@ -12,7 +8,6 @@ import trackIcon from "../../assets/icons/track.svg";
 import style from "./TracksMenu.component.scss";
 
 const TracksMenu = observer(() => {
-	const gameStore = useGameStore();
 	const { "*": splat } = useParams();
 	const trackWidth = +splat.split("/")[1];
 

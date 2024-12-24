@@ -1,4 +1,4 @@
-import { latLng, LatLng } from "leaflet";
+import { latLng } from "leaflet";
 
 // Importujemy funkcje matematyczne, jeśli nie są dostępne w środowisku.
 const toRadians = degrees => degrees * (Math.PI / 180);
