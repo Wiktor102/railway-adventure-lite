@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "./Home/Home";
 import Game from "./Game/Game";
-import GameStore from "./store/GameStore";
+
+// routing
+import routes from "./Router/Routes";
 import NamedRoute from "./utils/NamedRoute";
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
 			<Routes>
 				<Route index element={<HomePage />} />
 				<Route path="game" element={<Game />}>
-					{GameStore.MENU_ROUTES.map(route => (
+					{routes.map(route => (
 						<Route
 							path={`${route.id}/*`}
 							element={
