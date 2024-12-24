@@ -1,13 +1,16 @@
-// state
+import { Link, useLocation } from "react-router";
 import { observer } from "mobx-react-lite";
-import GameStore from "../store/GameStore";
 
-import style from "./Ui.component.scss";
+// components
 import StatusBox from "./common/StatusBox/StatusBox";
 import IconButton from "./common/IconButton/IconButton";
 
-import { Link, useLocation } from "react-router";
-import NamedOutlet from "../utils/NamedOutlet";
+// routing
+import routes from "../Router/Routes";
+import NamedOutlet from "../Router/components/NamedOutlet";
+
+// styles
+import style from "./Ui.component.scss";
 
 const Ui = observer(() => {
 	let { pathname } = useLocation();
@@ -22,7 +25,7 @@ const Ui = observer(() => {
 				</IconButton>
 			</div>
 			<div className="game-ui-right">
-				{GameStore.MENU_ROUTES.map(route => (
+				{routes.map(route => (
 					<Link to={pathname === route.id ? "" : route.id} key={route.id}>
 						<IconButton onClick={() => {}} active={pathname == route.id}>
 							{route.icon}

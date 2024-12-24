@@ -4,7 +4,7 @@ import Game from "./Game/Game";
 
 // routing
 import routes from "./Router/Routes";
-import NamedRoute from "./utils/NamedRoute";
+import NamedRoute from "./Router/components/NamedRoute";
 
 function App() {
 	return (
