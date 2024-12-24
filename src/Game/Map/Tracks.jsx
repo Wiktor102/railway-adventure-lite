@@ -6,7 +6,7 @@ import { latLng } from "leaflet";
 
 // hooks and utilities
 import useMapZoom from "../../hooks/useMapZoom";
-import { calculateKiteVertices } from "../../utils";
+import { calculateKiteVertices } from "../../utils/utils";
 
 // components
 import IconButton from "../../Ui/common/IconButton/IconButton";

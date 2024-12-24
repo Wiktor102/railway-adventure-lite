@@ -4,7 +4,7 @@ import { useMapEvent } from "react-leaflet";
 import { useGameStore } from "../../store/GameStoreProvider";
 import Track from "../../store/models/Track";
 import { latLng } from "leaflet";
-import { pointNearestCircle } from "../../utils";
+import { pointNearestCircle } from "../../utils/utils";
 
 const TrackDrawController = observer(() => {
 	const { pageState, stationStore, trackStore } = useGameStore();
