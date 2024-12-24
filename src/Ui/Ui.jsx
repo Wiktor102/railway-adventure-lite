@@ -1,10 +1,10 @@
 // state
 import { observer } from "mobx-react-lite";
-import GameStore from "../../store/GameStore";
+import GameStore from "../store/GameStore";
 
 import style from "./Ui.component.scss";
-import StatusBox from "./StatusBox/StatusBox";
-import IconButton from "./IconButton/IconButton";
+import StatusBox from "./common/StatusBox/StatusBox";
+import IconButton from "./common/IconButton/IconButton";
 
 import { Link, Outlet, useLocation } from "react-router";
 

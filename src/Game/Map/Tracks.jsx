@@ -9,7 +9,7 @@ import useMapZoom from "../../hooks/useMapZoom";
 import { calculateKiteVertices } from "../../utils";
 
 // components
-import IconButton from "../Ui/IconButton/IconButton";
+import IconButton from "../../Ui/common/IconButton/IconButton";
 
 import tractActionStyles from "./TrackActions.component.scss";
 

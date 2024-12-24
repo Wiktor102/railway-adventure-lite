@@ -5,7 +5,7 @@ import StationStore from "./StationStore";
 import TrackStore from "./TrackStore";
 
 import trackIcon from "../assets/icons/track.svg";
-import TracksMenu from "../Game/pages/TracksMenu";
+import TracksMenu from "../Ui/pages/TracksMenu";
 
 class GameStore {
 	stationStore;

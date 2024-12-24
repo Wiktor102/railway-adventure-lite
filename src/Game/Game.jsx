@@ -1,9 +1,9 @@
 import { GameStoreProvider } from "../store/GameStoreProvider";
 
 import Map from "./Map/Map";
-import Ui from "./Ui/Ui";
 
 import style from "./Game.component.scss";
+import Ui from "../Ui/Ui";
 
 function Game() {
 	return (
