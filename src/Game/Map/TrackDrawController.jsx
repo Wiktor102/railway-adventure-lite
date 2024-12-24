@@ -5,9 +5,10 @@ import { useGameStore } from "../../store/GameStoreProvider";
 import Track from "../../store/models/Track";
 import { latLng } from "leaflet";
 import { pointNearestCircle } from "../../utils/utils";
+import { useParams } from "react-router";
 
 const TrackDrawController = observer(() => {
-	const { pageState, stationStore, trackStore } = useGameStore();
+	const { stationStore, trackStore } = useGameStore();
 	const { snappedStation } = stationStore;
 	const { addTrack } = trackStore;
 
@@ -16,8 +17,10 @@ const TrackDrawController = observer(() => {
 
 	const [selectedEndPoint, setSelectedEndPoint] = useState(null);
 	const [isForbidden, setIsForbidden] = useState(false);
+	const { "*": splat } = useParams();
+	const trackWidth = +splat.split("/")[1];
 
-	const Component = Track.getComponent(pageState.selectedTrackWidth);
+	const Component = Track.getComponent(trackWidth);
 
 	function rejectTrack() {
 		setStartStation(null);
@@ -25,7 +28,7 @@ const TrackDrawController = observer(() => {
 	}
 
 	function acceptTrack() {
-		const track = new Track(pageState.selectedTrackWidth, startStation, snappedStation.station);
+		const track = new Track(trackWidth, startStation, snappedStation.station);
 		setStartStation(snappedStation.station);
 		addTrack(track);
 	}
@@ -54,7 +57,7 @@ const TrackDrawController = observer(() => {
 			return;
 		}
 
-		const collisionRadiusMeters = 200 + 350 * pageState.selectedTrackWidth;
+		const collisionRadiusMeters = 200 + 350 * trackWidth;
 		const hasCollision = stationStore.stations.some(station => {
 			if (station === startStation || snappedStation.station?.name === station.name) return false;
 			const point = pointNearestCircle(latLng(startStation.coordinates), endPoint, latLng(station.coordinates));
@@ -68,7 +71,7 @@ const TrackDrawController = observer(() => {
 	useMapEvent("mousemove", handleMouseMove);
 	useMapEvent("contextmenu", rejectTrack);
 
-	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, pageState.selectedTrackWidth]);
+	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, trackWidth]);
 
 	// TODO: convert to useMemo
 	useEffect(() => {
