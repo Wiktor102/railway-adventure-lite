@@ -8,6 +8,7 @@ import IconButton from "./common/IconButton/IconButton";
 // routing
 import routes from "../Router/Routes";
 import NamedOutlet from "../Router/components/NamedOutlet";
+import { useIsNamedRouteRendering } from "../Router/components/NamedRouter";
 
 // styles
 import style from "./Ui.component.scss";
@@ -15,6 +16,7 @@ import style from "./Ui.component.scss";
 const Ui = observer(() => {
 	let { pathname } = useLocation();
 	pathname = pathname.substring(6);
+	const hasTip = useIsNamedRouteRendering("tips");
 
 	return (
 		<div className="game-ui" data-style={style}>
@@ -39,6 +41,11 @@ const Ui = observer(() => {
 						<i className="fas fa-times"></i>
 					</Link>
 					<NamedOutlet name="menu-content" />
+				</div>
+			</div>
+			<div className="game-ui-bottom-right">
+				<div className={`panel ${hasTip ? "" : "collapsed"}`}>
+					<NamedOutlet name="tips" />
 				</div>
 			</div>
 		</div>

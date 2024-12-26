@@ -5,29 +5,32 @@ import Game from "./Game/Game";
 // routing
 import routes from "./Router/Routes";
 import NamedRoute from "./Router/components/NamedRoute";
+import NamedRouter from "./Router/components/NamedRouter";
 
 function App() {
 	return (
 		<BrowserRouter>
-			<Routes>
-				<Route index element={<HomePage />} />
-				<Route path="game" element={<Game />}>
-					{routes.map(route => (
-						<Route
-							path={`${route.id}/*`}
-							element={
-								<NamedRoute
-									outlets={[
-										{ name: "menu-content", content: route.element },
-										...(route.tips ? [{ name: "tips", content: route.tips }] : [])
-									]}
-								/>
-							}
-							key={route.id}
-						/>
-					))}
-				</Route>
-			</Routes>
+			<NamedRouter outletNames={["menu-content", "tips"]}>
+				<Routes>
+					<Route index element={<HomePage />} />
+					<Route path="game" element={<Game />}>
+						{routes.map(route => (
+							<Route
+								path={`${route.id}/*`}
+								element={<NamedRoute outlets={[{ name: "menu-content", content: route.element }]} />}
+								key={route.id}
+							>
+								{route.id === "tracks" && (
+									<Route
+										path="build/*"
+										element={<NamedRoute outlets={[{ name: "tips", content: route.tips }]} />}
+									/>
+								)}
+							</Route>
+						))}
+					</Route>
+				</Routes>
+			</NamedRouter>
 		</BrowserRouter>
 	);
 }

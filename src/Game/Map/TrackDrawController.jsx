@@ -18,7 +18,7 @@ const TrackDrawController = observer(() => {
 	const [selectedEndPoint, setSelectedEndPoint] = useState(null);
 	const [isForbidden, setIsForbidden] = useState(false);
 	const { "*": splat } = useParams();
-	const trackWidth = +splat.split("/")[1];
+	const trackWidth = +splat;
 
 	const Component = Track.getComponent(trackWidth);
 

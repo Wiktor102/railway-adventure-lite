@@ -1,11 +1,21 @@
 import PropTypes from "prop-types";
-import { Children, cloneElement } from "react";
+import { Children, cloneElement, useImperativeHandle } from "react";
 import { useOutlet } from "react-router";
 
-function NamedOutlet({ name }) {
+function NamedOutlet({ name, ref, nested = false }) {
 	const outlet = useOutlet();
-	if (!outlet) return null;
+	// const { repeatedOutlets } = useContext(NamedRouterContext);
 
+	useImperativeHandle(
+		ref,
+		() => {
+			if (nested) return { current: outlet != null };
+			return { current: "checkContext" };
+		},
+		[outlet]
+	);
+
+	if (!outlet) return null;
 	const { children } = outlet.props;
 
 	const namedOutlet = Children.map(children, renderedRoute => {
@@ -19,7 +29,9 @@ function NamedOutlet({ name }) {
 }
 
 NamedOutlet.propTypes = {
-	name: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired,
+	nested: PropTypes.bool,
+	ref: PropTypes.object
 };
 
 export default NamedOutlet;

@@ -9,7 +9,8 @@ import style from "./TracksMenu.component.scss";
 
 const TracksMenu = observer(() => {
 	const { "*": splat } = useParams();
-	const trackWidth = +splat.split("/")[1];
+	// const trackWidth = +splat.split("/")[1];
+	const trackWidth = +splat;
 
 	function getLinkPath(newTrackWidth) {
 		if (trackWidth === newTrackWidth) {
