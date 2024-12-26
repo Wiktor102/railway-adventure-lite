@@ -1,3 +1,4 @@
+import TrackDrawTips from "../Ui/pages/TrackDrawTips/TrackDrawTips";
 import TracksMenu from "../Ui/pages/TracksMenu";
 import trackIcon from "../assets/icons/track.svg";
 
@@ -6,7 +7,7 @@ const routes = [
 		id: "tracks",
 		icon: <img src={trackIcon} alt="" />,
 		element: <TracksMenu />,
-		tips: <span>Test</span>
+		tips: <TrackDrawTips />
 	},
 	{
 		id: "routes",

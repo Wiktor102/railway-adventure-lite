@@ -96,13 +96,26 @@
 
 		.panel {
 			width: inherit;
-			aspect-ratio: 16/9;
+			min-height: 10rem;
 			padding: 1rem;
 			overflow: auto;
 			transition: transform 1s;
 
 			&.collapsed {
 				transform: translateY(calc(100% + 4px));
+			}
+		}
+
+		h3 {
+			margin-block-start: 0;
+		}
+
+		ul {
+			padding: 0;
+			list-style-type: none;
+
+			li + li {
+				margin-top: 1rem;
 			}
 		}
 	}
