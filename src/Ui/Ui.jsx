@@ -28,8 +28,8 @@ const Ui = observer(() => {
 			</div>
 			<div className="game-ui-right">
 				{routes.map(route => (
-					<Link to={pathname === route.id ? "" : route.id} key={route.id}>
-						<IconButton onClick={() => {}} active={pathname == route.id}>
+					<Link to={pathname.includes(route.id) ? "" : route.id} key={route.id}>
+						<IconButton onClick={() => {}} active={pathname.includes(route.id)}>
 							{route.icon}
 						</IconButton>
 					</Link>
