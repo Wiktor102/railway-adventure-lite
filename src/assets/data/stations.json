@@ -11,29 +11,6 @@
         {
             "type": "Feature",
             "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc6",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc6",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc6",
-                "NAZWA_LINII": "DĄBROWA GÓRNICZA ZĄBKOWICE - BĘDZIN ŁAGISZA",
-                "RODZAJ": "STTH",
-                "NAZWA": "Będzin Łagisza",
-                "NAZWA_POS": "Będzin Łagisza",
-                "lineNumber": 183,
-                "axisKM": 8.369,
-                "beginningKM": 7.429,
-                "endKM": 8.77
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.35744951298426,
-                    19.157349595727112
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
                 "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc8",
                 "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc8",
                 "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5bc8",
@@ -44,7 +21,8 @@
                 "lineNumber": 183,
                 "axisKM": 0,
                 "beginningKM": -1.131,
-                "endKM": 0.96
+                "endKM": 0.96,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -67,7 +45,8 @@
                 "lineNumber": 704,
                 "axisKM": 0.278,
                 "beginningKM": 0.277,
-                "endKM": 0.59
+                "endKM": 0.59,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -90,36 +69,14 @@
                 "lineNumber": 704,
                 "axisKM": 2.154,
                 "beginningKM": 1.641,
-                "endKM": 2.155
+                "endKM": 2.155,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.74610186914649,
                     18.855412729392288
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c0e",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c0e",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c0e",
-                "NAZWA_LINII": "DOROTA - MYSŁOWICE BRZEZINKA",
-                "RODZAJ": "STTH",
-                "NAZWA": "SOSNOWIEC JĘZOR",
-                "NAZWA_POS": "Sosnowiec Jęzor",
-                "lineNumber": 180,
-                "axisKM": 8.41,
-                "beginningKM": 7.154,
-                "endKM": 9.082
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.24008933273141,
-                    19.19366685068744
                 ]
             }
         },
@@ -136,7 +93,8 @@
                 "lineNumber": 180,
                 "axisKM": 15.387,
                 "beginningKM": 14.079,
-                "endKM": 15.616
+                "endKM": 15.616,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -159,7 +117,8 @@
                 "lineNumber": 979,
                 "axisKM": 0.001,
                 "beginningKM": 0.001,
-                "endKM": 0.317
+                "endKM": 0.317,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -182,7 +141,8 @@
                 "lineNumber": 200,
                 "axisKM": 4.337,
                 "beginningKM": 4.07,
-                "endKM": 4.664
+                "endKM": 4.664,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -205,7 +165,8 @@
                 "lineNumber": 715,
                 "axisKM": 3,
                 "beginningKM": 0.64,
-                "endKM": 3.515
+                "endKM": 3.515,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -228,36 +189,14 @@
                 "lineNumber": 169,
                 "axisKM": 0,
                 "beginningKM": -0.246,
-                "endKM": 1.01
+                "endKM": 1.01,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.13693180757437,
                     18.964181492877398
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c4c",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c4c",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c4c",
-                "NAZWA_LINII": "TYCHY - ORZESZE JAŚKOWICE",
-                "RODZAJ": "PO",
-                "NAZWA": "Wyry",
-                "NAZWA_POS": "Wyry",
-                "lineNumber": 169,
-                "axisKM": 4.524,
-                "beginningKM": 3.748,
-                "endKM": 4.61
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.124444033762316,
-                    18.911063245945627
                 ]
             }
         },
@@ -274,36 +213,14 @@
                 "lineNumber": 169,
                 "axisKM": 7.711,
                 "beginningKM": 7.054,
-                "endKM": 9.022
+                "endKM": 9.022,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.12996126631453,
                     18.86840923946055
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c51",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c51",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5c51",
-                "NAZWA_LINII": "TYCHY - ORZESZE JAŚKOWICE",
-                "RODZAJ": "PO",
-                "NAZWA": "Orzesze Zawiść",
-                "NAZWA_POS": "Orzesze Zawiść",
-                "lineNumber": 169,
-                "axisKM": 12.88,
-                "beginningKM": 12.793,
-                "endKM": 12.885
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.1356410845776,
-                    18.79666469873743
                 ]
             }
         },
@@ -320,7 +237,8 @@
                 "lineNumber": 169,
                 "axisKM": 14.668,
                 "beginningKM": 14.545,
-                "endKM": 14.685
+                "endKM": 14.685,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -343,7 +261,8 @@
                 "lineNumber": 169,
                 "axisKM": 17.067,
                 "beginningKM": 16.038,
-                "endKM": 17.484
+                "endKM": 17.484,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -366,7 +285,8 @@
                 "lineNumber": 876,
                 "axisKM": 0.542,
                 "beginningKM": 0,
-                "endKM": 1.066
+                "endKM": 1.066,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -389,7 +309,8 @@
                 "lineNumber": 957,
                 "axisKM": -0.257,
                 "beginningKM": -0.827,
-                "endKM": 0.635
+                "endKM": 0.635,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -412,7 +333,8 @@
                 "lineNumber": 171,
                 "axisKM": 35.28,
                 "beginningKM": 35.124,
-                "endKM": 37.903
+                "endKM": 37.903,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -435,36 +357,14 @@
                 "lineNumber": 171,
                 "axisKM": 12.29,
                 "beginningKM": 11.664,
-                "endKM": 13.429
+                "endKM": 13.429,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.303172987364455,
                     19.31134662496573
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5ce7",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5ce7",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5ce7",
-                "NAZWA_LINII": "DĄBROWA GÓRNICZA TOWAROWA - PANEWNIK",
-                "RODZAJ": "ODST",
-                "NAZWA": "Kat. Janów",
-                "NAZWA_POS": "Katowice Janów",
-                "lineNumber": 171,
-                "axisKM": 32.496,
-                "beginningKM": 32.227,
-                "endKM": 32.947
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.23730754695738,
-                    19.079447768143385
                 ]
             }
         },
@@ -481,7 +381,8 @@
                 "lineNumber": 171,
                 "axisKM": 24.549,
                 "beginningKM": 23.453,
-                "endKM": 25.453
+                "endKM": 25.453,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -504,7 +405,8 @@
                 "lineNumber": 162,
                 "axisKM": 0.423,
                 "beginningKM": 0.422,
-                "endKM": 1.142
+                "endKM": 1.142,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -527,7 +429,8 @@
                 "lineNumber": 656,
                 "axisKM": 0.381,
                 "beginningKM": -0.025,
-                "endKM": 1.035
+                "endKM": 1.035,
+                "size": 5
             },
             "geometry": {
                 "type": "Point",
@@ -550,36 +453,14 @@
                 "lineNumber": 592,
                 "axisKM": 4.278,
                 "beginningKM": 4.082,
-                "endKM": 4.279
+                "endKM": 4.279,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.916397711888386,
                     18.322448887317577
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d10",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d10",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d10",
-                "NAZWA_LINII": "BOHUMIN VRBICE R606 - GRANICA PAŃSTWA (CHAŁUPKI)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Chałupki (Gr)",
-                "lineNumber": 592,
-                "axisKM": 4.279,
-                "beginningKM": 4.279,
-                "endKM": 4.279
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.91640383300973,
-                    18.322438788128157
                 ]
             }
         },
@@ -596,7 +477,8 @@
                 "lineNumber": 158,
                 "axisKM": 20.514,
                 "beginningKM": 19.81,
-                "endKM": 21.85
+                "endKM": 21.85,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -619,7 +501,8 @@
                 "lineNumber": 158,
                 "axisKM": 23.839,
                 "beginningKM": 23.839,
-                "endKM": 23.984
+                "endKM": 23.984,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -642,7 +525,8 @@
                 "lineNumber": 158,
                 "axisKM": 1.763,
                 "beginningKM": 1.76,
-                "endKM": 1.975
+                "endKM": 1.975,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -665,7 +549,8 @@
                 "lineNumber": 158,
                 "axisKM": 6.462,
                 "beginningKM": 6.23,
-                "endKM": 6.48
+                "endKM": 6.48,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -688,7 +573,8 @@
                 "lineNumber": 158,
                 "axisKM": 13.32,
                 "beginningKM": 13.32,
-                "endKM": 13.57
+                "endKM": 13.57,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -711,7 +597,8 @@
                 "lineNumber": 158,
                 "axisKM": 17.654,
                 "beginningKM": 17.438,
-                "endKM": 17.705
+                "endKM": 17.705,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -734,36 +621,14 @@
                 "lineNumber": 663,
                 "axisKM": 0.48,
                 "beginningKM": 0,
-                "endKM": 0.957
+                "endKM": 0.957,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.283309296986864,
                     19.22865861015736
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d7b",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d7b",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d7b",
-                "NAZWA_LINII": "POZNAŃ WSCHÓD - SKANDAWA",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Skandawa (Gr)",
-                "lineNumber": 353,
-                "axisKM": 389.065,
-                "beginningKM": 389.065,
-                "endKM": 389.065
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    54.333495173233054,
-                    21.303137457902576
                 ]
             }
         },
@@ -780,7 +645,8 @@
                 "lineNumber": 191,
                 "axisKM": 5.383,
                 "beginningKM": 4.709,
-                "endKM": 6.001
+                "endKM": 6.001,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -803,7 +669,8 @@
                 "lineNumber": 191,
                 "axisKM": 6.655,
                 "beginningKM": 6.652,
-                "endKM": 6.867
+                "endKM": 6.867,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -826,7 +693,8 @@
                 "lineNumber": 191,
                 "axisKM": 8.027,
                 "beginningKM": 7.977,
-                "endKM": 8.077
+                "endKM": 8.077,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -849,36 +717,14 @@
                 "lineNumber": 191,
                 "axisKM": 9.662,
                 "beginningKM": 9.275,
-                "endKM": 10.295
+                "endKM": 10.295,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.696663998683206,
                     18.830102479424106
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d90",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d90",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5d90",
-                "NAZWA_LINII": "GOLESZÓW - WISŁA GŁĘBCE",
-                "RODZAJ": "PO",
-                "NAZWA": "Wisła Obłaziec",
-                "NAZWA_POS": "Wisła Obłaziec",
-                "lineNumber": 191,
-                "axisKM": 12.338,
-                "beginningKM": 12.22,
-                "endKM": 12.35
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.6769131003671,
-                    18.84837825896517
                 ]
             }
         },
@@ -895,7 +741,8 @@
                 "lineNumber": 191,
                 "axisKM": 13.206,
                 "beginningKM": 13.156,
-                "endKM": 13.256
+                "endKM": 13.256,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -918,7 +765,8 @@
                 "lineNumber": 191,
                 "axisKM": 14.61,
                 "beginningKM": 13.984,
-                "endKM": 15.185
+                "endKM": 15.185,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -941,7 +789,8 @@
                 "lineNumber": 191,
                 "axisKM": 16.241,
                 "beginningKM": 16.148,
-                "endKM": 16.278
+                "endKM": 16.278,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -964,7 +813,8 @@
                 "lineNumber": 191,
                 "axisKM": 17.96,
                 "beginningKM": 17.85,
-                "endKM": 17.97
+                "endKM": 17.97,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -987,7 +837,8 @@
                 "lineNumber": 191,
                 "axisKM": 19.71,
                 "beginningKM": 19.37,
-                "endKM": 20.048
+                "endKM": 20.048,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1010,7 +861,8 @@
                 "lineNumber": 191,
                 "axisKM": 0,
                 "beginningKM": -0.55,
-                "endKM": 0.665
+                "endKM": 0.665,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1033,36 +885,14 @@
                 "lineNumber": 154,
                 "axisKM": 0,
                 "beginningKM": -3.176,
-                "endKM": 3.358
+                "endKM": 3.358,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.42999400672659,
                     19.391315345151153
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5dac",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5dac",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5dac",
-                "NAZWA_LINII": "SOSNOWIEC MACZKI - EUROTERMINAL SŁAWKÓW",
-                "RODZAJ": "STTH",
-                "NAZWA": "SOSN.MACZKI",
-                "NAZWA_POS": "Sosnowiec Maczki",
-                "lineNumber": 665,
-                "axisKM": 0.001,
-                "beginningKM": 0,
-                "endKM": 0.444
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.26618845333984,
-                    19.26870922576033
                 ]
             }
         },
@@ -1079,7 +909,8 @@
                 "lineNumber": 128,
                 "axisKM": 27.405,
                 "beginningKM": 26.939,
-                "endKM": 28.244
+                "endKM": 28.244,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1102,7 +933,8 @@
                 "lineNumber": 128,
                 "axisKM": 30.143,
                 "beginningKM": 29.279,
-                "endKM": 30.659
+                "endKM": 30.659,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1125,7 +957,8 @@
                 "lineNumber": 64,
                 "axisKM": 43.527,
                 "beginningKM": 43.11,
-                "endKM": 43.528
+                "endKM": 43.528,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -1148,7 +981,8 @@
                 "lineNumber": 179,
                 "axisKM": 2.853,
                 "beginningKM": 2.75,
-                "endKM": 2.955
+                "endKM": 2.955,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -1171,7 +1005,8 @@
                 "lineNumber": 179,
                 "axisKM": 3.282,
                 "beginningKM": 3.182,
-                "endKM": 3.382
+                "endKM": 3.382,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -1194,105 +1029,14 @@
                 "lineNumber": 179,
                 "axisKM": 3.73,
                 "beginningKM": 3.166,
-                "endKM": 4.43
+                "endKM": 4.43,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.11171286882272,
                     18.991241128500747
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e04",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e04",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e04",
-                "NAZWA_LINII": "TYCHY - MYSŁOWICE KOSZTOWY MKSB1",
-                "RODZAJ": "PO",
-                "NAZWA": "Tychy Urbanowice",
-                "NAZWA_POS": "Tychy Urbanowice",
-                "lineNumber": 179,
-                "axisKM": 6.934,
-                "beginningKM": 6.916,
-                "endKM": 7.136
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.10661769829598,
-                    19.03358147766023
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e05",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e05",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e05",
-                "NAZWA_LINII": "TYCHY - MYSŁOWICE KOSZTOWY MKSB1",
-                "RODZAJ": "PO",
-                "NAZWA": "Bieruń Mleczar.",
-                "NAZWA_POS": "Bieruń Mleczarnia",
-                "lineNumber": 179,
-                "axisKM": 10.8,
-                "beginningKM": 10.8,
-                "endKM": 10.8
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.09024137882266,
-                    19.08108729187329
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e07",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e07",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e07",
-                "NAZWA_LINII": "TYCHY - MYSŁOWICE KOSZTOWY MKSB1",
-                "RODZAJ": "PO",
-                "NAZWA": "Tychy Górki",
-                "NAZWA_POS": "Tychy Górki",
-                "lineNumber": 179,
-                "axisKM": 15.76,
-                "beginningKM": 15.76,
-                "endKM": 15.76
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.09741380581216,
-                    19.13072242501617
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e09",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e09",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e09",
-                "NAZWA_LINII": "TYCHY - MYSŁOWICE KOSZTOWY MKSB1",
-                "RODZAJ": "PO",
-                "NAZWA": "Lędziny",
-                "NAZWA_POS": "Lędziny",
-                "lineNumber": 179,
-                "axisKM": 19.132,
-                "beginningKM": 19.032,
-                "endKM": 19.233
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.1263917380904,
-                    19.12301437443953
                 ]
             }
         },
@@ -1309,7 +1053,8 @@
                 "lineNumber": 179,
                 "axisKM": 25.8,
                 "beginningKM": 24.712,
-                "endKM": 26.223
+                "endKM": 26.223,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1332,36 +1077,14 @@
                 "lineNumber": 179,
                 "axisKM": 2.348,
                 "beginningKM": 2.223,
-                "endKM": 2.472
+                "endKM": 2.472,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.12100018076407,
                     18.97886848584897
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e37",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e37",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e37",
-                "NAZWA_LINII": "WARSZAWA ZACHODNIA - TERESPOL",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Terespol (Gr)",
-                "lineNumber": 2,
-                "axisKM": 211.657,
-                "beginningKM": 211.657,
-                "endKM": 211.657
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    52.08851091257445,
-                    23.626418376006622
                 ]
             }
         },
@@ -1378,36 +1101,14 @@
                 "lineNumber": 189,
                 "axisKM": 0,
                 "beginningKM": -0.461,
-                "endKM": 0.644
+                "endKM": 0.644,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.304075763121425,
                     18.87793776892725
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e58",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e58",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5e58",
-                "NAZWA_LINII": "RUDA CHEBZIE - ZABRZE BISKUPICE",
-                "RODZAJ": "STTH",
-                "NAZWA": "ZABRZE BISKUPICE",
-                "NAZWA_POS": "Zabrze Biskupice",
-                "lineNumber": 189,
-                "axisKM": 6.21,
-                "beginningKM": 5.125,
-                "endKM": 6.764
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.33615217836279,
-                    18.836463544576237
                 ]
             }
         },
@@ -1424,7 +1125,8 @@
                 "lineNumber": 93,
                 "axisKM": 60.772,
                 "beginningKM": 59.98,
-                "endKM": 62.245
+                "endKM": 62.245,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1447,7 +1149,8 @@
                 "lineNumber": 93,
                 "axisKM": 64.723,
                 "beginningKM": 64.544,
-                "endKM": 64.744
+                "endKM": 64.744,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1470,7 +1173,8 @@
                 "lineNumber": 93,
                 "axisKM": 69.807,
                 "beginningKM": 68.799,
-                "endKM": 70.536
+                "endKM": 70.536,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1493,36 +1197,14 @@
                 "lineNumber": 93,
                 "axisKM": 76.374,
                 "beginningKM": 75.88,
-                "endKM": 77.998
+                "endKM": 77.998,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.870112192458166,
                     18.624738433716026
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eb5",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eb5",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eb5",
-                "NAZWA_LINII": "TRZEBINIA - ZEBRZYDOWICE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zebrzydowice (Gr)",
-                "lineNumber": 93,
-                "axisKM": 80.662,
-                "beginningKM": 80.662,
-                "endKM": 80.662
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.88447219492328,
-                    18.57015646846682
                 ]
             }
         },
@@ -1539,7 +1221,8 @@
                 "lineNumber": 93,
                 "axisKM": 40.552,
                 "beginningKM": 40.357,
-                "endKM": 40.798
+                "endKM": 40.798,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1562,7 +1245,8 @@
                 "lineNumber": 93,
                 "axisKM": 42.993,
                 "beginningKM": 42.8,
-                "endKM": 43.018
+                "endKM": 43.018,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1585,7 +1269,8 @@
                 "lineNumber": 93,
                 "axisKM": 46.664,
                 "beginningKM": 45.317,
-                "endKM": 47.406
+                "endKM": 47.406,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -1608,59 +1293,14 @@
                 "lineNumber": 173,
                 "axisKM": 12.594,
                 "beginningKM": 11.728,
-                "endKM": 13.353
+                "endKM": 13.353,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.13678206365413,
                     18.402530595286898
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eeb",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eeb",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5eeb",
-                "NAZWA_LINII": "RĘCZYN - GRANICA PAŃSTWA (HAGENWERDER)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Gr. (Ręczyn) L.324 km 0.689",
-                "lineNumber": 324,
-                "axisKM": 0.689,
-                "beginningKM": 0.689,
-                "endKM": 0.689
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.047072062358,
-                    14.956001979121433
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5f51",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5f51",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5f51",
-                "NAZWA_LINII": "SZCZECIN GŁÓWNY - STOBNO SZCZECIŃSKIE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Szczecin Gum/Gra(Gr)",
-                "lineNumber": 408,
-                "axisKM": 13.194,
-                "beginningKM": 13.194,
-                "endKM": 13.194
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    53.415888371543424,
-                    14.373392012885903
                 ]
             }
         },
@@ -1677,7 +1317,8 @@
                 "lineNumber": 147,
                 "axisKM": 13.063,
                 "beginningKM": 12.244,
-                "endKM": 13.4
+                "endKM": 13.4,
+                "size": 5
             },
             "geometry": {
                 "type": "Point",
@@ -1700,36 +1341,14 @@
                 "lineNumber": 885,
                 "axisKM": 0.001,
                 "beginningKM": 0,
-                "endKM": 0.419
+                "endKM": 0.419,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.075902008121616,
                     19.18335433785315
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fa3",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fa3",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fa3",
-                "NAZWA_LINII": "BIAŁYSTOK - ZUBKI BIAŁOSTOCKIE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zubki Białostoc.(Gr)",
-                "lineNumber": 37,
-                "axisKM": 53.105,
-                "beginningKM": 53.105,
-                "endKM": 53.105
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    53.09948544093433,
-                    23.88193419284741
                 ]
             }
         },
@@ -1746,7 +1365,8 @@
                 "lineNumber": 138,
                 "axisKM": 20.1,
                 "beginningKM": 20.01,
-                "endKM": 20.206
+                "endKM": 20.206,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1769,7 +1389,8 @@
                 "lineNumber": 138,
                 "axisKM": 22.948,
                 "beginningKM": 21.953,
-                "endKM": 25.381
+                "endKM": 25.381,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -1792,7 +1413,8 @@
                 "lineNumber": 138,
                 "axisKM": 8.531,
                 "beginningKM": 7.855,
-                "endKM": 9.85
+                "endKM": 9.85,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1815,7 +1437,8 @@
                 "lineNumber": 138,
                 "axisKM": 11.944,
                 "beginningKM": 10.846,
-                "endKM": 12.44
+                "endKM": 12.44,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -1838,7 +1461,8 @@
                 "lineNumber": 138,
                 "axisKM": 27.505,
                 "beginningKM": 27.436,
-                "endKM": 27.789
+                "endKM": 27.789,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -1861,59 +1485,14 @@
                 "lineNumber": 138,
                 "axisKM": 30.243,
                 "beginningKM": 29.1,
-                "endKM": 30.8
+                "endKM": 30.8,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.25727058469247,
                     19.055189468133438
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fd1",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fd1",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_5fd1",
-                "NAZWA_LINII": "WARSZAWA WSCHODNIA OSOBOWA - DOROHUSK",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Dorohusk (Gr)",
-                "lineNumber": 7,
-                "axisKM": 271.533,
-                "beginningKM": 271.533,
-                "endKM": 271.533
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.180005794852185,
-                    23.812819790132828
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6026",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6026",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6026",
-                "NAZWA_LINII": "BYTOM BOBREK - ZABRZE BISKUPICE",
-                "RODZAJ": "STTH",
-                "NAZWA": "BYTOM BOBREK",
-                "NAZWA_POS": "Bytom Bobrek",
-                "lineNumber": 188,
-                "axisKM": 20.301,
-                "beginningKM": 20.3,
-                "endKM": 21.36
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.34417171752817,
-                    18.87416662980294
                 ]
             }
         },
@@ -1930,36 +1509,14 @@
                 "lineNumber": 695,
                 "axisKM": 0.328,
                 "beginningKM": 0,
-                "endKM": 0.657
+                "endKM": 0.657,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.75556457468495,
                     18.61915600515803
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_609d",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_609d",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_609d",
-                "NAZWA_LINII": "ŁÓDŹ KALISKA - TUPLICE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zasieki (Gr)",
-                "lineNumber": 14,
-                "axisKM": 389.08,
-                "beginningKM": 389.08,
-                "endKM": 389.08
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.73647147603627,
-                    14.662141322833076
                 ]
             }
         },
@@ -1976,7 +1533,8 @@
                 "lineNumber": 864,
                 "axisKM": -0.28,
                 "beginningKM": -0.828,
-                "endKM": 0.647
+                "endKM": 0.647,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -1999,7 +1557,8 @@
                 "lineNumber": 160,
                 "axisKM": 275.014,
                 "beginningKM": 275.013,
-                "endKM": 276.319
+                "endKM": 276.319,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
@@ -2022,36 +1581,14 @@
                 "lineNumber": 878,
                 "axisKM": 2.537,
                 "beginningKM": 0.034,
-                "endKM": 2.537
+                "endKM": 2.537,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.05096983772842,
                     18.78334395058595
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6174",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6174",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6174",
-                "NAZWA_LINII": "PIEKARY ŚLĄSKIE SZARLEJ - BARBARA",
-                "RODZAJ": "STTH",
-                "NAZWA": "Piekary Śl.Szarl",
-                "NAZWA_POS": "Piekary Śląskie Szarlej",
-                "lineNumber": 716,
-                "axisKM": 0.527,
-                "beginningKM": 0.526,
-                "endKM": 0.991
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.36846740382108,
-                    18.923231889347754
                 ]
             }
         },
@@ -2068,7 +1605,8 @@
                 "lineNumber": 700,
                 "axisKM": 0,
                 "beginningKM": -0.337,
-                "endKM": 0.759
+                "endKM": 0.759,
+                "size": 5
             },
             "geometry": {
                 "type": "Point",
@@ -2091,7 +1629,8 @@
                 "lineNumber": 700,
                 "axisKM": 2.204,
                 "beginningKM": 1.78,
-                "endKM": 2.205
+                "endKM": 2.205,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -2114,36 +1653,14 @@
                 "lineNumber": 157,
                 "axisKM": 5.552,
                 "beginningKM": 4.904,
-                "endKM": 6.61
+                "endKM": 6.61,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.91202549086135,
                     18.752738825612088
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_622d",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_622d",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_622d",
-                "NAZWA_LINII": "PAWŁOWICE ŚLĄSKIE - SKOCZÓW",
-                "RODZAJ": "PO",
-                "NAZWA": "Zabłocie Czuchów",
-                "NAZWA_POS": "Zabłocie Czuchów",
-                "lineNumber": 157,
-                "axisKM": 8.16,
-                "beginningKM": 7.997,
-                "endKM": 8.197
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.892208041015095,
-                    18.76996469347701
                 ]
             }
         },
@@ -2160,7 +1677,8 @@
                 "lineNumber": 157,
                 "axisKM": 13,
                 "beginningKM": 12.925,
-                "endKM": 13.075
+                "endKM": 13.075,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -2183,36 +1701,14 @@
                 "lineNumber": 157,
                 "axisKM": 15.14,
                 "beginningKM": 15.065,
-                "endKM": 15.215
+                "endKM": 15.215,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.8701032839691,
                     18.811171095030296
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6232",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6232",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6232",
-                "NAZWA_LINII": "PAWŁOWICE ŚLĄSKIE - SKOCZÓW",
-                "RODZAJ": "STTH",
-                "NAZWA": "PAWŁOWICE ŚL.",
-                "NAZWA_POS": "Pawłowice Śląskie",
-                "lineNumber": 157,
-                "axisKM": 0,
-                "beginningKM": -0.859,
-                "endKM": 0.459
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.950149460802955,
-                    18.711934762533247
                 ]
             }
         },
@@ -2229,7 +1725,8 @@
                 "lineNumber": 157,
                 "axisKM": 19.747,
                 "beginningKM": 18.645,
-                "endKM": 20.713
+                "endKM": 20.713,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2252,7 +1749,8 @@
                 "lineNumber": 157,
                 "axisKM": 23.349,
                 "beginningKM": 23.274,
-                "endKM": 23.424
+                "endKM": 23.424,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2275,59 +1773,14 @@
                 "lineNumber": 157,
                 "axisKM": 23.72,
                 "beginningKM": 23.358,
-                "endKM": 23.721
+                "endKM": 23.721,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.79656705826476,
                     18.797630926971287
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6237",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6237",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6237",
-                "NAZWA_LINII": "JĘZOR CENTRALNY JCA - SOSNOWIEC JĘZOR GT",
-                "RODZAJ": "STTH",
-                "NAZWA": "Jęzor Centr. JCA",
-                "NAZWA_POS": "Jęzor Centralny JCA",
-                "lineNumber": 719,
-                "axisKM": 0,
-                "beginningKM": 0,
-                "endKM": 0
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.23811599162731,
-                    19.185418441395797
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6255",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6255",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6255",
-                "NAZWA_LINII": "NOWY ZAGÓRZ - ŁUPKÓW",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Łupków (Gr)",
-                "lineNumber": 107,
-                "axisKM": 50.588,
-                "beginningKM": 50.588,
-                "endKM": 50.588
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.25070998363927,
-                    22.038507361549406
                 ]
             }
         },
@@ -2344,7 +1797,8 @@
                 "lineNumber": 152,
                 "axisKM": 40.416,
                 "beginningKM": 39.946,
-                "endKM": 40.417
+                "endKM": 40.417,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -2367,151 +1821,14 @@
                 "lineNumber": 152,
                 "axisKM": 5.018,
                 "beginningKM": 5.018,
-                "endKM": 5.24
+                "endKM": 5.24,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.41507544791586,
                     18.566922047974618
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6267",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6267",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6267",
-                "NAZWA_LINII": "PACZYNA - LUBLINIEC",
-                "RODZAJ": "STTH",
-                "NAZWA": "TOSZEK PŁN.",
-                "NAZWA_POS": "Toszek Północ",
-                "lineNumber": 152,
-                "axisKM": 10.74,
-                "beginningKM": 9.41,
-                "endKM": 11.209
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.45739618666038,
-                    18.537938017655915
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6271",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6271",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6271",
-                "NAZWA_LINII": "WYCZERPY - CHORZEW SIEMKOWICE",
-                "RODZAJ": "STTH",
-                "NAZWA": "Cykarzew",
-                "NAZWA_POS": "Cykarzew",
-                "lineNumber": 146,
-                "axisKM": 13.412,
-                "beginningKM": 12.355,
-                "endKM": 13.882
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.97633907281043,
-                    19.16171323844701
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6273",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6273",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6273",
-                "NAZWA_LINII": "WYCZERPY - CHORZEW SIEMKOWICE",
-                "RODZAJ": "ML",
-                "NAZWA": "Rząsawa",
-                "NAZWA_POS": "Rząsawa",
-                "lineNumber": 146,
-                "axisKM": 2.837,
-                "beginningKM": 2.467,
-                "endKM": 4.45
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.88385628997973,
-                    19.17677299192866
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6274",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6274",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6274",
-                "NAZWA_LINII": "WYCZERPY - CHORZEW SIEMKOWICE",
-                "RODZAJ": "PO",
-                "NAZWA": "Mykanów",
-                "NAZWA_POS": "Mykanów",
-                "lineNumber": 146,
-                "axisKM": 7.463,
-                "beginningKM": 7.382,
-                "endKM": 7.544
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.9250670130304,
-                    19.179298829371163
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6275",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6275",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6275",
-                "NAZWA_LINII": "WYCZERPY - CHORZEW SIEMKOWICE",
-                "RODZAJ": "PO",
-                "NAZWA": "Cykarzew Stary",
-                "NAZWA_POS": "Cykarzew Stary",
-                "lineNumber": 146,
-                "axisKM": 10.547,
-                "beginningKM": 10.43,
-                "endKM": 10.663
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.9517234710962,
-                    19.1702099496401
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6289",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6289",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6289",
-                "NAZWA_LINII": "WROCŁAW GŁÓWNY - MIĘDZYLESIE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Międzylesie (Gr)",
-                "lineNumber": 276,
-                "axisKM": 136.064,
-                "beginningKM": 136.064,
-                "endKM": 136.064
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.09849365941656,
-                    16.69113500633994
                 ]
             }
         },
@@ -2528,82 +1845,14 @@
                 "lineNumber": 701,
                 "axisKM": 3.752,
                 "beginningKM": 3.593,
-                "endKM": 3.921
+                "endKM": 3.921,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.78760332736603,
                     19.155745438840725
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6305",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6305",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6305",
-                "NAZWA_LINII": "KWK POKÓJ - RUDA ORZEGÓW",
-                "RODZAJ": "STTH",
-                "NAZWA": "Ruda Czarny Las",
-                "NAZWA_POS": "Ruda Czarny Las",
-                "lineNumber": 187,
-                "axisKM": 3.6,
-                "beginningKM": 3.597,
-                "endKM": 4.2
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.27691215547504,
-                    18.882989423509557
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_630f",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_630f",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_630f",
-                "NAZWA_LINII": "SUWAŁKI - TRAKISZKI",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Trakiszki (Gr)",
-                "lineNumber": 51,
-                "axisKM": 28.62,
-                "beginningKM": 28.62,
-                "endKM": 28.62
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    54.264937213359886,
-                    23.23003580563939
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6335",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6335",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6335",
-                "NAZWA_LINII": "MALBORK - BRANIEWO",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Braniewo (Gr)",
-                "lineNumber": 204,
-                "axisKM": 90.671,
-                "beginningKM": 90.671,
-                "endKM": 90.671
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    54.43662385445559,
-                    19.873660378849884
                 ]
             }
         },
@@ -2620,243 +1869,14 @@
                 "lineNumber": 190,
                 "axisKM": 0,
                 "beginningKM": -0.477,
-                "endKM": 0.671
+                "endKM": 0.671,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.82978016436876,
                     19.045469366778267
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63ef",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63ef",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63ef",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PO",
-                "NAZWA": "Bielsko-B.Zach.",
-                "NAZWA_POS": "Bielsko-Biała Zachód",
-                "lineNumber": 190,
-                "axisKM": 1.516,
-                "beginningKM": 1.415,
-                "endKM": 1.615
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.839372534894984,
-                    19.040317086832953
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f0",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f0",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f0",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "ST",
-                "NAZWA": "Jaworze Jasien.",
-                "NAZWA_POS": "Jaworze Jasienica",
-                "lineNumber": 190,
-                "axisKM": 10.771,
-                "beginningKM": 9.993,
-                "endKM": 11.207
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.806607969679014,
-                    18.932274345660673
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f1",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f1",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f1",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Cieszyn Marklowice (Gr)",
-                "lineNumber": 190,
-                "axisKM": 40.181,
-                "beginningKM": 40.181,
-                "endKM": 40.181
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.75212475460272,
-                    18.618754262640508
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f2",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f2",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f2",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "L",
-                "NAZWA": "Stare Bielsko",
-                "NAZWA_POS": "Stare Bielsko",
-                "lineNumber": 190,
-                "axisKM": 1.965,
-                "beginningKM": 1.725,
-                "endKM": 2.09
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.83558173372312,
-                    19.038527268220324
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f3",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f3",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f3",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PO",
-                "NAZWA": "Bielsko-B.Górne",
-                "NAZWA_POS": "Bielsko-Biała Górne",
-                "lineNumber": 190,
-                "axisKM": 3.366,
-                "beginningKM": 3.316,
-                "endKM": 3.446
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.82744479085036,
-                    19.025349397016196
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f4",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f4",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f4",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PO",
-                "NAZWA": "B.B.Aleksandrow.",
-                "NAZWA_POS": "Bielsko-Biała Aleksandrowice",
-                "lineNumber": 190,
-                "axisKM": 5.336,
-                "beginningKM": 5.235,
-                "endKM": 5.435
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.81706086140631,
-                    19.004515979812847
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f5",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f5",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f5",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "ST",
-                "NAZWA": "B.B.Wapienica",
-                "NAZWA_POS": "Bielsko-Biała Wapienica",
-                "lineNumber": 190,
-                "axisKM": 7.242,
-                "beginningKM": 6.784,
-                "endKM": 7.972
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.81100211780234,
-                    18.98071224359287
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f6",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f6",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f6",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PO",
-                "NAZWA": "Jasien.K.Bielska",
-                "NAZWA_POS": "Jasienica koło Bielska",
-                "lineNumber": 190,
-                "axisKM": 12.47,
-                "beginningKM": 12.41,
-                "endKM": 12.58
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.80697180108434,
-                    18.908958054302136
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f7",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f7",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f7",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "PO",
-                "NAZWA": "Grodziec Śl.",
-                "NAZWA_POS": "Grodziec Śląski",
-                "lineNumber": 190,
-                "axisKM": 14.774,
-                "beginningKM": 14.641,
-                "endKM": 14.806
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.81157852333362,
-                    18.87836038411087
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f8",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f8",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_63f8",
-                "NAZWA_LINII": "BIELSKO-BIAŁA GŁÓWNA - CIESZYN",
-                "RODZAJ": "ST",
-                "NAZWA": "Pogórze",
-                "NAZWA_POS": "Pogórze",
-                "lineNumber": 190,
-                "axisKM": 18.653,
-                "beginningKM": 18.2,
-                "endKM": 19.379
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.810762850684355,
-                    18.830604134881675
                 ]
             }
         },
@@ -2873,7 +1893,8 @@
                 "lineNumber": 190,
                 "axisKM": 24.766,
                 "beginningKM": 24.691,
-                "endKM": 24.841
+                "endKM": 24.841,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2896,7 +1917,8 @@
                 "lineNumber": 190,
                 "axisKM": 30.085,
                 "beginningKM": 30.01,
-                "endKM": 30.16
+                "endKM": 30.16,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2919,7 +1941,8 @@
                 "lineNumber": 190,
                 "axisKM": 32.711,
                 "beginningKM": 32.636,
-                "endKM": 32.786
+                "endKM": 32.786,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2942,7 +1965,8 @@
                 "lineNumber": 190,
                 "axisKM": 37.765,
                 "beginningKM": 37.69,
-                "endKM": 37.84
+                "endKM": 37.84,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -2965,7 +1989,8 @@
                 "lineNumber": 1,
                 "axisKM": 266.37,
                 "beginningKM": 266.234,
-                "endKM": 266.506
+                "endKM": 266.506,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -2988,7 +2013,8 @@
                 "lineNumber": 1,
                 "axisKM": 270.3,
                 "beginningKM": 270.2,
-                "endKM": 270.4
+                "endKM": 270.4,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3011,7 +2037,8 @@
                 "lineNumber": 1,
                 "axisKM": 295.398,
                 "beginningKM": 295.257,
-                "endKM": 295.538
+                "endKM": 295.538,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3034,7 +2061,8 @@
                 "lineNumber": 1,
                 "axisKM": 296.726,
                 "beginningKM": 296.606,
-                "endKM": 296.902
+                "endKM": 296.902,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3057,7 +2085,8 @@
                 "lineNumber": 1,
                 "axisKM": 300.267,
                 "beginningKM": 298.827,
-                "endKM": 301.145
+                "endKM": 301.145,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
@@ -3080,7 +2109,8 @@
                 "lineNumber": 1,
                 "axisKM": 302.077,
                 "beginningKM": 302.037,
-                "endKM": 302.237
+                "endKM": 302.237,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3103,7 +2133,8 @@
                 "lineNumber": 1,
                 "axisKM": 202.758,
                 "beginningKM": 202.655,
-                "endKM": 202.86
+                "endKM": 202.86,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3126,7 +2157,8 @@
                 "lineNumber": 1,
                 "axisKM": 208.201,
                 "beginningKM": 207.581,
-                "endKM": 209.539
+                "endKM": 209.539,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3149,7 +2181,8 @@
                 "lineNumber": 1,
                 "axisKM": 210.606,
                 "beginningKM": 210.506,
-                "endKM": 210.706
+                "endKM": 210.706,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3172,7 +2205,8 @@
                 "lineNumber": 1,
                 "axisKM": 217.7,
                 "beginningKM": 216.245,
-                "endKM": 218.281
+                "endKM": 218.281,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3195,7 +2229,8 @@
                 "lineNumber": 1,
                 "axisKM": 225.816,
                 "beginningKM": 225.736,
-                "endKM": 225.936
+                "endKM": 225.936,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3218,7 +2253,8 @@
                 "lineNumber": 1,
                 "axisKM": 239.158,
                 "beginningKM": 239.125,
-                "endKM": 239.373
+                "endKM": 239.373,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3241,7 +2277,8 @@
                 "lineNumber": 1,
                 "axisKM": 245.85,
                 "beginningKM": 244.998,
-                "endKM": 246.863
+                "endKM": 246.863,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -3264,7 +2301,8 @@
                 "lineNumber": 1,
                 "axisKM": 200.525,
                 "beginningKM": 199.032,
-                "endKM": 201.125
+                "endKM": 201.125,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3287,36 +2325,14 @@
                 "lineNumber": 1,
                 "axisKM": 304.385,
                 "beginningKM": 304.285,
-                "endKM": 304.485
+                "endKM": 304.485,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.31879799598155,
                     19.135550955695685
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_643d",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_643d",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_643d",
-                "NAZWA_LINII": "WARSZAWA ZACHODNIA - KATOWICE",
-                "RODZAJ": "ST",
-                "NAZWA": "Będzin",
-                "NAZWA_POS": "Będzin",
-                "lineNumber": 1,
-                "axisKM": 305.524,
-                "beginningKM": 304.74,
-                "endKM": 306.52
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.30900112650334,
-                    19.141482117044138
                 ]
             }
         },
@@ -3333,7 +2349,8 @@
                 "lineNumber": 1,
                 "axisKM": 309.544,
                 "beginningKM": 308.134,
-                "endKM": 310.904
+                "endKM": 310.904,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
@@ -3356,7 +2373,8 @@
                 "lineNumber": 1,
                 "axisKM": 284.313,
                 "beginningKM": 284.15,
-                "endKM": 284.525
+                "endKM": 284.525,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3379,7 +2397,8 @@
                 "lineNumber": 1,
                 "axisKM": 286.557,
                 "beginningKM": 286.456,
-                "endKM": 286.659
+                "endKM": 286.659,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3402,7 +2421,8 @@
                 "lineNumber": 1,
                 "axisKM": 289.202,
                 "beginningKM": 289.102,
-                "endKM": 289.302
+                "endKM": 289.302,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3425,7 +2445,8 @@
                 "lineNumber": 1,
                 "axisKM": 250.787,
                 "beginningKM": 250.548,
-                "endKM": 250.813
+                "endKM": 250.813,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3448,7 +2469,8 @@
                 "lineNumber": 1,
                 "axisKM": 254.088,
                 "beginningKM": 253.966,
-                "endKM": 254.209
+                "endKM": 254.209,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3471,7 +2493,8 @@
                 "lineNumber": 1,
                 "axisKM": 257.525,
                 "beginningKM": 257.426,
-                "endKM": 257.624
+                "endKM": 257.624,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3494,7 +2517,8 @@
                 "lineNumber": 1,
                 "axisKM": 261.016,
                 "beginningKM": 260.439,
-                "endKM": 262.634
+                "endKM": 262.634,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -3517,7 +2541,8 @@
                 "lineNumber": 1,
                 "axisKM": 263.442,
                 "beginningKM": 263.315,
-                "endKM": 263.569
+                "endKM": 263.569,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3540,7 +2565,8 @@
                 "lineNumber": 132,
                 "axisKM": 53.837,
                 "beginningKM": 53.624,
-                "endKM": 54
+                "endKM": 54,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3563,7 +2589,8 @@
                 "lineNumber": 132,
                 "axisKM": 56.249,
                 "beginningKM": 56.006,
-                "endKM": 56.55
+                "endKM": 56.55,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3586,36 +2613,14 @@
                 "lineNumber": 132,
                 "axisKM": 17.365,
                 "beginningKM": 16.912,
-                "endKM": 18.595
+                "endKM": 18.595,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.3430447679008,
                     18.91515497729067
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6456",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6456",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6456",
-                "NAZWA_LINII": "BYTOM - WROCŁAW GŁÓWNY",
-                "RODZAJ": "ST",
-                "NAZWA": "ZABRZE MIKULCZ.",
-                "NAZWA_POS": "Zabrze Mikulczyce",
-                "lineNumber": 132,
-                "axisKM": 28.257,
-                "beginningKM": 28.079,
-                "endKM": 29.356
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.344882215452046,
-                    18.768733160172594
                 ]
             }
         },
@@ -3632,7 +2637,8 @@
                 "lineNumber": 132,
                 "axisKM": 40.11,
                 "beginningKM": 39.41,
-                "endKM": 41.014
+                "endKM": 41.014,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3655,7 +2661,8 @@
                 "lineNumber": 132,
                 "axisKM": 49.92,
                 "beginningKM": 48.685,
-                "endKM": 50.587
+                "endKM": 50.587,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3678,7 +2685,8 @@
                 "lineNumber": 691,
                 "axisKM": 0,
                 "beginningKM": -0.011,
-                "endKM": 0.379
+                "endKM": 0.379,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3701,36 +2709,14 @@
                 "lineNumber": 696,
                 "axisKM": 0.336,
                 "beginningKM": 0.226,
-                "endKM": 0.446
+                "endKM": 0.446,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.107766471750146,
                     19.00064600284676
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_653c",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_653c",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_653c",
-                "NAZWA_LINII": "GŁUCHOŁAZY - GRANICA PAŃSTWA (MIKULOVICE)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Głuchołazy (Gr)",
-                "lineNumber": 343,
-                "axisKM": 5.65,
-                "beginningKM": 5.65,
-                "endKM": 5.65
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.30737747960768,
-                    17.353483761853678
                 ]
             }
         },
@@ -3747,7 +2733,8 @@
                 "lineNumber": 165,
                 "axisKM": 0.938,
                 "beginningKM": 0.697,
-                "endKM": 1.285
+                "endKM": 1.285,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3770,36 +2757,14 @@
                 "lineNumber": 159,
                 "axisKM": 20.957,
                 "beginningKM": 20.462,
-                "endKM": 22.075
+                "endKM": 22.075,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.990186452855816,
                     18.71537691996357
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_658f",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_658f",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_658f",
-                "NAZWA_LINII": "ŻORY - PAWŁOWICE",
-                "RODZAJ": "PO",
-                "NAZWA": "Żory Baranowice",
-                "NAZWA_POS": "Żory Baranowice",
-                "lineNumber": 159,
-                "axisKM": 17.62,
-                "beginningKM": 17.492,
-                "endKM": 17.748
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.01960025464449,
-                    18.708311721232274
                 ]
             }
         },
@@ -3816,7 +2781,8 @@
                 "lineNumber": 159,
                 "axisKM": 13.991,
                 "beginningKM": 12.991,
-                "endKM": 14.763
+                "endKM": 14.763,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -3839,7 +2805,8 @@
                 "lineNumber": 168,
                 "axisKM": 5.785,
                 "beginningKM": 4.215,
-                "endKM": 5.786
+                "endKM": 5.786,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -3862,105 +2829,14 @@
                 "lineNumber": 713,
                 "axisKM": 4.503,
                 "beginningKM": 4.304,
-                "endKM": 4.504
+                "endKM": 4.504,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.27381867579494,
                     18.9555394004976
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65be",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65be",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65be",
-                "NAZWA_LINII": "WILKA - ZAWIDÓW",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zawidów (Gr)",
-                "lineNumber": 344,
-                "axisKM": 4.918,
-                "beginningKM": 4.918,
-                "endKM": 4.918
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.01224972921042,
-                    15.03796028907313
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65c0",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65c0",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_65c0",
-                "NAZWA_LINII": "TRZCINIEC ZGORZELECKI - GRANICA PAŃSTWA (ZITTAU)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Gr. (Trzciniec Zg.) L.348 km 0.200",
-                "lineNumber": 348,
-                "axisKM": 0.2,
-                "beginningKM": 0.2,
-                "endKM": 0.2
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.948529988025335,
-                    14.89378649788232
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661a",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661a",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661a",
-                "NAZWA_LINII": "KATOWICE SZOPIENICE PÓŁNOCNE - CHORZÓW STARY",
-                "RODZAJ": "STTH",
-                "NAZWA": "Kat.Dąbr.Mała",
-                "NAZWA_POS": "Katowice Dąbrówka Mała",
-                "lineNumber": 161,
-                "axisKM": 2.662,
-                "beginningKM": 1.428,
-                "endKM": 3.287
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.27550474532188,
-                    19.06671530423891
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661b",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661b",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661b",
-                "NAZWA_LINII": "KATOWICE SZOPIENICE PÓŁNOCNE - CHORZÓW STARY",
-                "RODZAJ": "STTH",
-                "NAZWA": "Siemianowice Śl.",
-                "NAZWA_POS": "Siemianowice Śląskie",
-                "lineNumber": 161,
-                "axisKM": 6.152,
-                "beginningKM": 4.735,
-                "endKM": 6.969
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.29871822962522,
-                    19.035312550527834
                 ]
             }
         },
@@ -3977,36 +2853,14 @@
                 "lineNumber": 161,
                 "axisKM": 12.126,
                 "beginningKM": 11.194,
-                "endKM": 12.975
+                "endKM": 12.975,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.31627378977301,
                     18.95814705708198
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661d",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661d",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_661d",
-                "NAZWA_LINII": "KATOWICE SZOPIENICE PÓŁNOCNE - CHORZÓW STARY",
-                "RODZAJ": "STTH",
-                "NAZWA": "KAT.SZOP. PŁN",
-                "NAZWA_POS": "Katowice Szopienice Północne",
-                "lineNumber": 161,
-                "axisKM": 0.001,
-                "beginningKM": 0,
-                "endKM": 1.45
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.26156599955089,
-                    19.093493733184893
                 ]
             }
         },
@@ -4023,7 +2877,8 @@
                 "lineNumber": 177,
                 "axisKM": 0,
                 "beginningKM": -0.293,
-                "endKM": 1.606
+                "endKM": 1.606,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -4046,7 +2901,8 @@
                 "lineNumber": 199,
                 "axisKM": 49.056,
                 "beginningKM": 49.055,
-                "endKM": 49.502
+                "endKM": 49.502,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -4069,7 +2925,8 @@
                 "lineNumber": 117,
                 "axisKM": 52.294,
                 "beginningKM": 52.223,
-                "endKM": 52.421
+                "endKM": 52.421,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4092,7 +2949,8 @@
                 "lineNumber": 117,
                 "axisKM": 57.095,
                 "beginningKM": 56.258,
-                "endKM": 57.593
+                "endKM": 57.593,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4115,151 +2973,14 @@
                 "lineNumber": 133,
                 "axisKM": 20.877,
                 "beginningKM": 20.777,
-                "endKM": 20.977
+                "endKM": 20.977,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.212966619023824,
                     19.337125112838574
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_66f0",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_66f0",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_66f0",
-                "NAZWA_LINII": "DĄBROWA GÓRNICZA ZĄBKOWICE - KRAKÓW GŁÓWNY",
-                "RODZAJ": "ST",
-                "NAZWA": "Dąbr.Górn.Płd.",
-                "NAZWA_POS": "Dąbrowa Górnicza Południowa",
-                "lineNumber": 133,
-                "axisKM": 7.537,
-                "beginningKM": 6.757,
-                "endKM": 8.757
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.310651706733665,
-                    19.28731711149779
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6708",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6708",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6708",
-                "NAZWA_LINII": "KATOWICE LIGOTA - GLIWICE",
-                "RODZAJ": "STTH",
-                "NAZWA": "RUDA KOCHŁOWICE",
-                "NAZWA_POS": "Ruda Kochłowice",
-                "lineNumber": 141,
-                "axisKM": 6.643,
-                "beginningKM": 5.68,
-                "endKM": 7.804
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.25664506383552,
-                    18.911528919074627
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6709",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6709",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6709",
-                "NAZWA_LINII": "KATOWICE LIGOTA - GLIWICE",
-                "RODZAJ": "ODST",
-                "NAZWA": "Ruda Wirek",
-                "NAZWA_POS": "Ruda Wirek",
-                "lineNumber": 141,
-                "axisKM": 10.386,
-                "beginningKM": 10.3,
-                "endKM": 10.5
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.25959965983234,
-                    18.860807510566016
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_670a",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_670a",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_670a",
-                "NAZWA_LINII": "KATOWICE LIGOTA - GLIWICE",
-                "RODZAJ": "STTH",
-                "NAZWA": "Ruda Bielszowice",
-                "NAZWA_POS": "Ruda Bielszowice",
-                "lineNumber": 141,
-                "axisKM": 13.396,
-                "beginningKM": 12.891,
-                "endKM": 15.06
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.26045365140037,
-                    18.818840778363924
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_673f",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_673f",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_673f",
-                "NAZWA_LINII": "WARSZAWA ZACHODNIA - KUNOWICE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Kunowice (Gr)",
-                "lineNumber": 3,
-                "axisKM": 478.098,
-                "beginningKM": 478.098,
-                "endKM": 478.098
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    52.32117983323355,
-                    14.576459251527684
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67da",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67da",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67da",
-                "NAZWA_LINII": "REJOWIEC - HREBENNE",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Hrebenne (Gr)",
-                "lineNumber": 69,
-                "axisKM": 138.042,
-                "beginningKM": 138.042,
-                "endKM": 138.042
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.29488951187704,
-                    23.60763777932633
                 ]
             }
         },
@@ -4276,36 +2997,14 @@
                 "lineNumber": 61,
                 "axisKM": 74.854,
                 "beginningKM": 74.809,
-                "endKM": 74.899
+                "endKM": 74.899,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.77269604758488,
                     19.65387966487155
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e2",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e2",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e2",
-                "NAZWA_LINII": "KIELCE - FOSOWSKIE",
-                "RODZAJ": "PODS",
-                "NAZWA": "Podlesie",
-                "NAZWA_POS": "Podlesie",
-                "lineNumber": 61,
-                "axisKM": 78.508,
-                "beginningKM": 78.431,
-                "endKM": 78.648
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.76498698583636,
-                    19.604440741201955
                 ]
             }
         },
@@ -4322,7 +3021,8 @@
                 "lineNumber": 61,
                 "axisKM": 83.935,
                 "beginningKM": 83.873,
-                "endKM": 83.996
+                "endKM": 83.996,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4345,7 +3045,8 @@
                 "lineNumber": 61,
                 "axisKM": 87.888,
                 "beginningKM": 87.074,
-                "endKM": 88.77
+                "endKM": 88.77,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4368,7 +3069,8 @@
                 "lineNumber": 61,
                 "axisKM": 93.962,
                 "beginningKM": 93.705,
-                "endKM": 94.069
+                "endKM": 94.069,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4391,7 +3093,8 @@
                 "lineNumber": 61,
                 "axisKM": 99.679,
                 "beginningKM": 98.79,
-                "endKM": 100.8
+                "endKM": 100.8,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4414,36 +3117,14 @@
                 "lineNumber": 61,
                 "axisKM": 104.217,
                 "beginningKM": 104.172,
-                "endKM": 104.264
+                "endKM": 104.264,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.77789679937739,
                     19.2615405382561
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e8",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e8",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67e8",
-                "NAZWA_LINII": "KIELCE - FOSOWSKIE",
-                "RODZAJ": "ODST",
-                "NAZWA": "Kusięta",
-                "NAZWA_POS": "Kusięta",
-                "lineNumber": 61,
-                "axisKM": 104.865,
-                "beginningKM": 104.765,
-                "endKM": 104.965
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.77611406984632,
-                    19.2528272034913
                 ]
             }
         },
@@ -4460,7 +3141,8 @@
                 "lineNumber": 61,
                 "axisKM": 122.931,
                 "beginningKM": 122.856,
-                "endKM": 123.006
+                "endKM": 123.006,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4483,7 +3165,8 @@
                 "lineNumber": 61,
                 "axisKM": 127.655,
                 "beginningKM": 127.56,
-                "endKM": 127.75
+                "endKM": 127.75,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4506,7 +3189,8 @@
                 "lineNumber": 61,
                 "axisKM": 141.799,
                 "beginningKM": 140.809,
-                "endKM": 142.622
+                "endKM": 142.622,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4529,36 +3213,14 @@
                 "lineNumber": 61,
                 "axisKM": 145.837,
                 "beginningKM": 144.951,
-                "endKM": 146.712
+                "endKM": 146.712,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.69912283667505,
                     18.747891683506545
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67f6",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67f6",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_67f6",
-                "NAZWA_LINII": "KIELCE - FOSOWSKIE",
-                "RODZAJ": "PO",
-                "NAZWA": "Lisowice",
-                "NAZWA_POS": "Lisowice",
-                "lineNumber": 61,
-                "axisKM": 156.795,
-                "beginningKM": 156.72,
-                "endKM": 156.87
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.68276281637299,
-                    18.630589507283553
                 ]
             }
         },
@@ -4575,36 +3237,14 @@
                 "lineNumber": 61,
                 "axisKM": 161.223,
                 "beginningKM": 160.75,
-                "endKM": 162.302
+                "endKM": 162.302,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.680729083836596,
                     18.568113394591002
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_683b",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_683b",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_683b",
-                "NAZWA_LINII": "CHORZÓW STARY - RADZIONKÓW",
-                "RODZAJ": "STTH",
-                "NAZWA": "Brzeziny Śl.",
-                "NAZWA_POS": "Brzeziny Śląskie",
-                "lineNumber": 145,
-                "axisKM": 7.65,
-                "beginningKM": 6.634,
-                "endKM": 8.204
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.35630901603938,
-                    18.983344024803685
                 ]
             }
         },
@@ -4621,7 +3261,8 @@
                 "lineNumber": 181,
                 "axisKM": 10.29,
                 "beginningKM": 10.15,
-                "endKM": 10.44
+                "endKM": 10.44,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4644,7 +3285,8 @@
                 "lineNumber": 181,
                 "axisKM": 18.619,
                 "beginningKM": 17.839,
-                "endKM": 19.421
+                "endKM": 19.421,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4667,36 +3309,14 @@
                 "lineNumber": 181,
                 "axisKM": 27.687,
                 "beginningKM": 26.961,
-                "endKM": 28.647
+                "endKM": 28.647,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.96956636011643,
                     18.69650108172725
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_68ae",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_68ae",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_68ae",
-                "NAZWA_LINII": "TARNOWSKIE GÓRY - OPOLE GŁÓWNE",
-                "RODZAJ": "STTH",
-                "NAZWA": "Tworóg",
-                "NAZWA_POS": "Tworóg",
-                "lineNumber": 144,
-                "axisKM": 14.609,
-                "beginningKM": 13.76,
-                "endKM": 15.145
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.5288079386473,
-                    18.715220827025814
                 ]
             }
         },
@@ -4713,7 +3333,8 @@
                 "lineNumber": 137,
                 "axisKM": 8.413,
                 "beginningKM": 8.262,
-                "endKM": 8.508
+                "endKM": 8.508,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -4736,7 +3357,8 @@
                 "lineNumber": 137,
                 "axisKM": 14.068,
                 "beginningKM": 13.98,
-                "endKM": 14.28
+                "endKM": 14.28,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -4759,7 +3381,8 @@
                 "lineNumber": 137,
                 "axisKM": 18.926,
                 "beginningKM": 18.054,
-                "endKM": 19.8
+                "endKM": 19.8,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
@@ -4782,7 +3405,8 @@
                 "lineNumber": 137,
                 "axisKM": 37.4,
                 "beginningKM": 37.268,
-                "endKM": 37.475
+                "endKM": 37.475,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4805,7 +3429,8 @@
                 "lineNumber": 137,
                 "axisKM": 41.648,
                 "beginningKM": 41.068,
-                "endKM": 43.061
+                "endKM": 43.061,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4828,7 +3453,8 @@
                 "lineNumber": 137,
                 "axisKM": 2.528,
                 "beginningKM": 2.378,
-                "endKM": 2.678
+                "endKM": 2.678,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -4851,7 +3477,8 @@
                 "lineNumber": 148,
                 "axisKM": 0,
                 "beginningKM": -0.632,
-                "endKM": 0.65
+                "endKM": 0.65,
+                "size": 4
             },
             "geometry": {
                 "type": "Point",
@@ -4874,7 +3501,8 @@
                 "lineNumber": 148,
                 "axisKM": 5.025,
                 "beginningKM": 4.925,
-                "endKM": 5.125
+                "endKM": 5.125,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4897,7 +3525,8 @@
                 "lineNumber": 148,
                 "axisKM": 7.621,
                 "beginningKM": 6.693,
-                "endKM": 8.056
+                "endKM": 8.056,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4920,7 +3549,8 @@
                 "lineNumber": 148,
                 "axisKM": 14.77,
                 "beginningKM": 13.858,
-                "endKM": 15.226
+                "endKM": 15.226,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4943,7 +3573,8 @@
                 "lineNumber": 148,
                 "axisKM": 26.04,
                 "beginningKM": 25.712,
-                "endKM": 26.358
+                "endKM": 26.358,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4966,7 +3597,8 @@
                 "lineNumber": 148,
                 "axisKM": 29.581,
                 "beginningKM": 28.79,
-                "endKM": 30.382
+                "endKM": 30.382,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -4989,7 +3621,8 @@
                 "lineNumber": 148,
                 "axisKM": 32.508,
                 "beginningKM": 32.487,
-                "endKM": 32.705
+                "endKM": 32.705,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5012,7 +3645,8 @@
                 "lineNumber": 90,
                 "axisKM": 22.071,
                 "beginningKM": 21.919,
-                "endKM": 22.095
+                "endKM": 22.095,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5035,7 +3669,8 @@
                 "lineNumber": 90,
                 "axisKM": 18.548,
                 "beginningKM": 18.175,
-                "endKM": 19.64
+                "endKM": 19.64,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5058,7 +3693,8 @@
                 "lineNumber": 90,
                 "axisKM": 16.128,
                 "beginningKM": 16.015,
-                "endKM": 16.188
+                "endKM": 16.188,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5081,7 +3717,8 @@
                 "lineNumber": 90,
                 "axisKM": 24.406,
                 "beginningKM": 23.72,
-                "endKM": 25.041
+                "endKM": 25.041,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5104,7 +3741,8 @@
                 "lineNumber": 139,
                 "axisKM": 7.753,
                 "beginningKM": 7.58,
-                "endKM": 7.991
+                "endKM": 7.991,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -5127,7 +3765,8 @@
                 "lineNumber": 139,
                 "axisKM": 11.483,
                 "beginningKM": 11.365,
-                "endKM": 11.599
+                "endKM": 11.599,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5150,7 +3789,8 @@
                 "lineNumber": 139,
                 "axisKM": 20.12,
                 "beginningKM": 19.879,
-                "endKM": 20.32
+                "endKM": 20.32,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5173,7 +3813,8 @@
                 "lineNumber": 139,
                 "axisKM": 31.597,
                 "beginningKM": 31.325,
-                "endKM": 31.802
+                "endKM": 31.802,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5196,7 +3837,8 @@
                 "lineNumber": 139,
                 "axisKM": 39.531,
                 "beginningKM": 39.52,
-                "endKM": 39.73
+                "endKM": 39.73,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5219,7 +3861,8 @@
                 "lineNumber": 139,
                 "axisKM": 40.865,
                 "beginningKM": 40.514,
-                "endKM": 41.049
+                "endKM": 41.049,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5242,7 +3885,8 @@
                 "lineNumber": 139,
                 "axisKM": 54.348,
                 "beginningKM": 54.203,
-                "endKM": 54.5
+                "endKM": 54.5,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5265,7 +3909,8 @@
                 "lineNumber": 139,
                 "axisKM": 57.3,
                 "beginningKM": 57.021,
-                "endKM": 57.475
+                "endKM": 57.475,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5288,7 +3933,8 @@
                 "lineNumber": 139,
                 "axisKM": 59.586,
                 "beginningKM": 58.796,
-                "endKM": 60.607
+                "endKM": 60.607,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5311,7 +3957,8 @@
                 "lineNumber": 139,
                 "axisKM": 61.476,
                 "beginningKM": 61.476,
-                "endKM": 61.738
+                "endKM": 61.738,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5334,7 +3981,8 @@
                 "lineNumber": 139,
                 "axisKM": 64.296,
                 "beginningKM": 63.433,
-                "endKM": 65.611
+                "endKM": 65.611,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5357,7 +4005,8 @@
                 "lineNumber": 139,
                 "axisKM": 68.257,
                 "beginningKM": 68.106,
-                "endKM": 68.268
+                "endKM": 68.268,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5380,7 +4029,8 @@
                 "lineNumber": 139,
                 "axisKM": 69.916,
                 "beginningKM": 69.259,
-                "endKM": 70.452
+                "endKM": 70.452,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5403,7 +4053,8 @@
                 "lineNumber": 139,
                 "axisKM": 72.777,
                 "beginningKM": 72.65,
-                "endKM": 72.85
+                "endKM": 72.85,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5426,7 +4077,8 @@
                 "lineNumber": 139,
                 "axisKM": 3.77,
                 "beginningKM": 3.67,
-                "endKM": 3.87
+                "endKM": 3.87,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5449,7 +4101,8 @@
                 "lineNumber": 139,
                 "axisKM": 76.479,
                 "beginningKM": 75.746,
-                "endKM": 77.43
+                "endKM": 77.43,
+                "size": 3
             },
             "geometry": {
                 "type": "Point",
@@ -5472,7 +4125,8 @@
                 "lineNumber": 139,
                 "axisKM": 80.435,
                 "beginningKM": 80.376,
-                "endKM": 80.554
+                "endKM": 80.554,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5495,7 +4149,8 @@
                 "lineNumber": 139,
                 "axisKM": 83.51,
                 "beginningKM": 83.41,
-                "endKM": 83.61
+                "endKM": 83.61,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5518,7 +4173,8 @@
                 "lineNumber": 139,
                 "axisKM": 85.156,
                 "beginningKM": 85.156,
-                "endKM": 85.334
+                "endKM": 85.334,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5541,7 +4197,8 @@
                 "lineNumber": 139,
                 "axisKM": 86.865,
                 "beginningKM": 86.106,
-                "endKM": 87.558
+                "endKM": 87.558,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5564,7 +4221,8 @@
                 "lineNumber": 139,
                 "axisKM": 89.461,
                 "beginningKM": 89.321,
-                "endKM": 89.468
+                "endKM": 89.468,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5587,7 +4245,8 @@
                 "lineNumber": 139,
                 "axisKM": 92.7,
                 "beginningKM": 92.28,
-                "endKM": 93.36
+                "endKM": 93.36,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5610,7 +4269,8 @@
                 "lineNumber": 139,
                 "axisKM": 95.275,
                 "beginningKM": 95.2,
-                "endKM": 95.35
+                "endKM": 95.35,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5633,7 +4293,8 @@
                 "lineNumber": 139,
                 "axisKM": 98.235,
                 "beginningKM": 97.521,
-                "endKM": 98.81
+                "endKM": 98.81,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5656,7 +4317,8 @@
                 "lineNumber": 139,
                 "axisKM": 100,
                 "beginningKM": 99.9,
-                "endKM": 100.1
+                "endKM": 100.1,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5679,7 +4341,8 @@
                 "lineNumber": 139,
                 "axisKM": 101.75,
                 "beginningKM": 101.614,
-                "endKM": 101.754
+                "endKM": 101.754,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5702,7 +4365,8 @@
                 "lineNumber": 139,
                 "axisKM": 104.813,
                 "beginningKM": 104.345,
-                "endKM": 105.396
+                "endKM": 105.396,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5725,7 +4389,8 @@
                 "lineNumber": 139,
                 "axisKM": 108.008,
                 "beginningKM": 107.955,
-                "endKM": 108.155
+                "endKM": 108.155,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5748,7 +4413,8 @@
                 "lineNumber": 139,
                 "axisKM": 110.104,
                 "beginningKM": 110.093,
-                "endKM": 110.306
+                "endKM": 110.306,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5771,36 +4437,14 @@
                 "lineNumber": 139,
                 "axisKM": 113.354,
                 "beginningKM": 112.772,
-                "endKM": 113.785
+                "endKM": 113.785,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.50443104657002,
                     18.977732090676447
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_69fc",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_69fc",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_69fc",
-                "NAZWA_LINII": "KATOWICE - ZWARDOŃ",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zwardoń (Gr)",
-                "lineNumber": 139,
-                "axisKM": 113.785,
-                "beginningKM": 113.785,
-                "endKM": 113.785
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    49.50389045316209,
-                    18.971913224568198
                 ]
             }
         },
@@ -5817,7 +4461,8 @@
                 "lineNumber": 139,
                 "axisKM": 46.955,
                 "beginningKM": 46.926,
-                "endKM": 47.154
+                "endKM": 47.154,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5840,7 +4485,8 @@
                 "lineNumber": 139,
                 "axisKM": 48.749,
                 "beginningKM": 48.186,
-                "endKM": 49.755
+                "endKM": 49.755,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -5863,59 +4509,14 @@
                 "lineNumber": 139,
                 "axisKM": 52.216,
                 "beginningKM": 52.01,
-                "endKM": 52.552
+                "endKM": 52.552,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.86060252882657,
                     19.03597139520018
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a02",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a02",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a02",
-                "NAZWA_LINII": "KATOWICE LIGOTA - TYCHY",
-                "RODZAJ": "ST",
-                "NAZWA": "KAT.MURCKI",
-                "NAZWA_POS": "Katowice Murcki",
-                "lineNumber": 142,
-                "axisKM": 5.236,
-                "beginningKM": 4.59,
-                "endKM": 5.585
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.20212109421327,
-                    19.023455848400378
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a03",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a03",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a03",
-                "NAZWA_LINII": "KATOWICE LIGOTA - TYCHY",
-                "RODZAJ": "STTH",
-                "NAZWA": "Kat.Kostuchna",
-                "NAZWA_POS": "Katowice Kostuchna",
-                "lineNumber": 142,
-                "axisKM": 8.344,
-                "beginningKM": 7.24,
-                "endKM": 9.002
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.185749912210945,
-                    19.004149776438688
                 ]
             }
         },
@@ -5932,7 +4533,8 @@
                 "lineNumber": 117,
                 "axisKM": 48.007,
                 "beginningKM": 47.998,
-                "endKM": 48.184
+                "endKM": 48.184,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5955,7 +4557,8 @@
                 "lineNumber": 117,
                 "axisKM": 50.097,
                 "beginningKM": 49.515,
-                "endKM": 50.706
+                "endKM": 50.706,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -5978,36 +4581,14 @@
                 "lineNumber": 880,
                 "axisKM": 0.001,
                 "beginningKM": 0,
-                "endKM": 0.309
+                "endKM": 0.309,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.15100117479098,
                     18.68179745842461
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a30",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a30",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a30",
-                "NAZWA_LINII": "BOGUSZÓW GORCE WSCHÓD - MIEROSZÓW",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Mieroszów (Gr)",
-                "lineNumber": 291,
-                "axisKM": 32.563,
-                "beginningKM": 32.563,
-                "endKM": 32.563
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.63632853824778,
-                    16.220368607060223
                 ]
             }
         },
@@ -6024,7 +4605,8 @@
                 "lineNumber": 143,
                 "axisKM": 29.604,
                 "beginningKM": 28.491,
-                "endKM": 30.097
+                "endKM": 30.097,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6047,7 +4629,8 @@
                 "lineNumber": 143,
                 "axisKM": 34.996,
                 "beginningKM": 33.889,
-                "endKM": 35.601
+                "endKM": 35.601,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6070,7 +4653,8 @@
                 "lineNumber": 143,
                 "axisKM": 0.842,
                 "beginningKM": 0.841,
-                "endKM": 1.374
+                "endKM": 1.374,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6093,7 +4677,8 @@
                 "lineNumber": 143,
                 "axisKM": 7.405,
                 "beginningKM": 6.841,
-                "endKM": 8.417
+                "endKM": 8.417,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6116,7 +4701,8 @@
                 "lineNumber": 143,
                 "axisKM": 13.32,
                 "beginningKM": 13.117,
-                "endKM": 13.596
+                "endKM": 13.596,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6139,36 +4725,14 @@
                 "lineNumber": 143,
                 "axisKM": 24.365,
                 "beginningKM": 24.285,
-                "endKM": 24.531
+                "endKM": 24.531,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.71369270190311,
                     18.657729065113866
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a94",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a94",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6a94",
-                "NAZWA_LINII": "MOST NA RZECE BUG - SŁAWKÓW POŁUDNIOWY",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Hrubieszów (Gr)",
-                "lineNumber": 65,
-                "axisKM": 0,
-                "beginningKM": 0,
-                "endKM": 0
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.793785723936836,
-                    23.95790719171369
                 ]
             }
         },
@@ -6185,82 +4749,14 @@
                 "lineNumber": 660,
                 "axisKM": 0,
                 "beginningKM": -0.399,
-                "endKM": 0.654
+                "endKM": 0.654,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.269501523008365,
                     19.125717282203308
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b59",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b59",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b59",
-                "NAZWA_LINII": "SZCZECIN GUMIEŃCE - GRANICA PAŃSTWA (TANTOW)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Szczecin Gum/Tan(Gr)",
-                "lineNumber": 409,
-                "axisKM": 10.069,
-                "beginningKM": 10.069,
-                "endKM": 10.069
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    53.32573550715122,
-                    14.414591073820128
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b98",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b98",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6b98",
-                "NAZWA_LINII": "TARNOWSKIE GÓRY TGD - KALETY T4",
-                "RODZAJ": "ODST",
-                "NAZWA": "Zwierzyniec",
-                "NAZWA_POS": "Zwierzyniec",
-                "lineNumber": 130,
-                "axisKM": 44.6,
-                "beginningKM": 44.6,
-                "endKM": 44.6
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.53587726359159,
-                    18.891524192572206
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ba5",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ba5",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ba5",
-                "NAZWA_LINII": "BIAŁYSTOK - GŁOMNO",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Głomno (Gr)",
-                "lineNumber": 38,
-                "axisKM": 241.289,
-                "beginningKM": 241.289,
-                "endKM": 241.289
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    54.37154567850921,
-                    20.69817448928232
                 ]
             }
         },
@@ -6277,36 +4773,14 @@
                 "lineNumber": 135,
                 "axisKM": 1.977,
                 "beginningKM": 1.77,
-                "endKM": 2.08
+                "endKM": 2.08,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.357599772092016,
                     18.621884228580882
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c7c",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c7c",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c7c",
-                "NAZWA_LINII": "CHORZÓW BATORY - TCZEW",
-                "RODZAJ": "STTH",
-                "NAZWA": "Miedzno",
-                "NAZWA_POS": "Miedźno",
-                "lineNumber": 131,
-                "axisKM": 101.335,
-                "beginningKM": 100.233,
-                "endKM": 103.352
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.01593887827355,
-                    18.943944141457283
                 ]
             }
         },
@@ -6323,7 +4797,8 @@
                 "lineNumber": 131,
                 "axisKM": 40.22,
                 "beginningKM": 40.13,
-                "endKM": 40.619
+                "endKM": 40.619,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6346,7 +4821,8 @@
                 "lineNumber": 131,
                 "axisKM": 53.965,
                 "beginningKM": 53.9,
-                "endKM": 54.15
+                "endKM": 54.15,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6369,59 +4845,14 @@
                 "lineNumber": 131,
                 "axisKM": 59.678,
                 "beginningKM": 58.721,
-                "endKM": 60.683
+                "endKM": 60.683,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.66627524722937,
                     18.900651952526125
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c93",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c93",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c93",
-                "NAZWA_LINII": "CHORZÓW BATORY - TCZEW",
-                "RODZAJ": "STTH",
-                "NAZWA": "Wręczyca",
-                "NAZWA_POS": "Wręczyca",
-                "lineNumber": 131,
-                "axisKM": 79.585,
-                "beginningKM": 78.371,
-                "endKM": 80.6
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.8270857728633,
-                    18.89121168193017
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c94",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c94",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6c94",
-                "NAZWA_LINII": "CHORZÓW BATORY - TCZEW",
-                "RODZAJ": "STTH",
-                "NAZWA": "Kłobuck",
-                "NAZWA_POS": "Kłobuck",
-                "lineNumber": 131,
-                "axisKM": 89.209,
-                "beginningKM": 88.48,
-                "endKM": 90.61
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.907820630577746,
-                    18.92351128406273
                 ]
             }
         },
@@ -6438,7 +4869,8 @@
                 "lineNumber": 131,
                 "axisKM": 8.984,
                 "beginningKM": 7.892,
-                "endKM": 9.656
+                "endKM": 9.656,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6461,59 +4893,14 @@
                 "lineNumber": 131,
                 "axisKM": 25.591,
                 "beginningKM": 25.591,
-                "endKM": 25.843
+                "endKM": 25.843,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.39590687721296,
                     18.899978741870576
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6cc0",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6cc0",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6cc0",
-                "NAZWA_LINII": "KAMIENNA GÓRA - LUBAWKA",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Lubawka (Gr)",
-                "lineNumber": 299,
-                "axisKM": 12.794,
-                "beginningKM": 12.794,
-                "endKM": 12.794
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.686214283490145,
-                    15.984707340523467
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6d32",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6d32",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6d32",
-                "NAZWA_LINII": "TCZEW - KOSTRZYN",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Kostrzyn (Gr)",
-                "lineNumber": 203,
-                "axisKM": 342.453,
-                "beginningKM": 342.453,
-                "endKM": 342.453
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    52.57978043821036,
-                    14.62700118870627
                 ]
             }
         },
@@ -6530,7 +4917,8 @@
                 "lineNumber": 182,
                 "axisKM": 6.5,
                 "beginningKM": 6.45,
-                "endKM": 6.55
+                "endKM": 6.55,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6553,7 +4941,8 @@
                 "lineNumber": 182,
                 "axisKM": 18.256,
                 "beginningKM": 18.2,
-                "endKM": 18.3
+                "endKM": 18.3,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6576,7 +4965,8 @@
                 "lineNumber": 182,
                 "axisKM": 22.193,
                 "beginningKM": 22.15,
-                "endKM": 22.25
+                "endKM": 22.25,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6599,7 +4989,8 @@
                 "lineNumber": 182,
                 "axisKM": 30.201,
                 "beginningKM": 29.209,
-                "endKM": 30.561
+                "endKM": 30.561,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6622,7 +5013,8 @@
                 "lineNumber": 182,
                 "axisKM": 42.55,
                 "beginningKM": 42.5,
-                "endKM": 42.6
+                "endKM": 42.6,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6645,7 +5037,8 @@
                 "lineNumber": 149,
                 "axisKM": 4.695,
                 "beginningKM": 4.545,
-                "endKM": 4.74
+                "endKM": 4.74,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6668,36 +5061,14 @@
                 "lineNumber": 149,
                 "axisKM": 22.935,
                 "beginningKM": 22.218,
-                "endKM": 23.843
+                "endKM": 23.843,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.141113810954344,
                     18.61842069452991
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6e69",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6e69",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6e69",
-                "NAZWA_LINII": "JELENIA GÓRA - GRANICA PAŃSTWA (JAKUSZYCE)",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Jakuszyce (Gr)",
-                "lineNumber": 311,
-                "axisKM": 43.138,
-                "beginningKM": 43.138,
-                "endKM": 43.138
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.77844503034568,
-                    15.396326987871925
                 ]
             }
         },
@@ -6714,7 +5085,8 @@
                 "lineNumber": 140,
                 "axisKM": 5.861,
                 "beginningKM": 4.765,
-                "endKM": 6.229
+                "endKM": 6.229,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6737,7 +5109,8 @@
                 "lineNumber": 140,
                 "axisKM": 27.819,
                 "beginningKM": 27.711,
-                "endKM": 27.926
+                "endKM": 27.926,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6760,7 +5133,8 @@
                 "lineNumber": 140,
                 "axisKM": 67.097,
                 "beginningKM": 66.602,
-                "endKM": 67.862
+                "endKM": 67.862,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6783,7 +5157,8 @@
                 "lineNumber": 140,
                 "axisKM": 8.75,
                 "beginningKM": 8.074,
-                "endKM": 9.96
+                "endKM": 9.96,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6806,7 +5181,8 @@
                 "lineNumber": 140,
                 "axisKM": 12.886,
                 "beginningKM": 12.85,
-                "endKM": 13.097
+                "endKM": 13.097,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6829,7 +5205,8 @@
                 "lineNumber": 140,
                 "axisKM": 14.866,
                 "beginningKM": 14.357,
-                "endKM": 15.491
+                "endKM": 15.491,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6852,36 +5229,14 @@
                 "lineNumber": 140,
                 "axisKM": 18.63,
                 "beginningKM": 17.907,
-                "endKM": 19.701
+                "endKM": 19.701,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.154336164812214,
                     18.77760112752661
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ecb",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ecb",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ecb",
-                "NAZWA_LINII": "KATOWICE LIGOTA - NĘDZA",
-                "RODZAJ": "ODST",
-                "NAZWA": "Kamień",
-                "NAZWA_POS": "Kamień",
-                "lineNumber": 140,
-                "axisKM": 35.032,
-                "beginningKM": 34.992,
-                "endKM": 35.033
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.117228468266724,
-                    18.593828092964326
                 ]
             }
         },
@@ -6898,7 +5253,8 @@
                 "lineNumber": 140,
                 "axisKM": 37.679,
                 "beginningKM": 37.48,
-                "endKM": 37.7
+                "endKM": 37.7,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -6921,7 +5277,8 @@
                 "lineNumber": 140,
                 "axisKM": 44.82,
                 "beginningKM": 44.723,
-                "endKM": 45
+                "endKM": 45,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -6944,36 +5301,14 @@
                 "lineNumber": 140,
                 "axisKM": 46.932,
                 "beginningKM": 46.432,
-                "endKM": 47.852
+                "endKM": 47.852,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.06931600781752,
                     18.468169849909973
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ed1",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ed1",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6ed1",
-                "NAZWA_LINII": "KATOWICE LIGOTA - NĘDZA",
-                "RODZAJ": "ST",
-                "NAZWA": "Rydułtowy",
-                "NAZWA_POS": "Rydułtowy",
-                "lineNumber": 140,
-                "axisKM": 50.008,
-                "beginningKM": 49.232,
-                "endKM": 51.189
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.06899417749169,
-                    18.426245349498807
                 ]
             }
         },
@@ -6990,7 +5325,8 @@
                 "lineNumber": 140,
                 "axisKM": 53.756,
                 "beginningKM": 53.745,
-                "endKM": 53.907
+                "endKM": 53.907,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7013,7 +5349,8 @@
                 "lineNumber": 140,
                 "axisKM": 56.138,
                 "beginningKM": 56.135,
-                "endKM": 56.345
+                "endKM": 56.345,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7036,7 +5373,8 @@
                 "lineNumber": 140,
                 "axisKM": 59.086,
                 "beginningKM": 59.08,
-                "endKM": 59.3
+                "endKM": 59.3,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7059,36 +5397,14 @@
                 "lineNumber": 140,
                 "axisKM": 62.192,
                 "beginningKM": 61.909,
-                "endKM": 62.36
+                "endKM": 62.36,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.151197921809235,
                     18.34945335673454
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6f12",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6f12",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_6f12",
-                "NAZWA_LINII": "KUCELINKA - PORAJ",
-                "RODZAJ": "STTH",
-                "NAZWA": "Częst. Mirów",
-                "NAZWA_POS": "Częstochowa Mirów",
-                "lineNumber": 155,
-                "axisKM": 2.057,
-                "beginningKM": 1.691,
-                "endKM": 3.37
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.75713757105673,
-                    19.190165990910725
                 ]
             }
         },
@@ -7105,7 +5421,8 @@
                 "lineNumber": 151,
                 "axisKM": 41.306,
                 "beginningKM": 41.244,
-                "endKM": 41.694
+                "endKM": 41.694,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7128,7 +5445,8 @@
                 "lineNumber": 151,
                 "axisKM": 44.973,
                 "beginningKM": 44.086,
-                "endKM": 45.525
+                "endKM": 45.525,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7151,7 +5469,8 @@
                 "lineNumber": 151,
                 "axisKM": 48.007,
                 "beginningKM": 47.81,
-                "endKM": 48.19
+                "endKM": 48.19,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7174,7 +5493,8 @@
                 "lineNumber": 151,
                 "axisKM": 18.039,
                 "beginningKM": 16.582,
-                "endKM": 18.633
+                "endKM": 18.633,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
@@ -7197,59 +5517,14 @@
                 "lineNumber": 151,
                 "axisKM": 28.088,
                 "beginningKM": 27.456,
-                "endKM": 28.437
+                "endKM": 28.437,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     50.11348072007114,
                     18.27034515758889
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_700f",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_700f",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_700f",
-                "NAZWA_LINII": "WĘGLINIEC - BIELAWA DOLNA",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Bielawa Dolna (Gr)",
-                "lineNumber": 295,
-                "axisKM": 13.424,
-                "beginningKM": 13.424,
-                "endKM": 13.424
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.28618951687449,
-                    15.032272523691097
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_7033",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_7033",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_7033",
-                "NAZWA_LINII": "ZBĄSZYNEK - GUBIN",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Gubin (Gr)",
-                "lineNumber": 358,
-                "axisKM": 94.257,
-                "beginningKM": 94.257,
-                "endKM": 94.257
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.97361679849712,
-                    14.706814067451335
                 ]
             }
         },
@@ -7266,7 +5541,8 @@
                 "lineNumber": 97,
                 "axisKM": 65.1,
                 "beginningKM": 65,
-                "endKM": 65.2
+                "endKM": 65.2,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7289,7 +5565,8 @@
                 "lineNumber": 97,
                 "axisKM": 67.485,
                 "beginningKM": 67.375,
-                "endKM": 67.595
+                "endKM": 67.595,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7312,7 +5589,8 @@
                 "lineNumber": 97,
                 "axisKM": 70.252,
                 "beginningKM": 69.537,
-                "endKM": 70.653
+                "endKM": 70.653,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7335,7 +5613,8 @@
                 "lineNumber": 97,
                 "axisKM": 73.859,
                 "beginningKM": 73.774,
-                "endKM": 73.874
+                "endKM": 73.874,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
@@ -7358,82 +5637,14 @@
                 "lineNumber": 97,
                 "axisKM": 78.159,
                 "beginningKM": 77.669,
-                "endKM": 79.059
+                "endKM": 79.059,
+                "size": 1
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
                     49.67607107039424,
                     19.223162381440442
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709a",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709a",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709a",
-                "NAZWA_LINII": "WROCŁAW ŚWIEBODZKI - ZGORZELEC",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Zgorzelec (Gr)",
-                "lineNumber": 274,
-                "axisKM": 202.455,
-                "beginningKM": 202.455,
-                "endKM": 202.455
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    51.142875613873834,
-                    14.990639062164872
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709f",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709f",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_709f",
-                "NAZWA_LINII": "GŁUCHOŁAZY - POKRZYWNA",
-                "RODZAJ": "PGR",
-                "NAZWA": "Granica Państwa",
-                "NAZWA_POS": "Gr. (Pokrzywna) L.333 Km 11.225",
-                "lineNumber": 333,
-                "axisKM": 11.225,
-                "beginningKM": 11.225,
-                "endKM": 11.225
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.274709830924415,
-                    17.504754989754225
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "title": "WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_70fd",
-                "link": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_70fd",
-                "guid": "https://mapa.plk-sa.pl:8443/geoserver/SILK/wms/reflect?format=application%2Fatom%2Bxml&layers=SILK%3AWMS_SILK_stacje_przystanki&featureid=WMS_SILK_stacje_przystanki.fid--6b2ea9df_183c82b5c2b_70fd",
-                "NAZWA_LINII": "TUNEL - SOSNOWIEC GŁÓWNY",
-                "RODZAJ": "PO",
-                "NAZWA": "Sosn.Porąbka",
-                "NAZWA_POS": "Sosnowiec Porąbka",
-                "lineNumber": 62,
-                "axisKM": 75.685,
-                "beginningKM": 75.643,
-                "endKM": 76
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    50.27260842896507,
-                    19.21697392259854
                 ]
             }
         },
@@ -7450,7 +5661,8 @@
                 "lineNumber": 62,
                 "axisKM": 61.261,
                 "beginningKM": 60.34,
-                "endKM": 62.136
+                "endKM": 62.136,
+                "size": 2
             },
             "geometry": {
                 "type": "Point",
