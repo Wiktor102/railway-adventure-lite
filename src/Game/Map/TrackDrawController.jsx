@@ -5,7 +5,7 @@ import { useGameStore } from "../../store/GameStoreProvider";
 import Track from "../../store/models/Track";
 import { latLng } from "leaflet";
 import { pointNearestCircle } from "../../utils/utils";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const TrackDrawController = observer(() => {
 	const { stationStore, trackStore } = useGameStore();
@@ -17,12 +17,18 @@ const TrackDrawController = observer(() => {
 
 	const [selectedEndPoint, setSelectedEndPoint] = useState(null);
 	const [isForbidden, setIsForbidden] = useState(false);
+
+	const navigate = useNavigate();
 	const { "*": splat } = useParams();
 	const trackWidth = +splat;
 
 	const Component = Track.getComponent(trackWidth);
 
 	function rejectTrack() {
+		if (startStation == null) {
+			navigate("/game/tracks");
+		}
+
 		setStartStation(null);
 		setSelectedEndPoint(null);
 	}
