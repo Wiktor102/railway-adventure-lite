@@ -95,7 +95,7 @@ const TrackDrawController = observer(() => {
 			<Component
 				start={latLng(startStation.coordinates)}
 				end={endPoint}
-				color={isForbidden ? "red" : snappedStation.station ? "blue" : "orange"}
+				color={isForbidden ? "#ec3220" : snappedStation.station ? "#2572dd" : "#da8220"}
 			/>
 		</>
 	);

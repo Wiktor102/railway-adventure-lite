@@ -22,7 +22,7 @@ const TracksController = observer(() => {
 				const props = {
 					start: latLng(track.startStation.coordinates),
 					end: latLng(track.endStation.coordinates),
-					color: "blue"
+					color: "#2572dd"
 				};
 
 				if (renderWithActions) {

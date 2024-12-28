@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import PropTypes from "prop-types";
-import { LayerGroup, Polygon, Polyline } from "react-leaflet";
+import { LayerGroup, Polyline } from "react-leaflet";
 import { Marker } from "@adamscybot/react-leaflet-component-marker";
 import { latLng } from "leaflet";
 
@@ -18,8 +18,8 @@ function useTrackStyle(color) {
 
 	return {
 		fill: false,
-		color: color === "blue" ? "#2572dd" : color === "red" ? "#ec3220" : "#da8220",
-		weight: Math.round(zoom / 3) * (zoom > 12 ? Math.pow(1.2, zoom - 12) : 1)
+		weight: Math.round(zoom / 3) * (zoom > 12 ? Math.pow(1.2, zoom - 12) : 1),
+		color
 	};
 }
 
@@ -85,7 +85,12 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 		return [start, bottomRight, topRight, end, topLeft, bottomLeft];
 	}, [start, end, zoom, separation]);
 
-	return <Polygon positions={trackPoints} pathOptions={style} />;
+	return (
+		<>
+			<Polyline positions={[trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]]} pathOptions={style} />;
+			<Polyline positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]} pathOptions={style} />;
+		</>
+	);
 }
 
 DoubleTrack.propTypes = {
@@ -97,10 +102,10 @@ DoubleTrack.propTypes = {
 
 function TripleTrack({ start, end, color }) {
 	return (
-		<LayerGroup>
+		<>
 			<DoubleTrack start={start} end={end} color={color} separation={1.5} />
 			<SingleTrack start={start} end={end} color={color} />
-		</LayerGroup>
+		</>
 	);
 }
 
