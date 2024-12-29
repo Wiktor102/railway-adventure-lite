@@ -7,10 +7,10 @@ class Track {
 	width;
 	id;
 
-	/**@type {Station} */
+	/**@type {import("./Station").default} */
 	startStation;
 
-	/**@type {Station} */
+	/**@type {import("./Station").default} */
 	endStation;
 
 	static idCounter = 0;

@@ -3,7 +3,10 @@ import stationsData from "../assets/data/stations.json";
 import Station from "./models/Station";
 
 class StationStore {
+	/** @type {GameStore} */
 	gameStore;
+
+	/** @type {Station[]} */
 	stations = [];
 	snappedStation = { station: null, distance: null };
 
