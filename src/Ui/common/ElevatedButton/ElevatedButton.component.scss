@@ -1,0 +1,29 @@
+.elevated-button {
+	all: unset;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0.5rem 2rem;
+	background-color: var(--on-surface);
+	color: var(--surface);
+	border-radius: 10rem;
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&:hover,
+	&:focus {
+		background-color: var(--on-surface-lightest);
+	}
+
+	&.disabled {
+		background-color: gray;
+		color: var(--surface-lightest);
+		cursor: not-allowed;
+	}
+
+	&:is(a).disabled {
+		pointer-events: none;
+	}
+}
