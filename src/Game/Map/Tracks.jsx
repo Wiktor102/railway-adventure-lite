@@ -13,13 +13,12 @@ import IconButton from "../../Ui/common/IconButton/IconButton";
 
 import tractActionStyles from "./TrackActions.component.scss";
 
-function useTrackStyle(color) {
+function useTrackStyle() {
 	const zoom = useMapZoom();
 
 	return {
 		fill: false,
-		weight: Math.round(zoom / 3) * (zoom > 12 ? Math.pow(1.2, zoom - 12) : 1),
-		color
+		weight: Math.round(zoom / 3) * (zoom > 12 ? Math.pow(1.2, zoom - 12) : 1)
 	};
 }
 
@@ -62,18 +61,26 @@ TrackDeleteAction.propTypes = {
 function SingleTrack({ start, end, color }) {
 	const style = useTrackStyle(color);
 
-	return <Polyline positions={[start, end]} pathOptions={style} />;
+	if (Array.isArray(color)) {
+		if (color.length !== 1) console.warn("SingleTrack: color prop should be a string or an array with a single string");
+		color = color[0];
+	}
+
+	return <Polyline positions={[start, end]} pathOptions={{ ...style, color }} />;
 }
 
 SingleTrack.propTypes = {
 	start: PropTypes.object.isRequired,
 	end: PropTypes.object.isRequired,
-	color: PropTypes.string
+	color: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
 };
 
 function DoubleTrack({ start, end, color, separation = 1 }) {
 	const zoom = useMapZoom();
-	const style = useTrackStyle(color);
+	const style = useTrackStyle();
+
+	if (!Array.isArray(color)) color = [color, color];
+	if (color.length !== 2) console.warn("DoubleTrack: color prop should be a string or an array with two strings");
 
 	const trackPoints = useMemo(() => {
 		const distance = start.distanceTo(end);
@@ -87,8 +94,14 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 
 	return (
 		<>
-			<Polyline positions={[trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]]} pathOptions={style} />;
-			<Polyline positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]} pathOptions={style} />;
+			<Polyline
+				positions={[trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]]}
+				pathOptions={{ ...style, color: color[0] }}
+			/>
+			<Polyline
+				positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]}
+				pathOptions={{ ...style, color: color[0] }}
+			/>
 		</>
 	);
 }
@@ -96,15 +109,18 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 DoubleTrack.propTypes = {
 	start: PropTypes.object.isRequired,
 	end: PropTypes.object.isRequired,
-	color: PropTypes.string,
+	color: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
 	separation: PropTypes.number
 };
 
 function TripleTrack({ start, end, color }) {
+	if (!Array.isArray(color)) color = [color, color, color];
+	if (color.length !== 3) console.warn("TripleTrack: color prop should be a string or an array with two strings");
+
 	return (
 		<>
-			<DoubleTrack start={start} end={end} color={color} separation={1.5} />
-			<SingleTrack start={start} end={end} color={color} />
+			<DoubleTrack start={start} end={end} color={color.slice(0, 2)} separation={1.5} />
+			<SingleTrack start={start} end={end} color={color[2]} />
 		</>
 	);
 }
@@ -112,7 +128,7 @@ function TripleTrack({ start, end, color }) {
 TripleTrack.propTypes = {
 	start: PropTypes.object.isRequired,
 	end: PropTypes.object.isRequired,
-	color: PropTypes.string
+	color: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
 };
 
 export { TrackWithActions, SingleTrack, DoubleTrack, TripleTrack, TrackDeleteAction };
