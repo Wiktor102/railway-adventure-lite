@@ -12,9 +12,10 @@ button {
 
 	pointer-events: all;
 	cursor: pointer;
+	outline: none;
 	transition: background-color 200ms;
 
-	&:hover {
+	&:is(:hover, :focus) {
 		background-color: var(--surface-lighter);
 	}
 
