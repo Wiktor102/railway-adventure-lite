@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 // components
 import StatusBox from "./common/StatusBox/StatusBox";
-import IconButton from "./common/IconButton/IconButton";
+import IconButton, { IconLinkButton } from "./common/IconButton/IconButton";
 
 // routing
 import routes from "../Router/Routes";
@@ -28,11 +28,14 @@ const Ui = observer(() => {
 			</div>
 			<div className="game-ui-right">
 				{routes.map(route => (
-					<Link to={pathname.includes(route.id) ? "" : route.id} key={route.id}>
-						<IconButton onClick={() => {}} active={pathname.includes(route.id)}>
-							{route.icon}
-						</IconButton>
-					</Link>
+					<IconLinkButton
+						to={pathname.includes(route.id) ? "" : route.id}
+						key={route.id}
+						onClick={() => {}}
+						active={pathname.includes(route.id)}
+					>
+						{route.icon}
+					</IconLinkButton>
 				))}
 			</div>
 			<div className="game-ui-left">

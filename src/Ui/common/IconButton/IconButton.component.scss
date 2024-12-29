@@ -1,4 +1,4 @@
-button {
+.icon-button {
 	display: block;
 	height: 100%;
 	aspect-ratio: 1 / 1;
@@ -9,6 +9,8 @@ button {
 	border-radius: 10px;
 	box-shadow: -2px 2px 2px #093d5e77;
 	font-size: 1.5rem;
+	line-height: 1;
+	text-align: center;
 
 	pointer-events: all;
 	cursor: pointer;
