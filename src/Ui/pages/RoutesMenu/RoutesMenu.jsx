@@ -1,10 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { ElevatedLinkButton } from "../../common/ElevatedButton/ElevatedButton";
 
+// hooks
+import { useGameStore } from "../../../store/GameStoreProvider";
+
+// components
+import IconButton, { IconLinkButton } from "../../common/IconButton/IconButton";
+
 // style
 import style from "./RoutesMenu.component.scss";
-import { useGameStore } from "../../../store/GameStoreProvider";
-import IconButton from "../../common/IconButton/IconButton";
 
 const RoutesMenu = observer(() => {
 	const { routeStore } = useGameStore();
@@ -23,9 +27,9 @@ const RoutesMenu = observer(() => {
 						</p>
 						<div className="stations">{route.stations.length} przystanków</div>
 						<div className="buttons">
-							<IconButton onClick={() => {}}>
+							<IconLinkButton to={"/game/routes/details/" + route.id}>
 								<i className="fas fa-pencil"></i>
-							</IconButton>
+							</IconLinkButton>
 							<IconButton onClick={() => {}}>
 								<i className="fas fa-trash"></i>
 							</IconButton>

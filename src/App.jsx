@@ -37,6 +37,10 @@ function App() {
 								path="routes/create"
 								element={<NamedRoute outlets={[{ name: "menu-content", content: <RouteDetails /> }]} />}
 							/>
+							<Route
+								path="routes/details/:routeId"
+								element={<NamedRoute outlets={[{ name: "menu-content", content: <RouteDetails /> }]} />}
+							/>
 						</>
 					</Route>
 				</Routes>
