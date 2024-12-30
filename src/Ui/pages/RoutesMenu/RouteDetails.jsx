@@ -53,9 +53,9 @@ const RouteDetails = observer(() => {
 						<h3>Przystanki</h3>
 						<ul className="stops-list">
 							{route.stations.map(station => (
-								<li key={station.name}>
+								<li key={station}>
 									<div className="decoration"></div>
-									<p>{station.name}</p>
+									<p>{station}</p>
 								</li>
 							))}
 						</ul>

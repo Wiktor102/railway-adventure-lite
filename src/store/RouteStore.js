@@ -35,7 +35,7 @@ class RouteStore {
 			return true;
 		}
 
-		const path = findPath(this.gameStore.stationStore.stationsMap, this.currentRoute.stations.at(-1).name, station.name);
+		const path = findPath(this.gameStore.stationStore.stationsMap, this.currentRoute.stations.at(-1), station.name);
 		if (path == null) return false;
 
 		this.currentRoute.addStation(station);

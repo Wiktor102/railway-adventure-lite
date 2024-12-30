@@ -6,7 +6,7 @@ class Route {
 	width;
 	id;
 
-	/**@type {Station[]} */
+	/**@type {String[]} */
 	stations = [];
 
 	/**@type {Path} */
@@ -36,7 +36,7 @@ class Route {
 	}
 
 	addStation(station) {
-		this.stations.push(station);
+		this.stations.push(station.name);
 	}
 
 	/**

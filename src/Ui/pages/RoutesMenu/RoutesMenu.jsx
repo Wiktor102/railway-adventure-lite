@@ -23,7 +23,7 @@ const RoutesMenu = observer(() => {
 							{route.name}
 						</p>
 						<p className="route">
-							{route.stations[0].name} - {route.stations.at(-1).name}
+							{route.stations[0]} - {route.stations.at(-1)}
 						</p>
 						<div className="stations">{route.stations.length} przystanków</div>
 						<div className="buttons">
