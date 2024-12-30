@@ -57,20 +57,28 @@
 			display: flex;
 			align-items: center;
 			margin: 0.5rem 0;
-		}
+			gap: 0.5rem;
 
-		p {
-			margin: 0;
-			font-size: 1.125rem;
-		}
+			&.shadow {
+				color: gray;
+			}
 
-		.decoration {
-			height: 1lh;
-			aspect-ratio: 1;
-			margin-inline-end: 0.5rem;
-			border-radius: 50%;
-			border: 2px solid var(--on-surface-lighter);
-			position: relative;
+			.decoration {
+				height: 1lh;
+				aspect-ratio: 1;
+				border-radius: 50%;
+				border: 2px solid currentColor;
+				position: relative;
+			}
+
+			p {
+				margin: 0;
+				font-size: 1.125rem;
+			}
+
+			button:first-of-type {
+				margin-inline-start: auto;
+			}
 		}
 
 		li:not(:first-child) .decoration::before {
@@ -79,7 +87,7 @@
 			width: 2px;
 			height: calc(1rem - 1px);
 			left: 50%;
-			background-color: var(--on-surface-lighter);
+			background-color: currentColor;
 			translate: -1px calc(-1rem + 1px);
 		}
 	}

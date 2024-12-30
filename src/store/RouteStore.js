@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
 // import Track from "./models/Track";
 import Route from "./models/Route";
-import findPath from "../utils/pathfinding";
 
 class RouteStore {
 	gameStore;
@@ -30,17 +29,7 @@ class RouteStore {
 	};
 
 	addToCurrentRoute = station => {
-		if (this.currentRoute.stations.length === 0) {
-			this.currentRoute.addStation(station);
-			return true;
-		}
-
-		const path = findPath(this.gameStore.stationStore.stationsMap, this.currentRoute.stations.at(-1), station.name);
-		if (path == null) return false;
-
-		this.currentRoute.addStation(station);
-		this.currentRoute.updatePath(path);
-		return true;
+		return this.currentRoute.addStation(station.name, this.gameStore.stationStore.stationsMap);
 	};
 
 	acceptCurrentRoute = () => {

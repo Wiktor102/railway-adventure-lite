@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react-lite";
-import { useMatch } from "react-router";
+import { useMatch, useParams } from "react-router";
 import { Circle, Pane, Popup } from "react-leaflet";
 import { Marker } from "@adamscybot/react-leaflet-component-marker";
 import { latLng } from "leaflet";
@@ -63,10 +63,12 @@ function StationMarker({ station }) {
 	const hover = snappedStation?.station?.name === station.name;
 
 	const drawingRoute = useMatch("/game/routes/create");
+	const { routeId } = useParams();
 	const { routeStore } = useGameStore();
 
 	function onClick() {
 		if (drawingRoute) routeStore.addToCurrentRoute(station);
+		if (routeId != null) console.log("editing route", routeId);
 	}
 
 	let z = 22 * Math.pow((zoom - 5) / 10, 0.5);

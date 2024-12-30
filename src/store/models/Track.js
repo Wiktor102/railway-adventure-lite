@@ -39,6 +39,14 @@ class Track {
 		this.lanes[this.width - 1] = route;
 	}
 
+	/**
+	 * @param {number} routeId
+	 * @returns {void}
+	 */
+	removeRoute(routeId) {
+		this.lanes = this.lanes.map(route => (route?.id === routeId ? null : route));
+	}
+
 	getComponent() {
 		return Track.getComponent(this.width);
 	}

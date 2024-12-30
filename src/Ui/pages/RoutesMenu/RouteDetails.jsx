@@ -12,7 +12,7 @@ import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 import style from "./RouteDetails.component.scss";
 
 const RouteDetails = observer(() => {
-	const { routeStore } = useGameStore();
+	const { routeStore, stationStore } = useGameStore();
 	const navigate = useNavigate();
 
 	const { routeId } = useParams();
@@ -25,6 +25,15 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore.currentRoute]);
 
+	function toggleStop(stationName) {
+		const hasStation = route.stations.includes(stationName);
+		if (hasStation) {
+			route.removeStation(stationName);
+		} else {
+			route.addStation(stationName, stationStore.stationsMap);
+		}
+	}
+
 	function accept() {
 		const success = routeStore.acceptCurrentRoute();
 		if (!success) {
@@ -34,6 +43,8 @@ const RouteDetails = observer(() => {
 		}
 	}
 
+	// console.log([...route.path].map(p => ({ ...p })));
+	// console.log(route.stations);
 	if (!route) return null;
 	return (
 		<>
@@ -50,14 +61,37 @@ const RouteDetails = observer(() => {
 						</div>
 					</form>
 					<div className="stops-list-wrapper">
-						<h3>Przystanki</h3>
+						<h3>Trasa</h3>
 						<ul className="stops-list">
-							{route.stations.map(station => (
-								<li key={station}>
+							{route.path.map((segment, i) => {
+								const isStop = route.stations.includes(segment.from);
+								return (
+									<li className={isStop ? "" : "shadow"} key={segment.from + segment.to}>
+										<div className="decoration"></div>
+										<p>{segment.from}</p>
+										{i > 0 && (
+											<button onClick={() => toggleStop(segment.from)}>
+												<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
+											</button>
+										)}
+
+										{i === 0 && (
+											<button onClick={() => toggleStop(segment.from)}>
+												<i className="fas fa-trash"></i>
+											</button>
+										)}
+									</li>
+								);
+							})}
+							{route.stations.length > 0 && (
+								<li>
 									<div className="decoration"></div>
-									<p>{station}</p>
+									<p>{route.stations.at(-1)}</p>
+									<button onClick={() => toggleStop(route.stations.at(-1))}>
+										<i className="fas fa-trash"></i>
+									</button>
 								</li>
-							))}
+							)}
 						</ul>
 					</div>
 					{route.draft && (
