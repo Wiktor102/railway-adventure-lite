@@ -13,6 +13,9 @@ class Track {
 	/**@type {import("./Station").default} */
 	endStation;
 
+	/**@type {import("./Route").default[]} */
+	lanes;
+
 	static idCounter = 0;
 
 	constructor(width, startStation, endStation) {
@@ -21,6 +24,15 @@ class Track {
 		this.width = width;
 		this.startStation = startStation;
 		this.endStation = endStation;
+		this.lanes = new Array(width).fill(null);
+	}
+
+	/**
+	 * @param {Route} route
+	 * @returns {void}
+	 */
+	addRoute(route) {
+		this.lanes[this.width - 1] = route;
 	}
 
 	getComponent() {

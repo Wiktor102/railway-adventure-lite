@@ -17,9 +17,9 @@ class TrackStore {
 	 * @returns {void}
 	 * */
 	addTrack = track => {
+		track.startStation.addNeighbor(track.endStation, track);
+		track.endStation.addNeighbor(track.startStation, track);
 		this.tracks.push(track);
-		this.gameStore.stationStore.getStationByName(track.startStation.name).addTrack(track);
-		this.gameStore.stationStore.getStationByName(track.endStation.name).addTrack(track);
 	};
 
 	/**
@@ -28,8 +28,8 @@ class TrackStore {
 	 * */
 	deleteTrack = trackId => {
 		const track = this.tracks.find(t => t.id === trackId);
-		this.gameStore.stationStore.getStationByName(track.startStation.name).deleteTrack(trackId);
-		this.gameStore.stationStore.getStationByName(track.endStation.name).deleteTrack(trackId);
+		track.startStation.deleteNeighbor(track.endStation.name);
+		track.endStation.deleteNeighbor(track.startStation.name);
 		this.tracks = this.tracks.filter(t => t.id !== trackId);
 	};
 }

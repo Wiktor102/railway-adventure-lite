@@ -1,3 +1,4 @@
+import RoutesMenu from "../Ui/pages/RoutesMenu/RoutesMenu";
 import TrackDrawTips from "../Ui/pages/TrackDrawTips/TrackDrawTips";
 import TracksMenu from "../Ui/pages/TracksMenu";
 import trackIcon from "../assets/icons/track.svg";
@@ -12,7 +13,7 @@ const routes = [
 	{
 		id: "routes",
 		icon: <i className="fa-solid fa-route"></i>,
-		element: <h2>Trasy</h2>
+		element: <RoutesMenu />
 	},
 	{
 		id: "trains",

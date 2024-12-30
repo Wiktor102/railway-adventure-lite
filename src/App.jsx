@@ -3,9 +3,14 @@ import HomePage from "./Home/Home";
 import Game from "./Game/Game";
 
 // routing
-import routes from "./Router/Routes";
 import NamedRoute from "./Router/components/NamedRoute";
 import NamedRouter from "./Router/components/NamedRouter";
+
+// components
+import TracksMenu from "./Ui/pages/TracksMenu";
+import TrackDrawTips from "./Ui/pages/TrackDrawTips/TrackDrawTips";
+import RoutesMenu from "./Ui/pages/RoutesMenu/RoutesMenu";
+import NewRoute from "./Ui/pages/RoutesMenu/NewRoute";
 
 function App() {
 	return (
@@ -14,20 +19,25 @@ function App() {
 				<Routes>
 					<Route index element={<HomePage />} />
 					<Route path="game" element={<Game />}>
-						{routes.map(route => (
+						<Route
+							path="tracks/*"
+							element={<NamedRoute outlets={[{ name: "menu-content", content: <TracksMenu /> }]} />}
+						>
 							<Route
-								path={`${route.id}/*`}
-								element={<NamedRoute outlets={[{ name: "menu-content", content: route.element }]} />}
-								key={route.id}
-							>
-								{route.id === "tracks" && (
-									<Route
-										path="build/*"
-										element={<NamedRoute outlets={[{ name: "tips", content: route.tips }]} />}
-									/>
-								)}
-							</Route>
-						))}
+								path="build/*"
+								element={<NamedRoute outlets={[{ name: "tips", content: <TrackDrawTips /> }]} />}
+							/>
+						</Route>
+						<>
+							<Route
+								path="routes"
+								element={<NamedRoute outlets={[{ name: "menu-content", content: <RoutesMenu /> }]} />}
+							/>
+							<Route
+								path="routes/create"
+								element={<NamedRoute outlets={[{ name: "menu-content", content: <NewRoute /> }]} />}
+							/>
+						</>
 					</Route>
 				</Routes>
 			</NamedRouter>

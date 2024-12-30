@@ -1,0 +1,91 @@
+@scope tree;
+
+.create-route-menu {
+	& > div {
+		display: grid;
+		margin-inline: 1.5rem;
+	}
+
+	form {
+		display: flex;
+		gap: 1rem;
+	}
+
+	input {
+		background-color: var(--surface-lighter);
+		border: none;
+	}
+
+	input[type="text"] {
+		display: block;
+		width: 100%;
+		padding: 0.75rem 1rem;
+		font-size: 1.125rem;
+		margin-bottom: 2px;
+		border-radius: 0.5rem 0.5rem 0 0;
+		outline: none;
+
+		&:focus-visible {
+			margin: 0;
+			border-bottom: 2px solid var(--on-surface-lighter);
+		}
+	}
+
+	.color-input-wrapper {
+		overflow: hidden;
+		width: 3rem;
+		border-radius: 0.5rem;
+		cursor: pointer;
+
+		input {
+			width: 200%;
+			height: 200%;
+			margin: -50%;
+		}
+	}
+
+	.stops-list-wrapper h3 {
+		margin-block-end: 1rem;
+	}
+
+	.stops-list {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			display: flex;
+			align-items: center;
+			margin: 0.5rem 0;
+		}
+
+		p {
+			margin: 0;
+			font-size: 1.125rem;
+		}
+
+		.decoration {
+			height: 1lh;
+			aspect-ratio: 1;
+			margin-inline-end: 0.5rem;
+			border-radius: 50%;
+			border: 2px solid var(--on-surface-lighter);
+			position: relative;
+		}
+
+		li:not(:first-child) .decoration::before {
+			content: "";
+			position: absolute;
+			width: 2px;
+			height: calc(1rem - 1px);
+			left: 50%;
+			background-color: var(--on-surface-lighter);
+			translate: -1px calc(-1rem + 1px);
+		}
+	}
+
+	& > div > button {
+		margin-block-start: 1.5rem;
+		width: 100%;
+	}
+}

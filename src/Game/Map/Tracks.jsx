@@ -87,7 +87,7 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 		const tipLength = distance < 10000 ? distance * 0.2 : distance * 0.05;
 
 		const offsetX = distance - tipLength * 2;
-		const offsetY = -40 * zoom + (240 - 12 * -40) * separation;
+		const offsetY = Math.max(-40 * zoom + (240 - 12 * -40) * separation, 80);
 		const { topLeft, topRight, bottomLeft, bottomRight } = calculateKiteVertices(start, end, offsetX, offsetY);
 		return [start, bottomRight, topRight, end, topLeft, bottomLeft];
 	}, [start, end, zoom, separation]);
@@ -100,7 +100,7 @@ function DoubleTrack({ start, end, color, separation = 1 }) {
 			/>
 			<Polyline
 				positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]}
-				pathOptions={{ ...style, color: color[0] }}
+				pathOptions={{ ...style, color: color[1] }}
 			/>
 		</>
 	);

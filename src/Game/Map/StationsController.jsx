@@ -62,6 +62,13 @@ function StationMarker({ station }) {
 	const { snappedStation } = stationStore;
 	const hover = snappedStation?.station?.name === station.name;
 
+	const drawingRoute = useMatch("/game/routes/create");
+	const { routeStore } = useGameStore();
+
+	function onClick() {
+		if (drawingRoute) routeStore.addToCurrentRoute(station);
+	}
+
 	let z = 22 * Math.pow((zoom - 5) / 10, 0.5);
 	let showName = zoom >= 12;
 	let sizeName = "smallest";
@@ -115,6 +122,9 @@ function StationMarker({ station }) {
 					)}
 				</div>
 			}
+			eventHandlers={{
+				click: onClick
+			}}
 		>
 			<Popup>{station.name}</Popup>
 		</Marker>

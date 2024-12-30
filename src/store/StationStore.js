@@ -6,18 +6,25 @@ class StationStore {
 	/** @type {GameStore} */
 	gameStore;
 
-	/** @type {Station[]} */
-	stations = [];
+	/** @type {Map<String,Station>} */
+	stationsMap = new Map();
+
 	snappedStation = { station: null, distance: null };
+
+	get stations() {
+		return [...this.stationsMap.values()];
+	}
 
 	constructor(gameStore) {
 		makeAutoObservable(this, { gameStore: false });
 
 		this.gameStore = gameStore;
-		this.stations = stationsData.features.reduce((arr, station) => {
-			if (station.properties.NAZWA_POS.includes("Gr")) return arr;
-			return [...arr, new Station(station)];
-		}, []);
+		this.stationsMap = stationsData.features.reduce((map, station) => {
+			if (station.properties.NAZWA_POS.includes("Gr")) return map;
+			const s = new Station(station);
+			map.set(s.name, s);
+			return map;
+		}, new Map());
 	}
 
 	getStationByName(name) {

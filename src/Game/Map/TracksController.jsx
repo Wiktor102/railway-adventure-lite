@@ -14,15 +14,27 @@ const TracksController = observer(() => {
 	const renderDrawController = useMatch("/game/tracks/build/*");
 	const renderWithActions = useMatch("/game/tracks");
 
+	const renderWithRoutes = useMatch("/game/routes/*");
+	const renderWithDraftRoute = useMatch("/game/routes/create");
+
 	return (
 		<>
 			{renderDrawController && <TrackDrawController />}
 			{trackStore.tracks.map((track, i) => {
 				const C = track.getComponent();
+				const colors = renderWithRoutes
+					? track.lanes.map(l => {
+							if (l == null) return "#2572dd";
+							if (l.draft && !renderWithDraftRoute) return "#2572dd";
+							return renderWithDraftRoute && !l.draft ? l.color + "a4" : l.color;
+							// eslint-disable-next-line no-mixed-spaces-and-tabs
+					  })
+					: "#2572dd";
+
 				const props = {
 					start: latLng(track.startStation.coordinates),
 					end: latLng(track.endStation.coordinates),
-					color: "#2572dd"
+					color: colors
 				};
 
 				if (renderWithActions) {

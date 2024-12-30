@@ -5,8 +5,8 @@ class Station {
 	size;
 	coordinates;
 
-	/** @type {Track[]} */
-	tracks = [];
+	/** @type {Map<String,import("./Track").default>} */
+	neighbors = new Map();
 
 	constructor({ geometry, properties }) {
 		makeAutoObservable(this, { coordinates: false, name: false });
@@ -17,12 +17,21 @@ class Station {
 			geometry.coordinates[0] > geometry.coordinates[1] ? geometry.coordinates : geometry.coordinates.reverse();
 	}
 
-	addTrack(track) {
-		this.tracks.push(track);
+	/**
+	 * @param {Station} station
+	 * @param {Track} track
+	 * @returns {void}
+	 */
+	addNeighbor(station, track) {
+		this.neighbors.set(station.name, track);
 	}
 
-	deleteTrack(trackId) {
-		this.tracks = this.tracks.filter(track => track.id !== trackId);
+	/**
+	 * @param {string} stationName
+	 * @returns {void}
+	 */
+	deleteNeighbor(stationName) {
+		this.neighbors.delete(stationName);
 	}
 }
 
