@@ -27,6 +27,14 @@ class Route {
 		this.color = "#da7313";
 	}
 
+	setName(name) {
+		this.name = name;
+	}
+
+	setColor(color) {
+		this.color = color;
+	}
+
 	addStation(station) {
 		this.stations.push(station);
 	}

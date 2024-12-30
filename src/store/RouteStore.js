@@ -43,11 +43,6 @@ class RouteStore {
 		return true;
 	};
 
-	updateCurrentRouteProperty = (property, value) => {
-		if (!this.currentRoute) return;
-		this.currentRoute[property] = value;
-	};
-
 	acceptCurrentRoute = () => {
 		if (this.currentRoute.stations.length < 2) {
 			return false;
