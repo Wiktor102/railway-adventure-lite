@@ -25,6 +25,16 @@
 		background-color: var(--surface-lightest);
 	}
 
+	&.disabled {
+		background-color: gray;
+		color: var(--surface-lightest);
+		cursor: not-allowed;
+	}
+
+	&:is(a).disabled {
+		pointer-events: none;
+	}
+
 	img {
 		height: 1.5rem;
 	}
