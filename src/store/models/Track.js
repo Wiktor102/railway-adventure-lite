@@ -18,6 +18,10 @@ class Track {
 
 	static idCounter = 0;
 
+	get hasRoute() {
+		return this.lanes.some(lane => lane !== null);
+	}
+
 	constructor(width, startStation, endStation) {
 		makeAutoObservable(this);
 		this.id = Track.idCounter++;

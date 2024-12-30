@@ -40,7 +40,12 @@ const TracksController = observer(() => {
 				if (renderWithActions) {
 					return (
 						<TrackWithActions
-							actions={<TrackDeleteAction onClick={() => trackStore.deleteTrack(track.id)} />}
+							actions={
+								<TrackDeleteAction
+									onClick={() => trackStore.deleteTrack(track.id)}
+									disabled={track.hasRoute}
+								/>
+							}
 							key={i}
 						>
 							<C {...props} />

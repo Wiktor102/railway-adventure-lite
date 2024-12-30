@@ -39,7 +39,7 @@ TrackWithActions.propTypes = {
 	actions: PropTypes.element.isRequired
 };
 
-function TrackDeleteAction({ onClick }) {
+function TrackDeleteAction({ onClick, disabled = false }) {
 	function handleClick(e) {
 		e.stopPropagation();
 		onClick(e);
@@ -47,7 +47,7 @@ function TrackDeleteAction({ onClick }) {
 
 	return (
 		<div className="track-action" data-style={tractActionStyles}>
-			<IconButton onClick={handleClick}>
+			<IconButton onClick={handleClick} disabled={disabled}>
 				<i className="fas fa-trash"></i>
 			</IconButton>
 		</div>
@@ -55,7 +55,8 @@ function TrackDeleteAction({ onClick }) {
 }
 
 TrackDeleteAction.propTypes = {
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func.isRequired,
+	disabled: PropTypes.bool
 };
 
 function SingleTrack({ start, end, color }) {
