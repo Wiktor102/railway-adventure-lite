@@ -1,11 +1,17 @@
-import { observer } from "mobx-react-lite";
-import { useGameStore } from "../../../store/GameStoreProvider";
-import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
-import style from "./NewRoute.component.scss";
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import { Link, useNavigate } from "react-router";
 
-const NewRoute = observer(() => {
+// hooks
+import { useGameStore } from "../../../store/GameStoreProvider";
+
+// components
+import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
+
+// styles
+import style from "./RouteDetails.component.scss";
+
+const RouteDetails = observer(() => {
 	const { routeStore } = useGameStore();
 	const navigate = useNavigate();
 
@@ -67,4 +73,4 @@ const NewRoute = observer(() => {
 	);
 });
 
-export default NewRoute;
+export default RouteDetails;

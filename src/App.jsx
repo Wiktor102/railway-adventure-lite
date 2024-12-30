@@ -10,7 +10,7 @@ import NamedRouter from "./Router/components/NamedRouter";
 import TracksMenu from "./Ui/pages/TracksMenu";
 import TrackDrawTips from "./Ui/pages/TrackDrawTips/TrackDrawTips";
 import RoutesMenu from "./Ui/pages/RoutesMenu/RoutesMenu";
-import NewRoute from "./Ui/pages/RoutesMenu/NewRoute";
+import RouteDetails from "./Ui/pages/RoutesMenu/RouteDetails";
 
 function App() {
 	return (
@@ -35,7 +35,7 @@ function App() {
 							/>
 							<Route
 								path="routes/create"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <NewRoute /> }]} />}
+								element={<NamedRoute outlets={[{ name: "menu-content", content: <RouteDetails /> }]} />}
 							/>
 						</>
 					</Route>
