@@ -57,19 +57,30 @@ class Route {
 			const path = findPath(graph, this.stations.at(-1), stationName);
 			if (path == null) return false;
 			this.updatePath(path);
+			this.stations.push(stationName);
+			return true;
 		}
 
 		const segmentIndex = this.path.findIndex(segment => segment.to === stationName);
 		if (segmentIndex === -1) {
-			const path = findPath(graph, this.stations.at(-1), stationName);
-			this.updatePath([...this.path, ...path]);
+			// Add new station at the end of the route
+			const newPathSegments = findPath(graph, this.stations.at(-1), stationName);
+
+			const overlaps = newPathSegments.some(newSegment =>
+				this.path.some(existingSegment => existingSegment.track.id === newSegment.track.id)
+			);
+			if (overlaps) return false;
+
+			this.updatePath([...this.path, ...newPathSegments]);
 			this.stations.push(stationName);
 			return;
 		}
 
 		const nextExistingStation = this.path.slice(segmentIndex).find(segment => this.stations.includes(segment.to))?.to;
 
+		// Should never happen
 		if (!nextExistingStation) {
+			console.error("Route.addStation: nextExistingStation is null! This should've never happened.");
 			this.stations.push(stationName);
 			return;
 		}
