@@ -1,8 +1,12 @@
 @scope tree;
 
 .routes-menu {
+	height: 100%;
+
 	& > div {
-		display: grid;
+		display: flex;
+		flex-direction: column;
+		height: calc(100% - 5rem);
 	}
 
 	& > div > a {
@@ -57,5 +61,16 @@
 		li + li {
 			margin-block-start: 1rem;
 		}
+	}
+
+	.no-routes {
+		display: grid;
+		place-content: center;
+		flex-grow: 1;
+		padding: 1rem;
+		margin-inline: 1.5rem;
+		background-color: var(--surface-lighter);
+		border-radius: 1rem;
+		font-size: 1.5rem;
 	}
 }
