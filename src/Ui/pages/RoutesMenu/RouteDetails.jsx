@@ -62,38 +62,45 @@ const RouteDetails = observer(() => {
 					</form>
 					<div className="stops-list-wrapper">
 						<h3>Trasa</h3>
-						<ul className="stops-list">
-							{route.path.map((segment, i) => {
-								const isStop = route.stations.includes(segment.from);
-								return (
-									<li className={isStop ? "" : "shadow"} key={segment.from + segment.to}>
-										<div className="decoration"></div>
-										<p>{segment.from}</p>
-										{i > 0 && (
-											<button onClick={() => toggleStop(segment.from)}>
-												<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
-												{isStop ? "\u00A0Usuń przystanek" : "Dodaj przystanek"}
-											</button>
-										)}
+						{route.stations.length > 0 && (
+							<ul className="stops-list">
+								{route.path.map((segment, i) => {
+									const isStop = route.stations.includes(segment.from);
+									return (
+										<li className={isStop ? "" : "shadow"} key={segment.from + segment.to}>
+											<div className="decoration"></div>
+											<p>{segment.from}</p>
+											{i > 0 && (
+												<button onClick={() => toggleStop(segment.from)}>
+													<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
+													{isStop ? "\u00A0Usuń przystanek" : "Dodaj przystanek"}
+												</button>
+											)}
 
-										{i === 0 && (
-											<button onClick={() => toggleStop(segment.from)}>
-												<i className="fas fa-trash"></i> Usuń
-											</button>
-										)}
+											{i === 0 && (
+												<button onClick={() => toggleStop(segment.from)}>
+													<i className="fas fa-trash"></i> Usuń
+												</button>
+											)}
+										</li>
+									);
+								})}
+								{route.stations.length > 0 && (
+									<li>
+										<div className="decoration"></div>
+										<p>{route.stations.at(-1)}</p>
+										<button onClick={() => toggleStop(route.stations.at(-1))}>
+											<i className="fas fa-trash"></i> Usuń
+										</button>
 									</li>
-								);
-							})}
-							{route.stations.length > 0 && (
-								<li>
-									<div className="decoration"></div>
-									<p>{route.stations.at(-1)}</p>
-									<button onClick={() => toggleStop(route.stations.at(-1))}>
-										<i className="fas fa-trash"></i> Usuń
-									</button>
-								</li>
-							)}
-						</ul>
+								)}
+							</ul>
+						)}
+						{route.stations.length === 0 && (
+							<div className="empty">
+								Kliknij na stację początkową, następnie wybierz przystaniki pośrednie
+							</div>
+						)}
 					</div>
 					{route.draft && (
 						<ElevatedButton onClick={accept} disabled={route.stations.length < 2}>

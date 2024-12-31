@@ -108,6 +108,14 @@
 		}
 	}
 
+	.stops-list-wrapper .empty {
+		display: grid;
+		place-content: center;
+		padding: 1rem;
+		background-color: var(--surface-lighter);
+		border-radius: 1rem;
+	}
+
 	& > div > button {
 		margin-block-start: 1.5rem;
 		width: 100%;
