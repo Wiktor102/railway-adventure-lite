@@ -24,6 +24,7 @@ class RouteStore {
 		this.routes = this.routes.filter(r => r.id !== routeId);
 	};
 
+	// Current Route related methods
 	initCurrentRoute = () => {
 		this.currentRoute = new Route([]);
 	};
@@ -41,6 +42,11 @@ class RouteStore {
 		this.routes.push(this.currentRoute);
 		this.currentRoute = null;
 		return true;
+	};
+
+	discardCurrentRoute = () => {
+		this.currentRoute.cleanup();
+		this.currentRoute = null;
 	};
 }
 

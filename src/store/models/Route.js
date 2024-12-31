@@ -28,6 +28,11 @@ class Route {
 		this.color = "#da7313";
 	}
 
+	cleanup() {
+		this.updatePath([]);
+		this.stations = [];
+	}
+
 	setName(name) {
 		this.name = name;
 	}
@@ -88,7 +93,9 @@ class Route {
 			this.updatePath(this.path.toSpliced(i, 1));
 		}
 
-		if (this.stations.length < 2 && this.path.length > 0) {
+		const originMatches = this.path[0].from === stationName;
+		const destinationMatches = this.path.at(-1).to === stationName;
+		if (this.path.length > 0 && (!originMatches || !destinationMatches)) {
 			if (index === 0) {
 				this.stations.unshift(this.path[0].from);
 			} else {

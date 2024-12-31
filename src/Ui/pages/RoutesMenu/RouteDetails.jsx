@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router";
 
@@ -25,6 +25,8 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore.currentRoute]);
 
+	useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
+
 	function toggleStop(stationName) {
 		const hasStation = route.stations.includes(stationName);
 		if (hasStation) {
@@ -43,8 +45,6 @@ const RouteDetails = observer(() => {
 		}
 	}
 
-	// console.log([...route.path].map(p => ({ ...p })));
-	// console.log(route.stations);
 	if (!route) return null;
 	return (
 		<>
