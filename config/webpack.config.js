@@ -4,16 +4,19 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const { getCssLoaders } = require("webpack-scoped-css");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const paths = require("./paths");
+const { MiniCssExtractPlugin } = require("webpack-scoped-css");
 
-const isDevelopment = process.env.NODE_ENV !== "production";
+const isDevelopment = process.env.NODE_ENV?.trim() !== "production";
 const emitErrorsAsWarnings = process.env.ESLINT_NO_DEV_ERRORS === "true";
 const disableESLintPlugin = process.env.DISABLE_ESLINT_PLUGIN === "true";
 
 module.exports = {
-	mode: isDevelopment ? "development" : "production",
+	// mode: isDevelopment ? "development" : "production",
+	mode: "development",
 	entry: "./src/index.jsx",
 	output: {
-		path: path.resolve(__dirname, "dist"),
+		path: path.resolve(__dirname, "../build"),
+		publicPath: isDevelopment ? "/" : "/ral",
 		filename: "bundle.js"
 	},
 	module: {
@@ -32,7 +35,7 @@ module.exports = {
 				test: /\.(png|jpe?g|gif|svg)$/i,
 				type: "asset/resource"
 			},
-			getCssLoaders({}, true)
+			getCssLoaders(isDevelopment, {}, true)
 		]
 	},
 	resolve: {
@@ -59,14 +62,16 @@ module.exports = {
 					extends: ["eslint:recommended", "plugin:react/recommended"]
 				}
 			}),
-		isDevelopment && new ReactRefreshWebpackPlugin()
+		isDevelopment && new ReactRefreshWebpackPlugin(),
+		!isDevelopment && new MiniCssExtractPlugin()
 	].filter(Boolean),
 	devServer: {
 		static: {
 			directory: path.join(__dirname, "dist")
 		},
 		port: 9000,
-		hot: true
+		hot: true,
+		historyApiFallback: true
 	},
 	devtool: isDevelopment ? "eval" : false,
 	stats: {

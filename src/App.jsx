@@ -14,7 +14,7 @@ import RouteDetails from "./Ui/pages/RoutesMenu/RouteDetails";
 
 function App() {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename={window.location.hostname === "wiktorgolicz.pl" ? "/ral" : undefined}>
 			<NamedRouter outletNames={["menu-content", "tips"]}>
 				<Routes>
 					<Route index element={<HomePage />} />
