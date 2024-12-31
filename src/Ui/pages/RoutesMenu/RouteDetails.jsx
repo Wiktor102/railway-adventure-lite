@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router";
 
@@ -25,7 +25,7 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore.currentRoute]);
 
-	useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
+	// useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
 
 	function toggleStop(stationName) {
 		const hasStation = route.stations.includes(stationName);
@@ -57,7 +57,7 @@ const RouteDetails = observer(() => {
 					<form>
 						<input type="text" value={route.name} onChange={({ target: t }) => route.setName(t.value)} />
 						<div className="color-input-wrapper">
-							<input type="color" value={route.color} onChange={({ target: t }) => route.setName(t.value)} />
+							<input type="color" value={route.color} onChange={({ target: t }) => route.setColor(t.value)} />
 						</div>
 					</form>
 					<div className="stops-list-wrapper">
@@ -72,12 +72,13 @@ const RouteDetails = observer(() => {
 										{i > 0 && (
 											<button onClick={() => toggleStop(segment.from)}>
 												<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
+												{isStop ? "\u00A0Usuń przystanek" : "Dodaj przystanek"}
 											</button>
 										)}
 
 										{i === 0 && (
 											<button onClick={() => toggleStop(segment.from)}>
-												<i className="fas fa-trash"></i>
+												<i className="fas fa-trash"></i> Usuń
 											</button>
 										)}
 									</li>
@@ -88,7 +89,7 @@ const RouteDetails = observer(() => {
 									<div className="decoration"></div>
 									<p>{route.stations.at(-1)}</p>
 									<button onClick={() => toggleStop(route.stations.at(-1))}>
-										<i className="fas fa-trash"></i>
+										<i className="fas fa-trash"></i> Usuń
 									</button>
 								</li>
 							)}

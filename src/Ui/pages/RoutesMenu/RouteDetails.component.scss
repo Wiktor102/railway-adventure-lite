@@ -64,7 +64,7 @@
 			}
 
 			.decoration {
-				height: 1lh;
+				height: 1.5rem;
 				aspect-ratio: 1;
 				border-radius: 50%;
 				border: 2px solid currentColor;
@@ -79,16 +79,32 @@
 			button:first-of-type {
 				margin-inline-start: auto;
 			}
+
+			button {
+				all: unset;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				height: 2rem;
+				padding: 0.3rem 1rem;
+				color: var(--on-surface);
+				border-radius: 10rem;
+				cursor: pointer;
+
+				&:is(:hover, :focus-visible) {
+					background-color: var(--surface-lighter);
+				}
+			}
 		}
 
 		li:not(:first-child) .decoration::before {
 			content: "";
 			position: absolute;
 			width: 2px;
-			height: calc(1rem - 1px);
+			height: calc(2rem - 4px);
 			left: 50%;
 			background-color: currentColor;
-			translate: -1px calc(-1rem + 1px);
+			translate: -1px calc(-2rem + 4px);
 		}
 	}
 
