@@ -46,6 +46,73 @@
 
 	.stops-list-wrapper h3 {
 		margin-block-end: 1rem;
+		grid-column: 1 / span 2;
+	}
+
+	.stops-list-wrapper .empty {
+		display: grid;
+		place-content: center;
+		padding: 1rem;
+		background-color: var(--surface-lighter);
+		border-radius: 1rem;
+	}
+
+	.stops-list-wrapper:has(ul) {
+		display: grid;
+		grid-template-columns: 2rem 1fr;
+
+		h3 {
+			margin-block-end: 0;
+		}
+	}
+
+	.arrow-container {
+		position: relative;
+		padding: 1rem 0.5rem;
+		padding-inline-start: 0;
+
+		.tip {
+			--arrow-size: 0.8rem;
+
+			width: 0;
+			height: 0;
+			margin-left: auto;
+			border-top: var(--arrow-size) solid transparent;
+			border-bottom: var(--arrow-size) solid transparent;
+			border-left: var(--arrow-size) solid var(--on-surface);
+		}
+
+		.tip::before {
+			content: "";
+			display: block;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 10rem;
+			border: 2px solid var(--on-surface);
+			position: absolute;
+			right: 0;
+			top: calc(1.8rem - 2px);
+			clip-path: polygon(calc(50% + 2px) 0%, 0 0, 0 calc(50% + 2px));
+		}
+
+		.middle {
+			position: absolute;
+			left: 0;
+			width: 2px;
+			height: calc(100% - 4.8rem);
+			background-color: var(--on-surface);
+		}
+
+		.bottom {
+			position: absolute;
+			bottom: 1.5rem;
+			right: 0;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 10rem;
+			border: 2px solid var(--on-surface);
+			clip-path: polygon(0 calc(50% + 2px), 0 100%, calc(50% + 2px) 100%);
+		}
 	}
 
 	.stops-list {
@@ -106,14 +173,6 @@
 			background-color: currentColor;
 			translate: -1px calc(-2rem + 4px);
 		}
-	}
-
-	.stops-list-wrapper .empty {
-		display: grid;
-		place-content: center;
-		padding: 1rem;
-		background-color: var(--surface-lighter);
-		border-radius: 1rem;
 	}
 
 	& > div > button {

@@ -63,38 +63,45 @@ const RouteDetails = observer(() => {
 					<div className="stops-list-wrapper">
 						<h3>Trasa</h3>
 						{route.stations.length > 0 && (
-							<ul className="stops-list">
-								{route.path.map((segment, i) => {
-									const isStop = route.stations.includes(segment.from);
-									return (
-										<li className={isStop ? "" : "shadow"} key={segment.from + segment.to}>
-											<div className="decoration"></div>
-											<p>{segment.from}</p>
-											{i > 0 && (
-												<button onClick={() => toggleStop(segment.from)}>
-													<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
-													{isStop ? "\u00A0Usuń przystanek" : "Dodaj przystanek"}
-												</button>
-											)}
+							<>
+								<div className="arrow-container">
+									<div className="tip"></div>
+									<div className="middle"></div>
+									<div className="bottom"></div>
+								</div>
+								<ul className="stops-list">
+									{route.path.map((segment, i) => {
+										const isStop = route.stations.includes(segment.from);
+										return (
+											<li className={isStop ? "" : "shadow"} key={segment.from + segment.to}>
+												<div className="decoration"></div>
+												<p>{segment.from}</p>
+												{i > 0 && (
+													<button onClick={() => toggleStop(segment.from)}>
+														<i className={`${isStop ? "fas" : "far"} fa-stop-circle`}></i>
+														{isStop ? "\u00A0Usuń przystanek" : "Dodaj przystanek"}
+													</button>
+												)}
 
-											{i === 0 && (
-												<button onClick={() => toggleStop(segment.from)}>
-													<i className="fas fa-trash"></i> Usuń
-												</button>
-											)}
+												{i === 0 && (
+													<button onClick={() => toggleStop(segment.from)}>
+														<i className="fas fa-trash"></i> Usuń
+													</button>
+												)}
+											</li>
+										);
+									})}
+									{route.stations.length > 0 && (
+										<li>
+											<div className="decoration"></div>
+											<p>{route.stations.at(-1)}</p>
+											<button onClick={() => toggleStop(route.stations.at(-1))}>
+												<i className="fas fa-trash"></i> Usuń
+											</button>
 										</li>
-									);
-								})}
-								{route.stations.length > 0 && (
-									<li>
-										<div className="decoration"></div>
-										<p>{route.stations.at(-1)}</p>
-										<button onClick={() => toggleStop(route.stations.at(-1))}>
-											<i className="fas fa-trash"></i> Usuń
-										</button>
-									</li>
-								)}
-							</ul>
+									)}
+								</ul>
+							</>
 						)}
 						{route.stations.length === 0 && (
 							<div className="empty">
