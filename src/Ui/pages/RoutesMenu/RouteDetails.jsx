@@ -12,7 +12,7 @@ import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 import style from "./RouteDetails.component.scss";
 
 const RouteDetails = observer(() => {
-	const { routeStore, stationStore } = useGameStore();
+	const { routeStore, stationStore, showError } = useGameStore();
 	const navigate = useNavigate();
 
 	const { routeId } = useParams();
@@ -29,11 +29,14 @@ const RouteDetails = observer(() => {
 
 	function toggleStop(stationName) {
 		const hasStation = route.stations.includes(stationName);
+		let error;
 		if (hasStation) {
-			route.removeStation(stationName);
+			error = route.removeStation(stationName);
 		} else {
-			route.addStation(stationName, stationStore.stationsMap);
+			error = route.addStation(stationName, stationStore.stationsMap);
 		}
+
+		error && showError(error);
 	}
 
 	function accept() {

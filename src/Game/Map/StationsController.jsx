@@ -58,7 +58,7 @@ StationsController.propTypes = {};
 
 function StationMarker({ station }) {
 	const zoom = useMapZoom();
-	const { stationStore } = useGameStore();
+	const { stationStore, showError } = useGameStore();
 	const { snappedStation } = stationStore;
 	const hover = snappedStation?.station?.name === station.name;
 
@@ -67,8 +67,10 @@ function StationMarker({ station }) {
 	const { routeStore } = useGameStore();
 
 	function onClick() {
-		if (drawingRoute) routeStore.addToCurrentRoute(station);
+		let error;
+		if (drawingRoute) error = routeStore.addToCurrentRoute(station);
 		if (routeId != null) console.log("editing route", routeId);
+		error && showError(error);
 	}
 
 	let z = 22 * Math.pow((zoom - 5) / 10, 0.5);

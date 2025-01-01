@@ -29,6 +29,10 @@ class RouteStore {
 		this.currentRoute = new Route([]);
 	};
 
+	/**
+	 * @param {Station} station
+	 * @returns {string|null} error
+	 */
 	addToCurrentRoute = station => {
 		return this.currentRoute.addStation(station.name, this.gameStore.stationStore.stationsMap);
 	};

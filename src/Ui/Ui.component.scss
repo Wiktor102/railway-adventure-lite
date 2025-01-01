@@ -119,4 +119,26 @@
 			}
 		}
 	}
+
+	.game-ui-bottom-center {
+		bottom: 1.5rem;
+		left: 50%;
+		translate: -50% 0;
+
+		.error-banner {
+			padding: 0.5rem 1rem;
+			background-color: rgba(230, 68, 46, 0.596);
+			color: #fff;
+			border-radius: 10rem;
+			transition: translate 200ms;
+
+			@starting-style {
+				translate: 0 calc(100% + 1.5rem);
+			}
+		}
+
+		.error-banner:empty {
+			display: none;
+		}
+	}
 }

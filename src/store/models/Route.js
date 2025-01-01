@@ -51,32 +51,33 @@ class Route {
 	/**
 	 * @param {string} stationName
 	 * @param {Object} graph
-	 * @returns {boolean} success
+	 * @returns {string|null} error
 	 */
 	addStation(stationName, graph = null) {
-		if (this.stations.includes(stationName)) return false;
+		if (this.stations.includes(stationName)) return "Trasa już zawiera tę stację";
 		if (this.stations.length === 0) {
 			this.stations.push(stationName);
-			return true;
+			return;
 		}
 
 		if (this.stations.length === 1) {
 			const path = findPath(graph, this.stations.at(-1), stationName);
-			if (path == null) return false;
+			if (path == null) return "Nie można odnaleźć ścieżki";
 			this.updatePath(path);
 			this.stations.push(stationName);
-			return true;
+			return;
 		}
 
 		const segmentIndex = this.path.findIndex(segment => segment.to === stationName);
 		if (segmentIndex === -1) {
 			// Add new station at the end of the route
 			const newPathSegments = findPath(graph, this.stations.at(-1), stationName);
+			if (newPathSegments == null) return "Nie można odnaleźć ścieżki";
 
 			const overlaps = newPathSegments.some(newSegment =>
 				this.path.some(existingSegment => existingSegment.track.id === newSegment.track.id)
 			);
-			if (overlaps) return false;
+			if (overlaps) return "Trasa już zawiera ten odcinek";
 
 			this.updatePath([...this.path, ...newPathSegments]);
 			this.stations.push(stationName);

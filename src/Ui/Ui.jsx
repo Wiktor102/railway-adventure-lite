@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router";
 import { observer } from "mobx-react-lite";
 
+// hooks
+import { useGameStore } from "../store/GameStoreProvider";
+
 // components
 import StatusBox from "./common/StatusBox/StatusBox";
 import IconButton, { IconLinkButton } from "./common/IconButton/IconButton";
@@ -14,6 +17,7 @@ import { useIsNamedRouteRendering } from "../Router/components/NamedRouter";
 import style from "./Ui.component.scss";
 
 const Ui = observer(() => {
+	const { error } = useGameStore();
 	let { pathname } = useLocation();
 	pathname = pathname.substring(6);
 	const hasTip = useIsNamedRouteRendering("tips");
@@ -50,6 +54,9 @@ const Ui = observer(() => {
 				<div className={`panel ${hasTip ? "" : "collapsed"}`}>
 					<NamedOutlet name="tips" />
 				</div>
+			</div>
+			<div className="game-ui-bottom-center">
+				<div className="error-banner">{error}</div>
 			</div>
 		</div>
 	);
