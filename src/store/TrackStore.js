@@ -32,6 +32,21 @@ class TrackStore {
 		track.endStation.deleteNeighbor(track.startStation.name);
 		this.tracks = this.tracks.filter(t => t.id !== trackId);
 	};
+
+	/**
+	 * Checks if a track exists between two stations.
+	 * @param {String} startStation - The start station name
+	 * @param {String} endStation - The end station name
+	 * @returns {boolean} Whether a track exists between the two stations.
+	 */
+	trackExists = (startStation, endStation) => {
+		return this.tracks.some(track => {
+			return (
+				(track.startStation.name === startStation && track.endStation.name === endStation) ||
+				(track.startStation.name === endStation && track.endStation.name === startStation)
+			);
+		});
+	};
 }
 
 export default TrackStore;

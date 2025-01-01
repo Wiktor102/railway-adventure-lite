@@ -8,7 +8,7 @@ import { pointNearestCircle } from "../../utils/utils";
 import { useNavigate, useParams } from "react-router";
 
 const TrackDrawController = observer(() => {
-	const { stationStore, trackStore } = useGameStore();
+	const { stationStore, trackStore, showError } = useGameStore();
 	const { snappedStation } = stationStore;
 	const { addTrack } = trackStore;
 
@@ -34,6 +34,13 @@ const TrackDrawController = observer(() => {
 	}
 
 	function acceptTrack() {
+		const exits = trackStore.trackExists(startStation.name, snappedStation.station.name);
+		if (exits) {
+			rejectTrack();
+			showError("Tor pomiędzy wybranymi stacjami już istnieje");
+			return;
+		}
+
 		const track = new Track(trackWidth, startStation, snappedStation.station);
 		setStartStation(snappedStation.station);
 		addTrack(track);
