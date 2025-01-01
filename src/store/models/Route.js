@@ -33,6 +33,13 @@ class Route {
 		this.stations = [];
 	}
 
+	/** Route length in meters
+	 * @returns {number}
+	 * */
+	get distance() {
+		return this.path.reduce((acc, segment) => acc + segment.track.length, 0);
+	}
+
 	setName(name) {
 		this.name = name;
 	}

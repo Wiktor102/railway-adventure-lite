@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { latLng } from "leaflet";
 
 // track components
 import { DoubleTrack, SingleTrack, TripleTrack } from "../../Game/Map/Tracks";
@@ -16,12 +17,21 @@ class Track {
 	/**@type {import("./Route").default[]} */
 	lanes;
 
+	/**@type {number} */
+	length;
+
 	static idCounter = 0;
 
 	get hasRoute() {
 		return this.lanes.some(lane => lane !== null);
 	}
 
+	/**
+	 * @param {number} width
+	 * @param {import("./Station").default} startStation
+	 * @param {import("./Station").default} endStation
+	 * @returns {Track}
+	 * */
 	constructor(width, startStation, endStation) {
 		makeAutoObservable(this);
 		this.id = Track.idCounter++;
@@ -29,6 +39,7 @@ class Track {
 		this.startStation = startStation;
 		this.endStation = endStation;
 		this.lanes = new Array(width).fill(null);
+		this.length = latLng(startStation.coordinates).distanceTo(endStation.coordinates);
 	}
 
 	/**

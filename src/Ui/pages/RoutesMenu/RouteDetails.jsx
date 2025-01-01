@@ -109,6 +109,11 @@ const RouteDetails = observer(() => {
 							</div>
 						)}
 					</div>
+					<div className="info-wrapper">
+						<h3>Informacje</h3>
+						<p>Przystanki: {route.stations.length}</p>
+						<p>Długość: {(route.distance / 1000).toFixed(1)} km</p>
+					</div>
 					{route.draft && (
 						<ElevatedButton onClick={accept} disabled={route.stations.length < 2}>
 							<i className="fas fa-check"></i> Stwórz trasę
