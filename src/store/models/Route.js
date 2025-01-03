@@ -29,7 +29,7 @@ class Route {
 	}
 
 	cleanup() {
-		this.updatePath([]);
+		this.updatePath([]); // Do not care about errors because it's just removing the route from tracks
 		this.stations = [];
 	}
 
@@ -63,7 +63,8 @@ class Route {
 		if (this.stations.length === 1) {
 			const path = findPath(graph, this.stations.at(-1), stationName);
 			if (path == null) return "Nie można odnaleźć ścieżki";
-			this.updatePath(path);
+			const error = this.updatePath(path);
+			if (error) return error;
 			this.stations.push(stationName);
 			return;
 		}
@@ -79,7 +80,9 @@ class Route {
 			);
 			if (overlaps) return "Trasa już zawiera ten odcinek";
 
-			this.updatePath([...this.path, ...newPathSegments]);
+			const error = this.updatePath([...this.path, ...newPathSegments]);
+			if (error) return error;
+
 			this.stations.push(stationName);
 			return;
 		}
@@ -109,7 +112,7 @@ class Route {
 
 		if (index === 0 || index === this.stations.length) {
 			const i = this.path.findIndex(({ to, from }) => from === stationName || to === stationName);
-			this.updatePath(this.path.toSpliced(i, 1));
+			this.updatePath(this.path.toSpliced(i, 1)); // Do not care about errors because it's just removing the route from tracks
 		}
 
 		const originMatches = this.path[0].from === stationName;
@@ -125,19 +128,36 @@ class Route {
 
 	/**
 	 * @param {Path} newPath
-	 * @returns {void}
+	 * @returns {string|undefined} error message
 	 */
 	updatePath(newPath) {
+		let error;
+
+		// Add route to new tracks
+		const tracksWithAddedRoute = [];
+		for (const segment of newPath) {
+			const isNew = !this.path.some(oldSegment => oldSegment.track.id === segment.track.id);
+			if (isNew) {
+				error = segment.track.addRoute(this);
+				if (!error) tracksWithAddedRoute.push(segment.track);
+			}
+
+			if (error) break;
+		}
+
+		if (error) {
+			// If there was an error, revoke changes
+			for (const track of tracksWithAddedRoute) {
+				track.removeRoute(this.id);
+			}
+
+			return error;
+		}
+
 		// Find tracks that are no longer used
 		this.path.forEach(segment => {
 			const stillExists = newPath.some(newSegment => newSegment.track.id === segment.track.id);
 			if (!stillExists) segment.track.removeRoute(this.id);
-		});
-
-		// Add route to new tracks
-		newPath.forEach(segment => {
-			const isNew = !this.path.some(oldSegment => oldSegment.track.id === segment.track.id);
-			if (isNew) segment.track.addRoute(this);
 		});
 
 		this.path = newPath;

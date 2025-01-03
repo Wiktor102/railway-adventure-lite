@@ -23,7 +23,11 @@ class Track {
 	static idCounter = 0;
 
 	get hasRoute() {
-		return this.lanes.some(lane => lane !== null);
+		return this.freeLanes < this.width;
+	}
+
+	get freeLanes() {
+		return this.lanes.filter(lane => lane === null).length;
 	}
 
 	/**
@@ -44,10 +48,12 @@ class Track {
 
 	/**
 	 * @param {Route} route
-	 * @returns {void}
+	 * @returns {string|undefined} error message
 	 */
 	addRoute(route) {
-		this.lanes[this.width - 1] = route;
+		const emptyLaneIndex = this.lanes.findIndex(lane => lane === null);
+		if (emptyLaneIndex === -1) return `Osiągnięto maksymalną liczbę tras na tym torze (${this.width})`;
+		this.lanes[emptyLaneIndex] = route;
 	}
 
 	/**

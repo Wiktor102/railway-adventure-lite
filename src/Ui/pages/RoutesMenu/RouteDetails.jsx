@@ -25,6 +25,7 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore.currentRoute]);
 
+	// TODO: Uncomment below
 	// useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
 
 	function toggleStop(stationName) {
@@ -40,12 +41,9 @@ const RouteDetails = observer(() => {
 	}
 
 	function accept() {
-		const success = routeStore.acceptCurrentRoute();
-		if (!success) {
-			alert("Trasa musi zawierać przynajmniej 2 przystanki");
-		} else {
-			navigate("/game/routes");
-		}
+		// don't care about the error, because the condition is checked when disabling the button
+		routeStore.acceptCurrentRoute();
+		navigate("/game/routes");
 	}
 
 	if (!route) return null;

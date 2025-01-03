@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 // import Track from "./models/Track";
 import Route from "./models/Route";
 
@@ -12,7 +12,7 @@ class RouteStore {
 	currentRoute = null;
 
 	constructor(gameStore) {
-		makeAutoObservable(this, { gameStore: false });
+		makeAutoObservable(this, { gameStore: false, initCurrentRoute: action });
 		this.gameStore = gameStore;
 	}
 
@@ -24,7 +24,13 @@ class RouteStore {
 		this.routes = this.routes.filter(r => r.id !== routeId);
 	};
 
+	// --------------------------------
+	// --------------------------------
 	// Current Route related methods
+
+	/** creates a new route
+	 * @returns {void}
+	 */
 	initCurrentRoute = () => {
 		this.currentRoute = new Route([]);
 	};
@@ -37,10 +43,12 @@ class RouteStore {
 		return this.currentRoute.addStation(station.name, this.gameStore.stationStore.stationsMap);
 	};
 
+	/**
+	 * Accepts current route and adds it to the routes list
+	 * @returns {boolean} success
+	 * */
 	acceptCurrentRoute = () => {
-		if (this.currentRoute.stations.length < 2) {
-			return false;
-		}
+		if (this.currentRoute.stations.length < 2) return false;
 
 		this.currentRoute.draft = false;
 		this.routes.push(this.currentRoute);
