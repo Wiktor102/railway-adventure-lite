@@ -16,7 +16,7 @@ module.exports = {
 	entry: "./src/index.jsx",
 	output: {
 		path: path.resolve(__dirname, "../build"),
-		publicPath: isDevelopment ? "/" : "/ral",
+		publicPath: isDevelopment ? "/" : "https://wiktorgolicz.pl/ral/",
 		filename: "bundle.js"
 	},
 	module: {
