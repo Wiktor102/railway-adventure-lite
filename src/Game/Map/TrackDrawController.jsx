@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router";
 
 const TrackDrawController = observer(() => {
 	const { stationStore, trackStore, showError } = useGameStore();
-	const { snappedStation } = stationStore;
+	const { snappedStation, toggleSnapping, setSnappedStation } = stationStore;
 	const { addTrack } = trackStore;
 
 	const [startStation, setStartStation] = useState(null);
@@ -28,6 +28,9 @@ const TrackDrawController = observer(() => {
 		if (startStation == null) {
 			navigate("/game/tracks");
 		}
+
+		toggleSnapping(false);
+		setSnappedStation({ station: null, distance: null }); // Need to reset manually
 
 		setStartStation(null);
 		setSelectedEndPoint(null);
@@ -50,6 +53,9 @@ const TrackDrawController = observer(() => {
 		if (!snappedStation.station) return;
 		if (startStation === null) {
 			setStartStation(snappedStation.station);
+
+			setSnappedStation({ station: null, distance: null }); // Need to reset manually
+			toggleSnapping(true);
 		} else if (snappedStation.station.name !== startStation.name) {
 			acceptTrack();
 		}

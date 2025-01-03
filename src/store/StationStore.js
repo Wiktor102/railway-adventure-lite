@@ -10,6 +10,7 @@ class StationStore {
 	stationsMap = new Map();
 
 	snappedStation = { station: null, distance: null };
+	enableSnapping = false;
 
 	get stations() {
 		return [...this.stationsMap.values()];
@@ -30,6 +31,10 @@ class StationStore {
 	getStationByName(name) {
 		return this.stations.find(station => station.name === name);
 	}
+
+	toggleSnapping = state => {
+		this.enableSnapping = state ?? !this.enableSnapping;
+	};
 
 	setSnappedStation = station => {
 		this.snappedStation = station;

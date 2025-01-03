@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react-lite";
 import { useMatch, useParams } from "react-router";
-import { Circle, Pane, Popup } from "react-leaflet";
+import { Circle, Pane, Popup, useMap } from "react-leaflet";
 import { Marker } from "@adamscybot/react-leaflet-component-marker";
 import { latLng } from "leaflet";
 
@@ -16,7 +16,6 @@ import Station from "../../store/models/Station";
 const StationsController = observer(() => {
 	const { stationStore } = useGameStore();
 	const { snappedStation, setSnappedStation } = stationStore;
-	const enableSnapping = useMatch("/game/tracks/build/*");
 
 	function onMouseOver({ latlng }, station) {
 		const distance = latlng.distanceTo(latLng(station.coordinates));
@@ -33,13 +32,13 @@ const StationsController = observer(() => {
 
 	return (
 		<>
-			<Pane name="station-markers-pane" style={{ zIndex: 400 }}>
+			<Pane name="station-markers">
 				{stationStore.stations.map(station => (
 					<StationMarker station={station} key={station.name} />
 				))}
 			</Pane>
-			{enableSnapping && (
-				<Pane name="station-snap-areas-pane">
+			{stationStore.enableSnapping && (
+				<Pane name="station-snap-areas">
 					{stationStore.stations.map(station => (
 						<StationSnapArea
 							station={station}
@@ -57,16 +56,26 @@ const StationsController = observer(() => {
 StationsController.propTypes = {};
 
 function StationMarker({ station }) {
+	const map = useMap();
 	const zoom = useMapZoom();
+
 	const { stationStore, showError } = useGameStore();
 	const { snappedStation } = stationStore;
 	const hover = snappedStation?.station?.name === station.name;
 
 	const drawingRoute = useMatch("/game/routes/create");
+	const buildingTrack = useMatch("/game/tracks/build/*");
+
 	const { routeId } = useParams();
 	const { routeStore } = useGameStore();
 
-	function onClick() {
+	function onClick(e) {
+		if (buildingTrack && !stationStore.enableSnapping) {
+			stationStore.setSnappedStation({ station: station, distance: 0 });
+			setTimeout(() => map.fire("click", e), 0); // This event is used by TrackDrawController
+			return;
+		}
+
 		let error;
 		if (drawingRoute) error = routeStore.addToCurrentRoute(station);
 		if (routeId != null) console.log("editing route", routeId);
