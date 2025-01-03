@@ -186,11 +186,11 @@ function TripleTrack({ start, end, color, onClick, enableHover = false }) {
 					onClick={onClick}
 				/>
 			)}
-			<SingleTrack start={start} end={end} color={adjustedColors[2]} />
+			<SingleTrack start={start} end={end} color={(enableHover ? adjustedColors : rememberedColors)[2]} />
 			<DoubleTrack
 				start={start}
 				end={end}
-				color={adjustedColors}
+				color={enableHover ? adjustedColors : rememberedColors}
 				separation={1.5}
 				onClick={onClick}
 				setOptions={setOptions}
