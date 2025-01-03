@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useMatch } from "react-router";
+import { useMatch, useParams } from "react-router";
 import { latLng } from "leaflet";
 
 // hooks
@@ -11,8 +11,11 @@ import { TrackDeleteAction, TrackWithActions } from "./Tracks";
 
 const TracksController = observer(() => {
 	const { trackStore } = useGameStore();
-	const renderDrawController = useMatch("/game/tracks/build/*");
+
 	const renderWithActions = useMatch("/game/tracks");
+	const renderDrawController = useMatch("/game/tracks/build/*");
+	const { "*": splat } = useParams();
+	const trackWidth = +splat;
 
 	const renderWithRoutes = useMatch("/game/routes/*");
 	const renderWithDraftRoute = useMatch("/game/routes/create");
@@ -34,7 +37,12 @@ const TracksController = observer(() => {
 				const props = {
 					start: latLng(track.startStation.coordinates),
 					end: latLng(track.endStation.coordinates),
-					color: colors
+					color: colors,
+					enableHover: renderDrawController && track.width !== trackWidth,
+					onClick: () => {
+						if (!renderDrawController || track.width === trackWidth) return;
+						track.width = trackWidth;
+					}
 				};
 
 				if (renderWithActions) {
