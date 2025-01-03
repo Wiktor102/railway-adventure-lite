@@ -7,6 +7,9 @@ class TrackStore {
 	/** @type {import("./models/Track").default[]} */
 	tracks = [];
 
+	/** @type {boolean} */
+	buildingTrack = false;
+
 	constructor(gameStore) {
 		makeAutoObservable(this, { gameStore: false });
 		this.gameStore = gameStore;
@@ -46,6 +49,10 @@ class TrackStore {
 				(track.startStation.name === endStation && track.endStation.name === startStation)
 			);
 		});
+	};
+
+	setBuildingTrack = buildingTrack => {
+		this.buildingTrack = buildingTrack;
 	};
 }
 
