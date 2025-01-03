@@ -60,7 +60,6 @@ const TrackDrawController = observer(() => {
 			setSnappedStation({ station: null, distance: null }); // Need to reset manually
 			toggleSnapping(true);
 		} else if (snappedStation.station.name !== startStation.name) {
-			setBuildingTrack(false);
 			acceptTrack();
 		}
 	};

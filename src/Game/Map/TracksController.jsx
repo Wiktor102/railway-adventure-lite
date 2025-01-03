@@ -41,7 +41,7 @@ const TracksController = observer(() => {
 					enableHover: renderDrawController && track.width !== trackWidth,
 					onClick: () => {
 						if (!renderDrawController || track.width === trackWidth) return;
-						track.width = trackWidth;
+						track.updateWidth(trackWidth);
 					}
 				};
 

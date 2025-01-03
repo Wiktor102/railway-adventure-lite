@@ -58,6 +58,14 @@ class Track {
 		this.lanes = this.lanes.map(route => (route?.id === routeId ? null : route));
 	}
 
+	/**
+	 * @param {number} width
+	 * @returns {string|undefined} error message
+	 */
+	updateWidth(width) {
+		this.width = width;
+	}
+
 	getComponent() {
 		return Track.getComponent(this.width);
 	}

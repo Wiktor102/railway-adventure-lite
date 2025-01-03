@@ -147,12 +147,12 @@ function DoubleTrack({ start, end, color, onClick, separation = 1, enableHover =
 			)}
 			<Polyline
 				positions={[trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]]}
-				pathOptions={{ ...style, color: (enableHover ? adjustedColors : color)[0] }}
+				pathOptions={{ ...style, color: (enableHover ? adjustedColors : rememberedColors)[0] }}
 				interactive={false}
 			/>
 			<Polyline
 				positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]}
-				pathOptions={{ ...style, color: (enableHover ? adjustedColors : color)[1] }}
+				pathOptions={{ ...style, color: (enableHover ? adjustedColors : rememberedColors)[1] }}
 				interactive={false}
 			/>
 		</>
