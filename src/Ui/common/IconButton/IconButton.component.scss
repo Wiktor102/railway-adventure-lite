@@ -39,3 +39,14 @@
 		height: 1.5rem;
 	}
 }
+
+.icon-button.inverted {
+	background-color: var(--on-surface-lighter);
+	color: var(--surface-lighter);
+	height: 3.3rem;
+
+	&:hover,
+	&:focus {
+		background-color: var(--on-surface-lightest);
+	}
+}
