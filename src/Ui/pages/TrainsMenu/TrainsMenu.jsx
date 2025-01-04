@@ -10,6 +10,8 @@ import IconButton, { IconLinkButton } from "../../common/IconButton/IconButton";
 // assets
 import routeAddIcon from "../../../assets/icons/route-add.svg";
 import routeRemoveIcon from "../../../assets/icons/route-remove.svg";
+import locomotiveIcon from "../../../assets/icons/locomotive.svg";
+import emuIcon from "../../../assets/icons/emu.svg";
 
 // styles
 import style from "./TrainsMenu.component.scss";
@@ -26,7 +28,8 @@ const TrainsMenu = observer(() => {
 						{trainStore.trains.map(train => (
 							<li key={train.id}>
 								<img
-									src="https://static.vecteezy.com/system/resources/previews/019/002/964/non_2x/electric-train-flat-icons-png.png"
+									// src="https://static.vecteezy.com/system/resources/previews/019/002/964/non_2x/electric-train-flat-icons-png.png"
+									src={train.type === "unit" ? emuIcon : locomotiveIcon}
 									alt=""
 								/>
 								{!train.route && (

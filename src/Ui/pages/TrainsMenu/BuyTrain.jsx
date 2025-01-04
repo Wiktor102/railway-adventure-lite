@@ -12,9 +12,9 @@ import { CarriageTrain, UnitTrain } from "../../../store/models/Train";
 import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 // assets
-// import locomotiveImg from "../../../assets/locomotive.png";
-// import emuImg from "../../../assets/icons/emu.svg";
+import locomotiveIcon from "../../../assets/icons/locomotive.svg";
 import moneyImg from "../../../assets/icons/money.png";
+import emuIcon from "../../../assets/icons/emu.svg";
 
 // styles
 import style from "./BuyTrain.component.scss";
@@ -46,7 +46,7 @@ const BuyTrain = () => {
 			<Link to="/game/trains" className="back-button" style={{ float: "left" }}>
 				<i className="fas fa-arrow-left"></i>
 			</Link>
-			<h2>BuyTrain</h2>
+			<h2>Kup pociąg</h2>
 			<div className="buy-train-menu" data-style={style}>
 				<nav className="tabs">
 					<ul>
@@ -58,7 +58,7 @@ const BuyTrain = () => {
 						</li>
 					</ul>
 				</nav>
-				{/* <img src={emuImg} alt="" /> */}
+				<img src={locomotive ? locomotiveIcon : emuIcon} alt="" />
 				<div className="range-input-container">
 					<label htmlFor="speed">
 						<i className="fas fa-gauge"></i> Prędkość
