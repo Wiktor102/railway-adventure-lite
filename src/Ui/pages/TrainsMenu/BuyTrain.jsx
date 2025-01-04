@@ -1,6 +1,15 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { Link, NavLink, useMatch } from "react-router";
+import { Link, NavLink, useMatch, useNavigate } from "react-router";
+
+// hooks
+import { useGameStore } from "../../../store/GameStoreProvider";
+
+// model classes
+import { CarriageTrain, UnitTrain } from "../../../store/models/Train";
+
+// component
+import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 // assets
 // import locomotiveImg from "../../../assets/locomotive.png";
@@ -9,16 +18,28 @@ import moneyImg from "../../../assets/icons/money.png";
 
 // styles
 import style from "./BuyTrain.component.scss";
-import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 const BuyTrain = () => {
+	const { trainStore } = useGameStore();
+
 	const [speed, setSpeed] = useState(160);
 	const [object, setObject] = useState({ cost: 0 });
 
 	const locomotive = useMatch("/game/trains/buy/locomotive");
 	const emu = useMatch("/game/trains/buy/emu");
+	const navigate = useNavigate();
 
-	function buy() {}
+	function buy() {
+		// TODO: Handle money
+
+		if (locomotive) {
+			trainStore.addTrain(new CarriageTrain(object));
+		} else if (emu) {
+			trainStore.addTrain(new UnitTrain(object));
+		}
+
+		navigate("/game/trains");
+	}
 
 	return (
 		<>
@@ -126,7 +147,7 @@ const BuyEmu = ({ speed, setObject }) => {
 		setObject({
 			speed: speed,
 			segments: segments,
-			seats: seats,
+			seats: seats * segments,
 			cost: (locomotivePrice + segmentsPrice + seatingPrice) * (speed / 100)
 		});
 	}, [segments, seats, speed]);

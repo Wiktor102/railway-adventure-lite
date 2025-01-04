@@ -4,11 +4,13 @@ import { makeAutoObservable, runInAction } from "mobx";
 import StationStore from "./StationStore";
 import TrackStore from "./TrackStore";
 import RouteStore from "./RouteStore";
+import TrainStore from "./TrainStore";
 
 class GameStore {
 	stationStore;
 	trackStore;
 	routeStore;
+	trainStore;
 
 	/**@type {string|null} */
 	error = null;
@@ -19,6 +21,7 @@ class GameStore {
 		this.stationStore = new StationStore(this);
 		this.trackStore = new TrackStore(this);
 		this.routeStore = new RouteStore(this);
+		this.trainStore = new TrainStore(this);
 	}
 
 	showError = (message, time = 3) => {
