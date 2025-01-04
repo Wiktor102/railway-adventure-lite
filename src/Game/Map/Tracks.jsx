@@ -125,14 +125,16 @@ function DoubleTrack({ start, end, color, onClick, separation = 1, enableHover =
 		return [start, bottomRight, topRight, end, topLeft, bottomLeft];
 	}, [start, end, zoom, separation]);
 
+	const leftTrackPoints = useMemo(() => [trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]], [trackPoints]);
+	const rightTrackPoints = useMemo(() => [trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]], [trackPoints]);
 	const hoverDetectorPositions = useMemo(
 		() => [trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3], trackPoints[4], trackPoints[5]],
 		[trackPoints]
 	);
 
 	useEffect(() => {
-		setOptions && setOptions({ hoverDetectorPositions });
-	}, [hoverDetectorPositions]);
+		setOptions && setOptions({ hoverDetectorPositions, leftTrackPoints, rightTrackPoints });
+	}, [hoverDetectorPositions, leftTrackPoints, rightTrackPoints]);
 
 	return (
 		<>
@@ -146,12 +148,12 @@ function DoubleTrack({ start, end, color, onClick, separation = 1, enableHover =
 				/>
 			)}
 			<Polyline
-				positions={[trackPoints[0], trackPoints[1], trackPoints[2], trackPoints[3]]}
+				positions={leftTrackPoints}
 				pathOptions={{ ...style, color: (enableHover ? adjustedColors : rememberedColors)[0] }}
 				interactive={false}
 			/>
 			<Polyline
-				positions={[trackPoints[0], trackPoints[5], trackPoints[4], trackPoints[3]]}
+				positions={rightTrackPoints}
 				pathOptions={{ ...style, color: (enableHover ? adjustedColors : rememberedColors)[1] }}
 				interactive={false}
 			/>
@@ -169,17 +171,21 @@ DoubleTrack.propTypes = {
 	setOptions: PropTypes.func
 };
 
-function TripleTrack({ start, end, color, onClick, enableHover = false }) {
+function TripleTrack({ start, end, color, onClick, enableHover = false, setOptions }) {
 	const rememberedColors = useMemo(() => (!Array.isArray(color) ? [color, color, color] : color), [color]);
 	const [adjustedColors, setAdjustedColors] = useState(rememberedColors);
-	const [options, setOptions] = useState({});
+	const [_options, _setOptions] = useState({});
 	const style = useTrackStyle();
+
+	useEffect(() => {
+		setOptions && setOptions({ leftTrackPoints: _options.leftTrackPoints, rightTrackPoints: _options.rightTrackPoints });
+	}, [_options, setOptions]);
 
 	return (
 		<>
-			{options && enableHover && (
+			{_options && enableHover && (
 				<DoubleTrackHoverDetector
-					positions={options.hoverDetectorPositions}
+					positions={_options.hoverDetectorPositions}
 					style={style}
 					colors={rememberedColors}
 					setAdjustedColors={setAdjustedColors}
@@ -193,7 +199,7 @@ function TripleTrack({ start, end, color, onClick, enableHover = false }) {
 				color={enableHover ? adjustedColors : rememberedColors}
 				separation={1.5}
 				onClick={onClick}
-				setOptions={setOptions}
+				setOptions={_setOptions}
 			/>
 		</>
 	);
@@ -204,7 +210,8 @@ TripleTrack.propTypes = {
 	end: PropTypes.object.isRequired,
 	color: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
 	onClick: PropTypes.func,
-	enableHover: PropTypes.bool
+	enableHover: PropTypes.bool,
+	setOptions: PropTypes.func
 };
 
 function DoubleTrackHoverDetector({ positions, style, colors, onClick, setAdjustedColors }) {

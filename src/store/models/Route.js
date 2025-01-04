@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import findPath from "../../utils/pathfinding";
 
-/**@typedef {Array<{ from: string, to: string, track: Track }>} Path */
+/**@typedef {Array<{ from: string, to: string, track: Track, trackIndex: number|undefined }>} Path */
 
 class Route {
 	width;
@@ -134,15 +134,17 @@ class Route {
 		let error;
 
 		// Add route to new tracks
+		let i = 0;
 		const tracksWithAddedRoute = [];
 		for (const segment of newPath) {
 			const isNew = !this.path.some(oldSegment => oldSegment.track.id === segment.track.id);
 			if (isNew) {
-				error = segment.track.addRoute(this);
+				[newPath[i].trackIndex, error] = segment.track.addRoute(this);
 				if (!error) tracksWithAddedRoute.push(segment.track);
 			}
 
 			if (error) break;
+			i++;
 		}
 
 		if (error) {

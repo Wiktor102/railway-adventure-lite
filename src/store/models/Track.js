@@ -17,6 +17,9 @@ class Track {
 	/**@type {import("./Route").default[]} */
 	lanes;
 
+	/**@type {import("leaflet").LatLng[][]} */
+	latlngs;
+
 	/**@type {number} */
 	length;
 
@@ -44,16 +47,21 @@ class Track {
 		this.endStation = endStation;
 		this.lanes = new Array(width).fill(null);
 		this.length = latLng(startStation.coordinates).distanceTo(endStation.coordinates);
+
+		if (this.width === 1) {
+			this.latlngs = [[latLng(startStation.coordinates), latLng(endStation.coordinates)]];
+		}
 	}
 
 	/**
 	 * @param {Route} route
-	 * @returns {string|undefined} error message
+	 * @returns {[number|null,string|null]} [index, error message]
 	 */
 	addRoute(route) {
 		const emptyLaneIndex = this.lanes.findIndex(lane => lane === null);
-		if (emptyLaneIndex === -1) return `Osiągnięto maksymalną liczbę tras na tym torze (${this.width})`;
+		if (emptyLaneIndex === -1) return [null, `Osiągnięto maksymalną liczbę tras na tym torze (${this.width})`];
 		this.lanes[emptyLaneIndex] = route;
+		return [emptyLaneIndex, null];
 	}
 
 	/**
@@ -70,6 +78,14 @@ class Track {
 	 */
 	updateWidth(width) {
 		this.width = width;
+	}
+
+	/**
+	 * @param {import("leaflet").LatLng[][]} latlngs
+	 * @returns {void}
+	 */
+	setLatlngs(latlngs) {
+		this.latlngs = latlngs;
 	}
 
 	getComponent() {

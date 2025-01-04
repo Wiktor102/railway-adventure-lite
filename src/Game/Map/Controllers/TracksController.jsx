@@ -47,7 +47,21 @@ const TracksController = observer(() => {
 					onClick: () => {
 						if (!renderDrawController || track.width === trackWidth) return;
 						track.updateWidth(trackWidth);
-					}
+					},
+					setOptions:
+						track.width > 1
+							? info => {
+									if (track.width === 2) track.setLatlngs([info.leftTrackPoints, info.rightTrackPoints]);
+									else if (track.width === 3) {
+										const centerTrackPoints = [
+											track.startStation.coordinates,
+											track.endStation.coordinates
+										].map(c => latLng(c));
+										track.setLatlngs([info.leftTrackPoints, centerTrackPoints, info.rightTrackPoints]);
+									}
+									// eslint-disable-next-line no-mixed-spaces-and-tabs
+							  }
+							: undefined
 				};
 
 				if (renderWithActions) {
