@@ -1,4 +1,4 @@
-import { computed, makeAutoObservable, makeObservable, observable } from "mobx";
+import { action, computed, makeAutoObservable, makeObservable, observable } from "mobx";
 
 const trainProps = {
 	id: observable,
@@ -6,7 +6,8 @@ const trainProps = {
 	maxSpeed: observable,
 	speed: computed,
 	price: observable,
-	route: observable
+	route: observable,
+	assignRoute: action
 };
 
 class Train {
@@ -38,6 +39,14 @@ class Train {
 		this.maxSpeed = data.speed;
 		this.price = data.cost;
 		this.id = Train.idCounter++;
+	}
+
+	/**
+	 * @param {import("./Route").default} route
+	 * @returns {void}
+	 * */
+	assignRoute(route) {
+		this.route = route;
 	}
 }
 

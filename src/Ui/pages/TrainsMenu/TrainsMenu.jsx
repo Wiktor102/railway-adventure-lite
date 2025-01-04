@@ -30,7 +30,11 @@ const TrainsMenu = observer(() => {
 									alt=""
 								/>
 								{!train.route && (
-									<IconLinkButton className="add-route-btn" to={`/game/trains/${train.id}`} inverted>
+									<IconLinkButton
+										className="add-route-btn"
+										to={`/game/trains/${train.id}/assign-route`}
+										inverted
+									>
 										<img src={routeAddIcon} alt="Trasa z plusikiem" />
 									</IconLinkButton>
 								)}
@@ -44,9 +48,9 @@ const TrainsMenu = observer(() => {
 										<i className="fas fa-cog"></i>
 									</IconLinkButton>
 								)}
-								<IconLinkButton to={`/game/trains/${train.id}`} inverted>
+								<IconButton inverted>
 									<i className="fas fa-hand-holding-dollar"></i>
-								</IconLinkButton>
+								</IconButton>
 								<div className="data">
 									<p className="speed">
 										<span>

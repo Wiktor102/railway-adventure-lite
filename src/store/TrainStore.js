@@ -19,6 +19,14 @@ class TrainStore {
 	addTrain = train => {
 		this.trains.push(train);
 	};
+
+	/**
+	 * @param {number} id
+	 * @returns {import("./models/Train").default|undefined}
+	 */
+	getTrainById = id => {
+		return this.trains.find(train => train.id === id);
+	};
 }
 
 export default TrainStore;
