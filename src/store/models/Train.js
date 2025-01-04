@@ -42,7 +42,7 @@ class Train {
 	}
 
 	/**
-	 * @param {import("./Route").default} route
+	 * @param {import("./Route").default|null} route
 	 * @returns {void}
 	 * */
 	assignRoute(route) {

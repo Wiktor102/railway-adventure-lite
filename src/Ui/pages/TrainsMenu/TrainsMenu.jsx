@@ -42,7 +42,11 @@ const TrainsMenu = observer(() => {
 									</IconLinkButton>
 								)}
 								{train.route && (
-									<IconButton className="remove-route-btn" inverted>
+									<IconButton
+										onClick={() => train.assignRoute(null)}
+										className="remove-route-btn"
+										inverted
+									>
 										<img src={routeRemoveIcon} alt="Przekreślona trasa" />
 									</IconButton>
 								)}
