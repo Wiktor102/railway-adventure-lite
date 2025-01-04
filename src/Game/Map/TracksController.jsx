@@ -10,7 +10,7 @@ import TrackDrawController from "./TrackDrawController";
 import { TrackDeleteAction, TrackWithActions } from "./Tracks";
 
 const TracksController = observer(() => {
-	const { trackStore } = useGameStore();
+	const { trackStore, routeStore } = useGameStore();
 
 	const renderWithActions = useMatch("/game/tracks");
 	const renderDrawController = useMatch("/game/tracks/build/*");
@@ -25,14 +25,19 @@ const TracksController = observer(() => {
 			{renderDrawController && <TrackDrawController />}
 			{trackStore.tracks.map((track, i) => {
 				const C = track.getComponent();
-				const colors = renderWithRoutes
-					? track.lanes.map(l => {
-							if (l == null) return "#2572dd";
-							if (l.draft && !renderWithDraftRoute) return "#2572dd";
-							return renderWithDraftRoute && !l.draft ? l.color + "a4" : l.color;
-							// eslint-disable-next-line no-mixed-spaces-and-tabs
-					  })
-					: "#2572dd";
+				const colors =
+					renderWithRoutes || routeStore.highlightedRoute
+						? track.lanes.map(l => {
+								if (!renderWithRoutes && l?.id !== routeStore.highlightedRoute.id) return "#2572dd";
+								if (!renderWithRoutes && l?.id === routeStore.highlightedRoute.id)
+									return routeStore.highlightedRoute.color;
+
+								if (l == null) return "#2572dd";
+								if (l.draft && !renderWithDraftRoute) return "#2572dd";
+								return renderWithDraftRoute && !l.draft ? l.color + "a4" : l.color;
+								// eslint-disable-next-line no-mixed-spaces-and-tabs
+						  })
+						: "#2572dd";
 
 				const props = {
 					start: latLng(track.startStation.coordinates),

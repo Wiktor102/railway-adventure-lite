@@ -11,6 +11,9 @@ class RouteStore {
 	/** @type {Route|null}*/
 	currentRoute = null;
 
+	/** @type {Route|null}*/
+	highlightedRoute = null;
+
 	constructor(gameStore) {
 		makeAutoObservable(this, { gameStore: false, initCurrentRoute: action });
 		this.gameStore = gameStore;
@@ -59,6 +62,13 @@ class RouteStore {
 	discardCurrentRoute = () => {
 		this.currentRoute.cleanup();
 		this.currentRoute = null;
+	};
+
+	// --------------------------------
+	// --------------------------------
+	// Highlighted Route related methods
+	setHighlightedRoute = route => {
+		this.highlightedRoute = route;
 	};
 }
 
