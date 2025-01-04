@@ -134,7 +134,7 @@ function DoubleTrack({ start, end, color, onClick, separation = 1, enableHover =
 
 	useEffect(() => {
 		setOptions && setOptions({ hoverDetectorPositions, leftTrackPoints, rightTrackPoints });
-	}, [hoverDetectorPositions, leftTrackPoints, rightTrackPoints]);
+	}, [hoverDetectorPositions, leftTrackPoints, rightTrackPoints, setOptions]);
 
 	return (
 		<>

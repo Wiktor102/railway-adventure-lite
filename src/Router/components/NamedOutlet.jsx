@@ -12,7 +12,7 @@ function NamedOutlet({ name, ref, nested = false }) {
 			if (nested) return { current: outlet != null };
 			return { current: "checkContext" };
 		},
-		[outlet]
+		[nested, outlet]
 	);
 
 	if (!outlet) return null;

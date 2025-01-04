@@ -93,7 +93,7 @@ const TrackDrawController = observer(() => {
 	useMapEvent("mousemove", handleMouseMove);
 	useMapEvent("contextmenu", rejectTrack);
 
-	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, trackWidth]);
+	useEffect(checkCollision, [startStation, endPoint, stationStore.stations, trackWidth, snappedStation.station?.name]);
 
 	// TODO: convert to useMemo
 	useEffect(() => {
@@ -103,7 +103,7 @@ const TrackDrawController = observer(() => {
 		}
 
 		setEndPoint(selectedEndPoint);
-	}, [selectedEndPoint, snappedStation]);
+	}, [selectedEndPoint, snappedStation, startStation?.name]);
 
 	if (!startStation || !endPoint) return null;
 	return (

@@ -101,7 +101,7 @@ const BuyLocomotive = ({ speed, setObject }) => {
 			maxCarriages: maxCarriages,
 			cost: strength * 30 * (speed / 120)
 		});
-	}, [strength, speed]);
+	}, [strength, speed, setObject, maxCarriages]);
 
 	return (
 		<>
@@ -150,7 +150,7 @@ const BuyEmu = ({ speed, setObject }) => {
 			seats: seats * segments,
 			cost: (locomotivePrice + segmentsPrice + seatingPrice) * (speed / 100)
 		});
-	}, [segments, seats, speed]);
+	}, [segments, seats, speed, setObject]);
 
 	return (
 		<>

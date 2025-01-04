@@ -26,13 +26,13 @@ const AssignRoute = observer(() => {
 
 	useEffect(() => {
 		if (!trainStore.getTrainById(+trainId)) navigate("/game/trains");
-	}, [trainId]);
+	}, [navigate, trainId, trainStore]);
 
 	useEffect(() => {
 		routeStore.setHighlightedRoute(selectedRoute);
-	}, [selectedRoute]);
+	}, [routeStore, selectedRoute]);
 
-	useEffect(() => () => routeStore.setHighlightedRoute(null), []);
+	useEffect(() => () => routeStore.setHighlightedRoute(null), [routeStore]);
 
 	return (
 		<>

@@ -23,7 +23,7 @@ const RouteDetails = observer(() => {
 		}
 
 		return routeStore.routes.find(r => r.id === +routeId);
-	}, [routeId, routeStore.currentRoute]);
+	}, [routeId, routeStore]);
 
 	// TODO: Uncomment below
 	// useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);

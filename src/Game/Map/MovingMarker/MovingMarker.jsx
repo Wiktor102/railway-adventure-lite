@@ -1,5 +1,5 @@
 import { Marker } from "react-leaflet";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { LatLng } from "leaflet";
 import PropTypes from "prop-types";
 
@@ -55,65 +55,68 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 	};
     */
 
-	const animate = time => {
-		if (isStoppedAtStationRef.current) {
-			console.log("is stopped");
-			requestRef.current = requestAnimationFrame(animate);
-			return;
-		}
+	const animate = useCallback(
+		time => {
+			if (isStoppedAtStationRef.current) {
+				console.log("is stopped");
+				requestRef.current = requestAnimationFrame(animate);
+				return;
+			}
 
-		if (previousTimeRef.current == null || isResumingRef.current) {
+			if (previousTimeRef.current == null || isResumingRef.current) {
+				previousTimeRef.current = time;
+				isResumingRef.current = false;
+			}
+
+			const deltaTime = (time - previousTimeRef.current) / 1000;
 			previousTimeRef.current = time;
-			isResumingRef.current = false;
-		}
 
-		const deltaTime = (time - previousTimeRef.current) / 1000;
-		previousTimeRef.current = time;
+			// Update total distance traveled
+			// Convert speed from km/h to m/s: (km/h) / 3.6 = m/s
+			progressRef.current += deltaTime * (speed / 3.6);
 
-		// Update total distance traveled
-		// Convert speed from km/h to m/s: (km/h) / 3.6 = m/s
-		progressRef.current += deltaTime * (speed / 3.6);
+			// Find current segment based on total distance
+			let newSegment = currentSegmentRef.current;
+			while (newSegment < path.length - 1 && progressRef.current > pathMetricsRef.current.distances[newSegment + 1]) {
+				newSegment++;
+			}
 
-		// Find current segment based on total distance
-		let newSegment = currentSegmentRef.current;
-		while (newSegment < path.length - 1 && progressRef.current > pathMetricsRef.current.distances[newSegment + 1]) {
-			newSegment++;
-		}
+			const didJustUpdateSegment = newSegment !== currentSegmentRef.current;
+			currentSegmentRef.current = newSegment;
 
-		const didJustUpdateSegment = newSegment !== currentSegmentRef.current;
-		currentSegmentRef.current = newSegment;
+			if (currentSegmentRef.current >= path.length - 1) {
+				console.log("end of path");
+				setPosition(path[path.length - 1].latlng);
+				stopAnimation();
+				return;
+			}
 
-		if (currentSegmentRef.current >= path.length - 1) {
-			console.log("end of path");
-			setPosition(path[path.length - 1].latlng);
-			stopAnimation();
-			return;
-		}
+			// Handle station stops
+			if (path[currentSegmentRef.current].stop && didJustUpdateSegment) {
+				isStoppedAtStationRef.current = true;
+				stopTimeoutRef.current = setTimeout(() => {
+					isStoppedAtStationRef.current = false;
+					isResumingRef.current = true;
+				}, path[currentSegmentRef.current].stop);
+			}
 
-		// Handle station stops
-		if (path[currentSegmentRef.current].stop && didJustUpdateSegment) {
-			isStoppedAtStationRef.current = true;
-			stopTimeoutRef.current = setTimeout(() => {
-				isStoppedAtStationRef.current = false;
-				isResumingRef.current = true;
-			}, path[currentSegmentRef.current].stop);
-		}
+			// Calculate fraction within current segment
+			const segmentStartDist = pathMetricsRef.current.distances[currentSegmentRef.current];
+			const segmentEndDist = pathMetricsRef.current.distances[currentSegmentRef.current + 1];
+			const segmentLength = segmentEndDist - segmentStartDist;
+			const segmentProgress = progressRef.current - segmentStartDist;
+			const fraction = segmentProgress / segmentLength;
 
-		// Calculate fraction within current segment
-		const segmentStartDist = pathMetricsRef.current.distances[currentSegmentRef.current];
-		const segmentEndDist = pathMetricsRef.current.distances[currentSegmentRef.current + 1];
-		const segmentLength = segmentEndDist - segmentStartDist;
-		const segmentProgress = progressRef.current - segmentStartDist;
-		const fraction = segmentProgress / segmentLength;
-
-		const currentPos = interpolatePosition(
-			path[currentSegmentRef.current].latlng,
-			path[currentSegmentRef.current + 1].latlng,
-			Math.min(fraction, 1)
-		);
-		setPosition([currentPos.lat, currentPos.lng]);
-		requestRef.current = requestAnimationFrame(animate);
-	};
+			const currentPos = interpolatePosition(
+				path[currentSegmentRef.current].latlng,
+				path[currentSegmentRef.current + 1].latlng,
+				Math.min(fraction, 1)
+			);
+			setPosition([currentPos.lat, currentPos.lng]);
+			requestRef.current = requestAnimationFrame(animate);
+		},
+		[path, speed]
+	);
 
 	useEffect(() => {
 		pathMetricsRef.current = calculatePathMetrics(path);
@@ -129,7 +132,7 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 				clearTimeout(stopTimeoutRef.current);
 			}
 		};
-	}, [path, speed]);
+	}, [path, speed, animate]);
 
 	return <Marker position={position} {...props} />;
 };
