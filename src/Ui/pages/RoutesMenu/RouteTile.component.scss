@@ -1,0 +1,37 @@
+@scope tree;
+
+.route-tile {
+	display: grid;
+	align-items: center;
+	grid-template-columns: auto 1fr auto;
+	gap: 0.5rem 1rem;
+
+	p {
+		margin: 0;
+	}
+
+	.name {
+		grid-row: 1 / span 2;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+
+	.route {
+		font-weight: bold;
+	}
+
+	.buttons {
+		display: flex;
+		grid-row: 1 / span 2;
+		grid-column-start: 3;
+		gap: 1rem;
+	}
+
+	.icon-button {
+		height: 3.3rem;
+	}
+
+	& + & {
+		margin-block-start: 1rem;
+	}
+}
