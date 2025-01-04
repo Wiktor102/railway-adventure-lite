@@ -2,6 +2,7 @@ import { MapContainer, GeoJSON, useMap } from "react-leaflet";
 import mapGeoJson from "../../assets/data/slaskie.json";
 import StationsController from "./Controllers/StationsController";
 import TracksController from "./Controllers/TracksController";
+import TrainController from "./Controllers/TrainController";
 
 const Map = () => {
 	return (
@@ -9,6 +10,7 @@ const Map = () => {
 			<MapController />
 			<StationsController />
 			<TracksController />
+			<TrainController />
 		</MapContainer>
 	);
 };

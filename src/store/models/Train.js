@@ -1,15 +1,5 @@
 import { action, computed, makeAutoObservable, makeObservable, observable } from "mobx";
 
-const trainProps = {
-	id: observable,
-	type: observable,
-	maxSpeed: observable,
-	speed: computed,
-	price: observable,
-	route: observable,
-	assignRoute: action
-};
-
 class Train {
 	static idCounter = 0;
 
@@ -34,8 +24,17 @@ class Train {
 	}
 
 	constructor(data, type) {
-		this.type = type;
+		makeObservable(this, {
+			id: observable,
+			type: observable,
+			maxSpeed: observable,
+			speed: computed,
+			price: observable,
+			route: observable,
+			assignRoute: action
+		});
 
+		this.type = type;
 		this.maxSpeed = data.speed;
 		this.price = data.cost;
 		this.id = Train.idCounter++;
@@ -91,7 +90,6 @@ class CarriageTrain extends Train {
 		super(data, "carriage");
 
 		makeObservable(this, {
-			...trainProps,
 			strength: observable,
 			maxCarriages: observable,
 			carriages: observable,
@@ -114,7 +112,6 @@ class UnitTrain extends Train {
 		super(data, "unit");
 
 		makeObservable(this, {
-			...trainProps,
 			segments: observable,
 			seats: observable
 		});
