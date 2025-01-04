@@ -59,7 +59,11 @@ module.exports = {
 				resolvePluginsRelativeTo: __dirname,
 				baseConfig: {
 					// extends: [require.resolve("eslint-config-react-app/base")]
-					extends: ["eslint:recommended", "plugin:react/recommended"]
+					plugins: ["react", "react-hooks", "react-compiler"],
+					extends: ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+					rules: {
+						"react-compiler/react-compiler": "error"
+					}
 				}
 			}),
 		isDevelopment && new ReactRefreshWebpackPlugin(),
@@ -73,7 +77,7 @@ module.exports = {
 		hot: true,
 		historyApiFallback: true
 	},
-	devtool: isDevelopment ? "eval" : false,
+	devtool: isDevelopment ? "eval-source-map" : false,
 	stats: {
 		errorDetails: true,
 		children: true

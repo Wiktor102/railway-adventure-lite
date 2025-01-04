@@ -8,15 +8,22 @@
     "parserOptions": {
         "sourceType": "module"
     },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "react-compiler"
+    ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:react/jsx-runtime"
     ],
     "rules": {
         // "react/react-in-jsx-scope": "off"
         "no-unused-vars": "warn",
-        "react/prop-types": "warn"
+        "react/prop-types": "warn",
+        "react-compiler/react-compiler": "error"
     },
     "settings": {
         "react": {
