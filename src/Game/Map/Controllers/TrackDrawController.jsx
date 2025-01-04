@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useMapEvent } from "react-leaflet";
-import { useGameStore } from "../../store/GameStoreProvider";
-import Track from "../../store/models/Track";
+import { useGameStore } from "../../../store/GameStoreProvider";
+import Track from "../../../store/models/Track";
 import { latLng } from "leaflet";
-import { pointNearestCircle } from "../../utils/utils";
+import { pointNearestCircle } from "../../../utils/utils";
 import { useNavigate, useParams } from "react-router";
 
 const TrackDrawController = observer(() => {

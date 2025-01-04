@@ -7,11 +7,11 @@ import { Marker } from "@adamscybot/react-leaflet-component-marker";
 import { latLng } from "leaflet";
 
 // hooks and utilities
-import useMapZoom from "../../hooks/useMapZoom";
-import { useGameStore } from "../../store/GameStoreProvider";
+import useMapZoom from "../../../hooks/useMapZoom";
+import { useGameStore } from "../../../store/GameStoreProvider";
 
 // classes
-import Station from "../../store/models/Station";
+import Station from "../../../store/models/Station";
 
 const StationsController = observer(() => {
 	const { stationStore } = useGameStore();

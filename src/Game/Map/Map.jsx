@@ -1,7 +1,7 @@
 import { MapContainer, GeoJSON, useMap } from "react-leaflet";
 import mapGeoJson from "../../assets/data/slaskie.json";
-import TracksController from "./TracksController";
-import StationsController from "./StationsController";
+import StationsController from "./Controllers/StationsController";
+import TracksController from "./Controllers/TracksController";
 
 const Map = () => {
 	return (

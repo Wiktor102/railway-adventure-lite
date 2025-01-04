@@ -3,11 +3,11 @@ import { useMatch, useParams } from "react-router";
 import { latLng } from "leaflet";
 
 // hooks
-import { useGameStore } from "../../store/GameStoreProvider";
+import { useGameStore } from "../../../store/GameStoreProvider";
 
 // components
 import TrackDrawController from "./TrackDrawController";
-import { TrackDeleteAction, TrackWithActions } from "./Tracks";
+import { TrackDeleteAction, TrackWithActions } from "../Tracks";
 
 const TracksController = observer(() => {
 	const { trackStore, routeStore } = useGameStore();
