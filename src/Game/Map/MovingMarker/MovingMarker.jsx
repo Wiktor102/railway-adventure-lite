@@ -1,5 +1,5 @@
 import { Marker } from "react-leaflet";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useImperativeHandle } from "react";
 import { LatLng } from "leaflet";
 import PropTypes from "prop-types";
 
@@ -21,9 +21,10 @@ const calculatePathMetrics = path => {
 	return { totalLength, distances };
 };
 
-const MovingMarker = ({ path, speed = 50, ...props }) => {
+const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) => {
+	const { onEnd, onStop, onStopEnd } = eventHandlers;
+
 	const [position, setPosition] = useState(path[0].latlng);
-	const [, setIsComplete] = useState(false);
 
 	const requestRef = useRef();
 	const previousTimeRef = useRef();
@@ -32,38 +33,40 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 	const stopTimeoutRef = useRef();
 	const isStoppedAtStationRef = useRef(false);
 	const isResumingRef = useRef(false);
+	const isEndedRef = useRef(false);
 	const pathMetricsRef = useRef(calculatePathMetrics(path));
 
-	const stopAnimation = () => {
+	const cleanupAnimation = useCallback(() => {
 		if (requestRef.current) {
 			cancelAnimationFrame(requestRef.current);
 			requestRef.current = undefined;
 		}
-		setIsComplete(true);
-	};
 
-	/*
-	const resetAnimation = () => {
-		progressRef.current = 0;
-		currentSegmentRef.current = 0;
-		previousTimeRef.current = undefined;
-		isStoppedAtStationRef.current = false;
-		isResumingRef.current = false;
+		if (stopTimeoutRef.current) {
+			clearTimeout(stopTimeoutRef.current);
+			stopTimeoutRef.current = undefined;
+		}
+	}, []);
 
-		setIsComplete(false);
-		setPosition(path[0].latlng);
-	};
-    */
+	const stopAnimation = useCallback(() => {
+		isEndedRef.current = true;
+		cleanupAnimation();
+		typeof onEnd === "function" && onEnd();
+	}, [onEnd, cleanupAnimation]);
 
 	const animate = useCallback(
 		time => {
+			if (isEndedRef.current) {
+				cleanupAnimation();
+				return;
+			}
 			if (isStoppedAtStationRef.current) {
-				console.log("is stopped");
 				requestRef.current = requestAnimationFrame(animate);
 				return;
 			}
 
 			if (previousTimeRef.current == null || isResumingRef.current) {
+				typeof onStopEnd === "function" && onStopEnd();
 				previousTimeRef.current = time;
 				isResumingRef.current = false;
 			}
@@ -85,7 +88,6 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 			currentSegmentRef.current = newSegment;
 
 			if (currentSegmentRef.current >= path.length - 1) {
-				console.log("end of path");
 				setPosition(path[path.length - 1].latlng);
 				stopAnimation();
 				return;
@@ -94,10 +96,11 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 			// Handle station stops
 			if (path[currentSegmentRef.current].stop && didJustUpdateSegment) {
 				isStoppedAtStationRef.current = true;
+				typeof onStop === "function" && onStop(path[currentSegmentRef.current].stop);
 				stopTimeoutRef.current = setTimeout(() => {
 					isStoppedAtStationRef.current = false;
 					isResumingRef.current = true;
-				}, path[currentSegmentRef.current].stop);
+				}, path[currentSegmentRef.current].stop.duration);
 			}
 
 			// Calculate fraction within current segment
@@ -115,30 +118,50 @@ const MovingMarker = ({ path, speed = 50, ...props }) => {
 			setPosition([currentPos.lat, currentPos.lng]);
 			requestRef.current = requestAnimationFrame(animate);
 		},
-		[path, speed]
+		[stopAnimation, onStop, onStopEnd, path, speed, cleanupAnimation]
 	);
+
+	const resetAnimation = useCallback(() => {
+		cleanupAnimation();
+		progressRef.current = 0;
+		currentSegmentRef.current = 0;
+		previousTimeRef.current = undefined;
+		isStoppedAtStationRef.current = false;
+		isResumingRef.current = false;
+		isEndedRef.current = false;
+		setPosition(path[0].latlng);
+		requestRef.current = requestAnimationFrame(animate);
+	}, [animate, path, cleanupAnimation]);
 
 	useEffect(() => {
 		pathMetricsRef.current = calculatePathMetrics(path);
-		// resetAnimation();
-		requestRef.current = requestAnimationFrame(animate);
 
-		return () => {
-			if (requestRef.current) {
-				cancelAnimationFrame(requestRef.current);
-			}
+		// Only start animation if it's not already running
+		if (!requestRef.current) {
+			requestRef.current = requestAnimationFrame(animate);
+		}
 
-			if (stopTimeoutRef.current) {
-				clearTimeout(stopTimeoutRef.current);
-			}
-		};
-	}, [path, speed, animate]);
+		return cleanupAnimation;
+	}, [path, speed, animate, cleanupAnimation]);
+
+	useImperativeHandle(ref, () => ({ resetAnimation }), [resetAnimation]);
 
 	return <Marker position={position} {...props} />;
 };
 
 MovingMarker.propTypes = {
-	path: PropTypes.arrayOf(PropTypes.shape({ latlng: PropTypes.instanceOf(LatLng), stop: PropTypes.number })).isRequired,
+	path: PropTypes.arrayOf(
+		PropTypes.shape({
+			latlng: PropTypes.instanceOf(LatLng),
+			stop: PropTypes.shape({ duration: PropTypes.number })
+		})
+	).isRequired,
+	eventHandlers: PropTypes.shape({
+		onEnd: PropTypes.func,
+		onStop: PropTypes.func,
+		onStopEnd: PropTypes.func
+	}),
+	ref: PropTypes.object,
 	speed: PropTypes.number, // Speed in kilometers per hour
 	icon: PropTypes.object
 };
