@@ -11,6 +11,8 @@ import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 // styles
 import style from "./RouteDetails.component.scss";
+import Slider from "../../common/Slider/Slider";
+import InfoRow from "../../common/InfoRow/InfoRow";
 
 const RouteDetails = observer(() => {
 	const { routeStore, stationStore, showError } = useGameStore();
@@ -26,7 +28,7 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore]);
 
-	// TODO: Uncomment below
+	// TODO: Uncomment below for production
 	// useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
 
 	function toggleStop(stationName) {
@@ -111,10 +113,40 @@ const RouteDetails = observer(() => {
 							</div>
 						)}
 					</div>
+					<div className="config-wrapper">
+						<h3>Ustawienia</h3>
+						<Slider min={1} max={15} step={1} value={route.pricePerKm} onChange={route.setPricePerKm}>
+							<i className="fas fa-money-bills"></i> Cena za kilometr
+						</Slider>
+						<Slider
+							min={30}
+							max={5 * 60}
+							step={30}
+							value={route.routeInterval}
+							renderedValue={route.routeInterval / 60 + " min"}
+							onChange={route.setRouteInterval}
+						>
+							<i className="fas fa-clock"></i> Czas postoju na stacjach pośrednich
+						</Slider>
+						<Slider
+							min={2 * 60}
+							max={20 * 60}
+							step={60}
+							value={route.stopDuration}
+							renderedValue={route.stopDuration / 60 + " min"}
+							onChange={route.setStopDuration}
+						>
+							<i className="fas fa-clock"></i> Czas postoju na stacjach końcowych
+						</Slider>
+					</div>
 					<div className="info-wrapper">
 						<h3>Informacje</h3>
-						<p>Przystanki: {route.stations.length}</p>
-						<p>Długość: {(route.distance / 1000).toFixed(1)} km</p>
+						<InfoRow value={route.stations.length}>
+							<i className="fas fa-location-dot"></i> Przystanki
+						</InfoRow>
+						<InfoRow value={(route.distance / 1000).toFixed(1) + " km"}>
+							<i className="fas fa-ruler-horizontal"></i> Długość
+						</InfoRow>
 					</div>
 				</Scrollbars>
 				{route.draft && (

@@ -17,25 +17,27 @@ const TrainController = observer(() => {
 	});
 });
 
-const END_STATION_STOP_DURATION = 2000;
 const TrainMarker = observer(({ train }) => {
+	/**@type {import("../../../store/models/Route").default} */
+	const route = useMemo(() => train.route, [train]);
+
 	const markerRef = useRef(null);
 	const [reverse, setReverse] = useState(false);
 	const timeoutRef = useRef();
 
 	const path = useMemo(
 		() =>
-			train.route.path.flatMap((segment, i) => {
+			route.path.flatMap((segment, i) => {
 				const segmentLatlngs = toJS(segment.track.latlngs[segment.trackIndex]);
 				return segmentLatlngs
 					.map((latlng, j) => {
 						const hasStop = j === segmentLatlngs.length - 1 && train.route.stations.includes(segment.to);
-						const stop = hasStop ? { duration: END_STATION_STOP_DURATION, name: segment.to } : undefined;
+						const stop = hasStop ? { duration: route.stopDuration * 1000, name: segment.to } : undefined;
 						return { latlng, stop };
 					})
 					.slice(i === 0 ? 0 : 1);
 			}),
-		[train.route.path, train.route.stations]
+		[route.path, route.stopDuration, train.route.stations]
 	);
 
 	const adjustedPath = useMemo(() => (reverse ? path.toReversed() : path), [path, reverse]);
@@ -44,8 +46,8 @@ const TrainMarker = observer(({ train }) => {
 		setReverse(r => !r);
 		timeoutRef.current = setTimeout(() => {
 			markerRef.current?.resetAnimation();
-		}, END_STATION_STOP_DURATION);
-	}, []);
+		}, route.routeInterval * 1000);
+	}, [route]);
 
 	useEffect(() => () => clearTimeout(timeoutRef.current), []);
 

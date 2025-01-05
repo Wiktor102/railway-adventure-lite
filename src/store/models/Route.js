@@ -13,8 +13,21 @@ class Route {
 	/**@type {Path} */
 	path = [];
 
+	/**@type {String} */
 	color;
+
+	/**@type {String} */
 	name;
+
+	/**@type {number} seconds */
+	stopDuration = 60;
+
+	/**@type {number} seconds */
+	routeInterval = 5 * 60;
+
+	/**@type {number} */
+	pricePerKm = 1;
+
 	draft = true;
 
 	static idCounter = 0;
@@ -40,13 +53,45 @@ class Route {
 		return this.path.reduce((acc, segment) => acc + segment.track.length, 0);
 	}
 
-	setName(name) {
+	/**
+	 * @param {string} name
+	 * @returns {void}
+	 */
+	setName = name => {
 		this.name = name;
-	}
+	};
 
-	setColor(color) {
+	/**
+	 * @param {string} color
+	 * @returns {void}
+	 */
+	setColor = color => {
 		this.color = color;
-	}
+	};
+
+	/**
+	 * @param {number} duration
+	 * @returns {void}
+	 */
+	setStopDuration = duration => {
+		this.stopDuration = duration;
+	};
+
+	/**
+	 * @param {number} interval
+	 * @returns {void}
+	 */
+	setRouteInterval = interval => {
+		this.routeInterval = interval;
+	};
+
+	/**
+	 * @param {number} price
+	 * @returns {void}
+	 */
+	setPricePerKm = price => {
+		this.pricePerKm = price;
+	};
 
 	/**
 	 * @param {string} stationName
