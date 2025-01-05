@@ -25,7 +25,7 @@ const RoutesMenu = observer(() => {
 							{routeStore.routes.map(route => (
 								<RouteTile route={route} key={route.id}>
 									<IconLinkButton to={"/game/routes/details/" + route.id} inverted>
-										<i className="fas fa-pencil"></i>
+										<i className="fas fa-cog"></i>
 									</IconLinkButton>
 									<IconButton onClick={() => {}} inverted>
 										<i className="fas fa-trash"></i>
