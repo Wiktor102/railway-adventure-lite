@@ -11,6 +11,8 @@ import { CarriageTrain, UnitTrain } from "../../../store/models/Train";
 
 // component
 import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
+import InfoRow from "../../common/InfoRow/InfoRow";
+import Slider from "../../common/Slider/Slider";
 
 // assets
 import locomotiveIcon from "../../../assets/icons/locomotive.svg";
@@ -62,29 +64,21 @@ const BuyTrain = () => {
 							</ul>
 						</nav>
 						<img src={locomotive ? locomotiveIcon : emuIcon} alt="" />
-						<div className="range-input-container">
-							<label htmlFor="speed">
-								<i className="fas fa-gauge"></i> Prędkość
-							</label>
-							<p>{speed} km/h</p>
-							<input
-								type="range"
-								id="speed"
-								min={100}
-								max={220}
-								step={20}
-								value={speed}
-								onChange={e => setSpeed(e.target.value)}
-							/>
-						</div>
+						<Slider
+							min={100}
+							max={220}
+							step={20}
+							value={speed}
+							renderedValue={speed + " km/h"}
+							onChange={e => setSpeed(e.target.value)}
+						>
+							<i className="fas fa-gauge"></i> Prędkość
+						</Slider>
 						{locomotive && <BuyLocomotive speed={speed} setObject={setObject} />}
 						{emu && <BuyEmu speed={speed} setObject={setObject} />}
-						<div className="range-input-container">
-							<label htmlFor="cost">
-								<img src={moneyImg} alt="ikona pieniędzy" /> Koszt
-							</label>
-							<p id="cost">{object.cost.toLocaleString("en-US").replace(/,/g, " ")}</p>
-						</div>
+						<InfoRow value={object.cost.toLocaleString("en-US").replace(/,/g, " ")}>
+							<img src={moneyImg} alt="ikona pieniędzy" /> Koszt
+						</InfoRow>
 					</div>
 				</Scrollbars>
 				<ElevatedButton onClick={buy}>
@@ -110,27 +104,19 @@ const BuyLocomotive = ({ speed, setObject }) => {
 
 	return (
 		<>
-			<div className="range-input-container">
-				<label htmlFor="segments">
-					<i className="fas fa-dumbbell"></i> Moc
-				</label>
-				<p>{strength} kW</p>
-				<input
-					type="range"
-					id="segments"
-					min={3000}
-					max={9000}
-					step={1000}
-					value={strength}
-					onChange={e => setStrength(e.target.value)}
-				/>
-			</div>
-			<div className="range-input-container">
-				<label htmlFor="segments">
-					<i className="fas fa-weight-hanging"></i> Maksymalna liczba wagonów
-				</label>
-				<p>{maxCarriages}</p>
-			</div>
+			<Slider
+				min={3000}
+				max={9000}
+				step={1000}
+				value={strength}
+				renderedValue={strength + " kW"}
+				onChange={e => setStrength(e.target.value)}
+			>
+				<i className="fas fa-dumbbell"></i> Moc
+			</Slider>
+			<InfoRow value={maxCarriages}>
+				<i className="fas fa-weight-hanging"></i> Maksymalna liczba wagonów
+			</InfoRow>
 		</>
 	);
 };
@@ -159,43 +145,16 @@ const BuyEmu = ({ speed, setObject }) => {
 
 	return (
 		<>
-			<div className="range-input-container">
-				<label htmlFor="segments">
-					<i className="fas fa-ruler-horizontal"></i> Liczba członów
-				</label>
-				<p>{segments}</p>
-				<input
-					type="range"
-					id="segments"
-					min={2}
-					max={8}
-					step={1}
-					value={segments}
-					onChange={e => setSegments(e.target.value)}
-				/>
-			</div>
+			<Slider min={2} max={8} step={1} value={segments} onChange={e => setSegments(e.target.value)}>
+				<i className="fas fa-ruler-horizontal"></i> Liczba członów
+			</Slider>
+			<Slider min={50} max={82} step={4} value={seats} onChange={e => setSeats(e.target.value)}>
+				<i className="fas fa-chair"></i> Liczba miejsc siedzących w członie
+			</Slider>
 
-			<div className="range-input-container">
-				<label htmlFor="seats">
-					<i className="fas fa-chair"></i> Liczba miejsc siedzących w członie
-				</label>
-				<p>{seats}</p>
-				<input
-					type="range"
-					id="seats"
-					min={50}
-					max={82}
-					step={4}
-					value={seats}
-					onChange={e => setSeats(e.target.value)}
-				/>
-			</div>
-			<div className="range-input-container">
-				<label htmlFor="seats-total">
-					<i className="fas fa-chair"></i> Łączna liczba miejsc
-				</label>
-				<p id="seats-total">{seats * segments}</p>
-			</div>
+			<InfoRow value={seats * segments}>
+				<i className="fas fa-chair"></i> Łączna liczba miejsc
+			</InfoRow>
 		</>
 	);
 };
