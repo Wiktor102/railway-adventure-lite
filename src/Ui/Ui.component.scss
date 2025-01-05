@@ -85,6 +85,22 @@
 				font-size: 2rem;
 			}
 		}
+
+		.panel:has(.ball-grid-pulse) {
+			display: grid;
+			place-content: center;
+		}
+
+		.ball-grid-pulse {
+			width: calc(3 * 2rem + 6 * 0.2rem);
+
+			div {
+				width: 2rem;
+				height: 2rem;
+				margin: 0.2rem;
+				background-color: var(--on-surface);
+			}
+		}
 	}
 
 	.game-ui-bottom-right {

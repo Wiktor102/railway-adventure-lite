@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { lazy } from "react";
 import HomePage from "./Home/Home";
 import Game from "./Game/Game";
 
@@ -6,14 +7,16 @@ import Game from "./Game/Game";
 import NamedRoute from "./Router/components/NamedRoute";
 import NamedRouter from "./Router/components/NamedRouter";
 
-// components
-import TracksMenu from "./Ui/pages/TracksMenu";
+// not lazy-loaded components
 import TrackDrawTips from "./Ui/pages/TrackDrawTips/TrackDrawTips";
-import RoutesMenu from "./Ui/pages/RoutesMenu/RoutesMenu";
-import RouteDetails from "./Ui/pages/RoutesMenu/RouteDetails";
-import TrainsMenu from "./Ui/pages/TrainsMenu/TrainsMenu";
-import BuyTrain from "./Ui/pages/TrainsMenu/BuyTrain";
-import AssignRoute from "./Ui/pages/TrainsMenu/AssignRoute";
+
+// lazy loaded components
+const TracksMenu = lazy(() => import("./Ui/pages/TracksMenu"));
+const RoutesMenu = lazy(() => import("./Ui/pages/RoutesMenu/RoutesMenu"));
+const RouteDetails = lazy(() => import("./Ui/pages/RoutesMenu/RouteDetails"));
+const TrainsMenu = lazy(() => import("./Ui/pages/TrainsMenu/TrainsMenu"));
+const BuyTrain = lazy(() => import("./Ui/pages/TrainsMenu/BuyTrain"));
+const AssignRoute = lazy(() => import("./Ui/pages/TrainsMenu/AssignRoute"));
 
 function App() {
 	return (

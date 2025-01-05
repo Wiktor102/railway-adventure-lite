@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { observer } from "mobx-react-lite";
+import { Suspense } from "react";
 
 // hooks
 import { useGameStore } from "../store/GameStoreProvider";
@@ -15,6 +16,7 @@ import { useIsNamedRouteRendering } from "../Router/components/NamedRouter";
 
 // styles
 import style from "./Ui.component.scss";
+import "../Ui/common/loaders.min.css";
 
 const Ui = observer(() => {
 	const { error } = useGameStore();
@@ -44,10 +46,26 @@ const Ui = observer(() => {
 			</div>
 			<div className="game-ui-left">
 				<div className={`panel ${pathname === "" ? "collapsed" : ""}`}>
-					<Link to="/game">
-						<i className="fas fa-times"></i>
-					</Link>
-					<NamedOutlet name="menu-content" />
+					<Suspense
+						fallback={
+							<div className="ball-grid-pulse">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						}
+					>
+						<Link to="/game">
+							<i className="fas fa-times"></i>
+						</Link>
+						<NamedOutlet name="menu-content" />
+					</Suspense>
 				</div>
 			</div>
 			<div className="game-ui-bottom-right">
