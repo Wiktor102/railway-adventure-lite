@@ -1,0 +1,42 @@
+.speed-changer {
+	display: flex;
+	align-items: center;
+	background-color: var(--surface);
+	color: var(--on-surface);
+	border-radius: 10px;
+	font-size: 1.5rem;
+	box-shadow: -2px 2px 2px #093d5e77;
+
+	& > i {
+		margin-inline: 1rem 0;
+	}
+}
+
+.speed-changer button {
+	all: unset;
+	pointer-events: all;
+	cursor: pointer;
+
+	height: 100%;
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+	padding-inline: 1rem;
+
+	i {
+		color: var(--surface-lighter);
+		transition: color 200ms;
+	}
+
+	i.active {
+		color: var(--on-surface);
+	}
+
+	&:is(:hover, :focus-visible) i:not(.active) {
+		color: var(--surface-lightest);
+	}
+
+	&:is(:hover, :focus-visible):not(:has(i:not(.active))) i {
+		color: var(--on-surface-lightest);
+	}
+}

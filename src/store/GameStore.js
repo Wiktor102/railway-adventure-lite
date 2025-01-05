@@ -12,6 +12,9 @@ class GameStore {
 	routeStore;
 	trainStore;
 
+	/**@type {number} */
+	gameSpeed = 1;
+
 	/**@type {string|null} */
 	error = null;
 	_errorTimeout = null;
@@ -23,6 +26,10 @@ class GameStore {
 		this.routeStore = new RouteStore(this);
 		this.trainStore = new TrainStore(this);
 	}
+
+	setGameSpeed = speed => {
+		this.gameSpeed = speed;
+	};
 
 	showError = (message, time = 3) => {
 		this.error = message;

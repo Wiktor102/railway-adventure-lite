@@ -122,9 +122,9 @@ const RouteDetails = observer(() => {
 							min={30}
 							max={5 * 60}
 							step={30}
-							value={route.routeInterval}
-							renderedValue={route.routeInterval / 60 + " min"}
-							onChange={route.setRouteInterval}
+							value={route.stopDuration}
+							renderedValue={route.stopDuration / 60 + " min"}
+							onChange={route.setStopDuration}
 						>
 							<i className="fas fa-clock"></i> Czas postoju na stacjach pośrednich
 						</Slider>
@@ -132,9 +132,9 @@ const RouteDetails = observer(() => {
 							min={2 * 60}
 							max={20 * 60}
 							step={60}
-							value={route.stopDuration}
-							renderedValue={route.stopDuration / 60 + " min"}
-							onChange={route.setStopDuration}
+							value={route.routeInterval}
+							renderedValue={route.routeInterval / 60 + " min"}
+							onChange={route.setRouteInterval}
 						>
 							<i className="fas fa-clock"></i> Czas postoju na stacjach końcowych
 						</Slider>

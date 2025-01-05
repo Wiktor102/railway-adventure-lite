@@ -70,7 +70,7 @@ const BuyTrain = () => {
 							step={20}
 							value={speed}
 							renderedValue={speed + " km/h"}
-							onChange={e => setSpeed(e.target.value)}
+							onChange={v => setSpeed(v)}
 						>
 							<i className="fas fa-gauge"></i> Prędkość
 						</Slider>
@@ -110,7 +110,7 @@ const BuyLocomotive = ({ speed, setObject }) => {
 				step={1000}
 				value={strength}
 				renderedValue={strength + " kW"}
-				onChange={e => setStrength(e.target.value)}
+				onChange={v => setStrength(v)}
 			>
 				<i className="fas fa-dumbbell"></i> Moc
 			</Slider>
@@ -145,10 +145,10 @@ const BuyEmu = ({ speed, setObject }) => {
 
 	return (
 		<>
-			<Slider min={2} max={8} step={1} value={segments} onChange={e => setSegments(e.target.value)}>
+			<Slider min={2} max={8} step={1} value={segments} onChange={v => setSegments(v)}>
 				<i className="fas fa-ruler-horizontal"></i> Liczba członów
 			</Slider>
-			<Slider min={50} max={82} step={4} value={seats} onChange={e => setSeats(e.target.value)}>
+			<Slider min={50} max={82} step={4} value={seats} onChange={v => setSeats(v)}>
 				<i className="fas fa-chair"></i> Liczba miejsc siedzących w członie
 			</Slider>
 

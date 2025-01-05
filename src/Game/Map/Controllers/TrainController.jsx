@@ -20,9 +20,12 @@ const TrainController = observer(() => {
 const TrainMarker = observer(({ train }) => {
 	/**@type {import("../../../store/models/Route").default} */
 	const route = useMemo(() => train.route, [train]);
+	const { gameSpeed } = useGameStore();
+
+	const [isEnd, setIsEnd] = useState(0);
+	const [reverse, setReverse] = useState(false);
 
 	const markerRef = useRef(null);
-	const [reverse, setReverse] = useState(false);
 	const timeoutRef = useRef();
 
 	const path = useMemo(
@@ -43,15 +46,38 @@ const TrainMarker = observer(({ train }) => {
 	const adjustedPath = useMemo(() => (reverse ? path.toReversed() : path), [path, reverse]);
 
 	const onEnd = useCallback(() => {
+		setIsEnd(Date.now());
 		setReverse(r => !r);
-		timeoutRef.current = setTimeout(() => {
-			markerRef.current?.resetAnimation();
-		}, route.routeInterval * 1000);
-	}, [route]);
+	}, []);
 
-	useEffect(() => () => clearTimeout(timeoutRef.current), []);
+	// Handle restarting the animation (and waiting)
+	useEffect(() => {
+		if (isEnd > 0) {
+			const normalInterval = route.routeInterval * 1000;
+			const timePassed = Date.now() - isEnd;
+			const remainingTime = normalInterval - timePassed;
 
-	return <MovingMarker path={adjustedPath} ref={markerRef} speed={train.speed * 3} eventHandlers={{ onEnd }} />;
+			timeoutRef.current = setTimeout(() => {
+				setIsEnd(0);
+				markerRef.current?.resetAnimation();
+			}, remainingTime / gameSpeed);
+		}
+
+		return () => clearTimeout(timeoutRef.current);
+	}, [gameSpeed, isEnd, route.routeInterval]);
+
+	// console.log(path);
+	// return null;
+	return (
+		<MovingMarker
+			key={train.id}
+			path={adjustedPath}
+			ref={markerRef}
+			speed={train.speed}
+			simulationSpeed={gameSpeed}
+			eventHandlers={{ onEnd }}
+		/>
+	);
 });
 
 export default TrainController;

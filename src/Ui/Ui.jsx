@@ -7,6 +7,7 @@ import { useGameStore } from "../store/GameStoreProvider";
 
 // components
 import StatusBox from "./common/StatusBox/StatusBox";
+import SpeedChanger from "./widgets/SpeedChanger/SpeedChanger";
 import IconButton, { IconLinkButton } from "./common/IconButton/IconButton";
 
 // routing
@@ -27,6 +28,7 @@ const Ui = observer(() => {
 	return (
 		<div className="game-ui" data-style={style}>
 			<div className="game-ui-top">
+				<SpeedChanger />
 				<StatusBox icon="https://cdn-icons-png.flaticon.com/512/7630/7630510.png" value={26753} />
 				<IconButton onClick={() => {}}>
 					<i className="fa-solid fa-arrow-right-from-bracket"></i>

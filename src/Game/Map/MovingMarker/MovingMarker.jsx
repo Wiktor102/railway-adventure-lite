@@ -21,17 +21,17 @@ const calculatePathMetrics = path => {
 	return { totalLength, distances };
 };
 
-const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) => {
+const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {}, ref, ...props }) => {
 	const { onEnd, onStop, onStopEnd } = eventHandlers;
 
 	const [position, setPosition] = useState(path[0].latlng);
+	const [isPaused, setIsPaused] = useState(0); // Stores timestamp at which the marker was paused; 0 - not paused
 
 	const requestRef = useRef();
 	const previousTimeRef = useRef();
 	const progressRef = useRef(0);
 	const currentSegmentRef = useRef(0); // Index of last passed path point
 	const stopTimeoutRef = useRef();
-	const isStoppedAtStationRef = useRef(false);
 	const isResumingRef = useRef(false);
 	const isEndedRef = useRef(false);
 	const pathMetricsRef = useRef(calculatePathMetrics(path));
@@ -60,7 +60,7 @@ const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) =
 				cleanupAnimation();
 				return;
 			}
-			if (isStoppedAtStationRef.current) {
+			if (isPaused) {
 				requestRef.current = requestAnimationFrame(animate);
 				return;
 			}
@@ -76,7 +76,7 @@ const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) =
 
 			// Update total distance traveled
 			// Convert speed from km/h to m/s: (km/h) / 3.6 = m/s
-			progressRef.current += deltaTime * (speed / 3.6);
+			progressRef.current += deltaTime * ((speed * simulationSpeed) / 3.6);
 
 			// Find current segment based on total distance
 			let newSegment = currentSegmentRef.current;
@@ -95,12 +95,8 @@ const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) =
 
 			// Handle station stops
 			if (path[currentSegmentRef.current].stop && didJustUpdateSegment) {
-				isStoppedAtStationRef.current = true;
 				typeof onStop === "function" && onStop(path[currentSegmentRef.current].stop);
-				stopTimeoutRef.current = setTimeout(() => {
-					isStoppedAtStationRef.current = false;
-					isResumingRef.current = true;
-				}, path[currentSegmentRef.current].stop.duration);
+				setIsPaused(Date.now());
 			}
 
 			// Calculate fraction within current segment
@@ -118,7 +114,7 @@ const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) =
 			setPosition([currentPos.lat, currentPos.lng]);
 			requestRef.current = requestAnimationFrame(animate);
 		},
-		[stopAnimation, onStop, onStopEnd, path, speed, cleanupAnimation]
+		[isPaused, speed, simulationSpeed, path, cleanupAnimation, onStopEnd, stopAnimation, onStop]
 	);
 
 	const resetAnimation = useCallback(() => {
@@ -126,23 +122,45 @@ const MovingMarker = ({ path, speed = 50, eventHandlers = {}, ref, ...props }) =
 		progressRef.current = 0;
 		currentSegmentRef.current = 0;
 		previousTimeRef.current = undefined;
-		isStoppedAtStationRef.current = false;
 		isResumingRef.current = false;
 		isEndedRef.current = false;
+
+		setIsPaused(false);
 		setPosition(path[0].latlng);
 		requestRef.current = requestAnimationFrame(animate);
 	}, [animate, path, cleanupAnimation]);
 
+	// Handle animation start and clean-up
 	useEffect(() => {
-		pathMetricsRef.current = calculatePathMetrics(path);
-
-		// Only start animation if it's not already running
 		if (!requestRef.current) {
 			requestRef.current = requestAnimationFrame(animate);
 		}
 
 		return cleanupAnimation;
 	}, [path, speed, animate, cleanupAnimation]);
+
+	// Handle path changes - recalculate distance(s)
+	useEffect(() => {
+		pathMetricsRef.current = calculatePathMetrics(path);
+	}, [path]);
+
+	// Handle Pause / unpause
+	useEffect(() => {
+		if (isPaused > 0) {
+			stopTimeoutRef.current && clearTimeout(stopTimeoutRef.current);
+
+			const elapsedTime = Date.now() - isPaused;
+			const originalDuration = path[currentSegmentRef.current].stop.duration;
+			const remainingTime = Math.max(0, (originalDuration - elapsedTime * simulationSpeed) / simulationSpeed);
+
+			stopTimeoutRef.current = setTimeout(() => {
+				setIsPaused(false);
+				isResumingRef.current = true;
+			}, remainingTime);
+		}
+
+		return () => stopTimeoutRef.current && clearTimeout(stopTimeoutRef.current);
+	}, [simulationSpeed, path, isPaused]);
 
 	useImperativeHandle(ref, () => ({ resetAnimation }), [resetAnimation]);
 
@@ -163,6 +181,7 @@ MovingMarker.propTypes = {
 	}),
 	ref: PropTypes.object,
 	speed: PropTypes.number, // Speed in kilometers per hour
+	simulationSpeed: PropTypes.number, // Simulation speed multiplier
 	icon: PropTypes.object
 };
 
