@@ -1,10 +1,10 @@
 @scope tree;
 
 .route-details-menu {
-	& > div {
-		display: grid;
-		margin-inline: 1.5rem;
-	}
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 5rem - 1.5rem);
+	margin-inline: 1.5rem;
 
 	form {
 		display: flex;
@@ -186,8 +186,7 @@
 		}
 	}
 
-	& > div > button {
+	& > button {
 		margin-block-start: 1.5rem;
-		width: 100%;
 	}
 }

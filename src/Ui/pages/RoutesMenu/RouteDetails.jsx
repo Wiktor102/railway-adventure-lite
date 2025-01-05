@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 // hooks
 import { useGameStore } from "../../../store/GameStoreProvider";
@@ -52,9 +53,9 @@ const RouteDetails = observer(() => {
 			<Link to="/game/routes" className="back-button" style={{ float: "left" }}>
 				<i className="fas fa-arrow-left"></i>
 			</Link>
+			<h2>{routeId ? "Szczegóły trasy" : "Stwórz trasę"}</h2>
 			<div className="route-details-menu" data-style={style}>
-				<h2>{routeId ? "Szczegóły trasy" : "Stwórz trasę"}</h2>
-				<div>
+				<Scrollbars className="scroll-container">
 					<form>
 						<input type="text" value={route.name} onChange={({ target: t }) => route.setName(t.value)} />
 						<div className="color-input-wrapper">
@@ -115,12 +116,12 @@ const RouteDetails = observer(() => {
 						<p>Przystanki: {route.stations.length}</p>
 						<p>Długość: {(route.distance / 1000).toFixed(1)} km</p>
 					</div>
-					{route.draft && (
-						<ElevatedButton onClick={accept} disabled={route.stations.length < 2}>
-							<i className="fas fa-check"></i> Stwórz trasę
-						</ElevatedButton>
-					)}
-				</div>
+				</Scrollbars>
+				{route.draft && (
+					<ElevatedButton onClick={accept} disabled={route.stations.length < 2}>
+						<i className="fas fa-check"></i> Stwórz trasę
+					</ElevatedButton>
+				)}
 			</div>
 		</>
 	);

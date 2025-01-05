@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useMatch, useNavigate } from "react-router";
+import Scrollbars from "react-custom-scrollbars-2";
 
 // hooks
 import { useGameStore } from "../../../store/GameStoreProvider";
@@ -48,40 +49,44 @@ const BuyTrain = () => {
 			</Link>
 			<h2>Kup pociąg</h2>
 			<div className="buy-train-menu" data-style={style}>
-				<nav className="tabs">
-					<ul>
-						<li>
-							<NavLink to="/game/trains/buy/locomotive">Lokomotywa</NavLink>
-						</li>
-						<li>
-							<NavLink to="/game/trains/buy/emu">Zespół trakcyjny</NavLink>
-						</li>
-					</ul>
-				</nav>
-				<img src={locomotive ? locomotiveIcon : emuIcon} alt="" />
-				<div className="range-input-container">
-					<label htmlFor="speed">
-						<i className="fas fa-gauge"></i> Prędkość
-					</label>
-					<p>{speed} km/h</p>
-					<input
-						type="range"
-						id="speed"
-						min={100}
-						max={220}
-						step={20}
-						value={speed}
-						onChange={e => setSpeed(e.target.value)}
-					/>
-				</div>
-				{locomotive && <BuyLocomotive speed={speed} setObject={setObject} />}
-				{emu && <BuyEmu speed={speed} setObject={setObject} />}
-				<div className="range-input-container">
-					<label htmlFor="cost">
-						<img src={moneyImg} alt="ikona pieniędzy" /> Koszt
-					</label>
-					<p id="cost">{object.cost.toLocaleString("en-US").replace(/,/g, " ")}</p>
-				</div>
+				<Scrollbars>
+					<div className="inner-wrapper">
+						<nav className="tabs">
+							<ul>
+								<li>
+									<NavLink to="/game/trains/buy/locomotive">Lokomotywa</NavLink>
+								</li>
+								<li>
+									<NavLink to="/game/trains/buy/emu">Zespół trakcyjny</NavLink>
+								</li>
+							</ul>
+						</nav>
+						<img src={locomotive ? locomotiveIcon : emuIcon} alt="" />
+						<div className="range-input-container">
+							<label htmlFor="speed">
+								<i className="fas fa-gauge"></i> Prędkość
+							</label>
+							<p>{speed} km/h</p>
+							<input
+								type="range"
+								id="speed"
+								min={100}
+								max={220}
+								step={20}
+								value={speed}
+								onChange={e => setSpeed(e.target.value)}
+							/>
+						</div>
+						{locomotive && <BuyLocomotive speed={speed} setObject={setObject} />}
+						{emu && <BuyEmu speed={speed} setObject={setObject} />}
+						<div className="range-input-container">
+							<label htmlFor="cost">
+								<img src={moneyImg} alt="ikona pieniędzy" /> Koszt
+							</label>
+							<p id="cost">{object.cost.toLocaleString("en-US").replace(/,/g, " ")}</p>
+						</div>
+					</div>
+				</Scrollbars>
 				<ElevatedButton onClick={buy}>
 					<i className="fas fa-cart-shopping"></i> Kup
 				</ElevatedButton>

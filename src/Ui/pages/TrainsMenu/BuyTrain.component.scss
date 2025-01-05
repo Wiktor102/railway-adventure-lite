@@ -10,6 +10,7 @@
 		list-style-type: none;
 		padding: 0;
 		display: flex;
+		margin-block-start: 0;
 
 		li {
 			width: 100%;
@@ -35,6 +36,11 @@
 		a.active {
 			border-color: var(--surface-lightest);
 		}
+	}
+
+	.inner-wrapper {
+		display: flex;
+		flex-direction: column;
 	}
 
 	& > img {
@@ -79,6 +85,6 @@
 	}
 
 	& > button {
-		margin-block-start: auto;
+		margin-block-start: 1.5rem;
 	}
 }

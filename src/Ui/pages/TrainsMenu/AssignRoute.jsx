@@ -1,17 +1,18 @@
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 // hooks
 import { useGameStore } from "../../../store/GameStoreProvider";
 
 // components
 import { RouteTile } from "../RoutesMenu/RoutesMenu";
+import IconButton from "../../common/IconButton/IconButton";
+import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 // styles
 import style from "./AssignRoute.component.scss";
-import IconButton from "../../common/IconButton/IconButton";
-import ElevatedButton from "../../common/ElevatedButton/ElevatedButton";
 
 const AssignRoute = observer(() => {
 	const { routeStore, trainStore } = useGameStore();
@@ -41,19 +42,21 @@ const AssignRoute = observer(() => {
 			</Link>
 			<h2>Przypisz trasę</h2>
 			<div className="assign-route-menu" data-style={style}>
-				<ul>
-					{routeStore.routes.map(route => (
-						<RouteTile key={route.id} route={route}>
-							<IconButton
-								onClick={() => setSelectedRoute(route)}
-								active={selectedRoute?.id === route.id}
-								inverted
-							>
-								<i className="fas fa-check"></i>
-							</IconButton>
-						</RouteTile>
-					))}
-				</ul>
+				<Scrollbars>
+					<ul>
+						{routeStore.routes.map(route => (
+							<RouteTile key={route.id} route={route}>
+								<IconButton
+									onClick={() => setSelectedRoute(route)}
+									active={selectedRoute?.id === route.id}
+									inverted
+								>
+									<i className="fas fa-check"></i>
+								</IconButton>
+							</RouteTile>
+						))}
+					</ul>
+				</Scrollbars>
 				<ElevatedButton onClick={assignRoute} disabled={!selectedRoute}>
 					<i className="fas fa-check"></i> Przypisz trasę
 				</ElevatedButton>
