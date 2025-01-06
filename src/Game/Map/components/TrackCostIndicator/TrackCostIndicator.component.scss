@@ -1,0 +1,22 @@
+.track-cost-indicator {
+	position: absolute;
+	right: -1rem;
+	translate: 100% 0;
+
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.3rem 0.5rem;
+	background-color: var(--surface);
+	color: var(--on-surface);
+	border-radius: 10px;
+	font-size: 1rem;
+
+	img {
+		height: 1lh;
+	}
+
+	.red {
+		color: red;
+	}
+}

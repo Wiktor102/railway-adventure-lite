@@ -22,7 +22,7 @@ import emuIcon from "../../../assets/icons/emu.svg";
 import style from "./BuyTrain.component.scss";
 
 const BuyTrain = () => {
-	const { trainStore, money } = useGameStore();
+	const { trainStore, money, subtractMoney } = useGameStore();
 
 	const [speed, setSpeed] = useState(160);
 	const [object, setObject] = useState({ cost: 0 });
@@ -32,7 +32,8 @@ const BuyTrain = () => {
 	const navigate = useNavigate();
 
 	function buy() {
-		// TODO: Handle money
+		const paySuccess = subtractMoney(object.cost);
+		if (!paySuccess) return;
 
 		if (locomotive) {
 			trainStore.addTrain(new CarriageTrain(object));

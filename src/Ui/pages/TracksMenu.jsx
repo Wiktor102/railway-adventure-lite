@@ -2,10 +2,12 @@ import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router";
 
 // assets
-import trackIcon from "../../assets/icons/track.svg";
+import singleTrackIcon from "../../assets/icons/single-track-slim.svg";
+import moneyImg from "../../assets/icons/money.png";
 
 // styles
 import style from "./TracksMenu.component.scss";
+import Track from "../../store/models/Track";
 
 const TracksMenu = observer(() => {
 	const { "*": splat } = useParams();
@@ -26,20 +28,38 @@ const TracksMenu = observer(() => {
 			<ul>
 				<li className={trackWidth === 1 ? "active" : ""}>
 					<Link to={getLinkPath(1)}>
-						<img src={trackIcon} alt="Ikona pojedyńczego toru" />
+						<div className="img-container">
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+						</div>
 						<div className="label">Pojedyńczy tor</div>
+						<div className="cost">
+							<img src={moneyImg} alt="Ikona zielonych pieniędzy" /> {Track.prices[1]} / km
+						</div>
 					</Link>
 				</li>
 				<li className={trackWidth === 2 ? "active" : ""}>
 					<Link to={getLinkPath(2)}>
-						<img src={trackIcon} alt="Ikona podwójnego toru" />
+						<div className="img-container">
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+						</div>
 						<div className="label">Podwójny tor</div>
+						<div className="cost">
+							<img src={moneyImg} alt="Ikona zielonych pieniędzy" /> {Track.prices[2]} / km
+						</div>
 					</Link>
 				</li>
 				<li className={trackWidth === 3 ? "active" : ""}>
 					<Link to={getLinkPath(3)}>
-						<img src={trackIcon} alt="Ikona potrójnego toru" />
+						<div className="img-container">
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+							<img src={singleTrackIcon} alt="Ikona pojedyńczego toru" />
+						</div>
 						<div className="label">Potrójny tor</div>
+						<div className="cost">
+							<img src={moneyImg} alt="Ikona zielonych pieniędzy" /> {Track.prices[3]} / km
+						</div>
 					</Link>
 				</li>
 			</ul>

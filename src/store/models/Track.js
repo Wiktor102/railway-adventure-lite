@@ -24,6 +24,7 @@ class Track {
 	length;
 
 	static idCounter = 0;
+	static prices = { 1: 15, 2: 40, 3: 60 };
 
 	get hasRoute() {
 		return this.freeLanes < this.width;

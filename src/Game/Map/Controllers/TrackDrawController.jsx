@@ -1,14 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { Marker } from "@adamscybot/react-leaflet-component-marker";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { observer } from "mobx-react-lite";
 import { useMapEvent } from "react-leaflet";
-import { useGameStore } from "../../../store/GameStoreProvider";
-import Track from "../../../store/models/Track";
 import { latLng } from "leaflet";
+
+// hooks and utilities
+import { useGameStore } from "../../../store/GameStoreProvider";
 import { pointNearestCircle } from "../../../utils/utils";
-import { useNavigate, useParams } from "react-router";
+
+// components
+import Track from "../../../store/models/Track";
+import TrackCostIndicator from "../components/TrackCostIndicator/TrackCostIndicator";
 
 const TrackDrawController = observer(() => {
-	const { stationStore, trackStore, showError } = useGameStore();
+	const { stationStore, trackStore, showError, subtractMoney } = useGameStore();
 	const { snappedStation, toggleSnapping, setSnappedStation } = stationStore;
 	const { addTrack, setBuildingTrack } = trackStore;
 
@@ -23,6 +29,10 @@ const TrackDrawController = observer(() => {
 	const trackWidth = +splat;
 
 	const Component = Track.getComponent(trackWidth);
+	const cost = useMemo(() => {
+		if (!startStation || !endPoint) return 0;
+		return Math.round(Track.prices[trackWidth] * (latLng(startStation.coordinates).distanceTo(endPoint) / 1000));
+	}, [endPoint, startStation, trackWidth]);
 
 	function rejectTrack() {
 		if (startStation == null) {
@@ -45,6 +55,9 @@ const TrackDrawController = observer(() => {
 			showError("Tor pomiędzy wybranymi stacjami już istnieje");
 			return;
 		}
+
+		const paySuccess = subtractMoney(cost);
+		if (!paySuccess) return;
 
 		const track = new Track(trackWidth, startStation, snappedStation.station);
 		setStartStation(snappedStation.station);
@@ -113,6 +126,7 @@ const TrackDrawController = observer(() => {
 				end={endPoint}
 				color={isForbidden ? "#ec3220" : snappedStation.station ? "#2572dd" : "#da8220"}
 			/>
+			<Marker position={endPoint} icon={<TrackCostIndicator cost={cost} />} interactive={false} />
 		</>
 	);
 });

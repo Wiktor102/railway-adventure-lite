@@ -1,7 +1,7 @@
 import RoutesMenu from "../Ui/pages/RoutesMenu/RoutesMenu";
 import TrackDrawTips from "../Ui/pages/TrackDrawTips/TrackDrawTips";
 import TracksMenu from "../Ui/pages/TracksMenu";
-import trackIcon from "../assets/icons/track.svg";
+import trackIcon from "../assets/icons/single-track-slim.svg";
 
 const routes = [
 	{

@@ -14,22 +14,59 @@
 
 		&:hover {
 			background-color: var(--surface-lighter);
+
+			.cost {
+				outline: 2px solid var(--on-surface);
+			}
 		}
 
 		&.active {
 			background-color: var(--surface-lightest);
+
+			.cost {
+				outline: 2px solid var(--on-surface-lightest);
+			}
 		}
 	}
 
 	a {
 		display: grid;
-		grid-template-columns: 10rem 1fr;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr;
+		gap: 1rem 2rem;
 		padding: 1.5rem;
 		text-decoration: none;
 		color: inherit;
 	}
 
+	.img-container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		grid-row: span 2;
+
+		img {
+			height: 6rem;
+		}
+	}
+
 	.label {
 		font-size: 1.5rem;
+	}
+
+	.cost {
+		display: flex;
+		align-items: center;
+		justify-self: flex-start;
+		align-self: flex-start;
+		gap: 0.5rem;
+		padding: 0.5rem;
+		background-color: var(--surface-lighter);
+		font-size: 1.25rem;
+		border-radius: 0.5rem;
+
+		img {
+			height: 1lh;
+		}
 	}
 }
