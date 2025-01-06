@@ -29,9 +29,18 @@
 
 			p {
 				display: flex;
+				gap: 1.5rem;
 				justify-content: space-between;
 				margin: 0;
 				font-size: 1.25rem;
+			}
+
+			p > span:first-child {
+				flex-shrink: 0;
+			}
+
+			p > b {
+				text-align: end;
 			}
 		}
 
