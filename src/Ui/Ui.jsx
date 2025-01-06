@@ -15,12 +15,15 @@ import routes from "../Router/Routes";
 import NamedOutlet from "../Router/components/NamedOutlet";
 import { useIsNamedRouteRendering } from "../Router/components/NamedRouter";
 
+//assets
+import moneyImg from "../assets/icons/money.png";
+
 // styles
 import style from "./Ui.component.scss";
 import "../Ui/common/loaders.min.css";
 
 const Ui = observer(() => {
-	const { error } = useGameStore();
+	const { error, money } = useGameStore();
 	let { pathname } = useLocation();
 	pathname = pathname.substring(6);
 	const hasTip = useIsNamedRouteRendering("tips");
@@ -29,7 +32,7 @@ const Ui = observer(() => {
 		<div className="game-ui" data-style={style}>
 			<div className="game-ui-top">
 				<SpeedChanger />
-				<StatusBox icon="https://cdn-icons-png.flaticon.com/512/7630/7630510.png" value={26753} />
+				<StatusBox icon={moneyImg} value={money.toLocaleString("en-US").replace(/,/g, " ")} />
 				<IconButton onClick={() => {}}>
 					<i className="fa-solid fa-arrow-right-from-bracket"></i>
 				</IconButton>

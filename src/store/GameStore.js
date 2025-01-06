@@ -15,6 +15,9 @@ class GameStore {
 	/**@type {number} */
 	gameSpeed = 1;
 
+	/**@type {number} */
+	money = 30_000;
+
 	/**@type {string|null} */
 	error = null;
 	_errorTimeout = null;
@@ -27,8 +30,34 @@ class GameStore {
 		this.trainStore = new TrainStore(this);
 	}
 
+	/**
+	 * @param {number} amount
+	 * @returns {void}
+	 */
 	setGameSpeed = speed => {
 		this.gameSpeed = speed;
+	};
+
+	/**
+	 * @param {number} amount
+	 * @returns {void}
+	 */
+	addMoney = amount => {
+		this.money += amount;
+	};
+
+	/**
+	 * @param {number} amount
+	 * @returns {boolean} success
+	 */
+	subtractMoney = amount => {
+		if (this.money < amount) {
+			this.showError("Brak funduszy!");
+			return false;
+		}
+
+		this.money -= amount;
+		return true;
 	};
 
 	showError = (message, time = 3) => {

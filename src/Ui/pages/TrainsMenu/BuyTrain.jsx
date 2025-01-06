@@ -16,14 +16,13 @@ import Slider from "../../common/Slider/Slider";
 
 // assets
 import locomotiveIcon from "../../../assets/icons/locomotive.svg";
-import moneyImg from "../../../assets/icons/money.png";
 import emuIcon from "../../../assets/icons/emu.svg";
 
 // styles
 import style from "./BuyTrain.component.scss";
 
 const BuyTrain = () => {
-	const { trainStore } = useGameStore();
+	const { trainStore, money } = useGameStore();
 
 	const [speed, setSpeed] = useState(160);
 	const [object, setObject] = useState({ cost: 0 });
@@ -76,12 +75,19 @@ const BuyTrain = () => {
 						</Slider>
 						{locomotive && <BuyLocomotive speed={speed} setObject={setObject} />}
 						{emu && <BuyEmu speed={speed} setObject={setObject} />}
-						<InfoRow value={object.cost.toLocaleString("en-US").replace(/,/g, " ")}>
-							<img src={moneyImg} alt="ikona pieniędzy" /> Koszt
+
+						<InfoRow
+							value={
+								<span className={object.cost > money ? "red" : undefined}>
+									{object.cost.toLocaleString("en-US").replace(/,/g, " ")}{" "}
+								</span>
+							}
+						>
+							<i className="fas fa-money-bills"></i> Koszt
 						</InfoRow>
 					</div>
 				</Scrollbars>
-				<ElevatedButton onClick={buy}>
+				<ElevatedButton onClick={buy} disabled={object.cost > money}>
 					<i className="fas fa-cart-shopping"></i> Kup
 				</ElevatedButton>
 			</div>
@@ -98,7 +104,7 @@ const BuyLocomotive = ({ speed, setObject }) => {
 			speed: speed,
 			strength: strength,
 			maxCarriages: maxCarriages,
-			cost: strength * 30 * (speed / 120)
+			cost: (strength * 30 * (speed / 120)) / 10
 		});
 	}, [strength, speed, setObject, maxCarriages]);
 
@@ -131,9 +137,9 @@ const BuyEmu = ({ speed, setObject }) => {
 	const [seats, setSeats] = useState(62);
 
 	useEffect(() => {
-		const locomotivePrice = 6000;
-		const segmentsPrice = (segments - 2) * 1800;
-		const seatingPrice = segments * seats * 150;
+		const locomotivePrice = 600;
+		const segmentsPrice = (segments - 2) * 180;
+		const seatingPrice = segments * seats * 15;
 
 		setObject({
 			speed: speed,
