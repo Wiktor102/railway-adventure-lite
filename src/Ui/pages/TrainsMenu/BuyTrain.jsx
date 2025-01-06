@@ -23,6 +23,7 @@ import style from "./BuyTrain.component.scss";
 
 const BuyTrain = () => {
 	const { trainStore, money, subtractMoney } = useGameStore();
+	const gameStore = useGameStore();
 
 	const [speed, setSpeed] = useState(160);
 	const [object, setObject] = useState({ cost: 0 });
@@ -36,9 +37,9 @@ const BuyTrain = () => {
 		if (!paySuccess) return;
 
 		if (locomotive) {
-			trainStore.addTrain(new CarriageTrain(object));
+			trainStore.addTrain(new CarriageTrain(object, gameStore));
 		} else if (emu) {
-			trainStore.addTrain(new UnitTrain(object));
+			trainStore.addTrain(new UnitTrain(object, gameStore));
 		}
 
 		navigate("/game/trains");

@@ -3,6 +3,9 @@ import { action, computed, makeAutoObservable, makeObservable, observable } from
 class Train {
 	static idCounter = 0;
 
+	/** @type {import("../GameStore").default}*/
+	gameStore;
+
 	/** @type {number} */
 	id;
 
@@ -18,12 +21,18 @@ class Train {
 	/** @type {import("./Route").default}*/
 	route = null;
 
+	/** @type {number} 1 = normal; -1 = reversed*/
+	direction = 1;
+
+	/** @type {import("./Passenger").default[]}*/
+	passengers = [];
+
 	/** @type {number}*/
 	get speed() {
 		return this.maxSpeed;
 	}
 
-	constructor(data, type) {
+	constructor(data, type, gameStore) {
 		makeObservable(this, {
 			id: observable,
 			type: observable,
@@ -31,9 +40,18 @@ class Train {
 			speed: computed,
 			price: observable,
 			route: observable,
-			assignRoute: action
+			direction: observable,
+			passengers: observable,
+			assignRoute: action,
+			onRouteStart: action,
+			onRouteEnd: action,
+			onStopReached: action,
+			onStopDeparting: action,
+			embarkPassengers: action,
+			disembarkPassengers: action
 		});
 
+		this.gameStore = gameStore;
 		this.type = type;
 		this.maxSpeed = data.speed;
 		this.price = data.cost;
@@ -46,6 +64,81 @@ class Train {
 	 * */
 	assignRoute(route) {
 		this.route = route;
+	}
+
+	// ------------------------------
+	// ------------------------------
+	// Route events handlers
+	// ------------------------------
+
+	onRouteStart = () => {
+		const stationStore = this.gameStore.stationStore;
+		const startStation = stationStore.getStationByName(this.route.stations[0]);
+		startStation.processPassengers(this);
+	};
+
+	onRouteEnd() {
+		this.direction = -this.direction;
+
+		const stationStore = this.gameStore.stationStore;
+		const endStation = stationStore.getStationByName(this.route.stations.at(-1));
+		this.disembarkPassengers(endStation);
+	}
+
+	onStopReached = ({ name }) => {
+		const stationStore = this.gameStore.stationStore;
+		const station = stationStore.getStationByName(name);
+		this.disembarkPassengers(station);
+	};
+
+	onStopDeparting = ({ name }) => {
+		const stationStore = this.gameStore.stationStore;
+		const station = stationStore.getStationByName(name);
+		station.processPassengers(this);
+	};
+
+	// ------------------------------
+	// ------------------------------
+	// Passenger related methods
+	// ------------------------------
+
+	/**
+	 * @param {import("./Passenger").default[]} passengers
+	 * @returns {import("./Passenger").default[]} remaining passengers
+	 * */
+	embarkPassengers(passengers) {
+		const availableSeats = this.seats - this.passengers.length;
+		const fittingPassengers = passengers.slice(0, availableSeats);
+		const remainingPassengers = passengers.slice(availableSeats);
+		this.passengers.push(...fittingPassengers);
+
+		fittingPassengers.forEach(p => p.pay(this.route));
+
+		return remainingPassengers;
+	}
+
+	/**
+	 * @param {import("./Station").default} station
+	 * @returns {void}
+	 * */
+	disembarkPassengers(station) {
+		const [, remaining] = this.passengers.reduce(
+			(acc, p) => {
+				if (p.destinationName === station.name) {
+					acc[0].push(p);
+				} else {
+					acc[1].push(p);
+				}
+
+				return acc;
+			},
+			[[], []]
+		);
+
+		this.passengers = remaining;
+
+		//* We assume these passengers are already at their destination
+		// station.addPassengers(disembarked);
 	}
 }
 
@@ -86,8 +179,8 @@ class CarriageTrain extends Train {
 		return this.carriages.reduce((acc, c) => acc + c.seats, 0);
 	}
 
-	constructor(data) {
-		super(data, "carriage");
+	constructor(data, gameStore) {
+		super(data, "carriage", gameStore);
 
 		makeObservable(this, {
 			strength: observable,
@@ -108,8 +201,8 @@ class UnitTrain extends Train {
 	/** @type {number} */
 	seats;
 
-	constructor(data) {
-		super(data, "unit");
+	constructor(data, gameStore) {
+		super(data, "unit", gameStore);
 
 		makeObservable(this, {
 			segments: observable,

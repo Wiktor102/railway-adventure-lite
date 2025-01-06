@@ -23,7 +23,6 @@ const TrainMarker = observer(({ train }) => {
 	const { gameSpeed } = useGameStore();
 
 	const [isEnd, setIsEnd] = useState(0);
-	const [reverse, setReverse] = useState(false);
 
 	const markerRef = useRef(null);
 	const timeoutRef = useRef();
@@ -43,12 +42,12 @@ const TrainMarker = observer(({ train }) => {
 		[route.path, route.stopDuration, train.route.stations]
 	);
 
-	const adjustedPath = useMemo(() => (reverse ? path.toReversed() : path), [path, reverse]);
+	const adjustedPath = useMemo(() => (train.direction === -1 ? path.toReversed() : path), [path, train.direction]);
 
 	const onEnd = useCallback(() => {
 		setIsEnd(Date.now());
-		setReverse(r => !r);
-	}, []);
+		train.onRouteEnd();
+	}, [train]);
 
 	// Handle restarting the animation (and waiting)
 	useEffect(() => {
@@ -75,7 +74,12 @@ const TrainMarker = observer(({ train }) => {
 			ref={markerRef}
 			speed={train.speed}
 			simulationSpeed={gameSpeed}
-			eventHandlers={{ onEnd }}
+			eventHandlers={{
+				onStart: train.onRouteStart,
+				onEnd,
+				onStop: train.onStopReached,
+				onStopEnd: train.onStopDeparting
+			}}
 		/>
 	);
 });

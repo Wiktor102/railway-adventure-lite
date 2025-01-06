@@ -81,8 +81,35 @@ class Station {
 
 		const destinationIndex = Math.floor(Math.random() * availableDestinations.length);
 		const destination = availableDestinations[destinationIndex];
-		const passenger = new Passenger(this.name, destination.name);
+		const passenger = new Passenger(this.name, destination.name, this.gameStore);
 		this.waitingPassengers.push(passenger);
+	};
+
+	/**
+	 * @param {import("./Train").default} train
+	 * @returns {void}
+	 */
+	processPassengers = train => {
+		const [newWaiting, passengersToEmbark] = this.waitingPassengers.reduce(
+			([waiting, passengers], passenger) => {
+				const stations = train.route.stations;
+				if (this.direction === -1) stations.reverse();
+
+				const i = stations.indexOf(passenger.destinationName);
+				const currentIndex = stations.indexOf(train.route.currentStation);
+				if (i === -1 || i < currentIndex) {
+					waiting.push(passenger);
+				} else {
+					passengers.push(passenger);
+				}
+
+				return [waiting, passengers];
+			},
+			[[], []]
+		);
+
+		const remaining = train.embarkPassengers(passengersToEmbark);
+		this.waitingPassengers = [...newWaiting, ...remaining];
 	};
 }
 
