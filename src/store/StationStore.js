@@ -12,8 +12,30 @@ class StationStore {
 	snappedStation = { station: null, distance: null };
 	enableSnapping = false;
 
+	/** @type {string|null} */
+	showedPopup = null;
+
 	get stations() {
 		return [...this.stationsMap.values()];
+	}
+
+	get connectedStations() {
+		return this.stations
+			.filter(station => station.neighbors.size > 0)
+			.reduce((map, station) => {
+				map.set(station.name, station);
+				return map;
+			}, new Map());
+	}
+
+	get connectedStationsBySize() {
+		return this.stations
+			.filter(station => station.neighbors.size > 0)
+			.reduce((map, station) => {
+				if (!map.has(station.size)) map.set(station.size, []);
+				map.get(station.size).push(station);
+				return map;
+			}, new Map());
 	}
 
 	constructor(gameStore) {
@@ -22,7 +44,7 @@ class StationStore {
 		this.gameStore = gameStore;
 		this.stationsMap = stationsData.features.reduce((map, station) => {
 			if (station.properties.NAZWA_POS.includes("Gr")) return map;
-			const s = new Station(station);
+			const s = new Station(station, gameStore);
 			map.set(s.name, s);
 			return map;
 		}, new Map());
@@ -38,6 +60,10 @@ class StationStore {
 
 	setSnappedStation = station => {
 		this.snappedStation = station;
+	};
+
+	setShowedPopup = station => {
+		this.showedPopup = station;
 	};
 }
 
