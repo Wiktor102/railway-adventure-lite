@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import PropTypes from "prop-types";
 import { observer } from "mobx-react-lite";
 import { useMatch, useParams } from "react-router";
-import { Circle, Pane, Popup, useMap } from "react-leaflet";
+import { Circle, Pane, useMap, useMapEvent } from "react-leaflet";
 import { Marker } from "@adamscybot/react-leaflet-component-marker";
 import { latLng } from "leaflet";
 
@@ -10,12 +10,15 @@ import { latLng } from "leaflet";
 import useMapZoom from "../../../hooks/useMapZoom";
 import { useGameStore } from "../../../store/GameStoreProvider";
 
+// components
+import StationPopup from "../components/StationPopup/StationPopup";
+
 // classes
 import Station from "../../../store/models/Station";
 
 const StationsController = observer(() => {
 	const { stationStore } = useGameStore();
-	const { snappedStation, setSnappedStation } = stationStore;
+	const { snappedStation, setSnappedStation, setShowedPopup } = stationStore;
 
 	function onMouseOver({ latlng }, station) {
 		const distance = latlng.distanceTo(latLng(station.coordinates));
@@ -29,6 +32,10 @@ const StationsController = observer(() => {
 			setSnappedStation({ station: null, distance: null });
 		}
 	}
+
+	useMapEvent("click", () => {
+		setShowedPopup(null);
+	});
 
 	return (
 		<>
@@ -55,12 +62,12 @@ const StationsController = observer(() => {
 
 StationsController.propTypes = {};
 
-function StationMarker({ station }) {
+const StationMarker = observer(({ station }) => {
 	const map = useMap();
 	const zoom = useMapZoom();
 
 	const { stationStore, showError } = useGameStore();
-	const { snappedStation } = stationStore;
+	const { snappedStation, showedPopup, setShowedPopup } = stationStore;
 	const hover = snappedStation?.station?.name === station.name;
 
 	const drawingRoute = useMatch("/game/routes/create");
@@ -70,6 +77,8 @@ function StationMarker({ station }) {
 	const { routeStore } = useGameStore();
 
 	function onClick(e) {
+		setShowedPopup(showedPopup === station.name ? null : station.name);
+
 		if (buildingTrack && !stationStore.enableSnapping) {
 			stationStore.setSnappedStation({ station: station, distance: 0 });
 			setTimeout(() => map.fire("click", e), 0); // This event is used by TrackDrawController
@@ -116,33 +125,41 @@ function StationMarker({ station }) {
 	}
 
 	return (
-		<Marker
-			position={station.coordinates}
-			zIndexOffset={station.size >= 4 ? 500 * station.size : 0}
-			icon={
-				<div className={`station-pin ${hover && "hover"} ${sizeName} ${station.size === 4 && "big"}`}>
-					<div className={`pin`} style={{ width: z + "px", outlineOffset: z / 5 + "px" }}></div>
-					{showName && (
-						<span
-							style={{
-								left: z + 2 + z / 3 + "px",
-								top: z / -5 + "px",
-								fontSize: `clamp(1rem, ${z * 0.2 * station.size}px, 1.3rem)`
-							}}
-						>
-							{station.name}
-						</span>
-					)}
-				</div>
-			}
-			eventHandlers={{
-				click: onClick
-			}}
-		>
-			<Popup>{station.name}</Popup>
-		</Marker>
+		<>
+			<Marker
+				position={station.coordinates}
+				zIndexOffset={station.size >= 4 ? 500 * station.size : 0}
+				icon={
+					<div className={`station-pin ${hover && "hover"} ${sizeName} ${station.size === 4 && "big"}`}>
+						<div className={`pin`} style={{ width: z + "px", outlineOffset: z / 5 + "px" }}></div>
+						{showName && (
+							<span
+								style={{
+									left: z + 2 + z / 3 + "px",
+									top: z / -5 + "px",
+									fontSize: `clamp(1rem, ${z * 0.2 * station.size}px, 1.3rem)`
+								}}
+							>
+								{station.name}
+							</span>
+						)}
+					</div>
+				}
+				eventHandlers={{
+					click: onClick
+				}}
+			></Marker>
+			{!drawingRoute && !buildingTrack && showedPopup === station.name && (
+				<Marker
+					position={station.coordinates}
+					icon={<StationPopup station={station} />}
+					pane="popup"
+					bubblingMouseEvents={false}
+				></Marker>
+			)}
+		</>
 	);
-}
+});
 
 StationMarker.propTypes = {
 	station: PropTypes.instanceOf(Station).isRequired
