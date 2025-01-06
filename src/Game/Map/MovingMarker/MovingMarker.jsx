@@ -34,6 +34,7 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 	const stopTimeoutRef = useRef();
 	const isResumingRef = useRef(false);
 	const isEndedRef = useRef(false);
+	const hasStartedRef = useRef(false); // Add this line
 	const pathMetricsRef = useRef(calculatePathMetrics(path));
 
 	const cleanupAnimation = useCallback(() => {
@@ -124,6 +125,7 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 		previousTimeRef.current = undefined;
 		isResumingRef.current = false;
 		isEndedRef.current = false;
+		// hasStartedRef.current = false; // Reset the started state
 
 		setIsPaused(false);
 		setPosition(path[0].latlng);
@@ -135,11 +137,15 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 	useEffect(() => {
 		if (!requestRef.current) {
 			requestRef.current = requestAnimationFrame(animate);
-			typeof onStart === "function" && onStart();
+			if (!hasStartedRef.current) {
+				// Only call onStart if this is the first start
+				hasStartedRef.current = true;
+				typeof onStart === "function" && onStart();
+			}
 		}
 
 		return cleanupAnimation;
-	}, [path, speed, animate, cleanupAnimation, onStart]);
+	}, [animate, cleanupAnimation, onStart]);
 
 	// Handle path changes - recalculate distance(s)
 	useEffect(() => {
