@@ -22,7 +22,7 @@ const calculatePathMetrics = path => {
 };
 
 const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {}, ref, ...props }) => {
-	const { onEnd, onStop, onStopEnd } = eventHandlers;
+	const { onStart, onStop, onStopEnd, onEnd } = eventHandlers;
 
 	const [position, setPosition] = useState(path[0].latlng);
 	const [isPaused, setIsPaused] = useState(0); // Stores timestamp at which the marker was paused; 0 - not paused
@@ -65,8 +65,8 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 				return;
 			}
 
+			if (isResumingRef.current && typeof onStopEnd === "function") onStopEnd(path[currentSegmentRef.current].stop);
 			if (previousTimeRef.current == null || isResumingRef.current) {
-				typeof onStopEnd === "function" && onStopEnd();
 				previousTimeRef.current = time;
 				isResumingRef.current = false;
 			}
@@ -128,16 +128,18 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 		setIsPaused(false);
 		setPosition(path[0].latlng);
 		requestRef.current = requestAnimationFrame(animate);
-	}, [animate, path, cleanupAnimation]);
+		typeof onStart === "function" && onStart();
+	}, [cleanupAnimation, path, animate, onStart]);
 
 	// Handle animation start and clean-up
 	useEffect(() => {
 		if (!requestRef.current) {
 			requestRef.current = requestAnimationFrame(animate);
+			typeof onStart === "function" && onStart();
 		}
 
 		return cleanupAnimation;
-	}, [path, speed, animate, cleanupAnimation]);
+	}, [path, speed, animate, cleanupAnimation, onStart]);
 
 	// Handle path changes - recalculate distance(s)
 	useEffect(() => {
@@ -175,6 +177,7 @@ MovingMarker.propTypes = {
 		})
 	).isRequired,
 	eventHandlers: PropTypes.shape({
+		onStart: PropTypes.func,
 		onEnd: PropTypes.func,
 		onStop: PropTypes.func,
 		onStopEnd: PropTypes.func
