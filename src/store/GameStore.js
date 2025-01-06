@@ -49,7 +49,6 @@ class GameStore {
 				});
 			});
 			stationsToGenerateAt.push(...closeToConnected);
-			console.log(stationsToGenerateAt);
 
 			this._passengerSpawnInterval.id = setInterval(() => {
 				// this._passengerSpawnInterval.time = Date.now();
@@ -58,7 +57,7 @@ class GameStore {
 				stationsToGenerateAt.forEach(station => {
 					const maxNumber = 10 * station.size;
 					const number = Math.floor(Math.random() * (maxNumber + 1));
-					console.log(`Spawning ${number} passengers at ${station.name}`);
+					// console.log(`Spawning ${number} passengers at ${station.name}`);
 
 					for (let i = 0; i < number; i++) {
 						station.addPassenger();

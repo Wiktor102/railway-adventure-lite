@@ -45,8 +45,8 @@ const TrainMarker = observer(({ train }) => {
 	const adjustedPath = useMemo(() => (train.direction === -1 ? path.toReversed() : path), [path, train.direction]);
 
 	const onEnd = useCallback(() => {
-		setIsEnd(Date.now());
 		train.onRouteEnd();
+		setIsEnd(Date.now());
 	}, [train]);
 
 	// Handle restarting the animation (and waiting)
