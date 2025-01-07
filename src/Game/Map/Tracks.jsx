@@ -174,16 +174,17 @@ DoubleTrack.propTypes = {
 function TripleTrack({ start, end, color, onClick, enableHover = false, setOptions }) {
 	const rememberedColors = useMemo(() => (!Array.isArray(color) ? [color, color, color] : color), [color]);
 	const [adjustedColors, setAdjustedColors] = useState(rememberedColors);
-	const [_options, _setOptions] = useState({});
+	const [_options, _setOptions] = useState(null);
 	const style = useTrackStyle();
 
 	useEffect(() => {
+		if (!_options) return;
 		setOptions && setOptions({ leftTrackPoints: _options.leftTrackPoints, rightTrackPoints: _options.rightTrackPoints });
 	}, [_options, setOptions]);
 
 	return (
 		<>
-			{_options && enableHover && (
+			{enableHover && _options && (
 				<DoubleTrackHoverDetector
 					positions={_options.hoverDetectorPositions}
 					style={style}
