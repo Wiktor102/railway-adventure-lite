@@ -209,6 +209,50 @@ class Route {
 
 		this.path = newPath;
 	}
+
+	toJSON() {
+		return {
+			id: this.id,
+			stations: this.stations,
+			path: this.path.map(segment => ({
+				from: segment.from,
+				to: segment.to,
+				trackId: segment.track.id,
+				trackIndex: segment.trackIndex
+			})),
+			color: this.color,
+			name: this.name,
+			stopDuration: this.stopDuration,
+			routeInterval: this.routeInterval,
+			pricePerKm: this.pricePerKm,
+			draft: this.draft
+		};
+	}
+
+	fromJSON(data) {
+		this.id = data.id;
+		this.stations = data.stations;
+		this.color = data.color;
+		this.name = data.name;
+		this.stopDuration = data.stopDuration;
+		this.routeInterval = data.routeInterval;
+		this.pricePerKm = data.pricePerKm;
+		this.draft = data.draft;
+
+		// Reconstruct path with track references
+		this.path = data.path.map(segment => {
+			const track = this.gameStore.trackStore.tracks.find(t => t.id === segment.trackId);
+			if (track) {
+				track.lanes[segment.trackIndex] = this; // Restore route reference in track's lanes
+			}
+			return {
+				from: segment.from,
+				to: segment.to,
+				track: track,
+				trackIndex: segment.trackIndex
+			};
+		});
+	}
 }
 
 export default Route;

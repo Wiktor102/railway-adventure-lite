@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import Track from "./models/Track";
 
 class TrackStore {
 	/** @type {import("./GameStore").default} */
@@ -54,6 +55,23 @@ class TrackStore {
 	setBuildingTrack = buildingTrack => {
 		this.buildingTrack = buildingTrack;
 	};
+
+	toJSON() {
+		return {
+			tracks: this.tracks.map(track => track.toJSON())
+		};
+	}
+
+	fromJSON(data) {
+		this.tracks = data.tracks.map(trackData => {
+			const track = new Track(
+				this.gameStore.stationStore.getStationByName(trackData.startStation),
+				this.gameStore.stationStore.getStationByName(trackData.endStation)
+			);
+			track.fromJSON(trackData);
+			return track;
+		});
+	}
 }
 
 export default TrackStore;

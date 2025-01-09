@@ -45,6 +45,20 @@ class Passenger {
 
 		this.gameStore.addMoney(Math.round(price));
 	};
+
+	toJSON() {
+		return {
+			id: this.id,
+			originName: this.originName,
+			destinationName: this.destinationName
+		};
+	}
+
+	fromJSON(data) {
+		this.id = data.id;
+		this.originName = data.originName;
+		this.destinationName = data.destinationName;
+	}
 }
 
 export default Passenger;

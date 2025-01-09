@@ -111,6 +111,44 @@ class Station {
 		const remaining = train.embarkPassengers(passengersToEmbark);
 		this.waitingPassengers = [...newWaiting, ...remaining];
 	};
+
+	toJSON() {
+		return {
+			originalData: {
+				geometry: {
+					coordinates: this.coordinates
+				},
+				properties: {
+					NAZWA_POS: this.name,
+					size: this.size
+				}
+			},
+			neighbors: Array.from(this.neighbors.entries()).map(([name, track]) => ({
+				stationName: name,
+				trackId: track.id
+			})),
+			waitingPassengers: this.waitingPassengers.map(p => p.toJSON())
+		};
+	}
+
+	fromJSON(data) {
+		// Restore neighbors map
+		this.neighbors.clear();
+		data.neighbors.forEach(neighbor => {
+			const station = this.gameStore.stationStore.getStationByName(neighbor.stationName);
+			const track = this.gameStore.trackStore.tracks.find(t => t.id === neighbor.trackId);
+			if (station && track) {
+				this.neighbors.set(station.name, track);
+			}
+		});
+
+		// Restore waiting passengers
+		this.waitingPassengers = data.waitingPassengers.map(passengerData => {
+			const passenger = new Passenger(passengerData.originName, passengerData.destinationName, this.gameStore);
+			passenger.fromJSON(passengerData);
+			return passenger;
+		});
+	}
 }
 
 export default Station;

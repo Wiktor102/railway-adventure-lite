@@ -89,6 +89,31 @@ class Track {
 		this.latlngs = latlngs;
 	}
 
+	toJSON() {
+		return {
+			id: this.id,
+			width: this.width,
+			startStation: this.startStation.name,
+			endStation: this.endStation.name,
+			lanes: this.lanes.map(lane => lane?.id ?? null),
+			latlngs: this.latlngs?.map(line => line.map(point => [point.lat, point.lng])),
+			length: this.length
+		};
+	}
+
+	fromJSON(data) {
+		this.id = data.id;
+		this.width = data.width;
+		this.length = data.length;
+
+		// Lanes will be restored by Route's fromJSON
+		this.lanes = new Array(this.width).fill(null);
+
+		if (data.latlngs) {
+			this.latlngs = data.latlngs.map(line => line.map(([lat, lng]) => latLng(lat, lng)));
+		}
+	}
+
 	getComponent() {
 		return Track.getComponent(this.width);
 	}

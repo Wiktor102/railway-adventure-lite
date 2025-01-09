@@ -1,5 +1,6 @@
 import { autorun, makeAutoObservable, runInAction } from "mobx";
 import { latLng } from "leaflet";
+import PersistenceService from "../services/PersistenceService";
 
 // stores
 import StationStore from "./StationStore";
@@ -106,6 +107,44 @@ class GameStore {
 			});
 		}, time * 1000);
 	};
+
+	toJSON() {
+		return {
+			gameSpeed: this.gameSpeed,
+			money: this.money,
+			stations: this.stationStore.toJSON(),
+			tracks: this.trackStore.toJSON(),
+			routes: this.routeStore.toJSON(),
+			trains: this.trainStore.toJSON()
+		};
+	}
+
+	loadFromJSON(data) {
+		this.gameSpeed = data.gameSpeed;
+		this.money = data.money;
+		this.stationStore.fromJSON(data.stations);
+		this.trackStore.fromJSON(data.tracks);
+		this.routeStore.fromJSON(data.routes);
+		this.trainStore.fromJSON(data.trains);
+	}
+
+	saveToLocalStorage = () => {
+		PersistenceService.saveToLocalStorage(this);
+	};
+
+	loadFromLocalStorage() {
+		const data = PersistenceService.loadFromLocalStorage();
+		if (data) this.loadFromJSON(data);
+	}
+
+	downloadSave() {
+		PersistenceService.downloadSaveFile(this);
+	}
+
+	async loadSaveFile(file) {
+		const data = await PersistenceService.loadFromFile(file);
+		this.loadFromJSON(data);
+	}
 }
 
 export default GameStore;

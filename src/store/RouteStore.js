@@ -70,6 +70,26 @@ class RouteStore {
 	setHighlightedRoute = route => {
 		this.highlightedRoute = route;
 	};
+
+	toJSON() {
+		return {
+			routes: this.routes.map(route => route.toJSON()),
+			currentRoute: this.currentRoute ? this.currentRoute.toJSON() : null
+		};
+	}
+
+	fromJSON(data) {
+		this.routes = data.routes.map(routeData => {
+			const route = new Route([]);
+			route.fromJSON(routeData);
+			return route;
+		});
+
+		if (data.currentRoute) {
+			this.currentRoute = new Route([]);
+			this.currentRoute.fromJSON(data.currentRoute);
+		}
+	}
 }
 
 export default RouteStore;

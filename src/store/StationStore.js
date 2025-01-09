@@ -65,6 +65,21 @@ class StationStore {
 	setShowedPopup = station => {
 		this.showedPopup = station;
 	};
+
+	toJSON() {
+		return {
+			stations: Array.from(this.stationsMap.values()).map(station => station.toJSON())
+		};
+	}
+
+	fromJSON(data) {
+		this.stationsMap.clear();
+		data.stations.forEach(stationData => {
+			const station = new Station(stationData.originalData, this.gameStore);
+			station.fromJSON(stationData);
+			this.stationsMap.set(station.name, station);
+		});
+	}
 }
 
 export default StationStore;

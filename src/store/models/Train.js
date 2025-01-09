@@ -1,4 +1,6 @@
 import { action, computed, makeAutoObservable, makeObservable, observable } from "mobx";
+import Route from "./Route";
+import Passenger from "./Passenger";
 
 class Train {
 	static idCounter = 0;
@@ -140,6 +142,39 @@ class Train {
 		//* We assume these passengers are already at their destination
 		// station.addPassengers(disembarked);
 	}
+
+	toJSON() {
+		return {
+			id: this.id,
+			type: this.type,
+			maxSpeed: this.maxSpeed,
+			price: this.price,
+			route: this.route?.toJSON(),
+			direction: this.direction,
+			passengers: this.passengers.map(p => p.toJSON())
+		};
+	}
+
+	fromJSON(data) {
+		this.id = data.id;
+		this.type = data.type;
+		this.maxSpeed = data.maxSpeed;
+		this.price = data.price;
+		this.direction = data.direction;
+
+		if (data.route) {
+			const route = new Route([]);
+			route.fromJSON(data.route);
+			this.route = route;
+		}
+
+		// Note: Passengers will need to be reconstructed from their saved state
+		this.passengers = data.passengers.map(p => {
+			const passenger = new Passenger(this.gameStore);
+			passenger.fromJSON(p);
+			return passenger;
+		});
+	}
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -192,6 +227,34 @@ class CarriageTrain extends Train {
 		this.strength = data.strength;
 		this.maxCarriages = data.maxCarriages;
 	}
+
+	toJSON() {
+		return {
+			...super.toJSON(),
+			trainType: "carriage",
+			strength: this.strength,
+			maxCarriages: this.maxCarriages,
+			carriages: this.carriages.map(c => ({
+				speed: c.speed,
+				seats: c.seats,
+				price: c.price
+			}))
+		};
+	}
+
+	fromJSON(data) {
+		super.fromJSON(data);
+		this.strength = data.strength;
+		this.maxCarriages = data.maxCarriages;
+		this.carriages = data.carriages.map(c => {
+			const carriage = new Carriage({
+				speed: c.speed,
+				seats: c.seats,
+				cost: c.price
+			});
+			return carriage;
+		});
+	}
 }
 
 class UnitTrain extends Train {
@@ -209,6 +272,21 @@ class UnitTrain extends Train {
 			seats: observable
 		});
 
+		this.segments = data.segments;
+		this.seats = data.seats;
+	}
+
+	toJSON() {
+		return {
+			...super.toJSON(),
+			trainType: "unit",
+			segments: this.segments,
+			seats: this.seats
+		};
+	}
+
+	fromJSON(data) {
+		super.fromJSON(data);
 		this.segments = data.segments;
 		this.seats = data.seats;
 	}
