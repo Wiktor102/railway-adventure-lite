@@ -16,8 +16,13 @@ class PersistenceService {
 		const blob = new Blob([JSON.stringify(saveData)], { type: "application/json" });
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
+		const dateString = new Date()
+			.toISOString()
+			.replace(/[^0-9]/g, "")
+			.slice(2, 14);
+
 		a.href = url;
-		a.download = "railway-adventure-save.json";
+		a.download = `ral-save-${dateString}.json`;
 		a.click();
 		URL.revokeObjectURL(url);
 	}
