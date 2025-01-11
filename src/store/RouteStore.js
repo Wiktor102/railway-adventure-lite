@@ -1,6 +1,11 @@
 import { action, makeAutoObservable } from "mobx";
 import Route from "./models/Route";
 
+/**
+ * @typedef {Object} RouteStoreSerialized
+ * @property {import("./models/Route").RouteSerialized[]} routes
+ */
+
 class RouteStore {
 	gameStore;
 
@@ -13,9 +18,19 @@ class RouteStore {
 	/** @type {Route|null}*/
 	highlightedRoute = null;
 
-	constructor(gameStore) {
+	/**
+	 * @param {import("./GameStore").default} gameStore
+	 * @param {RouteSerialized[]|undefined} routes
+	 * */
+	constructor(gameStore, routes = []) {
 		makeAutoObservable(this, { gameStore: false, initCurrentRoute: action });
+
 		this.gameStore = gameStore;
+
+		routes.forEach(r => {
+			if (!(r instanceof Route)) throw new Error("Invalid route data");
+		});
+		this.routes = routes;
 	}
 
 	addRoute = route => {
@@ -29,6 +44,7 @@ class RouteStore {
 	// --------------------------------
 	// --------------------------------
 	// Current Route related methods
+	// --------------------------------
 
 	/** creates a new route
 	 * @returns {void}
@@ -66,28 +82,29 @@ class RouteStore {
 	// --------------------------------
 	// --------------------------------
 	// Highlighted Route related methods
+	// --------------------------------
+
 	setHighlightedRoute = route => {
 		this.highlightedRoute = route;
 	};
 
+	/**
+	 * @returns {RouteStoreSerialized}
+	 */
 	toJSON() {
 		return {
-			routes: this.routes.map(route => route.toJSON()),
-			currentRoute: this.currentRoute ? this.currentRoute.toJSON() : null
+			routes: this.routes.map(route => route.toJSON()).filter(Boolean)
 		};
 	}
 
-	fromJSON(data) {
-		this.routes = data.routes.map(routeData => {
-			const route = new Route([]);
-			route.fromJSON(routeData);
-			return route;
-		});
-
-		if (data.currentRoute) {
-			this.currentRoute = new Route([]);
-			this.currentRoute.fromJSON(data.currentRoute);
-		}
+	/**
+	 * @param {RouteStoreSerialized} data
+	 * @param {import("./GameStore").default} gameStore
+	 * @returns {RouteStore}
+	 */
+	static fromJSON(data, gameStore) {
+		const routes = data.routes.map(routeData => Route.fromJSON(routeData, gameStore));
+		return new RouteStore(gameStore, routes);
 	}
 
 	/**

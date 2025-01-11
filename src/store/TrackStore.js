@@ -1,6 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import Track from "./models/Track";
 
+/**
+ * @typedef {Object} TrackStoreSerialized
+ * @property {TrackSerialized[]} tracks
+ */
+
 class TrackStore {
 	/** @type {import("./GameStore").default} */
 	gameStore;
@@ -11,9 +16,11 @@ class TrackStore {
 	/** @type {boolean} */
 	buildingTrack = false;
 
-	constructor(gameStore) {
+	constructor(gameStore, tracks = []) {
 		makeAutoObservable(this, { gameStore: false });
+
 		this.gameStore = gameStore;
+		this.tracks = tracks;
 	}
 
 	/**
@@ -56,21 +63,23 @@ class TrackStore {
 		this.buildingTrack = buildingTrack;
 	};
 
+	/**
+	 * @returns {TrackStoreSerialized}
+	 * */
 	toJSON() {
 		return {
 			tracks: this.tracks.map(track => track.toJSON())
 		};
 	}
 
-	fromJSON(data) {
-		this.tracks = data.tracks.map(trackData => {
-			const track = new Track(
-				this.gameStore.stationStore.getStationByName(trackData.startStation),
-				this.gameStore.stationStore.getStationByName(trackData.endStation)
-			);
-			track.fromJSON(trackData);
-			return track;
-		});
+	/**
+	 * @param {TrackStoreSerialized} data
+	 * @param {import("./GameStore").default} gameStore
+	 * @returns {TrackStore}
+	 * */
+	static fromJSON(data, gameStore) {
+		const tracks = data.tracks.map(trackData => Track.fromJSON(trackData, gameStore));
+		return new TrackStore(gameStore, tracks);
 	}
 }
 

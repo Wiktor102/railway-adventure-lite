@@ -1,6 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import Passenger from "./Passenger";
 
+/**
+ * @typedef {Object} StationSerialized
+ * @property {string} name
+ * @property {Array<PassengerSerialized>} waitingPassengers
+ */
+
 class Station {
 	/** @type {import("../GameStore").default} */
 	gameStore;
@@ -15,7 +21,17 @@ class Station {
 	/** @type {Array<import("./Passenger").default>} */
 	waitingPassengers = [];
 
-	constructor({ geometry, properties }, gameStore) {
+	/**
+	 * @param {{
+	 *  geometry: {
+	 *      coordinates: [number, number]
+	 *  },
+	 *  properties: { NAZWA_POS: String, size: number },
+	 *  waitingPassengers: Array<import("./Passenger").PassengerSerialized>
+	 * }} data
+	 * @param {import("../GameStore").default} gameStore
+	 */
+	constructor({ geometry, properties, waitingPassengers = [] }, gameStore) {
 		makeAutoObservable(this, { coordinates: false, name: false, gameStore: false });
 
 		this.gameStore = gameStore;
@@ -23,6 +39,7 @@ class Station {
 		this.size = properties.size;
 		this.coordinates =
 			geometry.coordinates[0] > geometry.coordinates[1] ? geometry.coordinates : geometry.coordinates.reverse();
+		this.waitingPassengers = waitingPassengers;
 	}
 
 	/**
@@ -112,42 +129,24 @@ class Station {
 		this.waitingPassengers = [...newWaiting, ...remaining];
 	};
 
+	/**
+	 * @returns {StationSerialized}
+	 */
 	toJSON() {
 		return {
-			originalData: {
-				geometry: {
-					coordinates: this.coordinates
-				},
-				properties: {
-					NAZWA_POS: this.name,
-					size: this.size
-				}
-			},
-			neighbors: Array.from(this.neighbors.entries()).map(([name, track]) => ({
-				stationName: name,
-				trackId: track.id
-			})),
+			name: this.name,
 			waitingPassengers: this.waitingPassengers.map(p => p.toJSON())
 		};
 	}
 
-	fromJSON(data) {
-		// Restore neighbors map
-		this.neighbors.clear();
-		data.neighbors.forEach(neighbor => {
-			const station = this.gameStore.stationStore.getStationByName(neighbor.stationName);
-			const track = this.gameStore.trackStore.tracks.find(t => t.id === neighbor.trackId);
-			if (station && track) {
-				this.neighbors.set(station.name, track);
-			}
-		});
-
-		// Restore waiting passengers
-		this.waitingPassengers = data.waitingPassengers.map(passengerData => {
-			const passenger = new Passenger(passengerData.originName, passengerData.destinationName, this.gameStore);
-			passenger.fromJSON(passengerData);
-			return passenger;
-		});
+	/**
+	 * @param {StationSerialized} data
+	 * @returns {{ name: string, passengers: Array<Passenger> }}
+	 */
+	static fromJSON(data) {
+		const deserializedPassengers = data.waitingPassengers.map(passengerData => Passenger.fromJSON(passengerData));
+		// const stationData = stationsData.features.find(station => station.properties.NAZWA_POS === data.name);
+		return { name: data.name, passengers: deserializedPassengers };
 	}
 }
 

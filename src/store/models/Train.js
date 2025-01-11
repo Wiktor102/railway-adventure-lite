@@ -2,6 +2,24 @@ import { action, computed, makeAutoObservable, makeObservable, observable } from
 import Route from "./Route";
 import Passenger from "./Passenger";
 
+/**
+ * @typedef {Object} TrainSerialized
+ * @property {number} id
+ * @property {number} maxSpeed
+ * @property {number} price
+ * @property {number|null} route
+ * @property {number} direction
+ * @property {Array<PassengerSerialized>} passengers
+ *
+ * @property {"carriage"|"unit"} type
+ * @property {number|undefined} strength
+ * @property {number|undefined} maxCarriages
+ * @property {Object|undefined} carriages TODO: CarriageSerialized
+ *
+ * @property {number|undefined} segments
+ * @property {number|undefined} seats
+ */
+
 class Train {
 	static idCounter = 0;
 
@@ -57,7 +75,25 @@ class Train {
 		this.type = type;
 		this.maxSpeed = data.speed;
 		this.price = data.cost;
-		this.id = Train.idCounter++;
+
+		// load or defaults
+		this.id = data.id ? data.id : Train.idCounter++;
+		this.direction = data.direction || 1;
+
+		if (data.id) {
+			Train.idCounter = Math.max(Train.idCounter, data.id + 1);
+		}
+
+		if (data.passengers) {
+			data.passengers.forEach(p => {
+				if (!(p instanceof Passenger)) throw new Error("Received invalid passenger data!");
+			});
+			this.passengers = data.passengers;
+		}
+
+		if (data.route instanceof Route) {
+			this.route = data.route;
+		}
 	}
 
 	/**
@@ -143,37 +179,41 @@ class Train {
 		// station.addPassengers(disembarked);
 	}
 
+	// ------------------------------
+	// ------------------------------
+	// Serialization
+	// ------------------------------
+
+	/**
+	 * @returns {TrainSerialized}
+	 */
 	toJSON() {
 		return {
 			id: this.id,
 			type: this.type,
 			maxSpeed: this.maxSpeed,
 			price: this.price,
-			route: this.route?.toJSON(),
+			route: this.route?.id,
 			direction: this.direction,
 			passengers: this.passengers.map(p => p.toJSON())
 		};
 	}
 
-	fromJSON(data) {
-		this.id = data.id;
-		this.type = data.type;
-		this.maxSpeed = data.maxSpeed;
-		this.price = data.price;
-		this.direction = data.direction;
+	/**
+	 * @param {TrainSerialized} data
+	 * @param {import("../GameStore").default} gameStore
+	 * @returns {Train}
+	 * */
+	static fromJSON(data, gameStore) {
+		const route = gameStore.routeStore.getRouteById(data.route);
+		const passengers = data.passengers.map(p => Passenger.fromJSON(p, gameStore));
+		data = { ...data, route, passengers };
 
-		if (data.route) {
-			const route = new Route([]);
-			route.fromJSON(data.route);
-			this.route = route;
+		if (data.type === "carriage") {
+			return new CarriageTrain(data, gameStore);
+		} else {
+			return new UnitTrain(data, gameStore);
 		}
-
-		// Note: Passengers will need to be reconstructed from their saved state
-		this.passengers = data.passengers.map(p => {
-			const passenger = new Passenger(this.gameStore);
-			passenger.fromJSON(p);
-			return passenger;
-		});
 	}
 }
 
@@ -228,6 +268,9 @@ class CarriageTrain extends Train {
 		this.maxCarriages = data.maxCarriages;
 	}
 
+	/**
+	 * @returns {TrainSerialized}
+	 */
 	toJSON() {
 		return {
 			...super.toJSON(),
@@ -240,20 +283,6 @@ class CarriageTrain extends Train {
 				price: c.price
 			}))
 		};
-	}
-
-	fromJSON(data) {
-		super.fromJSON(data);
-		this.strength = data.strength;
-		this.maxCarriages = data.maxCarriages;
-		this.carriages = data.carriages.map(c => {
-			const carriage = new Carriage({
-				speed: c.speed,
-				seats: c.seats,
-				cost: c.price
-			});
-			return carriage;
-		});
 	}
 }
 
@@ -276,6 +305,9 @@ class UnitTrain extends Train {
 		this.seats = data.seats;
 	}
 
+	/**
+	 * @returns {TrainSerialized}
+	 */
 	toJSON() {
 		return {
 			...super.toJSON(),
@@ -283,12 +315,6 @@ class UnitTrain extends Train {
 			segments: this.segments,
 			seats: this.seats
 		};
-	}
-
-	fromJSON(data) {
-		super.fromJSON(data);
-		this.segments = data.segments;
-		this.seats = data.seats;
 	}
 }
 

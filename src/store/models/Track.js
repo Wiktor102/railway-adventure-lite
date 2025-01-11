@@ -4,6 +4,15 @@ import { latLng } from "leaflet";
 // track components
 import { DoubleTrack, SingleTrack, TripleTrack } from "../../Game/Map/Tracks";
 
+/**
+ * @typedef {Object} TrackSerialized
+ * @property {number} id
+ * @property {number} width
+ * @property {string} startStationName
+ * @property {string} endStationName
+ * @property {number[]} lanes
+ */
+
 class Track {
 	width;
 	id;
@@ -40,9 +49,10 @@ class Track {
 	 * @param {import("./Station").default} endStation
 	 * @returns {Track}
 	 * */
-	constructor(width, startStation, endStation) {
+	constructor(width, startStation, endStation, id = null) {
 		makeAutoObservable(this);
-		this.id = Track.idCounter++;
+
+		this.id = id ? id : Track.idCounter++;
 		this.width = width;
 		this.startStation = startStation;
 		this.endStation = endStation;
@@ -51,6 +61,10 @@ class Track {
 
 		if (this.width === 1) {
 			this.latlngs = [[latLng(startStation.coordinates), latLng(endStation.coordinates)]];
+		}
+
+		if (id) {
+			Track.idCounter = Math.max(Track.idCounter, id + 1);
 		}
 	}
 
@@ -89,29 +103,29 @@ class Track {
 		this.latlngs = latlngs;
 	}
 
+	/**
+	 * @returns {TrackSerialized}
+	 */
 	toJSON() {
 		return {
 			id: this.id,
 			width: this.width,
-			startStation: this.startStation.name,
-			endStation: this.endStation.name,
-			lanes: this.lanes.map(lane => lane?.id ?? null),
-			latlngs: this.latlngs?.map(line => line.map(point => [point.lat, point.lng])),
-			length: this.length
+			startStationName: this.startStation.name,
+			endStationName: this.endStation.name,
+			lanes: this.lanes.map(lane => lane?.id ?? null)
 		};
 	}
 
-	fromJSON(data) {
-		this.id = data.id;
-		this.width = data.width;
-		this.length = data.length;
-
-		// Lanes will be restored by Route's fromJSON
-		this.lanes = new Array(this.width).fill(null);
-
-		if (data.latlngs) {
-			this.latlngs = data.latlngs.map(line => line.map(([lat, lng]) => latLng(lat, lng)));
-		}
+	/**
+	 * @param {TrackSerialized} data
+	 * @param {import("../GameStore").default} gameStore
+	 * @returns {Track}
+	 */
+	static fromJSON(data, gameStore) {
+		const startStation = gameStore.stationStore.getStationByName(data.startStationName);
+		const endStation = gameStore.stationStore.getStationByName(data.endStationName);
+		// Lanes are restored when constructing routes
+		return new Track(data.width, startStation, endStation, data.id);
 	}
 
 	getComponent() {

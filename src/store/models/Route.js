@@ -1,7 +1,35 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import findPath from "../../utils/pathfinding";
 
-/**@typedef {Array<{ from: string, to: string, track: Track, trackIndex: number|undefined }>} Path */
+/**
+ * @typedef {Object} PathSegment
+ * @property {string} from
+ * @property {string} to
+ * @property {Track} track
+ * @property {number|undefined} trackIndex
+ */
+
+/**
+ * @typedef {Object} PathSegmentSerialized
+ * @property {string} from
+ * @property {string} to
+ * @property {number} trackId
+ * @property {number|undefined} trackIndex
+ */
+
+/**@typedef {PathSegment[]} Path */
+
+/**
+ * @typedef {Object} RouteSerialized
+ * @property {number} id
+ * @property {string[]} stations
+ * @property {PathSegmentSerialized[]} path
+ * @property {string} color
+ * @property {string} name
+ * @property {number} stopDuration
+ * @property {number} routeInterval
+ * @property {number} pricePerKm
+ */
 
 class Route {
 	width;
@@ -32,13 +60,33 @@ class Route {
 
 	static idCounter = 0;
 
-	constructor(stations) {
+	/**
+	 * @param {String[]} stations
+	 * @param {RouteSerialized|undefined} data
+	 * */
+	constructor(stations, data = {}) {
 		makeAutoObservable(this);
-		this.id = Route.idCounter++;
+		this.id = data.id ? data.id : Route.idCounter++;
 		this.stations = stations;
 
-		this.name = "Nowa trasa #" + (this.id + 1);
-		this.color = "#da7313";
+		this.name = data.name ? data.name : "Nowa trasa #" + (this.id + 1);
+		this.color = data.color ? data.color : "#da7313";
+
+		if (data.id) {
+			Route.idCounter = Math.max(Route.idCounter, data.id + 1);
+		}
+
+		if (data.stopDuration) {
+			this.stopDuration = data.stopDuration;
+		}
+
+		if (data.routeInterval) {
+			this.routeInterval = data.routeInterval;
+		}
+
+		if (data.pricePerKm) {
+			this.pricePerKm = data.pricePerKm;
+		}
 	}
 
 	cleanup() {
@@ -210,7 +258,12 @@ class Route {
 		this.path = newPath;
 	}
 
+	/**
+	 * @returns {RouteSerialized|false}
+	 */
 	toJSON() {
+		if (this.draft) return false; // DO not serialize draft routes
+
 		return {
 			id: this.id,
 			stations: this.stations,
@@ -224,34 +277,35 @@ class Route {
 			name: this.name,
 			stopDuration: this.stopDuration,
 			routeInterval: this.routeInterval,
-			pricePerKm: this.pricePerKm,
-			draft: this.draft
+			pricePerKm: this.pricePerKm
 		};
 	}
 
-	fromJSON(data) {
-		this.id = data.id;
-		this.stations = data.stations;
-		this.color = data.color;
-		this.name = data.name;
-		this.stopDuration = data.stopDuration;
-		this.routeInterval = data.routeInterval;
-		this.pricePerKm = data.pricePerKm;
-		this.draft = data.draft;
+	/**
+	 * @param {RouteSerialized} data
+	 * @param {import("../GameStore").default} gameStore
+	 * @returns {Route}
+	 */
+	static fromJSON({ stations, ...data }, gameStore) {
+		const route = new Route(stations, data);
 
-		// Reconstruct path with track references
-		this.path = data.path.map(segment => {
-			const track = this.gameStore.trackStore.tracks.find(t => t.id === segment.trackId);
-			if (track) {
+		runInAction(() => {
+			// Reconstruct path with track references
+			route.path = data.path.map(segment => {
+				const track = gameStore.trackStore.tracks.find(t => t.id === segment.trackId); // TODO: implement getTrackById(id)
+				if (!track) throw new Error(`Track #${segment.trackId} not found!`);
+
 				track.lanes[segment.trackIndex] = this; // Restore route reference in track's lanes
-			}
-			return {
-				from: segment.from,
-				to: segment.to,
-				track: track,
-				trackIndex: segment.trackIndex
-			};
+				return {
+					from: segment.from,
+					to: segment.to,
+					track: track,
+					trackIndex: segment.trackIndex
+				};
+			});
 		});
+
+		return route;
 	}
 }
 

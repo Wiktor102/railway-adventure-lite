@@ -1,6 +1,11 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import stationsData from "../assets/data/stations.json";
 import Station from "./models/Station";
+
+/**
+ * @typedef {Object} StationStoreSerialized
+ * @property {Array<StationSerialized>} stations
+ */
 
 class StationStore {
 	/** @type {GameStore} */
@@ -66,18 +71,28 @@ class StationStore {
 		this.showedPopup = station;
 	};
 
+	/**
+	 * @returns {StationStoreSerialized}
+	 * */
 	toJSON() {
 		return {
-			stations: Array.from(this.stationsMap.values()).map(station => station.toJSON())
+			stations: this.stations.filter(station => station.waitingPassengers.length > 0).map(station => station.toJSON())
 		};
 	}
 
-	fromJSON(data) {
-		this.stationsMap.clear();
-		data.stations.forEach(stationData => {
-			const station = new Station(stationData.originalData, this.gameStore);
-			station.fromJSON(stationData);
-			this.stationsMap.set(station.name, station);
+	/**
+	 * @param {StationStoreSerialized} data
+	 * @param {GameStore} gameStore
+	 * @returns {StationStore}
+	 */
+	static fromJSON(data, gameStore) {
+		const store = new StationStore(gameStore);
+
+		runInAction(() => {
+			data.stations.forEach(stationData => {
+				const station = Station.fromJSON(stationData);
+				store.stationsMap.set(station.name, station);
+			});
 		});
 	}
 }

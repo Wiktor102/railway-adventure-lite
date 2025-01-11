@@ -8,6 +8,16 @@ import TrackStore from "./TrackStore";
 import RouteStore from "./RouteStore";
 import TrainStore from "./TrainStore";
 
+/**
+ * @typedef {Object} GameStoreSerialized
+ * @property {number} gameSpeed
+ * @property {number} money
+ * @property {import("./StationStore").StationStoreSerialized} stations
+ * @property {import("./TrackStore").TrackStoreSerialized} tracks
+ * @property {import("./RouteStore").RouteStoreSerialized} routes
+ * @property {import("./TrainStore").TrainStoreSerialized} trains
+ */
+
 class GameStore {
 	stationStore;
 	trackStore;
@@ -26,12 +36,26 @@ class GameStore {
 
 	_passengerSpawnInterval = { id: null, time: 0 };
 
-	constructor() {
+	/**
+	 * @param {GameStoreSerialized|undefined} data
+	 */
+	constructor(data) {
 		makeAutoObservable(this, { _passengerSpawnInterval: false });
-		this.stationStore = new StationStore(this);
-		this.trackStore = new TrackStore(this);
-		this.routeStore = new RouteStore(this);
-		this.trainStore = new TrainStore(this);
+
+		if (data) {
+			this.stationStore = StationStore.fromJSON(data.stations, this);
+			this.trackStore = TrackStore.fromJSON(data.tracks, this);
+			this.routeStore = RouteStore.fromJSON(data.routes, this);
+			this.trainStore = TrainStore.fromJSON(data.trains, this);
+
+			this.gameSpeed = data.gameSpeed;
+			this.money = data.money;
+		} else {
+			this.stationStore = new StationStore(this);
+			this.routeStore = new RouteStore(this);
+			this.trackStore = new TrackStore(this);
+			this.trainStore = new TrainStore(this);
+		}
 
 		autorun(() => {
 			if (this._passengerSpawnInterval.id) clearInterval(this._passengerSpawnInterval.id);
@@ -108,6 +132,14 @@ class GameStore {
 		}, time * 1000);
 	};
 
+	// ------------------------------
+	// ------------------------------
+	// SERIALIZATION
+	// ------------------------------
+
+	/**
+	 * @returns {GameStoreSerialized}
+	 */
 	toJSON() {
 		return {
 			gameSpeed: this.gameSpeed,
@@ -119,31 +151,33 @@ class GameStore {
 		};
 	}
 
-	loadFromJSON(data) {
-		this.gameSpeed = data.gameSpeed;
-		this.money = data.money;
-		this.stationStore.fromJSON(data.stations);
-		this.trackStore.fromJSON(data.tracks);
-		this.routeStore.fromJSON(data.routes);
-		this.trainStore.fromJSON(data.trains);
-	}
+	// ------------------------------
+	// ------------------------------
+	// SAVING / LOADING
+	// ------------------------------
 
 	saveToLocalStorage = () => {
 		PersistenceService.saveToLocalStorage(this);
 	};
 
-	loadFromLocalStorage() {
-		const data = PersistenceService.loadFromLocalStorage();
-		if (data) this.loadFromJSON(data);
-	}
-
 	downloadSave() {
 		PersistenceService.downloadSaveFile(this);
 	}
 
-	async loadSaveFile(file) {
+	/**
+	 * @returns {GameStore}
+	 */
+	static loadFromLocalStorage() {
+		const data = PersistenceService.loadFromLocalStorage();
+		return new GameStore(data);
+	}
+
+	/**
+	 * @returns {GameStore}
+	 */
+	static async loadSaveFile(file) {
 		const data = await PersistenceService.loadFromFile(file);
-		this.loadFromJSON(data);
+		return new GameStore(data);
 	}
 }
 

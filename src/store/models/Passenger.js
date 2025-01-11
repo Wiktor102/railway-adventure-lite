@@ -1,5 +1,12 @@
 import { makeAutoObservable } from "mobx";
 
+/**
+ * @typedef {Object} PassengerSerialized
+ * @property {number} id
+ * @property {string} originName
+ * @property {string} destinationName
+ */
+
 class Passenger {
 	/**@type {import("../GameStore").default} */
 	gameStore;
@@ -46,6 +53,9 @@ class Passenger {
 		this.gameStore.addMoney(Math.round(price));
 	};
 
+	/**
+	 * @returns {PassengerSerialized}
+	 */
 	toJSON() {
 		return {
 			id: this.id,
@@ -54,10 +64,13 @@ class Passenger {
 		};
 	}
 
-	fromJSON(data) {
-		this.id = data.id;
-		this.originName = data.originName;
-		this.destinationName = data.destinationName;
+	/**
+	 * @param {PassengerSerialized} data
+	 * @param {import("../GameStore").default} gameStore
+	 * @returns {Passenger}
+	 */
+	static fromJSON(data, gameStore) {
+		return new Passenger(data.originName, data.destinationName, gameStore);
 	}
 }
 

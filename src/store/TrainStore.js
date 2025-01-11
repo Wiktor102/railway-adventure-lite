@@ -1,5 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { CarriageTrain, UnitTrain } from "./models/Train";
+import Train from "./models/Train";
+
+/**
+ * @typedef {Object} TrainStoreSerialized
+ * @property {import("./models/Train").TrainSerialized[]} trains
+ */
 
 class TrainStore {
 	/** @type {import("./GameStore").default} */
@@ -8,9 +13,15 @@ class TrainStore {
 	/** @type {import("./models/Train").default[]} */
 	trains = [];
 
-	constructor(gameStore) {
+	constructor(gameStore, trains = []) {
 		makeAutoObservable(this, { gameStore: false });
 		this.gameStore = gameStore;
+
+		trains.forEach(train => {
+			if (!(train instanceof Train)) throw new Error("Invalid train data");
+		});
+
+		this.trains = trains;
 	}
 
 	/**
@@ -29,44 +40,23 @@ class TrainStore {
 		return this.trains.find(train => train.id === id);
 	};
 
+	/**
+	 * @returns {TrainStoreSerialized}
+	 */
 	toJSON() {
 		return {
 			trains: this.trains.map(train => train.toJSON())
 		};
 	}
 
-	fromJSON(data) {
-		this.trains = data.trains
-			.map(trainData => {
-				let train;
-				if (trainData.trainType === "carriage") {
-					train = new CarriageTrain(
-						{
-							speed: trainData.maxSpeed,
-							cost: trainData.price,
-							strength: trainData.strength,
-							maxCarriages: trainData.maxCarriages
-						},
-						this.gameStore
-					);
-				} else if (trainData.trainType === "unit") {
-					train = new UnitTrain(
-						{
-							speed: trainData.maxSpeed,
-							cost: trainData.price,
-							segments: trainData.segments,
-							seats: trainData.seats
-						},
-						this.gameStore
-					);
-				}
-
-				if (train) {
-					train.fromJSON(trainData);
-				}
-				return train;
-			})
-			.filter(Boolean);
+	/**
+	 * @param {TrainStoreSerialized} data
+	 * @param {import("./GameStore").default} gameStore
+	 * @returns {TrainStore}
+	 */
+	static fromJSON(data, gameStore) {
+		const trains = data.trains.map(trainData => Train.fromJSON(trainData, gameStore));
+		return new TrainStore(gameStore, trains);
 	}
 }
 
