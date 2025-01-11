@@ -27,9 +27,54 @@ class PersistenceService {
 		URL.revokeObjectURL(url);
 	}
 
-	static async loadFromFile(file) {
-		const text = await file.text();
-		return JSON.parse(text);
+	static async loadFromFile() {
+		return new Promise((resolve, reject) => {
+			// Create file input element
+			const fileInput = document.createElement("input");
+			fileInput.type = "file";
+			fileInput.accept = "application/json";
+
+			// Handle file selection
+			fileInput.onchange = event => {
+				const file = event.target.files[0];
+
+				// Check if a file was selected
+				if (!file) {
+					reject(new Error("No file selected"));
+					return;
+				}
+
+				// Create FileReader instance
+				const reader = new FileReader();
+
+				// Handle successful file read
+				reader.onload = e => {
+					try {
+						// Try to parse the file contents as JSON
+						const jsonData = JSON.parse(e.target.result);
+						resolve(jsonData);
+					} catch (error) {
+						reject(new Error("Invalid JSON file: " + error.message));
+					}
+				};
+
+				// Handle file read errors
+				reader.onerror = () => {
+					reject(new Error("Error reading file"));
+				};
+
+				// Read the file as text
+				reader.readAsText(file);
+			};
+
+			// Handle cancel button click
+			fileInput.oncancel = () => {
+				reject(new Error("File selection cancelled"));
+			};
+
+			// Trigger the file selection dialog
+			fileInput.click();
+		});
 	}
 }
 
