@@ -9,6 +9,7 @@ import NamedRouter from "./Router/components/NamedRouter";
 
 // not lazy-loaded components
 import TrackDrawTips from "./Ui/pages/TrackDrawTips/TrackDrawTips";
+import { GameStoreProvider } from "./store/GameStoreProvider";
 
 // lazy loaded components
 const TracksMenu = lazy(() => import("./Ui/pages/TracksMenu"));
@@ -24,7 +25,14 @@ function App() {
 			<NamedRouter outletNames={["menu-content", "tips"]}>
 				<Routes>
 					<Route index element={<HomePage />} />
-					<Route path="game" element={<Game />}>
+					<Route
+						path="game"
+						element={
+							<GameStoreProvider>
+								<Game />
+							</GameStoreProvider>
+						}
+					>
 						<Route
 							path="tracks/*"
 							element={<NamedRoute outlets={[{ name: "menu-content", content: <TracksMenu /> }]} />}

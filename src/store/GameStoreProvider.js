@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 import PropTypes from "prop-types";
 
 import GameStore from "./GameStore";
@@ -6,9 +7,49 @@ import GameStore from "./GameStore";
 const GameStoreContext = createContext();
 
 function GameStoreProvider({ children }) {
-	const store = useMemo(() => new GameStore(), []);
+	const [store, setStore] = useState(null);
+	const [searchParams] = useSearchParams();
+	const redirectedRef = useRef(false);
+	const navigate = useNavigate();
 
-	return <GameStoreContext.Provider value={store}>{children}</GameStoreContext.Provider>;
+	useEffect(() => {
+		const loadType = searchParams.get("load");
+
+		if (!redirectedRef.current) {
+			if (loadType === "new") {
+				setStore(new GameStore());
+			} else if (loadType === "browser") {
+				setStore(GameStore.loadFromLocalStorage());
+			} else if (loadType === "file") {
+				GameStore.loadSaveFile()
+					.then(store => {
+						setStore(store);
+					})
+					.catch(err => {
+						console.error(err);
+						navigate("/");
+					});
+			}
+		}
+
+		if (loadType !== "browser") {
+			redirectedRef.current = true;
+			const url = new URL(window.location.href);
+			url.searchParams.set("load", "browser");
+			window.history.replaceState(null, "", url.toString()); // So the browser back button skips that change
+		}
+	}, [searchParams, navigate]);
+
+	useEffect(() => {
+		const handler = e => {
+			e.preventDefault();
+		};
+
+		addEventListener("beforeunload", handler);
+		return () => removeEventListener("beforeunload", handler);
+	}, []);
+
+	return <GameStoreContext.Provider value={{ store, loading: store == null }}>{children}</GameStoreContext.Provider>;
 }
 
 GameStoreProvider.propTypes = {
@@ -25,7 +66,17 @@ function useGameStore() {
 		throw new Error("useGameStore must be used within a GameStoreProvider!");
 	}
 
-	return context;
+	return context.store;
 }
 
-export { GameStoreProvider, useGameStore };
+function useIsStoreLoading() {
+	const context = useContext(GameStoreContext);
+
+	if (!context) {
+		throw new Error("useIsStoreLoading must be used within a GameStoreProvider!");
+	}
+
+	return context.loading;
+}
+
+export { GameStoreProvider, useGameStore, useIsStoreLoading };
