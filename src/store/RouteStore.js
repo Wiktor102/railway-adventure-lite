@@ -1,5 +1,4 @@
 import { action, makeAutoObservable } from "mobx";
-// import Track from "./models/Track";
 import Route from "./models/Route";
 
 class RouteStore {
@@ -89,6 +88,14 @@ class RouteStore {
 			this.currentRoute = new Route([]);
 			this.currentRoute.fromJSON(data.currentRoute);
 		}
+	}
+
+	/**
+	 * @param {number} id
+	 * @returns {Route|undefined}
+	 */
+	getRouteById(id) {
+		return this.routes.find(route => route.id === id);
 	}
 }
 
