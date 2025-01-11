@@ -1,0 +1,42 @@
+.loading-screen {
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		inset: 0;
+		z-index: -1;
+	}
+
+	.spinner-container {
+		display: grid;
+		place-content: center;
+		padding: 3rem;
+		width: 35vw;
+		max-width: 15rem;
+
+		// --from: rgba(from var(--on-surface-lightest) r g b / 0.8);
+		// --to: rgba(from var(--on-surface-lightest) r g b / 0.25);
+		// background-image: radial-gradient(circle at 50% 5rem in oklch, var(--from), var(--to) 70%);
+		background-color: rgba(from var(--on-surface-lightest) r g b / 0.8);
+		color: var(--surface-lighter);
+
+		border-radius: 1rem;
+		text-align: center;
+	}
+
+	.ball-clip-rotate > div {
+		width: 4rem;
+		height: 4rem;
+		border: 3px solid currentColor;
+	}
+
+	p {
+		font-size: 1.25rem;
+		margin-block-end: 0;
+	}
+}
