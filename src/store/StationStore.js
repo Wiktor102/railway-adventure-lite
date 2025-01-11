@@ -90,10 +90,13 @@ class StationStore {
 
 		runInAction(() => {
 			data.stations.forEach(stationData => {
-				const station = Station.fromJSON(stationData);
-				store.stationsMap.set(station.name, station);
+				const deserialized = Station.fromJSON(stationData);
+				const original = store.stationsMap.get(deserialized.name);
+				original.waitingPassengers = deserialized.passengers;
 			});
 		});
+
+		return store;
 	}
 }
 
