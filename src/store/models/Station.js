@@ -143,8 +143,10 @@ class Station {
 	 * @param {StationSerialized} data
 	 * @returns {{ name: string, passengers: Array<Passenger> }}
 	 */
-	static fromJSON(data) {
-		const deserializedPassengers = data.waitingPassengers.map(passengerData => Passenger.fromJSON(passengerData));
+	static fromJSON(data, gameStore) {
+		const deserializedPassengers = data.waitingPassengers.map(passengerData =>
+			Passenger.fromJSON(passengerData, gameStore)
+		);
 		// const stationData = stationsData.features.find(station => station.properties.NAZWA_POS === data.name);
 		return { name: data.name, passengers: deserializedPassengers };
 	}

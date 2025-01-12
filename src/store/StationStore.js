@@ -90,7 +90,7 @@ class StationStore {
 
 		runInAction(() => {
 			data.stations.forEach(stationData => {
-				const deserialized = Station.fromJSON(stationData);
+				const deserialized = Station.fromJSON(stationData, gameStore);
 				const original = store.stationsMap.get(deserialized.name);
 				original.waitingPassengers = deserialized.passengers;
 			});
