@@ -54,7 +54,7 @@ class Route {
 	routeInterval = 5 * 60;
 
 	/**@type {number} */
-	pricePerKm = 1;
+	pricePerKm = 0.5;
 
 	draft = true;
 

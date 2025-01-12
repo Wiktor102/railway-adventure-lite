@@ -115,7 +115,7 @@ const RouteDetails = observer(() => {
 					</div>
 					<div className="config-wrapper">
 						<h3>Ustawienia</h3>
-						<Slider min={1} max={15} step={1} value={route.pricePerKm} onChange={route.setPricePerKm}>
+						<Slider min={0.1} max={0.7} step={0.05} value={route.pricePerKm} onChange={route.setPricePerKm}>
 							<i className="fas fa-money-bills"></i> Cena za kilometr
 						</Slider>
 						<Slider
