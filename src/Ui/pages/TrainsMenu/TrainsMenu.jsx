@@ -47,6 +47,8 @@ const TrainsMenu = observer(() => {
 });
 
 const TrainTile = observer(({ train }) => {
+	const { trainStore } = useGameStore();
+
 	return (
 		<li>
 			<img
@@ -69,7 +71,7 @@ const TrainTile = observer(({ train }) => {
 					<i className="fas fa-cog"></i>
 				</IconLinkButton>
 			)}
-			<IconButton inverted>
+			<IconButton inverted onClick={() => trainStore.sellTrain(train.id)}>
 				<i className="fas fa-hand-holding-dollar"></i>
 			</IconButton>
 			<div className="data">

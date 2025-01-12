@@ -32,6 +32,14 @@ class TrainStore {
 		this.trains.push(train);
 	};
 
+	sellTrain = id => {
+		const trainToDeleteIndex = this.trains.findIndex(train => train.id === id);
+		if (trainToDeleteIndex === -1) throw new Error("Train not found");
+
+		this.gameStore.addMoney(this.trains[trainToDeleteIndex].price);
+		this.trains.splice(trainToDeleteIndex, 1);
+	};
+
 	/**
 	 * @param {number} id
 	 * @returns {import("./models/Train").default|undefined}
