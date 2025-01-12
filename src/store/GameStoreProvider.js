@@ -50,6 +50,16 @@ function GameStoreProvider({ children }) {
 		return () => removeEventListener("beforeunload", handler);
 	}, []);
 
+	useEffect(
+		() => () => {
+			if (store) {
+				store.dispose();
+				setStore(null);
+			}
+		},
+		[store]
+	);
+
 	return <GameStoreContext.Provider value={{ store, loading: store == null }}>{children}</GameStoreContext.Provider>;
 }
 

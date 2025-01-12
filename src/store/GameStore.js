@@ -57,7 +57,7 @@ class GameStore {
 			this.trainStore = new TrainStore(this);
 		}
 
-		autorun(() => {
+		this._passengerSpawnInterval.clearAutorun = autorun(() => {
 			if (this._passengerSpawnInterval.id) clearInterval(this._passengerSpawnInterval.id);
 			// if (this._passengerSpawnInterval.time > 0) {
 			// 	const elapsed = Date.now() - this._passengerSpawnInterval.time;
@@ -131,6 +131,18 @@ class GameStore {
 			});
 		}, time * 1000);
 	};
+
+	dispose() {
+		if (this._passengerSpawnInterval.id) {
+			clearInterval(this._passengerSpawnInterval.id);
+			this._passengerSpawnInterval.id = null;
+		}
+
+		if (this._passengerSpawnInterval.clearAutorun) {
+			this._passengerSpawnInterval.clearAutorun();
+			this._passengerSpawnInterval.clearAutorun = null;
+		}
+	}
 
 	// ------------------------------
 	// ------------------------------
