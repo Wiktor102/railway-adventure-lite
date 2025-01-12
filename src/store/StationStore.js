@@ -1,5 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import stationsData from "../assets/data/stations.json";
+import { latLng } from "leaflet";
+
+// models
 import Station from "./models/Station";
 
 /**
@@ -43,6 +46,24 @@ class StationStore {
 			}, new Map());
 	}
 
+	/**
+	 * Stations that have a connected track or are close to a such station
+	 * @returns {Station[]}
+	 */
+	get activeStations() {
+		const stationsToGenerateAt = [...this.connectedStations.values()];
+		const closeToConnected = stationsToGenerateAt.flatMap(station => {
+			const loc = latLng(station.coordinates);
+			return this.stations.filter(other => {
+				if (station.name === other.name || this.connectedStations.has(other.name)) return false;
+				const distance = loc.distanceTo(latLng(other.coordinates));
+				return distance <= 6_500;
+			});
+		});
+
+		return [...stationsToGenerateAt, ...closeToConnected];
+	}
+
 	constructor(gameStore) {
 		makeAutoObservable(this, { gameStore: false });
 
@@ -69,6 +90,22 @@ class StationStore {
 
 	setShowedPopup = station => {
 		this.showedPopup = station;
+	};
+
+	generatePassengers = () => {
+		console.log("Passenger spawn");
+		const sizeMap = [0, 100, 500, 1000, 3000, 5000];
+
+		this.activeStations.forEach(station => {
+			if (station.waitingPassengers.length > sizeMap[station.size]) return true;
+			const maxNumber = sizeMap[station.size] / 100;
+			const number = Math.floor(Math.random() * (maxNumber + 1));
+			// console.log(`Spawning ${number} passengers at ${station.name}`);
+
+			for (let i = 0; i < number; i++) {
+				station.addPassenger();
+			}
+		});
 	};
 
 	/**

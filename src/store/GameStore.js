@@ -1,5 +1,4 @@
-import { autorun, makeAutoObservable, runInAction } from "mobx";
-import { latLng } from "leaflet";
+import { makeAutoObservable, runInAction } from "mobx";
 import PersistenceService from "../services/PersistenceService";
 
 // stores
@@ -57,39 +56,43 @@ class GameStore {
 			this.trainStore = new TrainStore(this);
 		}
 
-		this._passengerSpawnInterval.clearAutorun = autorun(() => {
-			if (this._passengerSpawnInterval.id) clearInterval(this._passengerSpawnInterval.id);
-			// if (this._passengerSpawnInterval.time > 0) {
-			// 	const elapsed = Date.now() - this._passengerSpawnInterval.time;
-			// 	var remaining = (5000 - elapsed) / this.gameSpeed;
-			// }
+		this._passengerSpawnInterval.id = setInterval(() => {
+			this.stationStore.generatePassengers();
+		}, 1000 * 60 * 5);
 
-			const stationsToGenerateAt = [...this.stationStore.connectedStations.values()];
-			const closeToConnected = stationsToGenerateAt.flatMap(station => {
-				const loc = latLng(station.coordinates);
-				return this.stationStore.stations.filter(other => {
-					if (station.name === other.name || this.stationStore.connectedStations.has(other.name)) return false;
-					const distance = loc.distanceTo(latLng(other.coordinates));
-					return distance <= 6_500;
-				});
-			});
-			stationsToGenerateAt.push(...closeToConnected);
+		// this._passengerSpawnInterval.clearAutorun = autorun(() => {
+		// 	if (this._passengerSpawnInterval.id) clearInterval(this._passengerSpawnInterval.id);
+		// 	// if (this._passengerSpawnInterval.time > 0) {
+		// 	// 	const elapsed = Date.now() - this._passengerSpawnInterval.time;
+		// 	// 	var remaining = (5000 - elapsed) / this.gameSpeed;
+		// 	// }
 
-			this._passengerSpawnInterval.id = setInterval(() => {
-				// this._passengerSpawnInterval.time = Date.now();
-				console.log("Passenger spawn");
+		// 	const stationsToGenerateAt = [...this.stationStore.connectedStations.values()];
+		// 	const closeToConnected = stationsToGenerateAt.flatMap(station => {
+		// 		const loc = latLng(station.coordinates);
+		// 		return this.stationStore.stations.filter(other => {
+		// 			if (station.name === other.name || this.stationStore.connectedStations.has(other.name)) return false;
+		// 			const distance = loc.distanceTo(latLng(other.coordinates));
+		// 			return distance <= 6_500;
+		// 		});
+		// 	});
+		// 	stationsToGenerateAt.push(...closeToConnected);
 
-				stationsToGenerateAt.forEach(station => {
-					const maxNumber = 10 * station.size;
-					const number = Math.floor(Math.random() * (maxNumber + 1));
-					// console.log(`Spawning ${number} passengers at ${station.name}`);
+		// 	this._passengerSpawnInterval.id = setInterval(() => {
+		// 		// this._passengerSpawnInterval.time = Date.now();
+		// 		console.log("Passenger spawn");
 
-					for (let i = 0; i < number; i++) {
-						station.addPassenger();
-					}
-				});
-			}, 5000);
-		});
+		// 		stationsToGenerateAt.forEach(station => {
+		// 			const maxNumber = 10 * station.size;
+		// 			const number = Math.floor(Math.random() * (maxNumber + 1));
+		// 			// console.log(`Spawning ${number} passengers at ${station.name}`);
+
+		// 			for (let i = 0; i < number; i++) {
+		// 				station.addPassenger();
+		// 			}
+		// 		});
+		// 	}, 5000);
+		// });
 	}
 
 	/**

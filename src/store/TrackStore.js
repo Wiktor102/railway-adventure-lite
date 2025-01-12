@@ -23,7 +23,7 @@ class TrackStore {
 
 		tracks.forEach(track => {
 			if (!(track instanceof Track)) throw new Error("Invalid track");
-			this.addTrack(track);
+			this.addTrack(track, false); // Don't generate passengers when loading tracks
 		});
 	}
 
@@ -31,10 +31,11 @@ class TrackStore {
 	 * @param {Track} track
 	 * @returns {void}
 	 * */
-	addTrack = track => {
+	addTrack = (track, generate = true) => {
 		track.startStation.addNeighbor(track.endStation, track);
 		track.endStation.addNeighbor(track.startStation, track);
 		this.tracks.push(track);
+		generate && this.gameStore.stationStore.generatePassengers();
 	};
 
 	/**

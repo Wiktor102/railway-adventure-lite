@@ -132,6 +132,7 @@ class Train {
 		const stationStore = this.gameStore.stationStore;
 		const station = stationStore.getStationByName(name);
 		this.disembarkPassengers(station);
+		this.gameStore.stationStore.generatePassengers();
 		this.currentStop = { name, arrived: Date.now(), edge: false };
 	};
 
