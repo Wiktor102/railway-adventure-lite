@@ -6,7 +6,7 @@ import TrainController from "./Controllers/TrainController";
 
 const Map = () => {
 	return (
-		<MapContainer center={[51.7, 19]} zoom={9} className="map">
+		<MapContainer center={[51.7, 19]} minZoom={8} zoom={9} maxZoom={14} className="map">
 			<MapController />
 			<StationsController />
 			<TracksController />
