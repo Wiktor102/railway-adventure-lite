@@ -37,8 +37,12 @@ class RouteStore {
 		this.tracks.push(route);
 	};
 
-	deleteTrack = routeId => {
-		this.routes = this.routes.filter(r => r.id !== routeId);
+	deleteRoute = routeId => {
+		const routeToDeleteIndex = this.routes.findIndex(r => r.id === routeId);
+		if (routeToDeleteIndex === -1) return;
+
+		this.routes[routeToDeleteIndex].cleanup();
+		this.routes.splice(routeToDeleteIndex, 1);
 	};
 
 	// --------------------------------

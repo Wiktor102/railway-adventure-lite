@@ -19,6 +19,7 @@ function GameStoreProvider({ children }) {
 			if (loadType === "new") {
 				setStore(new GameStore());
 			} else if (loadType === "browser") {
+				// If no data in local storage, it behaves as "new"
 				setStore(GameStore.loadFromLocalStorage());
 			} else if (loadType === "file") {
 				GameStore.loadSaveFile()
