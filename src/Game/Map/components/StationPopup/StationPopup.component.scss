@@ -3,7 +3,7 @@
 	bottom: 0;
 	translate: -50% 0;
 
-	width: 20rem;
+	width: 25rem;
 	padding: 1rem 0;
 	margin-bottom: 2rem;
 	background-color: var(--surface);
@@ -78,14 +78,65 @@
 		margin-inline: 1rem;
 	}
 
-	.passengers-list {
+	.empty {
+		display: grid;
+		place-content: center;
+		text-align: center;
+		gap: 0.7rem;
+		padding: 0.5rem;
+		width: 100%;
+		height: 100%;
+		background-color: var(--surface-lighter);
+		border-radius: 1rem;
+
+		i {
+			font-size: 2rem;
+		}
+
+		p {
+			max-width: 20ch;
+			font-size: 0.9rem;
+			margin: 0;
+		}
+	}
+
+	.passengers-list,
+	.train-list {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+	}
 
+	.passengers-list li {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.train-list {
 		li {
-			display: flex;
-			justify-content: space-between;
+			display: grid;
+			grid-template-columns: auto auto 1fr auto;
+
+			& + li {
+				margin-block-start: 0.5rem;
+			}
+		}
+
+		a {
+			grid-row: span 2;
+			margin-inline-end: 0.5rem;
+			margin-block-start: 0.3rem;
+			font-size: 1.5rem;
+		}
+
+		.passengers {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+		}
+
+		.last {
+			grid-column: 4 / 5;
+			text-align: end;
 		}
 	}
 }

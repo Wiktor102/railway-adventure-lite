@@ -47,6 +47,9 @@ class Train {
 	/** @type {import("./Passenger").default[]}*/
 	passengers = [];
 
+	/** @type {{ name: string, arrived: number, edge: boolean }|null}*/
+	currentStop = null;
+
 	/** @type {number}*/
 	get speed() {
 		return this.maxSpeed;
@@ -62,6 +65,7 @@ class Train {
 			route: observable,
 			direction: observable,
 			passengers: observable,
+			currentStop: observable,
 			assignRoute: action,
 			onRouteStart: action,
 			onRouteEnd: action,
@@ -113,26 +117,29 @@ class Train {
 		const stationStore = this.gameStore.stationStore;
 		const startStation = stationStore.getStationByName(this.route.stations[0]);
 		startStation.processPassengers(this);
+		this.currentStop = null;
 	};
 
 	onRouteEnd() {
-		this.direction = -this.direction;
-
 		const stationStore = this.gameStore.stationStore;
-		const endStation = stationStore.getStationByName(this.route.stations.at(-1));
+		const endStation = stationStore.getStationByName(this.route.stations.at(this.direction == 1 ? -1 : 0));
 		this.disembarkPassengers(endStation);
+		this.currentStop = { name: endStation.name, arrived: Date.now(), edge: true };
+		this.direction = -this.direction;
 	}
 
 	onStopReached = ({ name }) => {
 		const stationStore = this.gameStore.stationStore;
 		const station = stationStore.getStationByName(name);
 		this.disembarkPassengers(station);
+		this.currentStop = { name, arrived: Date.now(), edge: false };
 	};
 
 	onStopDeparting = ({ name }) => {
 		const stationStore = this.gameStore.stationStore;
 		const station = stationStore.getStationByName(name);
 		station.processPassengers(this);
+		this.currentStop = null;
 	};
 
 	// ------------------------------
