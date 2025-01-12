@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { toJS } from "mobx";
 import { divIcon } from "leaflet";
 
 // hooks
@@ -28,22 +27,10 @@ const TrainMarker = observer(({ train }) => {
 	const markerRef = useRef(null);
 	const timeoutRef = useRef();
 
-	const path = useMemo(
-		() =>
-			route.path.flatMap((segment, i) => {
-				const segmentLatlngs = toJS(segment.track.latlngs[segment.trackIndex]);
-				return segmentLatlngs
-					.map((latlng, j) => {
-						const hasStop = j === segmentLatlngs.length - 1 && train.route.stations.includes(segment.to);
-						const stop = hasStop ? { duration: route.stopDuration * 1000, name: segment.to } : undefined;
-						return { latlng, stop };
-					})
-					.slice(i === 0 ? 0 : 1);
-			}),
-		[route.path, route.stopDuration, train.route.stations]
+	const adjustedPath = useMemo(
+		() => (train.direction === -1 ? route.fullPath.toReversed() : route.fullPath),
+		[route.fullPath, train.direction]
 	);
-
-	const adjustedPath = useMemo(() => (train.direction === -1 ? path.toReversed() : path), [path, train.direction]);
 
 	const onEnd = useCallback(() => {
 		train.onRouteEnd();
@@ -74,8 +61,6 @@ const TrainMarker = observer(({ train }) => {
 		});
 	}, [route.color]);
 
-	// console.log(path);
-	// return null;
 	return (
 		<MovingMarker
 			key={train.id}

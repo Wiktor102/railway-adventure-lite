@@ -5,7 +5,7 @@ import findPath from "../../utils/pathfinding";
  * @typedef {Object} PathSegment
  * @property {string} from
  * @property {string} to
- * @property {Track} track
+ * @property {import("./Track").default} track
  * @property {number|undefined} trackIndex
  */
 
@@ -92,6 +92,21 @@ class Route {
 	cleanup() {
 		this.updatePath([]); // Do not care about errors because it's just removing the route from tracks
 		this.stations = [];
+	}
+
+	get fullPath() {
+		return this.path.flatMap((segment, i) => {
+			let segmentLatlngs = segment.track.latlngs[segment.trackIndex];
+			if (segment.track.startStation.name === segment.to) segmentLatlngs = segmentLatlngs.toReversed();
+
+			return segmentLatlngs
+				.map((latlng, j) => {
+					const hasStop = j === segmentLatlngs.length - 1 && this.stations.includes(segment.to);
+					const stop = hasStop ? { duration: this.stopDuration * 1000, name: segment.to } : undefined;
+					return { latlng, stop, debug: `${segment.from} -> ${segment.to}` };
+				})
+				.slice(i === 0 ? 0 : 1);
+		});
 	}
 
 	/** Route length in meters
