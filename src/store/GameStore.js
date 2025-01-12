@@ -52,8 +52,8 @@ class GameStore {
 			this.money = data.money;
 		} else {
 			this.stationStore = new StationStore(this);
-			this.routeStore = new RouteStore(this);
 			this.trackStore = new TrackStore(this);
+			this.routeStore = new RouteStore(this);
 			this.trainStore = new TrainStore(this);
 		}
 

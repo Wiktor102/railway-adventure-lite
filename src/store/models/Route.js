@@ -94,8 +94,12 @@ class Route {
 		this.stations = [];
 	}
 
+	/**
+	 * @returns {Array<{latlng: import("leaflet").LatLng, stop: {duration: number, name: string} | undefined, debug: string}>|null}
+	 */
 	get fullPath() {
-		return this.path.flatMap((segment, i) => {
+		const path = this.path.flatMap((segment, i) => {
+			if (!segment.track.latlngs) return null;
 			let segmentLatlngs = segment.track.latlngs[segment.trackIndex];
 			if (segment.track.startStation.name === segment.to) segmentLatlngs = segmentLatlngs.toReversed();
 
@@ -107,6 +111,9 @@ class Route {
 				})
 				.slice(i === 0 ? 0 : 1);
 		});
+
+		if (path.includes(null)) return null;
+		return path;
 	}
 
 	/** Route length in meters

@@ -28,7 +28,7 @@ const TrainMarker = observer(({ train }) => {
 	const timeoutRef = useRef();
 
 	const adjustedPath = useMemo(
-		() => (train.direction === -1 ? route.fullPath.toReversed() : route.fullPath),
+		() => (train.direction === -1 ? route.fullPath?.toReversed() : route.fullPath),
 		[route.fullPath, train.direction]
 	);
 
@@ -61,6 +61,7 @@ const TrainMarker = observer(({ train }) => {
 		});
 	}, [route.color]);
 
+	if (!adjustedPath) return null;
 	return (
 		<MovingMarker
 			key={train.id}
