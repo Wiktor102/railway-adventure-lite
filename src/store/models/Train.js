@@ -191,7 +191,7 @@ class Train {
 		return {
 			id: this.id,
 			type: this.type,
-			maxSpeed: this.maxSpeed,
+			speed: this.maxSpeed,
 			price: this.price,
 			route: this.route?.id,
 			direction: this.direction,
