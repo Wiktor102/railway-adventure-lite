@@ -317,7 +317,7 @@ class Route {
 				const track = gameStore.trackStore.tracks.find(t => t.id === segment.trackId); // TODO: implement getTrackById(id)
 				if (!track) throw new Error(`Track #${segment.trackId} not found!`);
 
-				track.lanes[segment.trackIndex] = this; // Restore route reference in track's lanes
+				track.lanes[segment.trackIndex] = route;
 				return {
 					from: segment.from,
 					to: segment.to,

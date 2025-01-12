@@ -52,7 +52,7 @@ class Track {
 	constructor(width, startStation, endStation, id = null) {
 		makeAutoObservable(this);
 
-		this.id = id ? id : Track.idCounter++;
+		this.id = id != null ? id : Track.idCounter++;
 		this.width = width;
 		this.startStation = startStation;
 		this.endStation = endStation;
