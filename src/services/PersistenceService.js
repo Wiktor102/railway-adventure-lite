@@ -1,19 +1,44 @@
+import pako from "pako";
+
 const LOCAL_STORAGE_KEY = "railway-adventure-save";
 
 class PersistenceService {
 	static saveToLocalStorage(gameStore) {
 		const saveData = gameStore.toJSON();
-		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveData));
+		const jsonString = JSON.stringify(saveData);
+		const compressed = pako.deflate(jsonString);
+		const base64 = btoa(String.fromCharCode.apply(null, compressed));
+		localStorage.setItem(LOCAL_STORAGE_KEY, base64);
 	}
 
 	static loadFromLocalStorage() {
 		const saveData = localStorage.getItem(LOCAL_STORAGE_KEY);
-		return saveData ? JSON.parse(saveData) : null;
+		if (!saveData) return null;
+
+		try {
+			// First try parsing as regular JSON (backwards compatibility)
+			return JSON.parse(saveData);
+		} catch {
+			try {
+				// If that fails, try decompressing
+				const binary = atob(saveData);
+				const bytes = new Uint8Array(binary.length);
+				for (let i = 0; i < binary.length; i++) {
+					bytes[i] = binary.charCodeAt(i);
+				}
+				const decompressed = pako.inflate(bytes, { to: "string" });
+				return JSON.parse(decompressed);
+			} catch (error) {
+				return null;
+			}
+		}
 	}
 
 	static downloadSaveFile(gameStore) {
 		const saveData = gameStore.toJSON();
-		const blob = new Blob([JSON.stringify(saveData)], { type: "application/json" });
+		const jsonString = JSON.stringify(saveData);
+		const compressed = pako.deflate(jsonString);
+		const blob = new Blob([compressed], { type: "application/x-compressed" });
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
 		const dateString = new Date()
@@ -22,7 +47,7 @@ class PersistenceService {
 			.slice(2, 14);
 
 		a.href = url;
-		a.download = `ral-save-${dateString}.json`;
+		a.download = `ral-save-${dateString}.ralsave`;
 		a.click();
 		URL.revokeObjectURL(url);
 	}
@@ -32,7 +57,7 @@ class PersistenceService {
 			// Create file input element
 			const fileInput = document.createElement("input");
 			fileInput.type = "file";
-			fileInput.accept = "application/json";
+			fileInput.accept = ".json,.ralsave";
 
 			// Handle file selection
 			fileInput.onchange = event => {
@@ -46,6 +71,7 @@ class PersistenceService {
 
 				// Create FileReader instance
 				const reader = new FileReader();
+				const isCompressed = file.name.endsWith(".ralsave");
 
 				// Handle successful file read
 				reader.onload = e => {
@@ -54,25 +80,32 @@ class PersistenceService {
 						const jsonData = JSON.parse(e.target.result);
 						resolve(jsonData);
 					} catch (error) {
-						reject(new Error("Invalid JSON file: " + error.message));
+						try {
+							// Try to decompress the file contents
+							const decompressed = pako.inflate(e.target.result, { to: "string" });
+							const jsonData = JSON.parse(decompressed);
+							resolve(jsonData);
+						} catch (error) {
+							reject(new Error("Invalid save file: " + error.message));
+						}
 					}
 				};
 
-				// Handle file read errors
 				reader.onerror = () => {
 					reject(new Error("Error reading file"));
 				};
 
-				// Read the file as text
-				reader.readAsText(file);
+				if (isCompressed) {
+					reader.readAsArrayBuffer(file);
+				} else {
+					reader.readAsText(file);
+				}
 			};
 
-			// Handle cancel button click
 			fileInput.oncancel = () => {
 				reject(new Error("File selection cancelled"));
 			};
 
-			// Trigger the file selection dialog
 			fileInput.click();
 		});
 	}
