@@ -20,7 +20,11 @@ class TrackStore {
 		makeAutoObservable(this, { gameStore: false });
 
 		this.gameStore = gameStore;
-		this.tracks = tracks;
+
+		tracks.forEach(track => {
+			if (!(track instanceof Track)) throw new Error("Invalid track");
+			this.addTrack(track);
+		});
 	}
 
 	/**
