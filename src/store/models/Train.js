@@ -115,7 +115,7 @@ class Train {
 
 	onRouteStart = () => {
 		const stationStore = this.gameStore.stationStore;
-		const startStation = stationStore.getStationByName(this.route.stations[0]);
+		const startStation = stationStore.getStationByName(this.route.stations.at(this.direction == 1 ? 0 : -1));
 		startStation.processPassengers(this);
 		this.currentStop = null;
 	};
