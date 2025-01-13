@@ -72,6 +72,9 @@ class Route {
 		this.name = data.name ? data.name : "Nowa trasa #" + (this.id + 1);
 		this.color = data.color ? data.color : "#da7313";
 
+		// Add this line to mark loaded routes as non-draft
+		this.draft = !data.id;
+
 		if (data.id) {
 			Route.idCounter = Math.max(Route.idCounter, data.id + 1);
 		}
