@@ -1,0 +1,64 @@
+.tile_group {
+	container-type: inline-size;
+
+	.header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 0.25rem;
+		transition: color 200ms;
+		cursor: pointer;
+
+		i {
+			font-size: 1.3rem;
+			transition: rotate 200ms;
+		}
+
+		&:hover {
+			color: var(--on-surface-lightest);
+		}
+
+		.pill-label {
+			margin-inline-start: auto;
+			padding: 0.3rem 0.5rem;
+			font-size: 0.9rem;
+			border-radius: 10rem;
+			background-color: var(--surface-lighter);
+			color: var(--on-surface-lighter);
+		}
+	}
+
+	.content {
+		display: grid;
+		grid-template-rows: 1fr;
+		margin-inline: 2rem 0.5rem;
+		transition: grid-template-rows 500ms;
+
+		& > div {
+			overflow: hidden;
+		}
+
+		@media (max-width: 32rem) {
+			margin-left: 1rem;
+			margin-left: clamp(0px, 3vw, 2rem);
+		}
+	}
+
+	&.collapsed {
+		.header i {
+			rotate: -90deg;
+		}
+
+		.content {
+			grid-template-rows: 0fr;
+		}
+	}
+
+	&.collapsed:not(:last-child) {
+		border-bottom: 2px solid rgba(from var(--surface-lightest) r g b / 63);
+	}
+
+	&:not(:first-child) {
+		margin-top: 1rem;
+	}
+}

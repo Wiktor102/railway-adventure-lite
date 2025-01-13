@@ -1,0 +1,100 @@
+@scope tree;
+
+.passenger-menu {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 5rem - 1.5rem);
+	margin-inline: 1.5rem;
+
+	nav ul {
+		list-style-type: none;
+
+		display: flex;
+		padding: 0;
+		margin-block-start: 0;
+		font-size: 1rem;
+		border-bottom: 3px solid var(--on-surface);
+
+		li {
+			width: 100%;
+		}
+
+		a {
+			all: unset;
+
+			display: block;
+			position: relative;
+			padding: 0.5rem;
+			text-align: center;
+			border-top-left-radius: 1rem;
+			border-top-right-radius: 1rem;
+			transition: background-color 200ms;
+
+			&:not(.active):is(:hover, :focus-visible) {
+				background-color: var(--surface-lighter);
+				cursor: pointer;
+			}
+
+			&.active::after {
+				content: "";
+				position: absolute;
+				bottom: -3px;
+				left: 50%;
+				translate: -50% 0;
+
+				display: block;
+				width: 80%;
+				height: 3px;
+				background-color: var(--surface-lightest);
+			}
+		}
+
+		i {
+			margin-inline-end: 0.25rem;
+		}
+	}
+
+	.empty {
+		display: grid;
+		place-content: center;
+		text-align: center;
+		flex-grow: 1;
+		height: 100%;
+		padding: 1rem;
+		background-color: var(--surface-lighter);
+		border-radius: 1rem;
+		font-size: 1.5rem;
+
+		i {
+			font-size: 3rem;
+		}
+	}
+
+	ul.passengers-outer-list {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+
+		h3 {
+			margin: 0;
+		}
+
+		& > li + li {
+			margin-block-start: 1rem;
+		}
+	}
+
+	ul.passenger-inner-list {
+		list-style-type: none;
+		padding: 0;
+
+		li {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		& > li + li {
+			margin-block-start: 0.5rem;
+		}
+	}
+}

@@ -27,7 +27,7 @@ const Ui = observer(() => {
 	const { error, money } = useGameStore();
 	const quitDialogRef = useRef(null);
 	let { pathname } = useLocation();
-	pathname = pathname.substring(6);
+	pathname = pathname.substring(5);
 	const hasTip = useIsNamedRouteRendering("tips");
 
 	const handleQuit = () => {
@@ -50,10 +50,10 @@ const Ui = observer(() => {
 			<div className="game-ui-right">
 				{routes.map(route => (
 					<IconLinkButton
-						to={pathname.includes(route.id) ? "" : route.id}
+						to={pathname.includes(`/${route.id}`) ? "" : route.id}
 						key={route.id}
 						onClick={() => {}}
-						active={pathname.includes(route.id)}
+						active={pathname.includes(`/${route.id}`)}
 					>
 						{route.icon}
 					</IconLinkButton>

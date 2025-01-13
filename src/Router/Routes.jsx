@@ -19,6 +19,11 @@ const routes = [
 		id: "trains",
 		icon: <i className="fa-solid fa-train"></i>,
 		element: <h2>Tabor</h2>
+	},
+	{
+		id: "passengers",
+		icon: <i className="fa-solid fa-users"></i>,
+		element: <h2>Pasażerowie</h2>
 	}
 ];
 
