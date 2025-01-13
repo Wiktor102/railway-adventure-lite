@@ -68,7 +68,7 @@ const PassengersAtStations = observer(() => {
 const PassengersInTrains = observer(() => {
 	const { trainStore } = useGameStore();
 	const trainsToDisplay = trainStore.trains
-		.filter(train => train.passengers.length > 0)
+		.filter(train => train.passengers.length > 0 && train.route != null)
 		.sort((a, b) => b.passengers.length - a.passengers.length);
 
 	if (trainsToDisplay.length === 0) {
