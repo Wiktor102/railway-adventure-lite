@@ -21,10 +21,34 @@ const calculatePathMetrics = path => {
 	return { totalLength, distances };
 };
 
-const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {}, ref, ...props }) => {
+const findClosestPassedPointAndProgress = (path, pathMetrics, startPosition) => {
+	if (!startPosition) return { index: 0, additionalProgress: 0 };
+
+	let minDistance = Infinity;
+	let closestIndex = 0;
+
+	// Find closest point
+	for (let i = 0; i < path.length; i++) {
+		const distance = path[i].latlng.distanceTo(startPosition);
+		if (distance < minDistance) {
+			minDistance = distance;
+			closestIndex = i;
+		}
+	}
+
+	// Get the previous point as our reference
+	const startIndex = Math.max(0, closestIndex - 1);
+
+	// Calculate additional progress from the previous point to startPosition
+	const additionalProgress = pathMetrics.distances[startIndex] + path[startIndex].latlng.distanceTo(startPosition);
+
+	return { index: startIndex, additionalProgress };
+};
+
+const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {}, startPosition, ref, ...props }) => {
 	const { onStart, onStop, onStopEnd, onEnd } = eventHandlers;
 
-	const [position, setPosition] = useState(path[0].latlng);
+	const [position, setPosition] = useState(startPosition || path[0].latlng);
 	const [isPaused, setIsPaused] = useState(0); // Stores timestamp at which the marker was paused; 0 - not paused
 
 	const requestRef = useRef();
@@ -125,27 +149,36 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 		previousTimeRef.current = undefined;
 		isResumingRef.current = false;
 		isEndedRef.current = false;
-		// hasStartedRef.current = false; // Reset the started state
 
 		setIsPaused(false);
 		setPosition(path[0].latlng);
 		requestRef.current = requestAnimationFrame(animate);
 		typeof onStart === "function" && onStart();
-	}, [cleanupAnimation, path, animate, onStart]);
+	}, [animate, cleanupAnimation, onStart, path]);
 
 	// Handle animation start and clean-up
 	useEffect(() => {
 		if (!requestRef.current) {
-			requestRef.current = requestAnimationFrame(animate);
 			if (!hasStartedRef.current) {
-				// Only call onStart if this is the first start
+				if (startPosition) {
+					const { index, additionalProgress } = findClosestPassedPointAndProgress(
+						path,
+						pathMetricsRef.current,
+						startPosition
+					);
+					currentSegmentRef.current = index;
+					progressRef.current = additionalProgress;
+				}
+
 				hasStartedRef.current = true;
 				typeof onStart === "function" && onStart();
 			}
+
+			requestRef.current = requestAnimationFrame(animate);
 		}
 
 		return cleanupAnimation;
-	}, [animate, cleanupAnimation, onStart]);
+	}, [animate, cleanupAnimation, onStart, startPosition, path]);
 
 	// Handle path changes - recalculate distance(s)
 	useEffect(() => {
@@ -170,7 +203,7 @@ const MovingMarker = ({ path, speed = 50, simulationSpeed = 1, eventHandlers = {
 		return () => stopTimeoutRef.current && clearTimeout(stopTimeoutRef.current);
 	}, [simulationSpeed, path, isPaused]);
 
-	useImperativeHandle(ref, () => ({ resetAnimation }), [resetAnimation]);
+	useImperativeHandle(ref, () => ({ resetAnimation, position }), [position, resetAnimation]);
 
 	return <Marker position={position} {...props} />;
 };
@@ -191,7 +224,8 @@ MovingMarker.propTypes = {
 	ref: PropTypes.object,
 	speed: PropTypes.number, // Speed in kilometers per hour
 	simulationSpeed: PropTypes.number, // Simulation speed multiplier
-	icon: PropTypes.object
+	icon: PropTypes.object,
+	startPosition: PropTypes.instanceOf(LatLng)
 };
 
 export default MovingMarker;

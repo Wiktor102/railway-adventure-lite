@@ -58,7 +58,7 @@ class GameStore {
 
 		this._passengerSpawnInterval.id = setInterval(() => {
 			this.stationStore.generatePassengers();
-		}, 1000 * 60 * 5);
+		}, 1000 * 60 * 3);
 
 		// this._passengerSpawnInterval.clearAutorun = autorun(() => {
 		// 	if (this._passengerSpawnInterval.id) clearInterval(this._passengerSpawnInterval.id);

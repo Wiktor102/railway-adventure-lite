@@ -24,7 +24,7 @@ const TrainMarker = observer(({ train }) => {
 
 	const [isEnd, setIsEnd] = useState(0);
 
-	const markerRef = useRef(null);
+	const [markerRef, setMarkerRef] = useState(null);
 	const timeoutRef = useRef();
 
 	const adjustedPath = useMemo(
@@ -37,6 +37,11 @@ const TrainMarker = observer(({ train }) => {
 		setIsEnd(Date.now());
 	}, [train]);
 
+	useEffect(() => {
+		if (markerRef?.position == null) return;
+		train._currentLatlng = markerRef?.position;
+	}, [markerRef?.position, train]);
+
 	// Handle restarting the animation (and waiting)
 	useEffect(() => {
 		if (isEnd > 0) {
@@ -46,12 +51,12 @@ const TrainMarker = observer(({ train }) => {
 
 			timeoutRef.current = setTimeout(() => {
 				setIsEnd(0);
-				markerRef.current?.resetAnimation();
+				markerRef?.resetAnimation();
 			}, remainingTime / gameSpeed);
 		}
 
 		return () => clearTimeout(timeoutRef.current);
-	}, [gameSpeed, isEnd, route.routeInterval]);
+	}, [gameSpeed, isEnd, markerRef, route.routeInterval]);
 
 	const icon = useMemo(() => {
 		return new divIcon({
@@ -66,7 +71,8 @@ const TrainMarker = observer(({ train }) => {
 		<MovingMarker
 			key={train.id}
 			path={adjustedPath}
-			ref={markerRef}
+			startPosition={train._currentLatlng}
+			ref={setMarkerRef}
 			speed={train.speed}
 			simulationSpeed={gameSpeed}
 			icon={icon}

@@ -50,6 +50,9 @@ class Train {
 	/** @type {{ name: string, arrived: number, edge: boolean }|null}*/
 	currentStop = null;
 
+	/** @type {import("leaflet").LatLng|null}*/
+	_currentLatlng = null;
+
 	/** @type {number}*/
 	get speed() {
 		return this.maxSpeed;
@@ -97,6 +100,10 @@ class Train {
 
 		if (data.route instanceof Route) {
 			this.route = data.route;
+		}
+
+		if (data._currentLatlng) {
+			this._currentLatlng = data._currentLatlng;
 		}
 	}
 
@@ -203,6 +210,7 @@ class Train {
 			price: this.price,
 			route: this.route?.id,
 			direction: this.direction,
+			_currentLatlng: this._currentLatlng,
 			passengers: this.passengers.map(p => p.toJSON())
 		};
 	}
