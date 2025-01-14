@@ -37,7 +37,7 @@ const StationPopup = observer(({ station }) => {
 	}
 
 	return (
-		<div className="station-info" data-style={style}>
+		<div className="station-info" onClick={e => e.stopPropagation()} data-style={style}>
 			<h5 className="name">{station.name}</h5>
 			<button className="close" onClick={() => setShowedPopup(null)}>
 				<i className="fas fa-times"></i>
