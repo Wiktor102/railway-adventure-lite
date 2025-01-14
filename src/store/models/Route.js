@@ -35,6 +35,9 @@ class Route {
 	width;
 	id;
 
+	/**@type {import("../GameStore").default}*/
+	gameStore;
+
 	/**@type {String[]} */
 	stations = [];
 
@@ -62,11 +65,13 @@ class Route {
 
 	/**
 	 * @param {String[]} stations
+	 * @param {import("../GameStore").default} gameStore
 	 * @param {RouteSerialized|undefined} data
 	 * */
-	constructor(stations, data = {}) {
+	constructor(stations, gameStore, data = {}) {
 		makeAutoObservable(this);
 		this.id = data.id ? data.id : Route.idCounter++;
+		this.gameStore = gameStore;
 		this.stations = stations;
 
 		this.name = data.name ? data.name : "Nowa trasa #" + (this.id + 1);
@@ -225,6 +230,10 @@ class Route {
 	removeStation(stationName) {
 		const index = this.stations.indexOf(stationName);
 		if (index === -1) return;
+		if (this.stations.length === 2) {
+			this.gameStore.showError("Trasa musi zawierać co najmniej dwie stacje!");
+			return;
+		}
 
 		this.stations.splice(index, 1);
 
@@ -312,7 +321,7 @@ class Route {
 	 * @returns {Route}
 	 */
 	static fromJSON({ stations, ...data }, gameStore) {
-		const route = new Route(stations, data);
+		const route = new Route(stations, gameStore, data);
 
 		runInAction(() => {
 			// Reconstruct path with track references

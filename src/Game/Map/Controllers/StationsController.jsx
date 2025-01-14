@@ -77,7 +77,8 @@ const StationMarker = observer(({ station }) => {
 	const { routeStore } = useGameStore();
 
 	function onClick(e) {
-		setShowedPopup(showedPopup === station.name ? null : station.name);
+		if (!buildingTrack && !drawingRoute && routeId == null)
+			setShowedPopup(showedPopup === station.name ? null : station.name);
 
 		if (buildingTrack && !stationStore.enableSnapping) {
 			stationStore.setSnappedStation({ station: station, distance: 0 });
@@ -87,8 +88,19 @@ const StationMarker = observer(({ station }) => {
 
 		let error;
 		if (drawingRoute) error = routeStore.addToCurrentRoute(station);
-		if (routeId != null) console.log("editing route", routeId);
+		if (routeId != null) {
+			const route = routeStore.routes.find(r => r.id === +routeId);
+			error = route.addStation(station.name, stationStore.stationsMap);
+		}
 		error && showError(error);
+	}
+
+	function onRightClick() {
+		if (drawingRoute) routeStore.removeFromCurrentRoute(station);
+		if (routeId != null) {
+			const route = routeStore.routes.find(r => r.id === +routeId);
+			route.removeStation(station.name);
+		}
 	}
 
 	let z = 22 * Math.pow((zoom - 5) / 10, 0.5);
@@ -146,7 +158,8 @@ const StationMarker = observer(({ station }) => {
 					</div>
 				}
 				eventHandlers={{
-					click: onClick
+					click: onClick,
+					contextmenu: onRightClick
 				}}
 			></Marker>
 			{!drawingRoute && !buildingTrack && showedPopup === station.name && (

@@ -54,7 +54,7 @@ class RouteStore {
 	 * @returns {void}
 	 */
 	initCurrentRoute = () => {
-		this.currentRoute = new Route([]);
+		this.currentRoute = new Route([], this.gameStore);
 	};
 
 	/**
@@ -63,6 +63,14 @@ class RouteStore {
 	 */
 	addToCurrentRoute = station => {
 		return this.currentRoute.addStation(station.name, this.gameStore.stationStore.stationsMap);
+	};
+
+	/**
+	 * @param {Station} station
+	 * @returns {void}
+	 */
+	removeFromCurrentRoute = station => {
+		this.currentRoute.removeStation(station.name);
 	};
 
 	/**
