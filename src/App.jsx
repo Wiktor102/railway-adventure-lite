@@ -8,9 +8,10 @@ import NamedRoute from "./Router/components/NamedRoute";
 import NamedRouter from "./Router/components/NamedRouter";
 
 // not lazy-loaded components
-import TrackDrawTips from "./Ui/pages/TrackDrawTips/TrackDrawTips";
 import { GameStoreProvider } from "./store/GameStoreProvider";
 import PassengerMenu from "./Ui/pages/PassengerMenu/PassengerMenu";
+import RouteDrawTips from "./Ui/tips/RouteDrawTips";
+import TrackDrawTips from "./Ui/tips/TrackDrawTips";
 
 // lazy loaded components
 const TracksMenu = lazy(() => import("./Ui/pages/TracksMenu"));
@@ -50,7 +51,14 @@ function App() {
 							/>
 							<Route
 								path="routes/create"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <RouteDetails /> }]} />}
+								element={
+									<NamedRoute
+										outlets={[
+											{ name: "menu-content", content: <RouteDetails /> },
+											{ name: "tips", content: <RouteDrawTips /> }
+										]}
+									/>
+								}
 							/>
 							<Route
 								path="routes/details/:routeId"

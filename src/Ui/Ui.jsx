@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useMatch } from "react-router";
 import { observer } from "mobx-react-lite";
 import { Suspense, useRef } from "react";
 
@@ -14,7 +14,6 @@ import IconButton, { IconLinkButton } from "./common/IconButton/IconButton";
 // routing
 import routes from "../Router/Routes";
 import NamedOutlet from "../Router/components/NamedOutlet";
-import { useIsNamedRouteRendering } from "../Router/components/NamedRouter";
 
 //assets
 import moneyImg from "../assets/icons/money.png";
@@ -23,12 +22,15 @@ import moneyImg from "../assets/icons/money.png";
 import style from "./Ui.component.scss";
 import "../Ui/common/loaders.min.css";
 
+// tip components
+import TrackDrawTips from "./tips/TrackDrawTips";
+import RouteDrawTips from "./tips/RouteDrawTips";
+
 const Ui = observer(() => {
 	const { error, money } = useGameStore();
 	const quitDialogRef = useRef(null);
 	let { pathname } = useLocation();
 	pathname = pathname.substring(5);
-	const hasTip = useIsNamedRouteRendering("tips");
 
 	const handleQuit = () => {
 		quitDialogRef.current?.showModal();
@@ -84,9 +86,7 @@ const Ui = observer(() => {
 				</div>
 			</div>
 			<div className="game-ui-bottom-right">
-				<div className={`panel ${hasTip ? "" : "collapsed"}`}>
-					<NamedOutlet name="tips" />
-				</div>
+				<TipRenderer />
 			</div>
 			<div className="game-ui-bottom-center">
 				<div className="error-banner">{error}</div>
@@ -95,5 +95,17 @@ const Ui = observer(() => {
 		</div>
 	);
 });
+
+function TipRenderer() {
+	const buildingTrackTip = !!useMatch("/game/tracks/build/*");
+	const creatingRouteTip = useMatch("/game/routes/create");
+
+	return (
+		<div className={`panel ${buildingTrackTip || creatingRouteTip ? "" : "collapsed"}`}>
+			{buildingTrackTip && <TrackDrawTips />}
+			{creatingRouteTip && <RouteDrawTips />}
+		</div>
+	);
+}
 
 export default Ui;

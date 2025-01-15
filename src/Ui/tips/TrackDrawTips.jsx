@@ -1,15 +1,15 @@
 import { observer } from "mobx-react-lite";
 
 // components
-import TipRow from "../../common/TipRow/TipRow";
+import TipRow from "../common/TipRow/TipRow";
 
 // hooks
-import { useGameStore } from "../../../store/GameStoreProvider";
+import { useGameStore } from "../../store/GameStoreProvider";
 
 // assets
-import stationLeftCLick from "../../../assets/icons/station-left-click.svg";
-import trackLeftCLick from "../../../assets/icons/track-left-click.svg";
-import rightClick from "../../../assets/icons/computer-mouse-right-click.svg";
+import stationLeftCLick from "../../assets/icons/station-left-click.svg";
+import trackLeftCLick from "../../assets/icons/track-left-click.svg";
+import rightClick from "../../assets/icons/computer-mouse-right-click.svg";
 
 const TrackDrawTips = observer(() => {
 	const { trackStore } = useGameStore();
