@@ -201,7 +201,24 @@ class Route {
 			const overlaps = newPathSegments.some(newSegment =>
 				this.path.some(existingSegment => existingSegment.track.id === newSegment.track.id)
 			);
-			if (overlaps) return "Trasa już zawiera ten odcinek";
+
+			if (overlaps) {
+				// Check if all current tracks are included in the new path
+				const allTracksIncluded = this.path.every(existingSegment =>
+					newPathSegments.some(newSegment => newSegment.track.id === existingSegment.track.id)
+				);
+
+				if (!allTracksIncluded) return "Trasa już zawiera ten odcinek";
+
+				// Prepend the new path and station
+				const error = this.updatePath([
+					...newPathSegments.slice(0, newPathSegments.length - this.path.length),
+					...this.path
+				]);
+				if (error) return error;
+				this.stations.unshift(stationName);
+				return;
+			}
 
 			const error = this.updatePath([...this.path, ...newPathSegments]);
 			if (error) return error;
