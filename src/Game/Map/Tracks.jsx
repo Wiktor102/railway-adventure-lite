@@ -60,30 +60,30 @@ TrackDeleteAction.propTypes = {
 };
 
 function SingleTrack({ start, end, color, onClick, enableHover = false }) {
-	if (!Array.isArray(color)) {
-		color = [color];
-	}
+	if (!Array.isArray(color)) color = [color];
 	if (color.length !== 1) console.warn("SingleTrack: color prop should be a string or an array with a single string");
 
 	const style = useTrackStyle();
 	const [hover, setHover] = useState(false);
 	const adjustedColors = useMemo(() => {
 		if (!hover) return color;
-		return color.map(c => {
-			const isHex = c.startsWith("#");
-			if (isHex) {
-				return c.replace(/[0-9a-f]{2}/gi, x => {
-					const num = parseInt(x, 16);
-					return Math.min(255, num + 20)
-						.toString(16)
-						.padStart(2, "0");
-				});
-			}
-			return c;
-		});
+		return color.map(c =>
+			c.replace(/[0-9a-f]{2}/gi, x => {
+				const num = parseInt(x, 16);
+				return Math.min(255, num + 20)
+					.toString(16)
+					.padStart(2, "0");
+			})
+		);
 	}, [hover, color]);
 
+	function onPolylineClicked() {
+		if (!enableHover) return;
+		onClick();
+	}
+
 	function hoverStart() {
+		if (!enableHover) return;
 		setHover(true);
 	}
 
@@ -95,8 +95,7 @@ function SingleTrack({ start, end, color, onClick, enableHover = false }) {
 		<Polyline
 			positions={[start, end]}
 			pathOptions={{ ...style, color: adjustedColors[0] }}
-			eventHandlers={enableHover ? { mouseover: hoverStart, mouseout: hoverEnd, click: onClick } : {}}
-			interactive={enableHover}
+			eventHandlers={{ mouseover: hoverStart, mouseout: hoverEnd, click: onPolylineClicked }}
 		/>
 	);
 }

@@ -92,6 +92,18 @@ class Track {
 	 * @returns {string|undefined} error message
 	 */
 	updateWidth(width) {
+		if (width > this.width) {
+			this.lanes.splice(1, 0, null);
+		} else if (width < this.width) {
+			const freeIndex = this.lanes.findIndex(lane => lane == null);
+
+			if (freeIndex == -1) {
+				return "Nie można zmniejszyć szerokości toru, ponieważ znajdują się na nim trasy";
+			}
+
+			this.lanes = this.lanes.splice(freeIndex, 1);
+		}
+
 		this.width = width;
 	}
 

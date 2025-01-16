@@ -10,7 +10,7 @@ import TrackDrawController from "./TrackDrawController";
 import { TrackDeleteAction, TrackWithActions } from "../Tracks";
 
 const TracksController = observer(() => {
-	const { trackStore, routeStore } = useGameStore();
+	const { trackStore, routeStore, showError } = useGameStore();
 
 	const renderWithActions = useMatch("/game/tracks");
 	const renderDrawController = useMatch("/game/tracks/build/*");
@@ -58,7 +58,8 @@ const TracksController = observer(() => {
 					enableHover: renderDrawController && track.width !== trackWidth,
 					onClick: () => {
 						if (!renderDrawController || track.width === trackWidth) return;
-						track.updateWidth(trackWidth);
+						const error = track.updateWidth(trackWidth);
+						if (error) showError(error);
 					},
 					setOptions: track.width > 1 ? setTrackOptions.bind(track) : undefined
 				};
