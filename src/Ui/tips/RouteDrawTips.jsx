@@ -15,7 +15,7 @@ const RouteDrawTips = () => {
 				/>
 				<TipRow
 					icon={<img src={stationRightCLick} alt="prawy przycisk myszy, obok pinezka stacji" />}
-					label={`Kliknij stację prawym przyciskiem, aby dodać przystanek`}
+					label={`Kliknij stację prawym przyciskiem, aby usunąć przystanek`}
 				/>
 			</ul>
 		</>
