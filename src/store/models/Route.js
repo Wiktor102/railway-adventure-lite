@@ -210,9 +210,13 @@ class Route {
 
 				if (!allTracksIncluded) return "Trasa już zawiera ten odcinek";
 
+				const reverseNewPathSegments = newPathSegments
+					.map(segment => ({ from: segment.to, to: segment.from, track: segment.track }))
+					.reverse();
+
 				// Prepend the new path and station
 				const error = this.updatePath([
-					...newPathSegments.slice(0, newPathSegments.length - this.path.length),
+					...reverseNewPathSegments.slice(0, reverseNewPathSegments.length - this.path.length),
 					...this.path
 				]);
 				if (error) return error;
@@ -247,25 +251,25 @@ class Route {
 	removeStation(stationName) {
 		const index = this.stations.indexOf(stationName);
 		if (index === -1) return;
-		if (this.stations.length === 2) {
+
+		// 1 path segment means theres only two stations
+		if (this.path.length === 1) {
 			this.gameStore.showError("Trasa musi zawierać co najmniej dwie stacje!");
 			return;
 		}
 
 		this.stations.splice(index, 1);
 
+		// Was first or last station
+		// No minus 1, because it's already removed
 		if (index === 0 || index === this.stations.length) {
-			const i = this.path.findIndex(({ to, from }) => from === stationName || to === stationName);
+			// Remove first or last segment from path
+			const i = index == 0 ? 0 : this.path.length - 1;
 			this.updatePath(this.path.toSpliced(i, 1)); // Do not care about errors because it's just removing the route from tracks
-		}
 
-		const originMatches = this.path[0].from === stationName;
-		const destinationMatches = this.path.at(-1).to === stationName;
-		if (this.path.length > 0 && (!originMatches || !destinationMatches)) {
-			if (index === 0) {
-				this.stations.unshift(this.path[0].from);
-			} else {
-				this.stations.push(this.path.at(-1).to);
+			const newEdgeStop = index === 0 ? this.path[0].from : this.path.at(-1).to;
+			if (!this.stations.includes(newEdgeStop)) {
+				this.stations.splice(index, 0, newEdgeStop);
 			}
 		}
 	}
