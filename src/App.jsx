@@ -3,15 +3,9 @@ import { lazy } from "react";
 import HomePage from "./Home/Home";
 import Game from "./Game/Game";
 
-// routing
-import NamedRoute from "./Router/components/NamedRoute";
-import NamedRouter from "./Router/components/NamedRouter";
-
 // not lazy-loaded components
 import { GameStoreProvider } from "./store/GameStoreProvider";
 import PassengerMenu from "./Ui/pages/PassengerMenu/PassengerMenu";
-import RouteDrawTips from "./Ui/tips/RouteDrawTips";
-import TrackDrawTips from "./Ui/tips/TrackDrawTips";
 
 // lazy loaded components
 const TracksMenu = lazy(() => import("./Ui/pages/TracksMenu"));
@@ -24,70 +18,34 @@ const AssignRoute = lazy(() => import("./Ui/pages/TrainsMenu/AssignRoute"));
 function App() {
 	return (
 		<BrowserRouter basename={window.location.hostname === "wiktorgolicz.pl" ? "/ral" : undefined}>
-			<NamedRouter outletNames={["menu-content", "tips"]}>
-				<Routes>
-					<Route index element={<HomePage />} />
-					<Route
-						path="game"
-						element={
-							<GameStoreProvider>
-								<Game />
-							</GameStoreProvider>
-						}
-					>
-						<Route
-							path="tracks/*"
-							element={<NamedRoute outlets={[{ name: "menu-content", content: <TracksMenu /> }]} />}
-						>
-							<Route
-								path="build/*"
-								element={<NamedRoute outlets={[{ name: "tips", content: <TrackDrawTips /> }]} />}
-							/>
-						</Route>
-						<>
-							<Route
-								path="routes"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <RoutesMenu /> }]} />}
-							/>
-							<Route
-								path="routes/create"
-								element={
-									<NamedRoute
-										outlets={[
-											{ name: "menu-content", content: <RouteDetails /> },
-											{ name: "tips", content: <RouteDrawTips /> }
-										]}
-									/>
-								}
-							/>
-							<Route
-								path="routes/details/:routeId"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <RouteDetails /> }]} />}
-							/>
-						</>
-						<>
-							<Route
-								path="trains"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <TrainsMenu /> }]} />}
-							/>
-							<Route
-								path="trains/:trainId/assign-route"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <AssignRoute /> }]} />}
-							/>
-							<Route
-								path="trains/buy/*"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <BuyTrain /> }]} />}
-							/>
-						</>
-						<>
-							<Route
-								path="passengers/*"
-								element={<NamedRoute outlets={[{ name: "menu-content", content: <PassengerMenu /> }]} />}
-							/>
-						</>
+			<Routes>
+				<Route index element={<HomePage />} />
+				<Route
+					path="game"
+					element={
+						<GameStoreProvider>
+							<Game />
+						</GameStoreProvider>
+					}
+				>
+					<Route path="tracks/*" element={<TracksMenu />}>
+						<Route path="build/*" />
 					</Route>
-				</Routes>
-			</NamedRouter>
+					<>
+						<Route path="routes" element={<RoutesMenu />} />
+						<Route path="routes/create" element={<RouteDetails />} />
+						<Route path="routes/details/:routeId" element={<RouteDetails />} />
+					</>
+					<>
+						<Route path="trains" element={<TrainsMenu />} />
+						<Route path="trains/:trainId/assign-route" element={<AssignRoute />} />
+						<Route path="trains/buy/*" element={<BuyTrain />} />
+					</>
+					<>
+						<Route path="passengers/*" element={<PassengerMenu />} />
+					</>
+				</Route>
+			</Routes>
 		</BrowserRouter>
 	);
 }

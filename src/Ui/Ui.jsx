@@ -1,4 +1,4 @@
-import { Link, useLocation, useMatch } from "react-router";
+import { Link, Outlet, useLocation, useMatch } from "react-router";
 import { observer } from "mobx-react-lite";
 import { Suspense, useRef } from "react";
 
@@ -13,7 +13,6 @@ import IconButton, { IconLinkButton } from "./common/IconButton/IconButton";
 
 // routing
 import routes from "../Router/Routes";
-import NamedOutlet from "../Router/components/NamedOutlet";
 
 //assets
 import moneyImg from "../assets/icons/money.png";
@@ -81,7 +80,7 @@ const Ui = observer(() => {
 						<Link to="/game">
 							<i className="fas fa-times"></i>
 						</Link>
-						<NamedOutlet name="menu-content" />
+						<Outlet />
 					</Suspense>
 				</div>
 			</div>
