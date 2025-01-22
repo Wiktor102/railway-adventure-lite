@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 import { Link, useNavigate, useParams } from "react-router";
 import { Scrollbars } from "react-custom-scrollbars-2";
@@ -28,8 +28,7 @@ const RouteDetails = observer(() => {
 		return routeStore.routes.find(r => r.id === +routeId);
 	}, [routeId, routeStore]);
 
-	// TODO: Uncomment below for production
-	// useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore.discardCurrentRoute]);
+	useEffect(() => () => routeStore.discardCurrentRoute(), [routeStore, routeStore.discardCurrentRoute]);
 
 	function toggleStop(stationName) {
 		const hasStation = route.stations.includes(stationName);

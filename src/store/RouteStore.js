@@ -87,7 +87,7 @@ class RouteStore {
 	};
 
 	discardCurrentRoute = () => {
-		this.currentRoute.cleanup();
+		this.currentRoute?.cleanup();
 		this.currentRoute = null;
 	};
 
